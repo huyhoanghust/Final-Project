@@ -1,0 +1,7 @@
+Ferrite beads (hoặc còn được gọi là ferrite choke, ferrite inductor, hay ferrite core) là các thành phần điện tử được sử dụng để kiểm soát và giảm nhiễu (EMI - Electromagnetic Interference) trong các mạch điện tử. Chúng thường được sử dụng trong các ứng dụng điện tử để lọc và giữ lại tín hiệu tương tự hoặc điện áp đúng cách và ngăn chặn nhiễu từ tràn vào mạch.
+Ferrite beads được làm từ vật liệu ferrite, một loại vật liệu từ gốc sắt và có tính chất từ tính cao. Chúng có một thiết kế vòng tròn hoặc tròn và thường được đặt xung quanh dây dẫn hoặc dây điện trong mạch để tạo ra một hiệu ứng lọc. Ferrite beads hoạt động bằng cách tạo ra sự cản trở từ tính cho các tín hiệu điện tử đi qua chúng. Hiệu ứng này giúp giảm nhiễu từ tín hiệu tương tự hoặc điện áp chuyển đổi và ngăn chúng từ việc truyền đến các phần khác của mạch.
+Các ứng dụng phổ biến của ferrite beads bao gồm:
+Nhiễu EMI giữa các dây cáp: Ferrite beads thường được đặt trên dây cáp hoặc dây dẫn để giảm nhiễu và ngăn chặn nó trước khi nó lan ra các thiết bị khác.
+Lọc nguồn cung cấp: Chúng có thể được sử dụng trong mạch cung cấp điện để lọc nhiễu và đảm bảo điện áp đúng cách.
+Ứng dụng tín hiệu tương tự: Trong các mạch xử lý tín hiệu tương tự, ferrite beads có thể được sử dụng để cách ly tín hiệu và giảm nhiễu.
+Sử dụng ferrite beads đúng cách có thể giúp cải thiện hiệu suất và ổn định của mạch điện tử và ngăn chặn nhiễu từ ảnh hưởng đến các tín hiệu quan trọng.
