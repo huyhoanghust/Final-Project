@@ -1,0 +1,96 @@
+Change Component Footprint: Designator=JP2 Old Footprint=CON_2P New Footprint=JP2-C1T
+Change component parameters: Designator = "C31"; Footprint = "CON_4P"; UniqueID = "\MVCCJJCP\MEKDODNG"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1 Description"; Value = "Manufacturer"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.we-online.com"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink2 Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink2URL"; Value = "http://katalog.we-online.de/em/datasheet/6130xx143121.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Created by"; Value = "Karrer Zheng"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Created Date"; Value = "29 March 2013"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "W¨¹rth Elektronik eiSos GmbH"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "NoPins"; Value = "02"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "partNo"; Value = "613002143121"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C39"; Footprint = "CON_4P"; UniqueID = "\GHTFPMUE\MJETLNTH"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1 Description"; Value = "Manufacturer"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.we-online.com"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink2 Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink2URL"; Value = "http://katalog.we-online.de/em/datasheet/6130xx143121.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Created by"; Value = "Karrer Zheng"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Created Date"; Value = "29 March 2013"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "W¨¹rth Elektronik eiSos GmbH"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "NoPins"; Value = "02"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "partNo"; Value = "613002143121"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C69"; Footprint = "CON_4P"; UniqueID = "\WPEPDEMO\LJXFDGLJ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1 Description"; Value = "Manufacturer"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.we-online.com"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink2 Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink2URL"; Value = "http://katalog.we-online.de/em/datasheet/6130xx143121.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Created by"; Value = "Karrer Zheng"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Created Date"; Value = "29 March 2013"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "W¨¹rth Elektronik eiSos GmbH"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "NoPins"; Value = "02"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "partNo"; Value = "613002143121"; VariantName = "[No Variations]"
+Change component parameters: Designator = "Y1"; Footprint = "ABM7_v1_1_BIG"; UniqueID = "\MVCCJJCP\KDGWFGSW"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = ".Checked PCB"; Value = "RF"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = ".Checked SCH"; Value = "RF"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = ".Creator"; Value = "MM"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Category"; Value = "Crystals and Oscillators"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "http://www.abracon.com/Resonators/abm7.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.abracon.com/Resonators/abm7.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ESR (Equivalent Series Resistance)"; Value = "50 Ohm"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Frequency"; Value = "16MHz"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Frequency Stability"; Value = "±30ppm"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Frequency Tolerance"; Value = "±20ppm"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Height"; Value = "0.055" (1.40mm)"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Load Capacitance"; Value = "18pF"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Abracon LLC"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer Part Number"; Value = "ABM7-16.000MHZ-D2Y-T"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mounting Type"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Operating Mode"; Value = "Fundamental"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Operating Temperature"; Value = "-40°C ~ 85°C"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package / Case"; Value = "2-SMD"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Packaging"; Value = "Cut Tape (CT)"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Pricing 1"; Value = "1=0.96, 10=0.847, 50=0.791, 100=0.7, 500=0.6615 (USD)"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Ratings"; Value = "-"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RoHS"; Value = "RoHS Compliant"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Size / Dimension"; Value = "0.236" L x 0.138" W (6.00mm x 3.50mm)"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Stock 1"; Value = "5861"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier Part Number 1"; Value = "535-9840-1-ND"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Type"; Value = "MHz Crystal"; VariantName = "[No Variations]"
+Change component parameters: Designator = "JP2"; Footprint = "JP2-C1T"; UniqueID = "\WPEPDEMO\UHJJUVJC"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1 Description"; Value = "Manufacturer"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.we-online.com"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink2 Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink2URL"; Value = "http://katalog.we-online.de/em/datasheet/6130xx143121.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Created by"; Value = "Karrer Zheng"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Created Date"; Value = "29 March 2013"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "W¨¹rth Elektronik eiSos GmbH"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "NoPins"; Value = "02"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "partNo"; Value = "613002143121"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=MCU_RESET Pin=B1-15
+Added Pin To Net: NetName=GND Pin=B1-19
+Added Pin To Net: NetName=USER_B1 Pin=B2-15
+Added Pin To Net: NetName=GND Pin=B2-19
+Added Pin To Net: NetName=USER_B2 Pin=B3-15
+Added Pin To Net: NetName=GND Pin=B3-19
+Added Pin To Net: NetName=PWRKEY Pin=B4-15
+Added Pin To Net: NetName=GND Pin=B4-19
+Added Pin To Net: NetName=NetIC6_2 Pin=IC6-4
+Added Pin To Net: NetName=GND Pin=IC6-5
+Change Net Name : Old Net Name=RESET New Net Name=RESET_SIM
+Added Pin To Net: NetName=RESET_GNSS Pin=Q8-2
+Added Pin To Net: NetName=RESET_GNSS Pin=U5-9
+Added Net: Name=RESET_GNSS
+Added Room: Name=4G
+Added Room: Name=FLASH_SDCARD
+Added Room: Name=GNSS
+Added Room: Name=MCU
+Added Room: Name=POWERSUPPLY
+Added Room: Name=RFID_OLED
+Added Room: Name=RS232_DEBUG
+Added Room: Name=SENSORS
