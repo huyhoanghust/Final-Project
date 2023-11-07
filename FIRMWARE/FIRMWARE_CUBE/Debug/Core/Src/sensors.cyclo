@@ -1,0 +1,13 @@
+sensors.c:13:6:delay	2
+sensors.c:21:6:Set_Pin_Output	1
+sensors.c:30:6:Set_Pin_Input	1
+sensors.c:40:9:DS18B20_Start	2
+sensors.c:60:6:DS18B20_Write	3
+sensors.c:92:9:DS18B20_Read	3
+sensors.c:115:7:DS18B20_Result	1
+sensors.c:140:6:DHT11_Start	1
+sensors.c:150:9:DHT11_Check_Response	4
+sensors.c:168:9:DHT11_Read	5
+sensors.c:187:7:DHT11_Result	1
+sensors.c:211:7:Level_Result	1
+sensors.c:222:7:Accqui_Result	1

@@ -1,0 +1,3 @@
+dht22.c:3:6:microDelay	2
+dht22.c:9:9:DHT11_Start	5
+dht22.c:40:9:DHT11_Read	7

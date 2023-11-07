@@ -1,0 +1,17 @@
+../Core/Src/rc522.c:19:6:rc522_writeRegister	24	static
+../Core/Src/rc522.c:42:9:rc522_readRegister	32	static
+../Core/Src/rc522.c:59:6:rc522_init	8	static
+../Core/Src/rc522.c:78:6:rc522_controlAntenna	24	static
+../Core/Src/rc522.c:102:6:rc522_reset	8	static
+../Core/Src/rc522.c:108:16:rc522_check	24	static
+../Core/Src/rc522.c:132:16:rc522_request	32	static
+../Core/Src/rc522.c:156:16:rc522_toCard	40	static
+../Core/Src/rc522.c:256:6:rc522_setBitMask	24	static
+../Core/Src/rc522.c:268:6:rc522_clearBitMask	24	static
+../Core/Src/rc522.c:280:9:rc522_anticoll	32	static
+../Core/Src/rc522.c:312:6:rc522_halt	24	static
+../Core/Src/rc522.c:330:6:rc522_calculateCRC	40	static
+../Core/Src/rc522.c:361:9:rc522_selectTag	40	static
+../Core/Src/rc522.c:400:16:rc522_auth	48	static
+../Core/Src/rc522.c:431:16:rc522_read	32	static
+../Core/Src/rc522.c:453:16:rc522_write	48	static

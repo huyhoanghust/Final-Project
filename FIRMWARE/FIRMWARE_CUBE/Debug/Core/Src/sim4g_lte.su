@@ -1,0 +1,6 @@
+../Core/Src/sim4g_lte.c:9:6:sim7672_pwrkey	8	static
+../Core/Src/sim4g_lte.c:19:6:sim7672_init	8	static
+../Core/Src/sim4g_lte.c:31:12:sim7672_send_command	24	static
+../Core/Src/sim4g_lte.c:54:6:sim7672_callback	8	static
+../Core/Src/sim4g_lte.c:66:6:sim7672_timerCallback	16	static
+../Core/Src/sim4g_lte.c:79:6:sim7672_errorHandle	8	static,ignoring_inline_asm
