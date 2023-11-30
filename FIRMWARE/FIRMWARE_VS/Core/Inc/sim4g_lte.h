@@ -9,7 +9,11 @@
 #include "debug.h"
 #include "stdbool.h"
 
-extern TIM_HandleTypeDef htim3;
+#define TIME_VERY_SHORT 200
+#define TIME_SHORT      500
+#define TIME_MEDIUM     1000
+#define TIME_LONG       1500
+
 extern UART_HandleTypeDef huart1;
 
 typedef enum
@@ -40,14 +44,15 @@ typedef struct
 } simInfo_t;
 
 void sim7672_reset(void);
-void sim7672_pwrkey(void);
+void sim7672_pwrOff(void);
+void sim7672_pwrOn(void);
 void sim7672_init(void);
 void sim7672_sendcmd_notresp(char *cmd);
-simState_t sim7672_send_command(char *simCommand, char *trueResponse);
+simState_t sim7672_send_command(char *simCommand, char *trueResponse, int waitms);
 void sim7672_callback(void);
-void sim7672_timerCallback(void);
 void sim7672_start_LTE(void);
 uint8_t sim7672_check_signalStrength(void);
 void sim7672_errorHandle(void);
+void sim7672_checkSIMCard();
 
 #endif

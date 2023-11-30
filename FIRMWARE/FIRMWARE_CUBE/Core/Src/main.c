@@ -104,7 +104,7 @@ uint8_t year = 0;
 
 volatile int check =0;
 
-
+char gnss_str[100]={0};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -218,20 +218,20 @@ int main(void)
   MX_TIM3_Init();
   MX_RTC_Init();
   /* USER CODE BEGIN 2 */
-  HAL_TIM_Base_Start(&htim1);
+//  HAL_TIM_Base_Start(&htim1);
   ////HAL_TIM_Base_Start_IT(&htim2);
   //HAL_TIM_Base_Start(&htim3);
 
-  HAL_ADC_Start(&hadc1);
-  HAL_ADC_Start(&hadc2);
-  log_data("ttesssst\n");
-  //RTC
-  rtc_init();
-    // if ( HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR1)!= 0x1000)
-  // {
-  //   set_time();
-  // }
-      rtc_set_time();
+//  HAL_ADC_Start(&hadc1);
+//  HAL_ADC_Start(&hadc2);
+//  log_data("ttesssst\n");
+//  //RTC
+//  rtc_init();
+//    // if ( HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR1)!= 0x1000)
+//  // {
+//  //   set_time();
+//  // }
+//      rtc_set_time();
   // rc522_init();
 
   sim7672_pwrkey();
@@ -245,8 +245,13 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    log_data("ttesssstn");
-    HAL_Delay(500);
+	    HAL_UART_Transmit(&huart4 ,(uint8_t*)"$PMTK314,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0*29\r\n", strlen("$PMTK314,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0*29\r\n"),1000);
+	    HAL_Delay(1000);
+	    HAL_UART_Receive(&huart4, (uint8_t*)gnss_str,sizeof(gnss_str)-1,2000);
+	    HAL_Delay(1000);
+	    log_data(gnss_str);
+//    log_data("ttesssstn");
+//    HAL_Delay(500);
     // HAL_Delay(100);
     // if(check)
     // {
@@ -270,11 +275,11 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE|RCC_OSCILLATORTYPE_LSE;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSI|RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
-  RCC_OscInitStruct.LSEState = RCC_LSE_ON;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+  RCC_OscInitStruct.LSIState = RCC_LSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
@@ -297,7 +302,7 @@ void SystemClock_Config(void)
     Error_Handler();
   }
   PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_RTC|RCC_PERIPHCLK_ADC;
-  PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
+  PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSI;
   PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV6;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {

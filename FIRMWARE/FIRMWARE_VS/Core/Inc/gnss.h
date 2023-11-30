@@ -8,59 +8,80 @@
 #include <stdlib.h>
 #include <math.h>
 #include "debug.h"
+// #include "stm32f100xe.h"
 
-#define L70_CHECK           0
-#define L70_NOT_CHECK       1
+#define L70_CHECK 0
+#define L70_NOT_CHECK 1
+#define KNOT_TO_KM  1.852
+#define GMT 7
+#define SPEEDTHRESH 40.0
 
-typedef enum
+typedef struct
 {
-    L70_NOT_OK,
-    L70_OK
-} l70State_t;
-
-typedef enum
-{
-    L70_CALLBACK_CMD,
-    L70_CALLBACK_GPS
-} l70Callback_t;
+    char utcTime[12];
+    char latitude[20];
+    char longitude[20];
+    char Speed[10];
+    char COGdirect[10];
+    char Date[10];
+} l70Data_t;
 
 typedef enum
 {
     L70_START_DATA,
     L70_DATA,
     L70_END_DATA
-} l70Data_t;
+} l70DataRecive_t;
 
-typedef enum
-{
-    L70_NOT_RX_CPLT,
-    L70_RX_CPLT
-} l70RxCplt_t;
-
-typedef struct 
+typedef struct
 {
     char utcTime[12];
-    char latitude[12];
+    char latitude[20];
     char NorS;
-    char longitude[12];
+    char longitude[20];
     char EorW;
     char fixStatus;
     char numberOfSatellites[2];
+    char HDOP[10];
+    char altitude[10];
 } l70GPGGAType_t;
 
+typedef struct
+{
+    char utcTime[12];
+    char dataValid;
+    char latitude[20];
+    char NorS;
+    char longitude[20];
+    char EorW;
+    char Speed[10];
+    char COGdirect[10];
+    char Date[10];
+} l70GPRMCType_t;
+
+typedef struct 
+{
+    int hour;
+    int minute;
+    int sencond;
+} l70Utctime_t;
+
+typedef struct 
+{
+    int day;
+    int month;
+    int year;
+} l70Date_t;
 
 extern UART_HandleTypeDef huart4;
 
+
 void l70_callback(void);
-l70State_t l70_sendCommand(char *l70Command, char *trueResponse, int checkOrNot);
 void l70_init(void);
 void l70_sleep(void);
-// void l70_debug(uint8_t *pData, uint16_t Size, uint32_t Timeout);
-// void l70_timerCallback(void);
-// void l70_errorHandle(void);
-void l70_handleGPS(char *latData, char *longData, char *GPSResponse);
-// void l70_receiveGPSData(void);
+double minuteTodegree(char *data);
+void l70_handleGPS(char *GPSResponse);
 char *l70_receiveGPS(void);
-void ftoa(float n, char* res, int afterpoint);
+void l70_checkSpeed();
 
 #endif

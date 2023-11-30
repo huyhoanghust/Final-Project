@@ -1,0 +1,11 @@
+TCP (Transmission Control Protocol) và UDP (User Datagram Protocol) là hai trong số nhiều giao thức trong tầng giao vận của mô hình OSI.
+
+TCP (Transmission Control Protocol):
+
+Là một giao thức hướng kết nối, đảm bảo truyền thông tin một cách đáng tin cậy và theo trình tự.
+Sử dụng cơ chế kiểm soát lỗi và điều chỉnh tốc độ truyền để đảm bảo dữ liệu được truyền đi một cách đồng đều và chính xác.
+
+UDP (User Datagram Protocol):
+
+Là một giao thức không kết nối, không đảm bảo tính toàn vẹn của dữ liệu và không đảm bảo truyền thông tin theo trình tự.
+Không có cơ chế điều khiển lỗi và không thực hiện kiểm soát tốc độ.

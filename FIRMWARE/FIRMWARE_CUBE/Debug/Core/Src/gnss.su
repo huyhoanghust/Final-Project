@@ -1,3 +1,8 @@
-../Core/Src/gnss.c:4:6:reverse	32	static
-../Core/Src/gnss.c:21:5:intToStr	32	static
-../Core/Src/gnss.c:48:6:ftoa	48	static
+../Core/Src/gnss.c:11:6:reverse	32	static
+../Core/Src/gnss.c:28:5:intToStr	32	static
+../Core/Src/gnss.c:55:6:ftoa	48	static
+../Core/Src/gnss.c:72:6:l70_callback	8	static
+../Core/Src/gnss.c:99:7:l70_receiveGPS	8	static
+../Core/Src/gnss.c:109:6:l70_init	8	static
+../Core/Src/gnss.c:122:6:l70_handleGPS	96	static
+../Core/Src/gnss.c:149:6:l70_sleep	8	static

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccox48gp.s 			page 1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -32,19 +32,35 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccox48gp.s 			page 1
   28              	sim7672_reset:
   29              	.LFB68:
   30              		.file 1 "Core/Src/sim4g_lte.c"
-   1:Core/Src/sim4g_lte.c **** #include "sim4g_lte.h"
-   2:Core/Src/sim4g_lte.c **** 
-   3:Core/Src/sim4g_lte.c **** char simRxBuf[100] = {0};
-   4:Core/Src/sim4g_lte.c **** char simRxData;
-   5:Core/Src/sim4g_lte.c **** simRxCplt_t simRxCplt = SIM_NOT_RX_CPLT;
-   6:Core/Src/sim4g_lte.c **** char simRxResponse[100] = {0};
-   7:Core/Src/sim4g_lte.c **** volatile int simRxIndex = 0;
-   8:Core/Src/sim4g_lte.c **** volatile bool iswaiting4response = false;
-   9:Core/Src/sim4g_lte.c **** 
-  10:Core/Src/sim4g_lte.c **** void sim7672_reset(void)
-  11:Core/Src/sim4g_lte.c **** {
-  31              		.loc 1 11 1 view -0
+   1:Core/Src/sim4g_lte.c **** /**
+   2:Core/Src/sim4g_lte.c ****  * @file sim4g_lte.c
+   3:Core/Src/sim4g_lte.c ****  * @author hoanghuyhust (hoangnh191855@sis.hust.edu.vn)
+   4:Core/Src/sim4g_lte.c ****  * @brief
+   5:Core/Src/sim4g_lte.c ****  * @version 0.1
+   6:Core/Src/sim4g_lte.c ****  * @date 2023-11-05
+   7:Core/Src/sim4g_lte.c ****  *
+   8:Core/Src/sim4g_lte.c ****  * @copyright Copyright (c) 2023
+   9:Core/Src/sim4g_lte.c ****  *
+  10:Core/Src/sim4g_lte.c ****  */
+  11:Core/Src/sim4g_lte.c **** #include "sim4g_lte.h"
+  12:Core/Src/sim4g_lte.c **** 
+  13:Core/Src/sim4g_lte.c **** char simRxBuf[200] = {0};
+  14:Core/Src/sim4g_lte.c **** char simRxData;
+  15:Core/Src/sim4g_lte.c **** simRxCplt_t simRxCplt = SIM_NOT_RX_CPLT;
+  16:Core/Src/sim4g_lte.c **** char simRxResponse[200] = {0};
+  17:Core/Src/sim4g_lte.c **** volatile int simRxIndex = 0;
+  18:Core/Src/sim4g_lte.c **** volatile bool iswaiting4response = true;
+  19:Core/Src/sim4g_lte.c **** simInfo_t sim7672 = {"m-wap", "mms", "mms", 0, 0};
+  20:Core/Src/sim4g_lte.c **** 
+  21:Core/Src/sim4g_lte.c **** 
+  22:Core/Src/sim4g_lte.c **** 
+  23:Core/Src/sim4g_lte.c **** void sim7672_reset(void)
+  24:Core/Src/sim4g_lte.c **** {
+  31              		.loc 1 24 1 view -0
   32              		.cfi_startproc
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s 			page 2
+
+
   33              		@ args = 0, pretend = 0, frame = 0
   34              		@ frame_needed = 0, uses_anonymous_args = 0
   35 0000 10B5     		push	{r4, lr}
@@ -52,1073 +68,1224 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccox48gp.s 			page 1
   37              		.cfi_def_cfa_offset 8
   38              		.cfi_offset 4, -8
   39              		.cfi_offset 14, -4
-  12:Core/Src/sim4g_lte.c ****     HAL_GPIO_WritePin(SIM_RESET_GPIO_Port, SIM_RESET_Pin, GPIO_PIN_RESET);
-  40              		.loc 1 12 5 view .LVU1
-  41 0002 0E4C     		ldr	r4, .L3
+  25:Core/Src/sim4g_lte.c ****     HAL_GPIO_WritePin(SIM_RESET_GPIO_Port, SIM_RESET_Pin, GPIO_PIN_RESET);
+  40              		.loc 1 25 5 view .LVU1
+  41 0002 0F4C     		ldr	r4, .L3
   42 0004 0022     		movs	r2, #0
   43 0006 4FF40041 		mov	r1, #32768
   44 000a 2046     		mov	r0, r4
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccox48gp.s 			page 2
-
-
   45 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
   46              	.LVL0:
-  13:Core/Src/sim4g_lte.c ****     HAL_Delay(10);
-  47              		.loc 1 13 5 view .LVU2
-  48 0010 0A20     		movs	r0, #10
+  26:Core/Src/sim4g_lte.c ****     HAL_Delay(50);
+  47              		.loc 1 26 5 view .LVU2
+  48 0010 3220     		movs	r0, #50
   49 0012 FFF7FEFF 		bl	HAL_Delay
   50              	.LVL1:
-  14:Core/Src/sim4g_lte.c ****     HAL_GPIO_WritePin(SIM_RESET_GPIO_Port, SIM_RESET_Pin, GPIO_PIN_SET);
-  51              		.loc 1 14 5 view .LVU3
+  27:Core/Src/sim4g_lte.c ****     HAL_GPIO_WritePin(SIM_RESET_GPIO_Port, SIM_RESET_Pin, GPIO_PIN_SET);
+  51              		.loc 1 27 5 view .LVU3
   52 0016 0122     		movs	r2, #1
   53 0018 4FF40041 		mov	r1, #32768
   54 001c 2046     		mov	r0, r4
   55 001e FFF7FEFF 		bl	HAL_GPIO_WritePin
   56              	.LVL2:
-  15:Core/Src/sim4g_lte.c ****     HAL_Delay(50);
-  57              		.loc 1 15 5 view .LVU4
-  58 0022 3220     		movs	r0, #50
-  59 0024 FFF7FEFF 		bl	HAL_Delay
+  28:Core/Src/sim4g_lte.c ****     HAL_Delay(2500);
+  57              		.loc 1 28 5 view .LVU4
+  58 0022 40F6C410 		movw	r0, #2500
+  59 0026 FFF7FEFF 		bl	HAL_Delay
   60              	.LVL3:
-  16:Core/Src/sim4g_lte.c ****     HAL_GPIO_WritePin(SIM_RESET_GPIO_Port, SIM_RESET_Pin, GPIO_PIN_RESET);
-  61              		.loc 1 16 5 view .LVU5
-  62 0028 0022     		movs	r2, #0
-  63 002a 4FF40041 		mov	r1, #32768
-  64 002e 2046     		mov	r0, r4
-  65 0030 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  29:Core/Src/sim4g_lte.c ****     HAL_GPIO_WritePin(SIM_RESET_GPIO_Port, SIM_RESET_Pin, GPIO_PIN_RESET);
+  61              		.loc 1 29 5 view .LVU5
+  62 002a 0022     		movs	r2, #0
+  63 002c 4FF40041 		mov	r1, #32768
+  64 0030 2046     		mov	r0, r4
+  65 0032 FFF7FEFF 		bl	HAL_GPIO_WritePin
   66              	.LVL4:
-  17:Core/Src/sim4g_lte.c ****     log_data("SIM RESET\n");
-  67              		.loc 1 17 5 view .LVU6
-  68 0034 0248     		ldr	r0, .L3+4
-  69 0036 FFF7FEFF 		bl	log_data
+  30:Core/Src/sim4g_lte.c ****     log_data("SIM RESET\n");
+  67              		.loc 1 30 5 view .LVU6
+  68 0036 0348     		ldr	r0, .L3+4
+  69 0038 FFF7FEFF 		bl	log_data
   70              	.LVL5:
-  18:Core/Src/sim4g_lte.c **** }
-  71              		.loc 1 18 1 is_stmt 0 view .LVU7
-  72 003a 10BD     		pop	{r4, pc}
+  31:Core/Src/sim4g_lte.c **** }
+  71              		.loc 1 31 1 is_stmt 0 view .LVU7
+  72 003c 10BD     		pop	{r4, pc}
   73              	.L4:
-  74              		.align	2
+  74 003e 00BF     		.align	2
   75              	.L3:
-  76 003c 00080140 		.word	1073809408
-  77 0040 00000000 		.word	.LC0
+  76 0040 00080140 		.word	1073809408
+  77 0044 00000000 		.word	.LC0
   78              		.cfi_endproc
   79              	.LFE68:
-  81              		.section	.rodata.sim7672_pwrkey.str1.4,"aMS",%progbits,1
-  82              		.align	2
-  83              	.LC1:
-  84 0000 53494D20 		.ascii	"SIM PWERKEY\012\000"
-  84      50574552 
-  84      4B45590A 
-  84      00
-  85              		.section	.text.sim7672_pwrkey,"ax",%progbits
-  86              		.align	1
-  87              		.global	sim7672_pwrkey
-  88              		.syntax unified
-  89              		.thumb
-  90              		.thumb_func
-  92              	sim7672_pwrkey:
-  93              	.LFB69:
-  19:Core/Src/sim4g_lte.c **** 
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccox48gp.s 			page 3
+  81              		.section	.text.sim7672_pwrOff,"ax",%progbits
+  82              		.align	1
+  83              		.global	sim7672_pwrOff
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s 			page 3
 
 
-  20:Core/Src/sim4g_lte.c **** void sim7672_pwrkey(void)
-  21:Core/Src/sim4g_lte.c **** {
-  94              		.loc 1 21 1 is_stmt 1 view -0
-  95              		.cfi_startproc
-  96              		@ args = 0, pretend = 0, frame = 0
-  97              		@ frame_needed = 0, uses_anonymous_args = 0
-  98 0000 10B5     		push	{r4, lr}
-  99              	.LCFI1:
- 100              		.cfi_def_cfa_offset 8
- 101              		.cfi_offset 4, -8
- 102              		.cfi_offset 14, -4
-  22:Core/Src/sim4g_lte.c ****     // do
-  23:Core/Src/sim4g_lte.c ****     // {
-  24:Core/Src/sim4g_lte.c ****     //     HAL_GPIO_WritePin(SIM_PWRKEY_GPIO_Port, SIM_PWRKEY_Pin, GPIO_PIN_SET);
-  25:Core/Src/sim4g_lte.c ****     //     HAL_Delay(100);
-  26:Core/Src/sim4g_lte.c ****     // } while (HAL_GPIO_ReadPin(SIM_PWRKEY_GPIO_Port, SIM_PWRKEY_Pin) == GPIO_PIN_RESET);
-  27:Core/Src/sim4g_lte.c ****     HAL_GPIO_WritePin(SIM_PWRKEY_GPIO_Port, SIM_PWRKEY_Pin, GPIO_PIN_SET);
- 103              		.loc 1 27 5 view .LVU9
- 104 0002 134C     		ldr	r4, .L7
- 105 0004 0122     		movs	r2, #1
- 106 0006 4FF48051 		mov	r1, #4096
- 107 000a 2046     		mov	r0, r4
- 108 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
- 109              	.LVL6:
-  28:Core/Src/sim4g_lte.c ****     HAL_Delay(50);
- 110              		.loc 1 28 5 view .LVU10
- 111 0010 3220     		movs	r0, #50
- 112 0012 FFF7FEFF 		bl	HAL_Delay
- 113              	.LVL7:
-  29:Core/Src/sim4g_lte.c ****     HAL_GPIO_WritePin(SIM_PWRKEY_GPIO_Port, SIM_PWRKEY_Pin, GPIO_PIN_RESET);
- 114              		.loc 1 29 5 view .LVU11
- 115 0016 0022     		movs	r2, #0
- 116 0018 4FF48051 		mov	r1, #4096
- 117 001c 2046     		mov	r0, r4
- 118 001e FFF7FEFF 		bl	HAL_GPIO_WritePin
- 119              	.LVL8:
-  30:Core/Src/sim4g_lte.c ****     HAL_Delay(50);
- 120              		.loc 1 30 5 view .LVU12
- 121 0022 3220     		movs	r0, #50
- 122 0024 FFF7FEFF 		bl	HAL_Delay
- 123              	.LVL9:
-  31:Core/Src/sim4g_lte.c ****     HAL_GPIO_WritePin(SIM_PWRKEY_GPIO_Port, SIM_PWRKEY_Pin, GPIO_PIN_SET);
- 124              		.loc 1 31 5 view .LVU13
- 125 0028 0122     		movs	r2, #1
- 126 002a 4FF48051 		mov	r1, #4096
- 127 002e 2046     		mov	r0, r4
- 128 0030 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 129              	.LVL10:
-  32:Core/Src/sim4g_lte.c ****     HAL_Delay(50);
- 130              		.loc 1 32 5 view .LVU14
- 131 0034 3220     		movs	r0, #50
- 132 0036 FFF7FEFF 		bl	HAL_Delay
- 133              	.LVL11:
-  33:Core/Src/sim4g_lte.c ****     HAL_GPIO_WritePin(SIM_PWRKEY_GPIO_Port, SIM_PWRKEY_Pin, GPIO_PIN_RESET);
- 134              		.loc 1 33 5 view .LVU15
- 135 003a 0022     		movs	r2, #0
- 136 003c 4FF48051 		mov	r1, #4096
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccox48gp.s 			page 4
+  84              		.syntax unified
+  85              		.thumb
+  86              		.thumb_func
+  88              	sim7672_pwrOff:
+  89              	.LFB69:
+  32:Core/Src/sim4g_lte.c **** 
+  33:Core/Src/sim4g_lte.c **** void sim7672_pwrOff(void)
+  34:Core/Src/sim4g_lte.c **** {
+  90              		.loc 1 34 1 is_stmt 1 view -0
+  91              		.cfi_startproc
+  92              		@ args = 0, pretend = 0, frame = 0
+  93              		@ frame_needed = 0, uses_anonymous_args = 0
+  94 0000 08B5     		push	{r3, lr}
+  95              	.LCFI1:
+  96              		.cfi_def_cfa_offset 8
+  97              		.cfi_offset 3, -8
+  98              		.cfi_offset 14, -4
+  35:Core/Src/sim4g_lte.c ****     HAL_GPIO_WritePin(SIM_CTRL_PWR_GPIO_Port, SIM_CTRL_PWR_Pin, GPIO_PIN_SET);
+  99              		.loc 1 35 5 view .LVU9
+ 100 0002 0122     		movs	r2, #1
+ 101 0004 4FF40061 		mov	r1, #2048
+ 102 0008 0348     		ldr	r0, .L7
+ 103 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 104              	.LVL6:
+  36:Core/Src/sim4g_lte.c ****     HAL_Delay(100);
+ 105              		.loc 1 36 5 view .LVU10
+ 106 000e 6420     		movs	r0, #100
+ 107 0010 FFF7FEFF 		bl	HAL_Delay
+ 108              	.LVL7:
+  37:Core/Src/sim4g_lte.c **** }
+ 109              		.loc 1 37 1 is_stmt 0 view .LVU11
+ 110 0014 08BD     		pop	{r3, pc}
+ 111              	.L8:
+ 112 0016 00BF     		.align	2
+ 113              	.L7:
+ 114 0018 00080140 		.word	1073809408
+ 115              		.cfi_endproc
+ 116              	.LFE69:
+ 118              		.section	.text.sim7672_pwrOn,"ax",%progbits
+ 119              		.align	1
+ 120              		.global	sim7672_pwrOn
+ 121              		.syntax unified
+ 122              		.thumb
+ 123              		.thumb_func
+ 125              	sim7672_pwrOn:
+ 126              	.LFB70:
+  38:Core/Src/sim4g_lte.c **** 
+  39:Core/Src/sim4g_lte.c **** void sim7672_pwrOn(void)
+  40:Core/Src/sim4g_lte.c **** {
+ 127              		.loc 1 40 1 is_stmt 1 view -0
+ 128              		.cfi_startproc
+ 129              		@ args = 0, pretend = 0, frame = 0
+ 130              		@ frame_needed = 0, uses_anonymous_args = 0
+ 131 0000 08B5     		push	{r3, lr}
+ 132              	.LCFI2:
+ 133              		.cfi_def_cfa_offset 8
+ 134              		.cfi_offset 3, -8
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s 			page 4
 
 
- 137 0040 2046     		mov	r0, r4
- 138 0042 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 139              	.LVL12:
-  34:Core/Src/sim4g_lte.c ****     log_data("SIM PWERKEY\n");
- 140              		.loc 1 34 5 view .LVU16
- 141 0046 0348     		ldr	r0, .L7+4
- 142 0048 FFF7FEFF 		bl	log_data
- 143              	.LVL13:
-  35:Core/Src/sim4g_lte.c **** }
- 144              		.loc 1 35 1 is_stmt 0 view .LVU17
- 145 004c 10BD     		pop	{r4, pc}
- 146              	.L8:
- 147 004e 00BF     		.align	2
- 148              	.L7:
- 149 0050 00080140 		.word	1073809408
- 150 0054 00000000 		.word	.LC1
- 151              		.cfi_endproc
- 152              	.LFE69:
- 154              		.section	.text.sim7672_send_command,"ax",%progbits
- 155              		.align	1
- 156              		.global	sim7672_send_command
- 157              		.syntax unified
- 158              		.thumb
- 159              		.thumb_func
- 161              	sim7672_send_command:
- 162              	.LVL14:
- 163              	.LFB71:
-  36:Core/Src/sim4g_lte.c **** 
-  37:Core/Src/sim4g_lte.c **** void sim7672_init(void)
-  38:Core/Src/sim4g_lte.c **** {
-  39:Core/Src/sim4g_lte.c ****     if (sim7672_send_command("ATE0\r\n", "OK\r\n") != SIM_OKE)
-  40:Core/Src/sim4g_lte.c ****     {
-  41:Core/Src/sim4g_lte.c ****         sim7672_errorHandle();
-  42:Core/Src/sim4g_lte.c ****     }
-  43:Core/Src/sim4g_lte.c ****     HAL_Delay(200);
-  44:Core/Src/sim4g_lte.c ****     if (sim7672_send_command("AT\r\n", "OK\r\n") != SIM_OKE)
-  45:Core/Src/sim4g_lte.c ****     {
-  46:Core/Src/sim4g_lte.c ****         sim7672_errorHandle();
-  47:Core/Src/sim4g_lte.c ****     }
-  48:Core/Src/sim4g_lte.c ****         HAL_Delay(200);
-  49:Core/Src/sim4g_lte.c ****     if (sim7672_send_command("AT+CFUN?\r\n", "1\r\n") != SIM_OKE)
-  50:Core/Src/sim4g_lte.c ****     {
-  51:Core/Src/sim4g_lte.c ****         sim7672_errorHandle();
-  52:Core/Src/sim4g_lte.c ****     }
-  53:Core/Src/sim4g_lte.c **** }
-  54:Core/Src/sim4g_lte.c **** 
-  55:Core/Src/sim4g_lte.c **** simState_t sim7672_send_command(char *simCommand, char *trueResponse)
-  56:Core/Src/sim4g_lte.c **** {
- 164              		.loc 1 56 1 is_stmt 1 view -0
- 165              		.cfi_startproc
- 166              		@ args = 0, pretend = 0, frame = 0
- 167              		@ frame_needed = 0, uses_anonymous_args = 0
- 168              		.loc 1 56 1 is_stmt 0 view .LVU19
- 169 0000 70B5     		push	{r4, r5, r6, lr}
- 170              	.LCFI2:
- 171              		.cfi_def_cfa_offset 16
- 172              		.cfi_offset 4, -16
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccox48gp.s 			page 5
+ 135              		.cfi_offset 14, -4
+  41:Core/Src/sim4g_lte.c ****     // EN power
+  42:Core/Src/sim4g_lte.c ****     HAL_GPIO_WritePin(SIM_CTRL_PWR_GPIO_Port, SIM_CTRL_PWR_Pin, GPIO_PIN_RESET);
+ 136              		.loc 1 42 5 view .LVU13
+ 137 0002 0022     		movs	r2, #0
+ 138 0004 4FF40061 		mov	r1, #2048
+ 139 0008 0348     		ldr	r0, .L11
+ 140 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 141              	.LVL8:
+  43:Core/Src/sim4g_lte.c ****     HAL_Delay(100);
+ 142              		.loc 1 43 5 view .LVU14
+ 143 000e 6420     		movs	r0, #100
+ 144 0010 FFF7FEFF 		bl	HAL_Delay
+ 145              	.LVL9:
+  44:Core/Src/sim4g_lte.c **** }
+ 146              		.loc 1 44 1 is_stmt 0 view .LVU15
+ 147 0014 08BD     		pop	{r3, pc}
+ 148              	.L12:
+ 149 0016 00BF     		.align	2
+ 150              	.L11:
+ 151 0018 00080140 		.word	1073809408
+ 152              		.cfi_endproc
+ 153              	.LFE70:
+ 155              		.section	.text.sim7672_sendcmd_notresp,"ax",%progbits
+ 156              		.align	1
+ 157              		.global	sim7672_sendcmd_notresp
+ 158              		.syntax unified
+ 159              		.thumb
+ 160              		.thumb_func
+ 162              	sim7672_sendcmd_notresp:
+ 163              	.LVL10:
+ 164              	.LFB72:
+  45:Core/Src/sim4g_lte.c **** 
+  46:Core/Src/sim4g_lte.c **** void sim7672_init(void)
+  47:Core/Src/sim4g_lte.c **** {
+  48:Core/Src/sim4g_lte.c ****     HAL_GPIO_WritePin(SIM_PWRKEY_GPIO_Port, SIM_PWRKEY_Pin, GPIO_PIN_SET);
+  49:Core/Src/sim4g_lte.c ****     HAL_Delay(50);
+  50:Core/Src/sim4g_lte.c ****     HAL_GPIO_WritePin(SIM_PWRKEY_GPIO_Port, SIM_PWRKEY_Pin, GPIO_PIN_RESET);
+  51:Core/Src/sim4g_lte.c ****     HAL_Delay(50);
+  52:Core/Src/sim4g_lte.c ****     HAL_GPIO_WritePin(SIM_PWRKEY_GPIO_Port, SIM_PWRKEY_Pin, GPIO_PIN_SET);
+  53:Core/Src/sim4g_lte.c ****     HAL_Delay(50);
+  54:Core/Src/sim4g_lte.c ****     HAL_GPIO_WritePin(SIM_PWRKEY_GPIO_Port, SIM_PWRKEY_Pin, GPIO_PIN_RESET);
+  55:Core/Src/sim4g_lte.c ****     HAL_Delay(50);
+  56:Core/Src/sim4g_lte.c ****     log_data("SIM PWERKEY\n");
+  57:Core/Src/sim4g_lte.c **** 
+  58:Core/Src/sim4g_lte.c ****     if (sim7672_send_command("ATE0\r\n", "OK\r\n",TIME_VERY_SHORT) != SIM_TRUE)
+  59:Core/Src/sim4g_lte.c ****     {
+  60:Core/Src/sim4g_lte.c ****         sim7672_errorHandle();
+  61:Core/Src/sim4g_lte.c ****     }
+  62:Core/Src/sim4g_lte.c ****     HAL_Delay(100);
+  63:Core/Src/sim4g_lte.c ****     if (sim7672_send_command("AT\r\n", "OK\r\n",TIME_VERY_SHORT) != SIM_TRUE)
+  64:Core/Src/sim4g_lte.c ****     {
+  65:Core/Src/sim4g_lte.c ****         sim7672_errorHandle();
+  66:Core/Src/sim4g_lte.c ****     }
+  67:Core/Src/sim4g_lte.c ****     HAL_Delay(100);
+  68:Core/Src/sim4g_lte.c ****     if (sim7672_send_command("AT+CFUN?\r\n", "1\r\n",TIME_VERY_SHORT) != SIM_TRUE)
+  69:Core/Src/sim4g_lte.c ****     {
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s 			page 5
 
 
- 173              		.cfi_offset 5, -12
- 174              		.cfi_offset 6, -8
- 175              		.cfi_offset 14, -4
- 176 0002 0446     		mov	r4, r0
- 177 0004 0D46     		mov	r5, r1
-  57:Core/Src/sim4g_lte.c ****     HAL_UART_Receive_IT(&huart1, (uint8_t *)&simRxData, 1);
- 178              		.loc 1 57 5 is_stmt 1 view .LVU20
- 179 0006 1D4E     		ldr	r6, .L15
- 180 0008 0122     		movs	r2, #1
- 181 000a 1D49     		ldr	r1, .L15+4
- 182              	.LVL15:
- 183              		.loc 1 57 5 is_stmt 0 view .LVU21
- 184 000c 3046     		mov	r0, r6
- 185              	.LVL16:
- 186              		.loc 1 57 5 view .LVU22
- 187 000e FFF7FEFF 		bl	HAL_UART_Receive_IT
- 188              	.LVL17:
-  58:Core/Src/sim4g_lte.c ****     HAL_UART_Transmit(&huart1, (uint8_t *)simCommand, strlen(simCommand), 100);
- 189              		.loc 1 58 5 is_stmt 1 view .LVU23
- 190              		.loc 1 58 55 is_stmt 0 view .LVU24
- 191 0012 2046     		mov	r0, r4
- 192 0014 FFF7FEFF 		bl	strlen
- 193              	.LVL18:
- 194              		.loc 1 58 5 view .LVU25
- 195 0018 6423     		movs	r3, #100
- 196 001a 82B2     		uxth	r2, r0
- 197 001c 2146     		mov	r1, r4
- 198 001e 3046     		mov	r0, r6
- 199 0020 FFF7FEFF 		bl	HAL_UART_Transmit
- 200              	.LVL19:
-  59:Core/Src/sim4g_lte.c **** 
-  60:Core/Src/sim4g_lte.c ****     log_data(simCommand);
- 201              		.loc 1 60 5 is_stmt 1 view .LVU26
- 202 0024 2046     		mov	r0, r4
- 203 0026 FFF7FEFF 		bl	log_data
- 204              	.LVL20:
-  61:Core/Src/sim4g_lte.c **** 
-  62:Core/Src/sim4g_lte.c ****     // HAL_TIM_Base_Start_IT(&htim3);
-  63:Core/Src/sim4g_lte.c **** 
-  64:Core/Src/sim4g_lte.c ****     // // Wait until complete receiving respone from SIM
-  65:Core/Src/sim4g_lte.c ****     // while (!(simRxCplt == SIM_RX_CPLT))
-  66:Core/Src/sim4g_lte.c ****     //     ;
-  67:Core/Src/sim4g_lte.c ****     while (iswaiting4response != true)
- 205              		.loc 1 67 5 view .LVU27
- 206              	.L10:
-  68:Core/Src/sim4g_lte.c ****     {
-  69:Core/Src/sim4g_lte.c ****         /* code */
-  70:Core/Src/sim4g_lte.c ****     }
- 207              		.loc 1 70 5 discriminator 1 view .LVU28
-  67:Core/Src/sim4g_lte.c ****     {
- 208              		.loc 1 67 11 discriminator 1 view .LVU29
-  67:Core/Src/sim4g_lte.c ****     {
- 209              		.loc 1 67 31 is_stmt 0 discriminator 1 view .LVU30
- 210 002a 164B     		ldr	r3, .L15+8
- 211 002c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-  67:Core/Src/sim4g_lte.c ****     {
- 212              		.loc 1 67 11 discriminator 1 view .LVU31
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccox48gp.s 			page 6
+  70:Core/Src/sim4g_lte.c ****         sim7672_errorHandle();
+  71:Core/Src/sim4g_lte.c ****     }
+  72:Core/Src/sim4g_lte.c ****     HAL_Delay(100);
+  73:Core/Src/sim4g_lte.c ****     
+  74:Core/Src/sim4g_lte.c ****     sim7672_checkSIMCard();
+  75:Core/Src/sim4g_lte.c **** 
+  76:Core/Src/sim4g_lte.c **** }
+  77:Core/Src/sim4g_lte.c **** 
+  78:Core/Src/sim4g_lte.c **** void sim7672_sendcmd_notresp(char *cmd)
+  79:Core/Src/sim4g_lte.c **** {
+ 165              		.loc 1 79 1 is_stmt 1 view -0
+ 166              		.cfi_startproc
+ 167              		@ args = 0, pretend = 0, frame = 0
+ 168              		@ frame_needed = 0, uses_anonymous_args = 0
+ 169              		.loc 1 79 1 is_stmt 0 view .LVU17
+ 170 0000 10B5     		push	{r4, lr}
+ 171              	.LCFI3:
+ 172              		.cfi_def_cfa_offset 8
+ 173              		.cfi_offset 4, -8
+ 174              		.cfi_offset 14, -4
+ 175 0002 0446     		mov	r4, r0
+  80:Core/Src/sim4g_lte.c ****     HAL_UART_Transmit(&huart1, (uint8_t *)cmd, strlen(cmd), 100);
+ 176              		.loc 1 80 5 is_stmt 1 view .LVU18
+ 177              		.loc 1 80 48 is_stmt 0 view .LVU19
+ 178 0004 FFF7FEFF 		bl	strlen
+ 179              	.LVL11:
+ 180              		.loc 1 80 5 view .LVU20
+ 181 0008 6423     		movs	r3, #100
+ 182 000a 82B2     		uxth	r2, r0
+ 183 000c 2146     		mov	r1, r4
+ 184 000e 0248     		ldr	r0, .L15
+ 185 0010 FFF7FEFF 		bl	HAL_UART_Transmit
+ 186              	.LVL12:
+  81:Core/Src/sim4g_lte.c **** }
+ 187              		.loc 1 81 1 view .LVU21
+ 188 0014 10BD     		pop	{r4, pc}
+ 189              	.LVL13:
+ 190              	.L16:
+ 191              		.loc 1 81 1 view .LVU22
+ 192 0016 00BF     		.align	2
+ 193              	.L15:
+ 194 0018 00000000 		.word	huart1
+ 195              		.cfi_endproc
+ 196              	.LFE72:
+ 198              		.section	.text.sim7672_send_command,"ax",%progbits
+ 199              		.align	1
+ 200              		.global	sim7672_send_command
+ 201              		.syntax unified
+ 202              		.thumb
+ 203              		.thumb_func
+ 205              	sim7672_send_command:
+ 206              	.LVL14:
+ 207              	.LFB73:
+  82:Core/Src/sim4g_lte.c **** 
+  83:Core/Src/sim4g_lte.c **** simState_t sim7672_send_command(char *simCommand, char *trueResponse, int waitms)
+  84:Core/Src/sim4g_lte.c **** {
+ 208              		.loc 1 84 1 is_stmt 1 view -0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s 			page 6
 
 
- 213 002e 002B     		cmp	r3, #0
- 214 0030 FBD0     		beq	.L10
-  71:Core/Src/sim4g_lte.c ****     if ((strstr(simRxResponse, trueResponse) == NULL))
- 215              		.loc 1 71 5 is_stmt 1 view .LVU32
- 216              		.loc 1 71 10 is_stmt 0 view .LVU33
- 217 0032 2946     		mov	r1, r5
- 218 0034 1448     		ldr	r0, .L15+12
- 219 0036 FFF7FEFF 		bl	strstr
- 220              	.LVL21:
- 221              		.loc 1 71 8 view .LVU34
- 222 003a 90B1     		cbz	r0, .L14
-  72:Core/Src/sim4g_lte.c ****     {
-  73:Core/Src/sim4g_lte.c ****         memset(simRxResponse, '\0', strlen(simRxResponse));
-  74:Core/Src/sim4g_lte.c ****         simRxCplt = SIM_NOT_RX_CPLT;
-  75:Core/Src/sim4g_lte.c ****         return SIM_NOT_OKE;
-  76:Core/Src/sim4g_lte.c ****     }
-  77:Core/Src/sim4g_lte.c ****     log_data(simRxResponse);
- 223              		.loc 1 77 5 is_stmt 1 view .LVU35
- 224 003c 124C     		ldr	r4, .L15+12
- 225              	.LVL22:
- 226              		.loc 1 77 5 is_stmt 0 view .LVU36
- 227 003e 2046     		mov	r0, r4
- 228 0040 FFF7FEFF 		bl	log_data
- 229              	.LVL23:
-  78:Core/Src/sim4g_lte.c ****     memset(simRxResponse, '\0', strlen(simRxResponse));
- 230              		.loc 1 78 5 is_stmt 1 view .LVU37
- 231 0044 2046     		mov	r0, r4
- 232 0046 FFF7FEFF 		bl	strlen
- 233              	.LVL24:
- 234 004a 0246     		mov	r2, r0
- 235 004c 0021     		movs	r1, #0
- 236 004e 2046     		mov	r0, r4
- 237 0050 FFF7FEFF 		bl	memset
- 238              	.LVL25:
-  79:Core/Src/sim4g_lte.c ****     simRxCplt = SIM_NOT_RX_CPLT;
- 239              		.loc 1 79 5 view .LVU38
- 240              		.loc 1 79 15 is_stmt 0 view .LVU39
- 241 0054 0023     		movs	r3, #0
- 242 0056 0D4A     		ldr	r2, .L15+16
- 243 0058 1370     		strb	r3, [r2]
-  80:Core/Src/sim4g_lte.c ****     iswaiting4response=false;
- 244              		.loc 1 80 5 is_stmt 1 view .LVU40
- 245              		.loc 1 80 23 is_stmt 0 view .LVU41
- 246 005a 0A4A     		ldr	r2, .L15+8
- 247 005c 1370     		strb	r3, [r2]
-  81:Core/Src/sim4g_lte.c ****     return SIM_OKE;
- 248              		.loc 1 81 5 is_stmt 1 view .LVU42
- 249              		.loc 1 81 12 is_stmt 0 view .LVU43
- 250 005e 0120     		movs	r0, #1
- 251              	.L12:
-  82:Core/Src/sim4g_lte.c **** }
- 252              		.loc 1 82 1 view .LVU44
- 253 0060 70BD     		pop	{r4, r5, r6, pc}
- 254              	.LVL26:
- 255              	.L14:
-  73:Core/Src/sim4g_lte.c ****         simRxCplt = SIM_NOT_RX_CPLT;
- 256              		.loc 1 73 9 is_stmt 1 view .LVU45
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccox48gp.s 			page 7
+ 209              		.cfi_startproc
+ 210              		@ args = 0, pretend = 0, frame = 0
+ 211              		@ frame_needed = 0, uses_anonymous_args = 0
+ 212              		.loc 1 84 1 is_stmt 0 view .LVU24
+ 213 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 214              	.LCFI4:
+ 215              		.cfi_def_cfa_offset 24
+ 216              		.cfi_offset 4, -24
+ 217              		.cfi_offset 5, -20
+ 218              		.cfi_offset 6, -16
+ 219              		.cfi_offset 7, -12
+ 220              		.cfi_offset 8, -8
+ 221              		.cfi_offset 14, -4
+ 222 0004 0646     		mov	r6, r0
+ 223 0006 0F46     		mov	r7, r1
+ 224 0008 1546     		mov	r5, r2
+  85:Core/Src/sim4g_lte.c ****     memset(simRxResponse, '\0', strlen(simRxResponse));
+ 225              		.loc 1 85 5 is_stmt 1 view .LVU25
+ 226 000a 2A4C     		ldr	r4, .L24
+ 227 000c 2046     		mov	r0, r4
+ 228              	.LVL15:
+ 229              		.loc 1 85 5 is_stmt 0 view .LVU26
+ 230 000e FFF7FEFF 		bl	strlen
+ 231              	.LVL16:
+ 232              		.loc 1 85 5 view .LVU27
+ 233 0012 0246     		mov	r2, r0
+ 234 0014 0021     		movs	r1, #0
+ 235 0016 2046     		mov	r0, r4
+ 236 0018 FFF7FEFF 		bl	memset
+ 237              	.LVL17:
+  86:Core/Src/sim4g_lte.c ****     memset(simRxBuf, '\0', strlen(simRxBuf));
+ 238              		.loc 1 86 5 is_stmt 1 view .LVU28
+ 239 001c 264C     		ldr	r4, .L24+4
+ 240 001e 2046     		mov	r0, r4
+ 241 0020 FFF7FEFF 		bl	strlen
+ 242              	.LVL18:
+ 243 0024 0246     		mov	r2, r0
+ 244 0026 0021     		movs	r1, #0
+ 245 0028 2046     		mov	r0, r4
+ 246 002a FFF7FEFF 		bl	memset
+ 247              	.LVL19:
+  87:Core/Src/sim4g_lte.c ****     simRxIndex = 0;
+ 248              		.loc 1 87 5 view .LVU29
+ 249              		.loc 1 87 16 is_stmt 0 view .LVU30
+ 250 002e 234B     		ldr	r3, .L24+8
+ 251 0030 0022     		movs	r2, #0
+ 252 0032 1A60     		str	r2, [r3]
+  88:Core/Src/sim4g_lte.c **** 
+  89:Core/Src/sim4g_lte.c ****     uint32_t timeout = HAL_GetTick();
+ 253              		.loc 1 89 5 is_stmt 1 view .LVU31
+ 254              		.loc 1 89 24 is_stmt 0 view .LVU32
+ 255 0034 FFF7FEFF 		bl	HAL_GetTick
+ 256              	.LVL20:
+ 257 0038 0446     		mov	r4, r0
+ 258              	.LVL21:
+  90:Core/Src/sim4g_lte.c **** 
+  91:Core/Src/sim4g_lte.c ****     HAL_UART_Receive_IT(&huart1, (uint8_t *)&simRxData, 1);
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s 			page 7
 
 
- 257 0062 094C     		ldr	r4, .L15+12
- 258              	.LVL27:
-  73:Core/Src/sim4g_lte.c ****         simRxCplt = SIM_NOT_RX_CPLT;
- 259              		.loc 1 73 9 is_stmt 0 view .LVU46
- 260 0064 2046     		mov	r0, r4
- 261 0066 FFF7FEFF 		bl	strlen
- 262              	.LVL28:
- 263 006a 0246     		mov	r2, r0
- 264 006c 0021     		movs	r1, #0
- 265 006e 2046     		mov	r0, r4
- 266 0070 FFF7FEFF 		bl	memset
- 267              	.LVL29:
-  74:Core/Src/sim4g_lte.c ****         return SIM_NOT_OKE;
- 268              		.loc 1 74 9 is_stmt 1 view .LVU47
-  74:Core/Src/sim4g_lte.c ****         return SIM_NOT_OKE;
- 269              		.loc 1 74 19 is_stmt 0 view .LVU48
- 270 0074 0020     		movs	r0, #0
- 271 0076 054B     		ldr	r3, .L15+16
- 272 0078 1870     		strb	r0, [r3]
-  75:Core/Src/sim4g_lte.c ****     }
- 273              		.loc 1 75 9 is_stmt 1 view .LVU49
-  75:Core/Src/sim4g_lte.c ****     }
- 274              		.loc 1 75 16 is_stmt 0 view .LVU50
- 275 007a F1E7     		b	.L12
- 276              	.L16:
- 277              		.align	2
- 278              	.L15:
- 279 007c 00000000 		.word	huart1
- 280 0080 00000000 		.word	.LANCHOR0
- 281 0084 00000000 		.word	.LANCHOR1
- 282 0088 00000000 		.word	.LANCHOR2
- 283 008c 00000000 		.word	.LANCHOR3
- 284              		.cfi_endproc
- 285              	.LFE71:
- 287              		.section	.rodata.sim7672_callback.str1.4,"aMS",%progbits,1
- 288              		.align	2
- 289              	.LC2:
- 290 0000 0D0A00   		.ascii	"\015\012\000"
- 291              		.section	.text.sim7672_callback,"ax",%progbits
- 292              		.align	1
- 293              		.global	sim7672_callback
- 294              		.syntax unified
- 295              		.thumb
- 296              		.thumb_func
- 298              	sim7672_callback:
- 299              	.LFB72:
-  83:Core/Src/sim4g_lte.c **** 
-  84:Core/Src/sim4g_lte.c **** // Receive response from SIM and delete Buffer
-  85:Core/Src/sim4g_lte.c **** void sim7672_callback(void)
-  86:Core/Src/sim4g_lte.c **** {
- 300              		.loc 1 86 1 is_stmt 1 view -0
- 301              		.cfi_startproc
- 302              		@ args = 0, pretend = 0, frame = 0
- 303              		@ frame_needed = 0, uses_anonymous_args = 0
- 304 0000 10B5     		push	{r4, lr}
- 305              	.LCFI3:
- 306              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccox48gp.s 			page 8
+ 259              		.loc 1 91 5 is_stmt 1 view .LVU33
+ 260 003a DFF88480 		ldr	r8, .L24+12
+ 261 003e 0122     		movs	r2, #1
+ 262 0040 2049     		ldr	r1, .L24+16
+ 263 0042 4046     		mov	r0, r8
+ 264              	.LVL22:
+ 265              		.loc 1 91 5 is_stmt 0 view .LVU34
+ 266 0044 FFF7FEFF 		bl	HAL_UART_Receive_IT
+ 267              	.LVL23:
+  92:Core/Src/sim4g_lte.c ****     HAL_UART_Transmit(&huart1, (uint8_t *)simCommand, strlen(simCommand), 100);
+ 268              		.loc 1 92 5 is_stmt 1 view .LVU35
+ 269              		.loc 1 92 55 is_stmt 0 view .LVU36
+ 270 0048 3046     		mov	r0, r6
+ 271 004a FFF7FEFF 		bl	strlen
+ 272              	.LVL24:
+ 273              		.loc 1 92 5 view .LVU37
+ 274 004e 6423     		movs	r3, #100
+ 275 0050 82B2     		uxth	r2, r0
+ 276 0052 3146     		mov	r1, r6
+ 277 0054 4046     		mov	r0, r8
+ 278 0056 FFF7FEFF 		bl	HAL_UART_Transmit
+ 279              	.LVL25:
+  93:Core/Src/sim4g_lte.c **** 
+  94:Core/Src/sim4g_lte.c ****     log_data(simCommand);
+ 280              		.loc 1 94 5 is_stmt 1 view .LVU38
+ 281 005a 3046     		mov	r0, r6
+ 282 005c FFF7FEFF 		bl	log_data
+ 283              	.LVL26:
+  95:Core/Src/sim4g_lte.c **** 
+  96:Core/Src/sim4g_lte.c ****     while (HAL_GetTick()-timeout<=waitms)
+ 284              		.loc 1 96 5 view .LVU39
+ 285              		.loc 1 96 11 is_stmt 0 view .LVU40
+ 286 0060 02E0     		b	.L18
+ 287              	.L19:
+  97:Core/Src/sim4g_lte.c ****     {
+  98:Core/Src/sim4g_lte.c ****         HAL_Delay(50);
+ 288              		.loc 1 98 9 is_stmt 1 view .LVU41
+ 289 0062 3220     		movs	r0, #50
+ 290 0064 FFF7FEFF 		bl	HAL_Delay
+ 291              	.LVL27:
+ 292              	.L18:
+  96:Core/Src/sim4g_lte.c ****     {
+ 293              		.loc 1 96 11 view .LVU42
+  96:Core/Src/sim4g_lte.c ****     {
+ 294              		.loc 1 96 12 is_stmt 0 view .LVU43
+ 295 0068 FFF7FEFF 		bl	HAL_GetTick
+ 296              	.LVL28:
+  96:Core/Src/sim4g_lte.c ****     {
+ 297              		.loc 1 96 25 view .LVU44
+ 298 006c 001B     		subs	r0, r0, r4
+  96:Core/Src/sim4g_lte.c ****     {
+ 299              		.loc 1 96 11 view .LVU45
+ 300 006e A842     		cmp	r0, r5
+ 301 0070 F7D9     		bls	.L19
+  99:Core/Src/sim4g_lte.c ****     }
+ 100:Core/Src/sim4g_lte.c ****     memcpy(simRxResponse, simRxBuf, strlen(simRxBuf));
+ 302              		.loc 1 100 5 is_stmt 1 view .LVU46
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s 			page 8
 
 
- 307              		.cfi_offset 4, -8
- 308              		.cfi_offset 14, -4
-  87:Core/Src/sim4g_lte.c ****     htim3.Instance->CNT = 0;
- 309              		.loc 1 87 5 view .LVU52
- 310              		.loc 1 87 10 is_stmt 0 view .LVU53
- 311 0002 214B     		ldr	r3, .L22
- 312 0004 1B68     		ldr	r3, [r3]
- 313              		.loc 1 87 25 view .LVU54
- 314 0006 0022     		movs	r2, #0
- 315 0008 5A62     		str	r2, [r3, #36]
-  88:Core/Src/sim4g_lte.c ****     simRxBuf[simRxIndex++] = simRxData;
- 316              		.loc 1 88 5 is_stmt 1 view .LVU55
- 317              		.loc 1 88 24 is_stmt 0 view .LVU56
- 318 000a 204A     		ldr	r2, .L22+4
- 319 000c 1368     		ldr	r3, [r2]
- 320 000e 591C     		adds	r1, r3, #1
- 321 0010 1160     		str	r1, [r2]
- 322              		.loc 1 88 28 view .LVU57
- 323 0012 1F48     		ldr	r0, .L22+8
- 324 0014 1F4A     		ldr	r2, .L22+12
- 325 0016 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
- 326 0018 C254     		strb	r2, [r0, r3]
-  89:Core/Src/sim4g_lte.c ****     if ((strstr(simRxBuf, "\r\n") != NULL) && (simRxIndex == 2))
- 327              		.loc 1 89 5 is_stmt 1 view .LVU58
- 328              		.loc 1 89 10 is_stmt 0 view .LVU59
- 329 001a 1F49     		ldr	r1, .L22+16
- 330 001c FFF7FEFF 		bl	strstr
- 331              	.LVL30:
- 332              		.loc 1 89 8 view .LVU60
- 333 0020 18B1     		cbz	r0, .L18
- 334              		.loc 1 89 59 discriminator 1 view .LVU61
- 335 0022 1A4B     		ldr	r3, .L22+4
- 336 0024 1B68     		ldr	r3, [r3]
- 337              		.loc 1 89 44 discriminator 1 view .LVU62
- 338 0026 022B     		cmp	r3, #2
- 339 0028 21D0     		beq	.L21
- 340              	.L18:
-  90:Core/Src/sim4g_lte.c ****     {
-  91:Core/Src/sim4g_lte.c ****         memset(simRxBuf, '\0', strlen(simRxBuf));
-  92:Core/Src/sim4g_lte.c ****         simRxIndex = 0;
-  93:Core/Src/sim4g_lte.c ****     }
-  94:Core/Src/sim4g_lte.c ****     if ((strstr(simRxBuf, "\r\n") != NULL))
- 341              		.loc 1 94 5 is_stmt 1 view .LVU63
- 342              		.loc 1 94 10 is_stmt 0 view .LVU64
- 343 002a 1B49     		ldr	r1, .L22+16
- 344 002c 1848     		ldr	r0, .L22+8
- 345 002e FFF7FEFF 		bl	strstr
- 346              	.LVL31:
- 347              		.loc 1 94 8 view .LVU65
- 348 0032 B0B1     		cbz	r0, .L19
-  95:Core/Src/sim4g_lte.c ****     {
-  96:Core/Src/sim4g_lte.c ****         //log_data(simRxBuf);
-  97:Core/Src/sim4g_lte.c ****         memcpy(simRxResponse, simRxBuf, strlen(simRxBuf));
- 349              		.loc 1 97 9 is_stmt 1 view .LVU66
- 350 0034 164C     		ldr	r4, .L22+8
- 351 0036 2046     		mov	r0, r4
- 352 0038 FFF7FEFF 		bl	strlen
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccox48gp.s 			page 9
+ 303 0072 114D     		ldr	r5, .L24+4
+ 304              	.LVL29:
+ 305              		.loc 1 100 5 is_stmt 0 view .LVU47
+ 306 0074 2846     		mov	r0, r5
+ 307 0076 FFF7FEFF 		bl	strlen
+ 308              	.LVL30:
+ 309 007a 0246     		mov	r2, r0
+ 310 007c 0D4C     		ldr	r4, .L24
+ 311              	.LVL31:
+ 312              		.loc 1 100 5 view .LVU48
+ 313 007e 2946     		mov	r1, r5
+ 314 0080 2046     		mov	r0, r4
+ 315 0082 FFF7FEFF 		bl	memcpy
+ 316              	.LVL32:
+ 101:Core/Src/sim4g_lte.c ****     log_data(simRxResponse);
+ 317              		.loc 1 101 5 is_stmt 1 view .LVU49
+ 318 0086 2046     		mov	r0, r4
+ 319 0088 FFF7FEFF 		bl	log_data
+ 320              	.LVL33:
+ 102:Core/Src/sim4g_lte.c ****     if ((strstr(simRxResponse, trueResponse) == NULL))
+ 321              		.loc 1 102 5 view .LVU50
+ 322              		.loc 1 102 10 is_stmt 0 view .LVU51
+ 323 008c 3946     		mov	r1, r7
+ 324 008e 2046     		mov	r0, r4
+ 325 0090 FFF7FEFF 		bl	strstr
+ 326              	.LVL34:
+ 327              		.loc 1 102 8 view .LVU52
+ 328 0094 20B1     		cbz	r0, .L23
+ 103:Core/Src/sim4g_lte.c ****     {
+ 104:Core/Src/sim4g_lte.c ****         memset(simRxResponse, '\0', strlen(simRxResponse));
+ 105:Core/Src/sim4g_lte.c ****         // simRxCplt = SIM_NOT_RX_CPLT;
+ 106:Core/Src/sim4g_lte.c ****         return SIM_FALSE;
+ 107:Core/Src/sim4g_lte.c ****     }
+ 108:Core/Src/sim4g_lte.c **** 
+ 109:Core/Src/sim4g_lte.c ****     // simRxCplt = SIM_NOT_RX_CPLT;
+ 110:Core/Src/sim4g_lte.c ****     iswaiting4response = true;
+ 329              		.loc 1 110 5 is_stmt 1 view .LVU53
+ 330              		.loc 1 110 24 is_stmt 0 view .LVU54
+ 331 0096 0120     		movs	r0, #1
+ 332 0098 0B4B     		ldr	r3, .L24+20
+ 333 009a 1870     		strb	r0, [r3]
+ 111:Core/Src/sim4g_lte.c ****     return SIM_TRUE;
+ 334              		.loc 1 111 5 is_stmt 1 view .LVU55
+ 335              	.L21:
+ 112:Core/Src/sim4g_lte.c **** }
+ 336              		.loc 1 112 1 is_stmt 0 view .LVU56
+ 337 009c BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 338              	.LVL35:
+ 339              	.L23:
+ 104:Core/Src/sim4g_lte.c ****         // simRxCplt = SIM_NOT_RX_CPLT;
+ 340              		.loc 1 104 9 is_stmt 1 view .LVU57
+ 341 00a0 2046     		mov	r0, r4
+ 342 00a2 FFF7FEFF 		bl	strlen
+ 343              	.LVL36:
+ 344 00a6 0246     		mov	r2, r0
+ 345 00a8 0021     		movs	r1, #0
+ 346 00aa 2046     		mov	r0, r4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s 			page 9
 
 
- 353              	.LVL32:
- 354 003c 0246     		mov	r2, r0
- 355 003e 2146     		mov	r1, r4
- 356 0040 1648     		ldr	r0, .L22+20
- 357 0042 FFF7FEFF 		bl	memcpy
- 358              	.LVL33:
-  98:Core/Src/sim4g_lte.c ****         memset(simRxBuf, '\0', strlen(simRxBuf));
- 359              		.loc 1 98 9 view .LVU67
- 360 0046 2046     		mov	r0, r4
- 361 0048 FFF7FEFF 		bl	strlen
- 362              	.LVL34:
- 363 004c 0246     		mov	r2, r0
- 364 004e 0021     		movs	r1, #0
- 365 0050 2046     		mov	r0, r4
- 366 0052 FFF7FEFF 		bl	memset
- 367              	.LVL35:
-  99:Core/Src/sim4g_lte.c ****         simRxIndex = 0;
- 368              		.loc 1 99 9 view .LVU68
- 369              		.loc 1 99 20 is_stmt 0 view .LVU69
- 370 0056 0D4B     		ldr	r3, .L22+4
- 371 0058 0022     		movs	r2, #0
- 372 005a 1A60     		str	r2, [r3]
- 100:Core/Src/sim4g_lte.c ****         iswaiting4response = true;
- 373              		.loc 1 100 9 is_stmt 1 view .LVU70
- 374              		.loc 1 100 28 is_stmt 0 view .LVU71
- 375 005c 104B     		ldr	r3, .L22+24
- 376 005e 0122     		movs	r2, #1
- 377 0060 1A70     		strb	r2, [r3]
- 378              	.L19:
- 101:Core/Src/sim4g_lte.c ****     }
- 102:Core/Src/sim4g_lte.c ****     HAL_UART_Receive_IT(&huart1, (uint8_t *)&simRxData, 1);
- 379              		.loc 1 102 5 is_stmt 1 view .LVU72
- 380 0062 0122     		movs	r2, #1
- 381 0064 0B49     		ldr	r1, .L22+12
- 382 0066 0F48     		ldr	r0, .L22+28
- 383 0068 FFF7FEFF 		bl	HAL_UART_Receive_IT
- 384              	.LVL36:
- 103:Core/Src/sim4g_lte.c **** }
- 385              		.loc 1 103 1 is_stmt 0 view .LVU73
- 386 006c 10BD     		pop	{r4, pc}
- 387              	.L21:
-  91:Core/Src/sim4g_lte.c ****         simRxIndex = 0;
- 388              		.loc 1 91 9 is_stmt 1 view .LVU74
- 389 006e 084C     		ldr	r4, .L22+8
- 390 0070 2046     		mov	r0, r4
- 391 0072 FFF7FEFF 		bl	strlen
- 392              	.LVL37:
- 393 0076 0246     		mov	r2, r0
- 394 0078 0021     		movs	r1, #0
- 395 007a 2046     		mov	r0, r4
- 396 007c FFF7FEFF 		bl	memset
- 397              	.LVL38:
-  92:Core/Src/sim4g_lte.c ****     }
- 398              		.loc 1 92 9 view .LVU75
-  92:Core/Src/sim4g_lte.c ****     }
- 399              		.loc 1 92 20 is_stmt 0 view .LVU76
- 400 0080 024B     		ldr	r3, .L22+4
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccox48gp.s 			page 10
+ 347 00ac FFF7FEFF 		bl	memset
+ 348              	.LVL37:
+ 106:Core/Src/sim4g_lte.c ****     }
+ 349              		.loc 1 106 9 view .LVU58
+ 106:Core/Src/sim4g_lte.c ****     }
+ 350              		.loc 1 106 16 is_stmt 0 view .LVU59
+ 351 00b0 0020     		movs	r0, #0
+ 352 00b2 F3E7     		b	.L21
+ 353              	.L25:
+ 354              		.align	2
+ 355              	.L24:
+ 356 00b4 00000000 		.word	.LANCHOR0
+ 357 00b8 00000000 		.word	.LANCHOR1
+ 358 00bc 00000000 		.word	.LANCHOR2
+ 359 00c0 00000000 		.word	huart1
+ 360 00c4 00000000 		.word	.LANCHOR3
+ 361 00c8 00000000 		.word	.LANCHOR4
+ 362              		.cfi_endproc
+ 363              	.LFE73:
+ 365              		.section	.rodata.sim7672_callback.str1.4,"aMS",%progbits,1
+ 366              		.align	2
+ 367              	.LC1:
+ 368 0000 0D0A00   		.ascii	"\015\012\000"
+ 369              		.section	.text.sim7672_callback,"ax",%progbits
+ 370              		.align	1
+ 371              		.global	sim7672_callback
+ 372              		.syntax unified
+ 373              		.thumb
+ 374              		.thumb_func
+ 376              	sim7672_callback:
+ 377              	.LFB74:
+ 113:Core/Src/sim4g_lte.c **** 
+ 114:Core/Src/sim4g_lte.c **** // Receive response from SIM and delete Buffer
+ 115:Core/Src/sim4g_lte.c **** // message response format: \r\n[Respone..]\r\\n
+ 116:Core/Src/sim4g_lte.c **** void sim7672_callback(void)
+ 117:Core/Src/sim4g_lte.c **** {
+ 378              		.loc 1 117 1 is_stmt 1 view -0
+ 379              		.cfi_startproc
+ 380              		@ args = 0, pretend = 0, frame = 0
+ 381              		@ frame_needed = 0, uses_anonymous_args = 0
+ 382 0000 10B5     		push	{r4, lr}
+ 383              	.LCFI5:
+ 384              		.cfi_def_cfa_offset 8
+ 385              		.cfi_offset 4, -8
+ 386              		.cfi_offset 14, -4
+ 118:Core/Src/sim4g_lte.c ****     simRxBuf[simRxIndex++] = simRxData;
+ 387              		.loc 1 118 5 view .LVU61
+ 388              		.loc 1 118 24 is_stmt 0 view .LVU62
+ 389 0002 114A     		ldr	r2, .L30
+ 390 0004 1368     		ldr	r3, [r2]
+ 391 0006 591C     		adds	r1, r3, #1
+ 392 0008 1160     		str	r1, [r2]
+ 393              		.loc 1 118 28 view .LVU63
+ 394 000a 1048     		ldr	r0, .L30+4
+ 395 000c 104A     		ldr	r2, .L30+8
+ 396 000e 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 397 0010 C254     		strb	r2, [r0, r3]
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s 			page 10
 
 
- 401 0082 0022     		movs	r2, #0
- 402 0084 1A60     		str	r2, [r3]
- 403 0086 D0E7     		b	.L18
- 404              	.L23:
- 405              		.align	2
- 406              	.L22:
- 407 0088 00000000 		.word	htim3
- 408 008c 00000000 		.word	.LANCHOR4
- 409 0090 00000000 		.word	.LANCHOR5
- 410 0094 00000000 		.word	.LANCHOR0
- 411 0098 00000000 		.word	.LC2
- 412 009c 00000000 		.word	.LANCHOR2
- 413 00a0 00000000 		.word	.LANCHOR1
- 414 00a4 00000000 		.word	huart1
- 415              		.cfi_endproc
- 416              	.LFE72:
- 418              		.section	.text.sim7672_timerCallback,"ax",%progbits
- 419              		.align	1
- 420              		.global	sim7672_timerCallback
- 421              		.syntax unified
- 422              		.thumb
- 423              		.thumb_func
- 425              	sim7672_timerCallback:
- 426              	.LFB73:
- 104:Core/Src/sim4g_lte.c **** // wait timeout, once receiving complete wait 0.2s to check remain response
- 105:Core/Src/sim4g_lte.c **** void sim7672_timerCallback(void)
- 106:Core/Src/sim4g_lte.c **** {
- 427              		.loc 1 106 1 is_stmt 1 view -0
- 428              		.cfi_startproc
- 429              		@ args = 0, pretend = 0, frame = 0
- 430              		@ frame_needed = 0, uses_anonymous_args = 0
- 431 0000 38B5     		push	{r3, r4, r5, lr}
- 432              	.LCFI4:
- 433              		.cfi_def_cfa_offset 16
- 434              		.cfi_offset 3, -16
- 435              		.cfi_offset 4, -12
- 436              		.cfi_offset 5, -8
- 437              		.cfi_offset 14, -4
- 107:Core/Src/sim4g_lte.c ****     HAL_TIM_Base_Stop_IT(&htim3);
- 438              		.loc 1 107 5 view .LVU78
- 439 0002 164C     		ldr	r4, .L28
- 440 0004 2046     		mov	r0, r4
- 441 0006 FFF7FEFF 		bl	HAL_TIM_Base_Stop_IT
- 442              	.LVL39:
- 108:Core/Src/sim4g_lte.c ****     htim3.Instance->CNT = 0;
- 443              		.loc 1 108 5 view .LVU79
- 444              		.loc 1 108 10 is_stmt 0 view .LVU80
- 445 000a 2368     		ldr	r3, [r4]
- 446              		.loc 1 108 25 view .LVU81
- 447 000c 0022     		movs	r2, #0
- 448 000e 5A62     		str	r2, [r3, #36]
- 109:Core/Src/sim4g_lte.c ****     if ((strstr(simRxBuf, "\r\n") != NULL) | (strstr(simRxBuf, ">") != NULL))
- 449              		.loc 1 109 5 is_stmt 1 view .LVU82
- 450              		.loc 1 109 10 is_stmt 0 view .LVU83
- 451 0010 134D     		ldr	r5, .L28+4
- 452 0012 1449     		ldr	r1, .L28+8
- 453 0014 2846     		mov	r0, r5
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccox48gp.s 			page 11
-
-
- 454 0016 FFF7FEFF 		bl	strstr
- 455              	.LVL40:
- 456 001a 0446     		mov	r4, r0
- 457              		.loc 1 109 47 view .LVU84
- 458 001c 3E21     		movs	r1, #62
- 459 001e 2846     		mov	r0, r5
- 460 0020 FFF7FEFF 		bl	strchr
- 461              	.LVL41:
- 462              		.loc 1 109 8 view .LVU85
- 463 0024 0028     		cmp	r0, #0
- 464 0026 08BF     		it	eq
- 465 0028 002C     		cmpeq	r4, #0
- 466 002a 03D1     		bne	.L27
- 467              	.L25:
- 110:Core/Src/sim4g_lte.c ****     {
- 111:Core/Src/sim4g_lte.c ****         memcpy(simRxResponse, simRxBuf, strlen(simRxBuf));
- 112:Core/Src/sim4g_lte.c ****         memset(simRxBuf, '\0', strlen(simRxBuf));
- 113:Core/Src/sim4g_lte.c ****         simRxIndex = 0;
- 114:Core/Src/sim4g_lte.c ****     }
- 115:Core/Src/sim4g_lte.c ****     simRxCplt = SIM_RX_CPLT;
- 468              		.loc 1 115 5 is_stmt 1 view .LVU86
- 469              		.loc 1 115 15 is_stmt 0 view .LVU87
- 470 002c 0E4B     		ldr	r3, .L28+12
- 471 002e 0122     		movs	r2, #1
- 472 0030 1A70     		strb	r2, [r3]
- 116:Core/Src/sim4g_lte.c **** }
- 473              		.loc 1 116 1 view .LVU88
- 474 0032 38BD     		pop	{r3, r4, r5, pc}
- 475              	.L27:
- 111:Core/Src/sim4g_lte.c ****         memset(simRxBuf, '\0', strlen(simRxBuf));
- 476              		.loc 1 111 9 is_stmt 1 view .LVU89
- 477 0034 2846     		mov	r0, r5
- 478 0036 FFF7FEFF 		bl	strlen
- 479              	.LVL42:
- 480 003a 0246     		mov	r2, r0
- 481 003c 2946     		mov	r1, r5
- 482 003e 0B48     		ldr	r0, .L28+16
- 483 0040 FFF7FEFF 		bl	memcpy
- 484              	.LVL43:
- 112:Core/Src/sim4g_lte.c ****         simRxIndex = 0;
- 485              		.loc 1 112 9 view .LVU90
- 486 0044 2846     		mov	r0, r5
- 487 0046 FFF7FEFF 		bl	strlen
- 488              	.LVL44:
- 489 004a 0246     		mov	r2, r0
- 490 004c 0021     		movs	r1, #0
- 491 004e 2846     		mov	r0, r5
- 492 0050 FFF7FEFF 		bl	memset
- 493              	.LVL45:
- 113:Core/Src/sim4g_lte.c ****     }
- 494              		.loc 1 113 9 view .LVU91
- 113:Core/Src/sim4g_lte.c ****     }
- 495              		.loc 1 113 20 is_stmt 0 view .LVU92
- 496 0054 064B     		ldr	r3, .L28+20
- 497 0056 0022     		movs	r2, #0
- 498 0058 1A60     		str	r2, [r3]
- 499 005a E7E7     		b	.L25
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccox48gp.s 			page 12
-
-
- 500              	.L29:
- 501              		.align	2
- 502              	.L28:
- 503 005c 00000000 		.word	htim3
- 504 0060 00000000 		.word	.LANCHOR5
- 505 0064 00000000 		.word	.LC2
- 506 0068 00000000 		.word	.LANCHOR3
- 507 006c 00000000 		.word	.LANCHOR2
- 508 0070 00000000 		.word	.LANCHOR4
- 509              		.cfi_endproc
- 510              	.LFE73:
- 512              		.section	.rodata.sim7672_errorHandle.str1.4,"aMS",%progbits,1
- 513              		.align	2
- 514              	.LC3:
- 515 0000 73696D20 		.ascii	"sim error\000"
- 515      6572726F 
- 515      7200
- 516              		.section	.text.sim7672_errorHandle,"ax",%progbits
- 517              		.align	1
- 518              		.global	sim7672_errorHandle
- 519              		.syntax unified
- 520              		.thumb
- 521              		.thumb_func
- 523              	sim7672_errorHandle:
- 524              	.LFB74:
- 117:Core/Src/sim4g_lte.c **** 
- 118:Core/Src/sim4g_lte.c **** void sim7672_errorHandle(void)
- 119:Core/Src/sim4g_lte.c **** {
- 525              		.loc 1 119 1 is_stmt 1 view -0
- 526              		.cfi_startproc
- 527              		@ Volatile: function does not return.
- 528              		@ args = 0, pretend = 0, frame = 0
- 529              		@ frame_needed = 0, uses_anonymous_args = 0
- 530 0000 08B5     		push	{r3, lr}
- 531              	.LCFI5:
- 532              		.cfi_def_cfa_offset 8
- 533              		.cfi_offset 3, -8
- 534              		.cfi_offset 14, -4
- 120:Core/Src/sim4g_lte.c ****     log_data("sim error");
- 535              		.loc 1 120 5 view .LVU94
- 536 0002 0248     		ldr	r0, .L33
- 537 0004 FFF7FEFF 		bl	log_data
- 538              	.LVL46:
- 121:Core/Src/sim4g_lte.c ****     __disable_irq();
- 539              		.loc 1 121 5 view .LVU95
- 540              	.LBB4:
- 541              	.LBI4:
- 542              		.file 2 "Drivers/CMSIS/Include/cmsis_gcc.h"
-   1:Drivers/CMSIS/Include/cmsis_gcc.h **** /**************************************************************************//**
-   2:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @file     cmsis_gcc.h
-   3:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @brief    CMSIS compiler GCC header file
-   4:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @version  V5.0.4
-   5:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @date     09. April 2018
-   6:Drivers/CMSIS/Include/cmsis_gcc.h ****  ******************************************************************************/
-   7:Drivers/CMSIS/Include/cmsis_gcc.h **** /*
-   8:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Copyright (c) 2009-2018 Arm Limited. All rights reserved.
-   9:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccox48gp.s 			page 13
-
-
-  10:Drivers/CMSIS/Include/cmsis_gcc.h ****  * SPDX-License-Identifier: Apache-2.0
-  11:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
-  12:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Licensed under the Apache License, Version 2.0 (the License); you may
-  13:Drivers/CMSIS/Include/cmsis_gcc.h ****  * not use this file except in compliance with the License.
-  14:Drivers/CMSIS/Include/cmsis_gcc.h ****  * You may obtain a copy of the License at
-  15:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
-  16:Drivers/CMSIS/Include/cmsis_gcc.h ****  * www.apache.org/licenses/LICENSE-2.0
-  17:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
-  18:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Unless required by applicable law or agreed to in writing, software
-  19:Drivers/CMSIS/Include/cmsis_gcc.h ****  * distributed under the License is distributed on an AS IS BASIS, WITHOUT
-  20:Drivers/CMSIS/Include/cmsis_gcc.h ****  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  21:Drivers/CMSIS/Include/cmsis_gcc.h ****  * See the License for the specific language governing permissions and
-  22:Drivers/CMSIS/Include/cmsis_gcc.h ****  * limitations under the License.
-  23:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
-  24:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-  25:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef __CMSIS_GCC_H
-  26:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __CMSIS_GCC_H
-  27:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-  28:Drivers/CMSIS/Include/cmsis_gcc.h **** /* ignore some GCC warnings */
-  29:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic push
-  30:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wsign-conversion"
-  31:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wconversion"
-  32:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wunused-parameter"
-  33:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-  34:Drivers/CMSIS/Include/cmsis_gcc.h **** /* Fallback for __has_builtin */
-  35:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef __has_builtin
-  36:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __has_builtin(x) (0)
-  37:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-  38:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-  39:Drivers/CMSIS/Include/cmsis_gcc.h **** /* CMSIS compiler specific defines */
-  40:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __ASM
-  41:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __ASM                                  __asm
-  42:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-  43:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __INLINE
-  44:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __INLINE                               inline
-  45:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-  46:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __STATIC_INLINE
-  47:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __STATIC_INLINE                        static inline
-  48:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-  49:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __STATIC_FORCEINLINE                 
-  50:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __STATIC_FORCEINLINE                   __attribute__((always_inline)) static inline
-  51:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif                                           
-  52:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __NO_RETURN
-  53:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __NO_RETURN                            __attribute__((__noreturn__))
-  54:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-  55:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __USED
-  56:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __USED                                 __attribute__((used))
-  57:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-  58:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __WEAK
-  59:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __WEAK                                 __attribute__((weak))
-  60:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-  61:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED
-  62:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED                               __attribute__((packed, aligned(1)))
-  63:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-  64:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED_STRUCT
-  65:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED_STRUCT                        struct __attribute__((packed, aligned(1)))
-  66:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccox48gp.s 			page 14
-
-
-  67:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED_UNION
-  68:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED_UNION                         union __attribute__((packed, aligned(1)))
-  69:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-  70:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32        /* deprecated */
-  71:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
-  72:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
-  73:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
-  74:Drivers/CMSIS/Include/cmsis_gcc.h ****   struct __attribute__((packed)) T_UINT32 { uint32_t v; };
-  75:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
-  76:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32(x)                  (((struct T_UINT32 *)(x))->v)
-  77:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-  78:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT16_WRITE
-  79:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
-  80:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
-  81:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
-  82:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT16_WRITE { uint16_t v; };
-  83:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
-  84:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT16_WRITE(addr, val)    (void)((((struct T_UINT16_WRITE *)(void *)(addr))-
-  85:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-  86:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT16_READ
-  87:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
-  88:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
-  89:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
-  90:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT16_READ { uint16_t v; };
-  91:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
-  92:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT16_READ(addr)          (((const struct T_UINT16_READ *)(const void *)(add
-  93:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-  94:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32_WRITE
-  95:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
-  96:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
-  97:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
-  98:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT32_WRITE { uint32_t v; };
-  99:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
- 100:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32_WRITE(addr, val)    (void)((((struct T_UINT32_WRITE *)(void *)(addr))-
- 101:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
- 102:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32_READ
- 103:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
- 104:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
- 105:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
- 106:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT32_READ { uint32_t v; };
- 107:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
- 108:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32_READ(addr)          (((const struct T_UINT32_READ *)(const void *)(add
- 109:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
- 110:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __ALIGNED
- 111:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __ALIGNED(x)                           __attribute__((aligned(x)))
- 112:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
- 113:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __RESTRICT
- 114:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __RESTRICT                             __restrict
- 115:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
- 116:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 117:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 118:Drivers/CMSIS/Include/cmsis_gcc.h **** /* ###########################  Core Function Access  ########################### */
- 119:Drivers/CMSIS/Include/cmsis_gcc.h **** /** \ingroup  CMSIS_Core_FunctionInterface
- 120:Drivers/CMSIS/Include/cmsis_gcc.h ****     \defgroup CMSIS_Core_RegAccFunctions CMSIS Core Register Access Functions
- 121:Drivers/CMSIS/Include/cmsis_gcc.h ****   @{
- 122:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
- 123:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccox48gp.s 			page 15
-
-
- 124:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
- 125:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Enable IRQ Interrupts
- 126:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Enables IRQ interrupts by clearing the I-bit in the CPSR.
- 127:Drivers/CMSIS/Include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
- 128:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
- 129:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __enable_irq(void)
- 130:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 131:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsie i" : : : "memory");
- 132:Drivers/CMSIS/Include/cmsis_gcc.h **** }
- 133:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 134:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 135:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
- 136:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Disable IRQ Interrupts
- 137:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Disables IRQ interrupts by setting the I-bit in the CPSR.
- 138:Drivers/CMSIS/Include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
- 139:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
- 140:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __disable_irq(void)
- 543              		.loc 2 140 27 view .LVU96
- 544              	.LBB5:
- 141:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 142:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsid i" : : : "memory");
- 545              		.loc 2 142 3 view .LVU97
- 546              		.syntax unified
- 547              	@ 142 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 548 0008 72B6     		cpsid i
- 549              	@ 0 "" 2
- 550              		.thumb
- 551              		.syntax unified
- 552              	.L31:
- 553              	.LBE5:
- 554              	.LBE4:
- 122:Core/Src/sim4g_lte.c ****     while (1)
- 555              		.loc 1 122 5 discriminator 1 view .LVU98
- 123:Core/Src/sim4g_lte.c ****     {
+ 119:Core/Src/sim4g_lte.c **** 
+ 120:Core/Src/sim4g_lte.c ****     if ((strstr(simRxBuf, "\r\n") != NULL) && (simRxIndex == 2))
+ 398              		.loc 1 120 5 is_stmt 1 view .LVU64
+ 399              		.loc 1 120 10 is_stmt 0 view .LVU65
+ 400 0012 1049     		ldr	r1, .L30+12
+ 401 0014 FFF7FEFF 		bl	strstr
+ 402              	.LVL38:
+ 403              		.loc 1 120 8 view .LVU66
+ 404 0018 18B1     		cbz	r0, .L27
+ 405              		.loc 1 120 59 discriminator 1 view .LVU67
+ 406 001a 0B4B     		ldr	r3, .L30
+ 407 001c 1B68     		ldr	r3, [r3]
+ 408              		.loc 1 120 44 discriminator 1 view .LVU68
+ 409 001e 022B     		cmp	r3, #2
+ 410 0020 05D0     		beq	.L29
+ 411              	.L27:
+ 121:Core/Src/sim4g_lte.c ****     {
+ 122:Core/Src/sim4g_lte.c ****         memset(simRxBuf, '\0', strlen(simRxBuf));
+ 123:Core/Src/sim4g_lte.c ****         simRxIndex = 0;
  124:Core/Src/sim4g_lte.c ****     }
- 556              		.loc 1 124 5 discriminator 1 view .LVU99
- 122:Core/Src/sim4g_lte.c ****     while (1)
- 557              		.loc 1 122 11 discriminator 1 view .LVU100
- 558 000a FEE7     		b	.L31
- 559              	.L34:
- 560              		.align	2
- 561              	.L33:
- 562 000c 00000000 		.word	.LC3
- 563              		.cfi_endproc
- 564              	.LFE74:
- 566              		.section	.rodata.sim7672_init.str1.4,"aMS",%progbits,1
- 567              		.align	2
- 568              	.LC4:
- 569 0000 4F4B0D0A 		.ascii	"OK\015\012\000"
- 569      00
- 570 0005 000000   		.align	2
- 571              	.LC5:
- 572 0008 41544530 		.ascii	"ATE0\015\012\000"
- 572      0D0A00
- 573 000f 00       		.align	2
- 574              	.LC6:
- 575 0010 41540D0A 		.ascii	"AT\015\012\000"
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccox48gp.s 			page 16
+ 125:Core/Src/sim4g_lte.c ****     // if ((strstr(simRxBuf, "\r\n") != NULL))
+ 126:Core/Src/sim4g_lte.c ****     // {
+ 127:Core/Src/sim4g_lte.c ****     //     // log_data(simRxBuf);
+ 128:Core/Src/sim4g_lte.c ****     //     memcpy(simRxResponse, simRxBuf, strlen(simRxBuf));
+ 129:Core/Src/sim4g_lte.c ****     //     memset(simRxBuf, '\0', strlen(simRxBuf));
+ 130:Core/Src/sim4g_lte.c ****     //     simRxIndex = 0;
+ 131:Core/Src/sim4g_lte.c ****     //     iswaiting4response = false;
+ 132:Core/Src/sim4g_lte.c ****     // }
+ 133:Core/Src/sim4g_lte.c ****     HAL_UART_Receive_IT(&huart1, (uint8_t *)&simRxData, 1);
+ 412              		.loc 1 133 5 is_stmt 1 view .LVU69
+ 413 0022 0122     		movs	r2, #1
+ 414 0024 0A49     		ldr	r1, .L30+8
+ 415 0026 0C48     		ldr	r0, .L30+16
+ 416 0028 FFF7FEFF 		bl	HAL_UART_Receive_IT
+ 417              	.LVL39:
+ 134:Core/Src/sim4g_lte.c **** }
+ 418              		.loc 1 134 1 is_stmt 0 view .LVU70
+ 419 002c 10BD     		pop	{r4, pc}
+ 420              	.L29:
+ 122:Core/Src/sim4g_lte.c ****         simRxIndex = 0;
+ 421              		.loc 1 122 9 is_stmt 1 view .LVU71
+ 422 002e 074C     		ldr	r4, .L30+4
+ 423 0030 2046     		mov	r0, r4
+ 424 0032 FFF7FEFF 		bl	strlen
+ 425              	.LVL40:
+ 426 0036 0246     		mov	r2, r0
+ 427 0038 0021     		movs	r1, #0
+ 428 003a 2046     		mov	r0, r4
+ 429 003c FFF7FEFF 		bl	memset
+ 430              	.LVL41:
+ 123:Core/Src/sim4g_lte.c ****     }
+ 431              		.loc 1 123 9 view .LVU72
+ 123:Core/Src/sim4g_lte.c ****     }
+ 432              		.loc 1 123 20 is_stmt 0 view .LVU73
+ 433 0040 014B     		ldr	r3, .L30
+ 434 0042 0022     		movs	r2, #0
+ 435 0044 1A60     		str	r2, [r3]
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s 			page 11
 
 
- 575      00
- 576 0015 000000   		.align	2
- 577              	.LC7:
- 578 0018 310D0A00 		.ascii	"1\015\012\000"
- 579              		.align	2
- 580              	.LC8:
- 581 001c 41542B43 		.ascii	"AT+CFUN?\015\012\000"
- 581      46554E3F 
- 581      0D0A00
- 582              		.section	.text.sim7672_init,"ax",%progbits
- 583              		.align	1
- 584              		.global	sim7672_init
- 585              		.syntax unified
- 586              		.thumb
- 587              		.thumb_func
- 589              	sim7672_init:
- 590              	.LFB70:
-  38:Core/Src/sim4g_lte.c ****     if (sim7672_send_command("ATE0\r\n", "OK\r\n") != SIM_OKE)
- 591              		.loc 1 38 1 view -0
- 592              		.cfi_startproc
- 593              		@ args = 0, pretend = 0, frame = 0
- 594              		@ frame_needed = 0, uses_anonymous_args = 0
- 595 0000 08B5     		push	{r3, lr}
- 596              	.LCFI6:
- 597              		.cfi_def_cfa_offset 8
- 598              		.cfi_offset 3, -8
- 599              		.cfi_offset 14, -4
-  39:Core/Src/sim4g_lte.c ****     {
- 600              		.loc 1 39 5 view .LVU102
-  39:Core/Src/sim4g_lte.c ****     {
- 601              		.loc 1 39 9 is_stmt 0 view .LVU103
- 602 0002 0F49     		ldr	r1, .L43
- 603 0004 0F48     		ldr	r0, .L43+4
- 604 0006 FFF7FEFF 		bl	sim7672_send_command
- 605              	.LVL47:
-  39:Core/Src/sim4g_lte.c ****     {
- 606              		.loc 1 39 8 view .LVU104
- 607 000a 0128     		cmp	r0, #1
- 608 000c 12D1     		bne	.L40
-  43:Core/Src/sim4g_lte.c ****     if (sim7672_send_command("AT\r\n", "OK\r\n") != SIM_OKE)
- 609              		.loc 1 43 5 is_stmt 1 view .LVU105
- 610 000e C820     		movs	r0, #200
- 611 0010 FFF7FEFF 		bl	HAL_Delay
- 612              	.LVL48:
-  44:Core/Src/sim4g_lte.c ****     {
- 613              		.loc 1 44 5 view .LVU106
-  44:Core/Src/sim4g_lte.c ****     {
- 614              		.loc 1 44 9 is_stmt 0 view .LVU107
- 615 0014 0A49     		ldr	r1, .L43
- 616 0016 0C48     		ldr	r0, .L43+8
- 617 0018 FFF7FEFF 		bl	sim7672_send_command
- 618              	.LVL49:
-  44:Core/Src/sim4g_lte.c ****     {
- 619              		.loc 1 44 8 view .LVU108
- 620 001c 0128     		cmp	r0, #1
- 621 001e 0BD1     		bne	.L41
-  48:Core/Src/sim4g_lte.c ****     if (sim7672_send_command("AT+CFUN?\r\n", "1\r\n") != SIM_OKE)
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccox48gp.s 			page 17
+ 436 0046 ECE7     		b	.L27
+ 437              	.L31:
+ 438              		.align	2
+ 439              	.L30:
+ 440 0048 00000000 		.word	.LANCHOR2
+ 441 004c 00000000 		.word	.LANCHOR1
+ 442 0050 00000000 		.word	.LANCHOR3
+ 443 0054 00000000 		.word	.LC1
+ 444 0058 00000000 		.word	huart1
+ 445              		.cfi_endproc
+ 446              	.LFE74:
+ 448              		.section	.rodata.sim7672_errorHandle.str1.4,"aMS",%progbits,1
+ 449              		.align	2
+ 450              	.LC2:
+ 451 0000 73696D20 		.ascii	"sim error\012\000"
+ 451      6572726F 
+ 451      720A00
+ 452              		.section	.text.sim7672_errorHandle,"ax",%progbits
+ 453              		.align	1
+ 454              		.global	sim7672_errorHandle
+ 455              		.syntax unified
+ 456              		.thumb
+ 457              		.thumb_func
+ 459              	sim7672_errorHandle:
+ 460              	.LFB78:
+ 135:Core/Src/sim4g_lte.c **** 
+ 136:Core/Src/sim4g_lte.c **** /*
+ 137:Core/Src/sim4g_lte.c **** 2 Automatic
+ 138:Core/Src/sim4g_lte.c **** 13 GSM Only
+ 139:Core/Src/sim4g_lte.c **** 14 WCDMA Only
+ 140:Core/Src/sim4g_lte.c **** 38 LTE Only
+ 141:Core/Src/sim4g_lte.c **** */
+ 142:Core/Src/sim4g_lte.c **** void sim7672_start_LTE(void)
+ 143:Core/Src/sim4g_lte.c **** {
+ 144:Core/Src/sim4g_lte.c ****     // // check connection  "AT+CGATT=1\r\n"
+ 145:Core/Src/sim4g_lte.c ****     // if (sim7672_send_command("AT+CGATT=1\r\n", "OK\r\n") != SIM_TRUE)
+ 146:Core/Src/sim4g_lte.c ****     // {
+ 147:Core/Src/sim4g_lte.c ****     //     sim7672_errorHandle();
+ 148:Core/Src/sim4g_lte.c ****     // }
+ 149:Core/Src/sim4g_lte.c ****     // HAL_Delay(100);
+ 150:Core/Src/sim4g_lte.c ****     /*
+ 151:Core/Src/sim4g_lte.c ****     setting APN:
+ 152:Core/Src/sim4g_lte.c ****     mobi: APN: m-wap
+ 153:Core/Src/sim4g_lte.c ****     vina: APN: m3-world
+ 154:Core/Src/sim4g_lte.c ****     vietnammobile: APN: internet
+ 155:Core/Src/sim4g_lte.c ****     viettel: APN: v-internet
+ 156:Core/Src/sim4g_lte.c ****     */
+ 157:Core/Src/sim4g_lte.c ****     if (sim7672_send_command("AT+CGDCONT=1,\"IP\",\"v-internet\"\r\n", "OK\r\n",TIME_VERY_SHORT) !=
+ 158:Core/Src/sim4g_lte.c ****     {
+ 159:Core/Src/sim4g_lte.c ****         sim7672_errorHandle();
+ 160:Core/Src/sim4g_lte.c ****     }
+ 161:Core/Src/sim4g_lte.c ****     HAL_Delay(100);
+ 162:Core/Src/sim4g_lte.c ****     // // select network LTE
+ 163:Core/Src/sim4g_lte.c ****     // if (sim7672_send_command("AT+CNMP=38\r\n", "OK\r\n") != SIM_TRUE)
+ 164:Core/Src/sim4g_lte.c ****     // {
+ 165:Core/Src/sim4g_lte.c ****     //     sim7672_errorHandle();
+ 166:Core/Src/sim4g_lte.c ****     // }
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s 			page 12
 
 
- 622              		.loc 1 48 9 is_stmt 1 view .LVU109
- 623 0020 C820     		movs	r0, #200
- 624 0022 FFF7FEFF 		bl	HAL_Delay
- 625              	.LVL50:
-  49:Core/Src/sim4g_lte.c ****     {
- 626              		.loc 1 49 5 view .LVU110
-  49:Core/Src/sim4g_lte.c ****     {
- 627              		.loc 1 49 9 is_stmt 0 view .LVU111
- 628 0026 0949     		ldr	r1, .L43+12
- 629 0028 0948     		ldr	r0, .L43+16
- 630 002a FFF7FEFF 		bl	sim7672_send_command
- 631              	.LVL51:
-  49:Core/Src/sim4g_lte.c ****     {
- 632              		.loc 1 49 8 view .LVU112
- 633 002e 0128     		cmp	r0, #1
- 634 0030 04D1     		bne	.L42
-  53:Core/Src/sim4g_lte.c **** 
- 635              		.loc 1 53 1 view .LVU113
- 636 0032 08BD     		pop	{r3, pc}
- 637              	.L40:
-  41:Core/Src/sim4g_lte.c ****     }
- 638              		.loc 1 41 9 is_stmt 1 view .LVU114
- 639 0034 FFF7FEFF 		bl	sim7672_errorHandle
- 640              	.LVL52:
- 641              	.L41:
-  46:Core/Src/sim4g_lte.c ****     }
- 642              		.loc 1 46 9 view .LVU115
- 643 0038 FFF7FEFF 		bl	sim7672_errorHandle
- 644              	.LVL53:
- 645              	.L42:
-  51:Core/Src/sim4g_lte.c ****     }
- 646              		.loc 1 51 9 view .LVU116
- 647 003c FFF7FEFF 		bl	sim7672_errorHandle
- 648              	.LVL54:
- 649              	.L44:
- 650              		.align	2
- 651              	.L43:
- 652 0040 00000000 		.word	.LC4
- 653 0044 08000000 		.word	.LC5
- 654 0048 10000000 		.word	.LC6
- 655 004c 18000000 		.word	.LC7
- 656 0050 1C000000 		.word	.LC8
- 657              		.cfi_endproc
- 658              	.LFE70:
- 660              		.global	iswaiting4response
- 661              		.global	simRxIndex
- 662              		.global	simRxResponse
- 663              		.global	simRxCplt
- 664              		.global	simRxData
- 665              		.global	simRxBuf
- 666              		.section	.bss.iswaiting4response,"aw",%nobits
- 667              		.set	.LANCHOR1,. + 0
- 670              	iswaiting4response:
- 671 0000 00       		.space	1
- 672              		.section	.bss.simRxBuf,"aw",%nobits
- 673              		.align	2
- 674              		.set	.LANCHOR5,. + 0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccox48gp.s 			page 18
+ 167:Core/Src/sim4g_lte.c ****     // HAL_Delay(100);
+ 168:Core/Src/sim4g_lte.c ****     // start socket: 0 success
+ 169:Core/Src/sim4g_lte.c ****     // if(sim7672_send_command("AT+NETCLOSE\r\n","OK\r\n")!=SIM_TRUE)
+ 170:Core/Src/sim4g_lte.c ****     // {
+ 171:Core/Src/sim4g_lte.c ****     //     sim7672_errorHandle();
+ 172:Core/Src/sim4g_lte.c ****     // }
+ 173:Core/Src/sim4g_lte.c ****     // HAL_Delay(100);
+ 174:Core/Src/sim4g_lte.c ****     // select band any
+ 175:Core/Src/sim4g_lte.c ****     // if(sim7672_send_command("AT+CNBP=0x000700000FFF0380,0x000007FF3FDF3FFF\r\n", "OK\r\n")!=SIM_
+ 176:Core/Src/sim4g_lte.c ****     // {
+ 177:Core/Src/sim4g_lte.c ****     //     sim7672_errorHandle();
+ 178:Core/Src/sim4g_lte.c ****     // }
+ 179:Core/Src/sim4g_lte.c ****     // HAL_Delay(100);
+ 180:Core/Src/sim4g_lte.c ****     // normal message
+ 181:Core/Src/sim4g_lte.c ****     // if(sim7672_send_command("AT+CIPMODE=0\r\n", "OK\r\n")!=SIM_TRUE)
+ 182:Core/Src/sim4g_lte.c ****     // {
+ 183:Core/Src/sim4g_lte.c ****     //     sim7672_errorHandle();
+ 184:Core/Src/sim4g_lte.c ****     // }
+ 185:Core/Src/sim4g_lte.c ****     // HAL_Delay(100);
+ 186:Core/Src/sim4g_lte.c ****     // start socket: 0 success
+ 187:Core/Src/sim4g_lte.c ****     // if(sim7672_send_command("AT+NETOPEN\r\n","OK\r\n")!=SIM_TRUE)
+ 188:Core/Src/sim4g_lte.c ****     // {
+ 189:Core/Src/sim4g_lte.c ****     //     sim7672_errorHandle();
+ 190:Core/Src/sim4g_lte.c ****     // }
+ 191:Core/Src/sim4g_lte.c ****     // HAL_Delay(100);
+ 192:Core/Src/sim4g_lte.c **** }
+ 193:Core/Src/sim4g_lte.c **** 
+ 194:Core/Src/sim4g_lte.c **** uint8_t sim7672_check_signalStrength(void)
+ 195:Core/Src/sim4g_lte.c **** {
+ 196:Core/Src/sim4g_lte.c ****     if (sim7672_send_command("AT+CSQ\r\n", "\r\n",TIME_VERY_SHORT) != SIM_TRUE)
+ 197:Core/Src/sim4g_lte.c ****     {
+ 198:Core/Src/sim4g_lte.c ****         sim7672_errorHandle();
+ 199:Core/Src/sim4g_lte.c ****     }
+ 200:Core/Src/sim4g_lte.c ****     sscanf((const char *)simRxResponse, "+CSQ: %i,", (int *)&sim7672.signalQuality);
+ 201:Core/Src/sim4g_lte.c ****     return sim7672.signalQuality;
+ 202:Core/Src/sim4g_lte.c **** }
+ 203:Core/Src/sim4g_lte.c **** 
+ 204:Core/Src/sim4g_lte.c **** void sim7672_checkSIMCard()
+ 205:Core/Src/sim4g_lte.c **** {
+ 206:Core/Src/sim4g_lte.c ****     if (sim7672_send_command("AT+CPIN?\r\n", "READY\r\n",TIME_VERY_SHORT) != SIM_TRUE)
+ 207:Core/Src/sim4g_lte.c ****     {
+ 208:Core/Src/sim4g_lte.c ****         sim7672_errorHandle();
+ 209:Core/Src/sim4g_lte.c ****     }
+ 210:Core/Src/sim4g_lte.c **** }
+ 211:Core/Src/sim4g_lte.c **** 
+ 212:Core/Src/sim4g_lte.c **** void sim7672_errorHandle(void)
+ 213:Core/Src/sim4g_lte.c **** {
+ 461              		.loc 1 213 1 is_stmt 1 view -0
+ 462              		.cfi_startproc
+ 463              		@ Volatile: function does not return.
+ 464              		@ args = 0, pretend = 0, frame = 0
+ 465              		@ frame_needed = 0, uses_anonymous_args = 0
+ 466 0000 08B5     		push	{r3, lr}
+ 467              	.LCFI6:
+ 468              		.cfi_def_cfa_offset 8
+ 469              		.cfi_offset 3, -8
+ 470              		.cfi_offset 14, -4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s 			page 13
 
 
- 677              	simRxBuf:
- 678 0000 00000000 		.space	100
- 678      00000000 
- 678      00000000 
- 678      00000000 
- 678      00000000 
- 679              		.section	.bss.simRxCplt,"aw",%nobits
- 680              		.set	.LANCHOR3,. + 0
- 683              	simRxCplt:
- 684 0000 00       		.space	1
- 685              		.section	.bss.simRxData,"aw",%nobits
- 686              		.set	.LANCHOR0,. + 0
- 689              	simRxData:
- 690 0000 00       		.space	1
- 691              		.section	.bss.simRxIndex,"aw",%nobits
- 692              		.align	2
- 693              		.set	.LANCHOR4,. + 0
- 696              	simRxIndex:
- 697 0000 00000000 		.space	4
- 698              		.section	.bss.simRxResponse,"aw",%nobits
- 699              		.align	2
- 700              		.set	.LANCHOR2,. + 0
- 703              	simRxResponse:
- 704 0000 00000000 		.space	100
- 704      00000000 
- 704      00000000 
- 704      00000000 
- 704      00000000 
- 705              		.text
- 706              	.Letext0:
- 707              		.file 3 "d:\\10 2021.10\\arm-none-eabi\\include\\machine\\_default_types.h"
- 708              		.file 4 "d:\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
- 709              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h"
- 710              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 711              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
- 712              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 713              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
- 714              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h"
- 715              		.file 11 "Core/Inc/sim4g_lte.h"
- 716              		.file 12 "Core/Inc/debug.h"
- 717              		.file 13 "d:\\10 2021.10\\arm-none-eabi\\include\\string.h"
- 718              		.file 14 "<built-in>"
- 719              		.file 15 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccox48gp.s 			page 19
+ 214:Core/Src/sim4g_lte.c ****     log_data("sim error\n");
+ 471              		.loc 1 214 5 view .LVU75
+ 472 0002 0248     		ldr	r0, .L35
+ 473 0004 FFF7FEFF 		bl	log_data
+ 474              	.LVL42:
+ 475              	.L33:
+ 215:Core/Src/sim4g_lte.c ****     // __disable_irq();
+ 216:Core/Src/sim4g_lte.c ****     while (1)
+ 476              		.loc 1 216 5 discriminator 1 view .LVU76
+ 217:Core/Src/sim4g_lte.c ****     {
+ 218:Core/Src/sim4g_lte.c ****     }
+ 477              		.loc 1 218 5 discriminator 1 view .LVU77
+ 216:Core/Src/sim4g_lte.c ****     {
+ 478              		.loc 1 216 11 discriminator 1 view .LVU78
+ 479 0008 FEE7     		b	.L33
+ 480              	.L36:
+ 481 000a 00BF     		.align	2
+ 482              	.L35:
+ 483 000c 00000000 		.word	.LC2
+ 484              		.cfi_endproc
+ 485              	.LFE78:
+ 487              		.section	.rodata.sim7672_start_LTE.str1.4,"aMS",%progbits,1
+ 488              		.align	2
+ 489              	.LC3:
+ 490 0000 4F4B0D0A 		.ascii	"OK\015\012\000"
+ 490      00
+ 491 0005 000000   		.align	2
+ 492              	.LC4:
+ 493 0008 41542B43 		.ascii	"AT+CGDCONT=1,\"IP\",\"v-internet\"\015\012\000"
+ 493      4744434F 
+ 493      4E543D31 
+ 493      2C224950 
+ 493      222C2276 
+ 494              		.section	.text.sim7672_start_LTE,"ax",%progbits
+ 495              		.align	1
+ 496              		.global	sim7672_start_LTE
+ 497              		.syntax unified
+ 498              		.thumb
+ 499              		.thumb_func
+ 501              	sim7672_start_LTE:
+ 502              	.LFB75:
+ 143:Core/Src/sim4g_lte.c ****     // // check connection  "AT+CGATT=1\r\n"
+ 503              		.loc 1 143 1 view -0
+ 504              		.cfi_startproc
+ 505              		@ args = 0, pretend = 0, frame = 0
+ 506              		@ frame_needed = 0, uses_anonymous_args = 0
+ 507 0000 08B5     		push	{r3, lr}
+ 508              	.LCFI7:
+ 509              		.cfi_def_cfa_offset 8
+ 510              		.cfi_offset 3, -8
+ 511              		.cfi_offset 14, -4
+ 157:Core/Src/sim4g_lte.c ****     {
+ 512              		.loc 1 157 5 view .LVU80
+ 157:Core/Src/sim4g_lte.c ****     {
+ 513              		.loc 1 157 9 is_stmt 0 view .LVU81
+ 514 0002 C822     		movs	r2, #200
+ 515 0004 0549     		ldr	r1, .L41
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s 			page 14
+
+
+ 516 0006 0648     		ldr	r0, .L41+4
+ 517 0008 FFF7FEFF 		bl	sim7672_send_command
+ 518              	.LVL43:
+ 157:Core/Src/sim4g_lte.c ****     {
+ 519              		.loc 1 157 8 view .LVU82
+ 520 000c 0128     		cmp	r0, #1
+ 521 000e 03D1     		bne	.L40
+ 161:Core/Src/sim4g_lte.c ****     // // select network LTE
+ 522              		.loc 1 161 5 is_stmt 1 view .LVU83
+ 523 0010 6420     		movs	r0, #100
+ 524 0012 FFF7FEFF 		bl	HAL_Delay
+ 525              	.LVL44:
+ 192:Core/Src/sim4g_lte.c **** 
+ 526              		.loc 1 192 1 is_stmt 0 view .LVU84
+ 527 0016 08BD     		pop	{r3, pc}
+ 528              	.L40:
+ 159:Core/Src/sim4g_lte.c ****     }
+ 529              		.loc 1 159 9 is_stmt 1 view .LVU85
+ 530 0018 FFF7FEFF 		bl	sim7672_errorHandle
+ 531              	.LVL45:
+ 532              	.L42:
+ 533              		.align	2
+ 534              	.L41:
+ 535 001c 00000000 		.word	.LC3
+ 536 0020 08000000 		.word	.LC4
+ 537              		.cfi_endproc
+ 538              	.LFE75:
+ 540              		.section	.rodata.sim7672_check_signalStrength.str1.4,"aMS",%progbits,1
+ 541              		.align	2
+ 542              	.LC5:
+ 543 0000 41542B43 		.ascii	"AT+CSQ\015\012\000"
+ 543      53510D0A 
+ 543      00
+ 544 0009 000000   		.align	2
+ 545              	.LC6:
+ 546 000c 2B435351 		.ascii	"+CSQ: %i,\000"
+ 546      3A202569 
+ 546      2C00
+ 547              		.section	.text.sim7672_check_signalStrength,"ax",%progbits
+ 548              		.align	1
+ 549              		.global	sim7672_check_signalStrength
+ 550              		.syntax unified
+ 551              		.thumb
+ 552              		.thumb_func
+ 554              	sim7672_check_signalStrength:
+ 555              	.LFB76:
+ 195:Core/Src/sim4g_lte.c ****     if (sim7672_send_command("AT+CSQ\r\n", "\r\n",TIME_VERY_SHORT) != SIM_TRUE)
+ 556              		.loc 1 195 1 view -0
+ 557              		.cfi_startproc
+ 558              		@ args = 0, pretend = 0, frame = 0
+ 559              		@ frame_needed = 0, uses_anonymous_args = 0
+ 560 0000 10B5     		push	{r4, lr}
+ 561              	.LCFI8:
+ 562              		.cfi_def_cfa_offset 8
+ 563              		.cfi_offset 4, -8
+ 564              		.cfi_offset 14, -4
+ 196:Core/Src/sim4g_lte.c ****     {
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s 			page 15
+
+
+ 565              		.loc 1 196 5 view .LVU87
+ 196:Core/Src/sim4g_lte.c ****     {
+ 566              		.loc 1 196 9 is_stmt 0 view .LVU88
+ 567 0002 C822     		movs	r2, #200
+ 568 0004 0849     		ldr	r1, .L47
+ 569 0006 0948     		ldr	r0, .L47+4
+ 570 0008 FFF7FEFF 		bl	sim7672_send_command
+ 571              	.LVL46:
+ 196:Core/Src/sim4g_lte.c ****     {
+ 572              		.loc 1 196 8 view .LVU89
+ 573 000c 0128     		cmp	r0, #1
+ 574 000e 08D1     		bne	.L46
+ 200:Core/Src/sim4g_lte.c ****     return sim7672.signalQuality;
+ 575              		.loc 1 200 5 is_stmt 1 view .LVU90
+ 576 0010 074C     		ldr	r4, .L47+8
+ 577 0012 04F10C02 		add	r2, r4, #12
+ 578 0016 0749     		ldr	r1, .L47+12
+ 579 0018 0748     		ldr	r0, .L47+16
+ 580 001a FFF7FEFF 		bl	sscanf
+ 581              	.LVL47:
+ 201:Core/Src/sim4g_lte.c **** }
+ 582              		.loc 1 201 5 view .LVU91
+ 202:Core/Src/sim4g_lte.c **** 
+ 583              		.loc 1 202 1 is_stmt 0 view .LVU92
+ 584 001e 207B     		ldrb	r0, [r4, #12]	@ zero_extendqisi2
+ 585 0020 10BD     		pop	{r4, pc}
+ 586              	.L46:
+ 198:Core/Src/sim4g_lte.c ****     }
+ 587              		.loc 1 198 9 is_stmt 1 view .LVU93
+ 588 0022 FFF7FEFF 		bl	sim7672_errorHandle
+ 589              	.LVL48:
+ 590              	.L48:
+ 591 0026 00BF     		.align	2
+ 592              	.L47:
+ 593 0028 00000000 		.word	.LC1
+ 594 002c 00000000 		.word	.LC5
+ 595 0030 00000000 		.word	.LANCHOR5
+ 596 0034 0C000000 		.word	.LC6
+ 597 0038 00000000 		.word	.LANCHOR0
+ 598              		.cfi_endproc
+ 599              	.LFE76:
+ 601              		.section	.rodata.sim7672_checkSIMCard.str1.4,"aMS",%progbits,1
+ 602              		.align	2
+ 603              	.LC7:
+ 604 0000 52454144 		.ascii	"READY\015\012\000"
+ 604      590D0A00 
+ 605              		.align	2
+ 606              	.LC8:
+ 607 0008 41542B43 		.ascii	"AT+CPIN?\015\012\000"
+ 607      50494E3F 
+ 607      0D0A00
+ 608              		.section	.text.sim7672_checkSIMCard,"ax",%progbits
+ 609              		.align	1
+ 610              		.global	sim7672_checkSIMCard
+ 611              		.syntax unified
+ 612              		.thumb
+ 613              		.thumb_func
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s 			page 16
+
+
+ 615              	sim7672_checkSIMCard:
+ 616              	.LFB77:
+ 205:Core/Src/sim4g_lte.c ****     if (sim7672_send_command("AT+CPIN?\r\n", "READY\r\n",TIME_VERY_SHORT) != SIM_TRUE)
+ 617              		.loc 1 205 1 view -0
+ 618              		.cfi_startproc
+ 619              		@ args = 0, pretend = 0, frame = 0
+ 620              		@ frame_needed = 0, uses_anonymous_args = 0
+ 621 0000 08B5     		push	{r3, lr}
+ 622              	.LCFI9:
+ 623              		.cfi_def_cfa_offset 8
+ 624              		.cfi_offset 3, -8
+ 625              		.cfi_offset 14, -4
+ 206:Core/Src/sim4g_lte.c ****     {
+ 626              		.loc 1 206 5 view .LVU95
+ 206:Core/Src/sim4g_lte.c ****     {
+ 627              		.loc 1 206 9 is_stmt 0 view .LVU96
+ 628 0002 C822     		movs	r2, #200
+ 629 0004 0449     		ldr	r1, .L53
+ 630 0006 0548     		ldr	r0, .L53+4
+ 631 0008 FFF7FEFF 		bl	sim7672_send_command
+ 632              	.LVL49:
+ 206:Core/Src/sim4g_lte.c ****     {
+ 633              		.loc 1 206 8 view .LVU97
+ 634 000c 0128     		cmp	r0, #1
+ 635 000e 00D1     		bne	.L52
+ 210:Core/Src/sim4g_lte.c **** 
+ 636              		.loc 1 210 1 view .LVU98
+ 637 0010 08BD     		pop	{r3, pc}
+ 638              	.L52:
+ 208:Core/Src/sim4g_lte.c ****     }
+ 639              		.loc 1 208 9 is_stmt 1 view .LVU99
+ 640 0012 FFF7FEFF 		bl	sim7672_errorHandle
+ 641              	.LVL50:
+ 642              	.L54:
+ 643 0016 00BF     		.align	2
+ 644              	.L53:
+ 645 0018 00000000 		.word	.LC7
+ 646 001c 08000000 		.word	.LC8
+ 647              		.cfi_endproc
+ 648              	.LFE77:
+ 650              		.section	.rodata.sim7672_init.str1.4,"aMS",%progbits,1
+ 651              		.align	2
+ 652              	.LC9:
+ 653 0000 53494D20 		.ascii	"SIM PWERKEY\012\000"
+ 653      50574552 
+ 653      4B45590A 
+ 653      00
+ 654 000d 000000   		.align	2
+ 655              	.LC10:
+ 656 0010 41544530 		.ascii	"ATE0\015\012\000"
+ 656      0D0A00
+ 657 0017 00       		.align	2
+ 658              	.LC11:
+ 659 0018 41540D0A 		.ascii	"AT\015\012\000"
+ 659      00
+ 660 001d 000000   		.align	2
+ 661              	.LC12:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s 			page 17
+
+
+ 662 0020 310D0A00 		.ascii	"1\015\012\000"
+ 663              		.align	2
+ 664              	.LC13:
+ 665 0024 41542B43 		.ascii	"AT+CFUN?\015\012\000"
+ 665      46554E3F 
+ 665      0D0A00
+ 666              		.section	.text.sim7672_init,"ax",%progbits
+ 667              		.align	1
+ 668              		.global	sim7672_init
+ 669              		.syntax unified
+ 670              		.thumb
+ 671              		.thumb_func
+ 673              	sim7672_init:
+ 674              	.LFB71:
+  47:Core/Src/sim4g_lte.c ****     HAL_GPIO_WritePin(SIM_PWRKEY_GPIO_Port, SIM_PWRKEY_Pin, GPIO_PIN_SET);
+ 675              		.loc 1 47 1 view -0
+ 676              		.cfi_startproc
+ 677              		@ args = 0, pretend = 0, frame = 0
+ 678              		@ frame_needed = 0, uses_anonymous_args = 0
+ 679 0000 10B5     		push	{r4, lr}
+ 680              	.LCFI10:
+ 681              		.cfi_def_cfa_offset 8
+ 682              		.cfi_offset 4, -8
+ 683              		.cfi_offset 14, -4
+  48:Core/Src/sim4g_lte.c ****     HAL_Delay(50);
+ 684              		.loc 1 48 5 view .LVU101
+ 685 0002 274C     		ldr	r4, .L63
+ 686 0004 0122     		movs	r2, #1
+ 687 0006 4FF48051 		mov	r1, #4096
+ 688 000a 2046     		mov	r0, r4
+ 689 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 690              	.LVL51:
+  49:Core/Src/sim4g_lte.c ****     HAL_GPIO_WritePin(SIM_PWRKEY_GPIO_Port, SIM_PWRKEY_Pin, GPIO_PIN_RESET);
+ 691              		.loc 1 49 5 view .LVU102
+ 692 0010 3220     		movs	r0, #50
+ 693 0012 FFF7FEFF 		bl	HAL_Delay
+ 694              	.LVL52:
+  50:Core/Src/sim4g_lte.c ****     HAL_Delay(50);
+ 695              		.loc 1 50 5 view .LVU103
+ 696 0016 0022     		movs	r2, #0
+ 697 0018 4FF48051 		mov	r1, #4096
+ 698 001c 2046     		mov	r0, r4
+ 699 001e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 700              	.LVL53:
+  51:Core/Src/sim4g_lte.c ****     HAL_GPIO_WritePin(SIM_PWRKEY_GPIO_Port, SIM_PWRKEY_Pin, GPIO_PIN_SET);
+ 701              		.loc 1 51 5 view .LVU104
+ 702 0022 3220     		movs	r0, #50
+ 703 0024 FFF7FEFF 		bl	HAL_Delay
+ 704              	.LVL54:
+  52:Core/Src/sim4g_lte.c ****     HAL_Delay(50);
+ 705              		.loc 1 52 5 view .LVU105
+ 706 0028 0122     		movs	r2, #1
+ 707 002a 4FF48051 		mov	r1, #4096
+ 708 002e 2046     		mov	r0, r4
+ 709 0030 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 710              	.LVL55:
+  53:Core/Src/sim4g_lte.c ****     HAL_GPIO_WritePin(SIM_PWRKEY_GPIO_Port, SIM_PWRKEY_Pin, GPIO_PIN_RESET);
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s 			page 18
+
+
+ 711              		.loc 1 53 5 view .LVU106
+ 712 0034 3220     		movs	r0, #50
+ 713 0036 FFF7FEFF 		bl	HAL_Delay
+ 714              	.LVL56:
+  54:Core/Src/sim4g_lte.c ****     HAL_Delay(50);
+ 715              		.loc 1 54 5 view .LVU107
+ 716 003a 0022     		movs	r2, #0
+ 717 003c 4FF48051 		mov	r1, #4096
+ 718 0040 2046     		mov	r0, r4
+ 719 0042 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 720              	.LVL57:
+  55:Core/Src/sim4g_lte.c ****     log_data("SIM PWERKEY\n");
+ 721              		.loc 1 55 5 view .LVU108
+ 722 0046 3220     		movs	r0, #50
+ 723 0048 FFF7FEFF 		bl	HAL_Delay
+ 724              	.LVL58:
+  56:Core/Src/sim4g_lte.c **** 
+ 725              		.loc 1 56 5 view .LVU109
+ 726 004c 1548     		ldr	r0, .L63+4
+ 727 004e FFF7FEFF 		bl	log_data
+ 728              	.LVL59:
+  58:Core/Src/sim4g_lte.c ****     {
+ 729              		.loc 1 58 5 view .LVU110
+  58:Core/Src/sim4g_lte.c ****     {
+ 730              		.loc 1 58 9 is_stmt 0 view .LVU111
+ 731 0052 C822     		movs	r2, #200
+ 732 0054 1449     		ldr	r1, .L63+8
+ 733 0056 1548     		ldr	r0, .L63+12
+ 734 0058 FFF7FEFF 		bl	sim7672_send_command
+ 735              	.LVL60:
+  58:Core/Src/sim4g_lte.c ****     {
+ 736              		.loc 1 58 8 view .LVU112
+ 737 005c 0128     		cmp	r0, #1
+ 738 005e 19D1     		bne	.L60
+  62:Core/Src/sim4g_lte.c ****     if (sim7672_send_command("AT\r\n", "OK\r\n",TIME_VERY_SHORT) != SIM_TRUE)
+ 739              		.loc 1 62 5 is_stmt 1 view .LVU113
+ 740 0060 6420     		movs	r0, #100
+ 741 0062 FFF7FEFF 		bl	HAL_Delay
+ 742              	.LVL61:
+  63:Core/Src/sim4g_lte.c ****     {
+ 743              		.loc 1 63 5 view .LVU114
+  63:Core/Src/sim4g_lte.c ****     {
+ 744              		.loc 1 63 9 is_stmt 0 view .LVU115
+ 745 0066 C822     		movs	r2, #200
+ 746 0068 0F49     		ldr	r1, .L63+8
+ 747 006a 1148     		ldr	r0, .L63+16
+ 748 006c FFF7FEFF 		bl	sim7672_send_command
+ 749              	.LVL62:
+  63:Core/Src/sim4g_lte.c ****     {
+ 750              		.loc 1 63 8 view .LVU116
+ 751 0070 0128     		cmp	r0, #1
+ 752 0072 11D1     		bne	.L61
+  67:Core/Src/sim4g_lte.c ****     if (sim7672_send_command("AT+CFUN?\r\n", "1\r\n",TIME_VERY_SHORT) != SIM_TRUE)
+ 753              		.loc 1 67 5 is_stmt 1 view .LVU117
+ 754 0074 6420     		movs	r0, #100
+ 755 0076 FFF7FEFF 		bl	HAL_Delay
+ 756              	.LVL63:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s 			page 19
+
+
+  68:Core/Src/sim4g_lte.c ****     {
+ 757              		.loc 1 68 5 view .LVU118
+  68:Core/Src/sim4g_lte.c ****     {
+ 758              		.loc 1 68 9 is_stmt 0 view .LVU119
+ 759 007a C822     		movs	r2, #200
+ 760 007c 0D49     		ldr	r1, .L63+20
+ 761 007e 0E48     		ldr	r0, .L63+24
+ 762 0080 FFF7FEFF 		bl	sim7672_send_command
+ 763              	.LVL64:
+  68:Core/Src/sim4g_lte.c ****     {
+ 764              		.loc 1 68 8 view .LVU120
+ 765 0084 0128     		cmp	r0, #1
+ 766 0086 09D1     		bne	.L62
+  72:Core/Src/sim4g_lte.c ****     
+ 767              		.loc 1 72 5 is_stmt 1 view .LVU121
+ 768 0088 6420     		movs	r0, #100
+ 769 008a FFF7FEFF 		bl	HAL_Delay
+ 770              	.LVL65:
+  74:Core/Src/sim4g_lte.c **** 
+ 771              		.loc 1 74 5 view .LVU122
+ 772 008e FFF7FEFF 		bl	sim7672_checkSIMCard
+ 773              	.LVL66:
+  76:Core/Src/sim4g_lte.c **** 
+ 774              		.loc 1 76 1 is_stmt 0 view .LVU123
+ 775 0092 10BD     		pop	{r4, pc}
+ 776              	.L60:
+  60:Core/Src/sim4g_lte.c ****     }
+ 777              		.loc 1 60 9 is_stmt 1 view .LVU124
+ 778 0094 FFF7FEFF 		bl	sim7672_errorHandle
+ 779              	.LVL67:
+ 780              	.L61:
+  65:Core/Src/sim4g_lte.c ****     }
+ 781              		.loc 1 65 9 view .LVU125
+ 782 0098 FFF7FEFF 		bl	sim7672_errorHandle
+ 783              	.LVL68:
+ 784              	.L62:
+  70:Core/Src/sim4g_lte.c ****     }
+ 785              		.loc 1 70 9 view .LVU126
+ 786 009c FFF7FEFF 		bl	sim7672_errorHandle
+ 787              	.LVL69:
+ 788              	.L64:
+ 789              		.align	2
+ 790              	.L63:
+ 791 00a0 00080140 		.word	1073809408
+ 792 00a4 00000000 		.word	.LC9
+ 793 00a8 00000000 		.word	.LC3
+ 794 00ac 10000000 		.word	.LC10
+ 795 00b0 18000000 		.word	.LC11
+ 796 00b4 20000000 		.word	.LC12
+ 797 00b8 24000000 		.word	.LC13
+ 798              		.cfi_endproc
+ 799              	.LFE71:
+ 801              		.global	sim7672
+ 802              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 803              		.align	2
+ 804              	.LC14:
+ 805 0000 6D2D7761 		.ascii	"m-wap\000"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s 			page 20
+
+
+ 805      7000
+ 806 0006 0000     		.align	2
+ 807              	.LC15:
+ 808 0008 6D6D7300 		.ascii	"mms\000"
+ 809              		.global	iswaiting4response
+ 810              		.global	simRxIndex
+ 811              		.global	simRxResponse
+ 812              		.global	simRxCplt
+ 813              		.global	simRxData
+ 814              		.global	simRxBuf
+ 815              		.section	.bss.simRxBuf,"aw",%nobits
+ 816              		.align	2
+ 817              		.set	.LANCHOR1,. + 0
+ 820              	simRxBuf:
+ 821 0000 00000000 		.space	200
+ 821      00000000 
+ 821      00000000 
+ 821      00000000 
+ 821      00000000 
+ 822              		.section	.bss.simRxCplt,"aw",%nobits
+ 825              	simRxCplt:
+ 826 0000 00       		.space	1
+ 827              		.section	.bss.simRxData,"aw",%nobits
+ 828              		.set	.LANCHOR3,. + 0
+ 831              	simRxData:
+ 832 0000 00       		.space	1
+ 833              		.section	.bss.simRxIndex,"aw",%nobits
+ 834              		.align	2
+ 835              		.set	.LANCHOR2,. + 0
+ 838              	simRxIndex:
+ 839 0000 00000000 		.space	4
+ 840              		.section	.bss.simRxResponse,"aw",%nobits
+ 841              		.align	2
+ 842              		.set	.LANCHOR0,. + 0
+ 845              	simRxResponse:
+ 846 0000 00000000 		.space	200
+ 846      00000000 
+ 846      00000000 
+ 846      00000000 
+ 846      00000000 
+ 847              		.section	.data.iswaiting4response,"aw"
+ 848              		.set	.LANCHOR4,. + 0
+ 851              	iswaiting4response:
+ 852 0000 01       		.byte	1
+ 853              		.section	.data.sim7672,"aw"
+ 854              		.align	2
+ 855              		.set	.LANCHOR5,. + 0
+ 858              	sim7672:
+ 859 0000 00000000 		.word	.LC14
+ 860 0004 08000000 		.word	.LC15
+ 861 0008 08000000 		.word	.LC15
+ 862 000c 00       		.byte	0
+ 863 000d 00       		.byte	0
+ 864 000e 0000     		.space	2
+ 865              		.text
+ 866              	.Letext0:
+ 867              		.file 2 "d:\\10 2021.10\\arm-none-eabi\\include\\machine\\_default_types.h"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s 			page 21
+
+
+ 868              		.file 3 "d:\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 869              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h"
+ 870              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 871              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 872              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 873              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h"
+ 874              		.file 9 "Core/Inc/sim4g_lte.h"
+ 875              		.file 10 "Core/Inc/debug.h"
+ 876              		.file 11 "d:\\10 2021.10\\arm-none-eabi\\include\\stdio.h"
+ 877              		.file 12 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 878              		.file 13 "d:\\10 2021.10\\arm-none-eabi\\include\\string.h"
+ 879              		.file 14 "<built-in>"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s 			page 22
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 sim4g_lte.c
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:18     .rodata.sim7672_reset.str1.4:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:22     .text.sim7672_reset:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:28     .text.sim7672_reset:00000000 sim7672_reset
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:76     .text.sim7672_reset:0000003c $d
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:82     .rodata.sim7672_pwrkey.str1.4:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:86     .text.sim7672_pwrkey:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:92     .text.sim7672_pwrkey:00000000 sim7672_pwrkey
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:149    .text.sim7672_pwrkey:00000050 $d
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:155    .text.sim7672_send_command:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:161    .text.sim7672_send_command:00000000 sim7672_send_command
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:279    .text.sim7672_send_command:0000007c $d
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:288    .rodata.sim7672_callback.str1.4:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:292    .text.sim7672_callback:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:298    .text.sim7672_callback:00000000 sim7672_callback
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:407    .text.sim7672_callback:00000088 $d
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:419    .text.sim7672_timerCallback:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:425    .text.sim7672_timerCallback:00000000 sim7672_timerCallback
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:503    .text.sim7672_timerCallback:0000005c $d
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:513    .rodata.sim7672_errorHandle.str1.4:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:517    .text.sim7672_errorHandle:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:523    .text.sim7672_errorHandle:00000000 sim7672_errorHandle
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:562    .text.sim7672_errorHandle:0000000c $d
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:567    .rodata.sim7672_init.str1.4:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:583    .text.sim7672_init:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:589    .text.sim7672_init:00000000 sim7672_init
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:652    .text.sim7672_init:00000040 $d
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:670    .bss.iswaiting4response:00000000 iswaiting4response
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:696    .bss.simRxIndex:00000000 simRxIndex
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:703    .bss.simRxResponse:00000000 simRxResponse
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:683    .bss.simRxCplt:00000000 simRxCplt
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:689    .bss.simRxData:00000000 simRxData
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:677    .bss.simRxBuf:00000000 simRxBuf
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:671    .bss.iswaiting4response:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:673    .bss.simRxBuf:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:684    .bss.simRxCplt:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:690    .bss.simRxData:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:692    .bss.simRxIndex:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccox48gp.s:699    .bss.simRxResponse:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:18     .rodata.sim7672_reset.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:22     .text.sim7672_reset:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:28     .text.sim7672_reset:00000000 sim7672_reset
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:76     .text.sim7672_reset:00000040 $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:82     .text.sim7672_pwrOff:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:88     .text.sim7672_pwrOff:00000000 sim7672_pwrOff
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:114    .text.sim7672_pwrOff:00000018 $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:119    .text.sim7672_pwrOn:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:125    .text.sim7672_pwrOn:00000000 sim7672_pwrOn
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:151    .text.sim7672_pwrOn:00000018 $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:156    .text.sim7672_sendcmd_notresp:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:162    .text.sim7672_sendcmd_notresp:00000000 sim7672_sendcmd_notresp
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:194    .text.sim7672_sendcmd_notresp:00000018 $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:199    .text.sim7672_send_command:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:205    .text.sim7672_send_command:00000000 sim7672_send_command
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:356    .text.sim7672_send_command:000000b4 $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:366    .rodata.sim7672_callback.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:370    .text.sim7672_callback:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:376    .text.sim7672_callback:00000000 sim7672_callback
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:440    .text.sim7672_callback:00000048 $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:449    .rodata.sim7672_errorHandle.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:453    .text.sim7672_errorHandle:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:459    .text.sim7672_errorHandle:00000000 sim7672_errorHandle
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:483    .text.sim7672_errorHandle:0000000c $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:488    .rodata.sim7672_start_LTE.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:495    .text.sim7672_start_LTE:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:501    .text.sim7672_start_LTE:00000000 sim7672_start_LTE
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:535    .text.sim7672_start_LTE:0000001c $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:541    .rodata.sim7672_check_signalStrength.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:548    .text.sim7672_check_signalStrength:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:554    .text.sim7672_check_signalStrength:00000000 sim7672_check_signalStrength
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:593    .text.sim7672_check_signalStrength:00000028 $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:602    .rodata.sim7672_checkSIMCard.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:609    .text.sim7672_checkSIMCard:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:615    .text.sim7672_checkSIMCard:00000000 sim7672_checkSIMCard
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:645    .text.sim7672_checkSIMCard:00000018 $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:651    .rodata.sim7672_init.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:667    .text.sim7672_init:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:673    .text.sim7672_init:00000000 sim7672_init
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:791    .text.sim7672_init:000000a0 $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:858    .data.sim7672:00000000 sim7672
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:803    .rodata.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:851    .data.iswaiting4response:00000000 iswaiting4response
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:838    .bss.simRxIndex:00000000 simRxIndex
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:845    .bss.simRxResponse:00000000 simRxResponse
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:825    .bss.simRxCplt:00000000 simRxCplt
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:831    .bss.simRxData:00000000 simRxData
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:820    .bss.simRxBuf:00000000 simRxBuf
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:816    .bss.simRxBuf:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:826    .bss.simRxCplt:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:832    .bss.simRxData:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:834    .bss.simRxIndex:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:841    .bss.simRxResponse:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s:854    .data.sim7672:00000000 $d
+
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccl5i7HL.s 			page 23
+
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin
 HAL_Delay
 log_data
-HAL_UART_Receive_IT
 strlen
 HAL_UART_Transmit
-strstr
-memset
 huart1
+memset
+HAL_GetTick
+HAL_UART_Receive_IT
 memcpy
-htim3
-HAL_TIM_Base_Stop_IT
-strchr
+strstr
+sscanf

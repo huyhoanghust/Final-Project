@@ -1,0 +1,180 @@
+AT+NETOPEN
+AT+CIPCLOSE=0
+AT+CIPRXGET=1
+AT+CIPOPEN=0,"TCP","broker.mqttdashboard.com",1883
+AT+CIPSEND=0,30
+AT+CIPRXGET=4,0
+AT+CIPRXGET=2,0,512
+
+***********INIT MQTT****************
+AT+CMQTTDISC=0,60
+AT+CMQTTREL=0
+AT+CMQTTSTOP
+AT+CMQTTSTART
+
+
+OK
+
++CMQTTSTART: 0
+
+AT+CMQTTACCQ=0,"4995c912622b4cc1",0
+
+
+OK
+
+AT+CMQTTCONNECT=0,"tcp://broker.mqttdashboard.com:1883",60,1
+AT+CMQTTCONNECT=0,"tcp://broker.mqttdashboard.com:1883,60,1
+
+
+OK
+
++CMQTTCONNECT: 0,0
+
+*********PUB MQTTT******************
+
+AT+CMQTTTOPIC=0,6
+
+
+>
+
+test1z
+
+OK
+
+AT+CMQTTPAYLOAD=0,18
+
+
+>
+
+linhkienthuduc.com
+
+OK
+
+AT+CMQTTPUB=0,1,60,0
+
+
+OK
+
++CMQTTPUB: 0,0
+
+*************SUB MQTT*****************
+
+AT+CMQTTSUBTOPIC=0,6
+
+
+>
+
+test1z
+
+OK
+
+AT+CMQTTSUB=0
+
+
+OK
+
++CMQTTRXSTART: 0,6,18
+
++CMQTTRXTOPIC: 0,6
+test1z
+
++CMQTTRXPAYLOAD: 0,18
+linhkienthuduc.com
+
++CMQTTRXEND: 0
+
++CMQTTPUB: 0,0
+
+
+
+
+
+
+
+
+
+
+AT
+
+AT
+OK
+
+PB DONE
+
+AT+CGDCONT=1,"IP","v-internet"
+
+AT+CGDCONT=1,"IP","v-internet"
+OK
+
+AT+CMQTTSTART
+
+AT+CMQTTSTART
+OK
+
++CMQTTSTART: 0
+
+AT+CMQTTACCQ=0,"4995c912622b4cc1",0
+
+AT+CMQTTACCQ=0,"4995c912622b4cc1",0
+OK
+
+AT+CMQTTCONNECT=0,"tcp://broker.mqttdashboard.com:1883",60,1
+
+AT+CMQTTCONNECT=0,"tcp://broker.mqttdashboard.com:1883",60,1
+OK
+
++CMQTTCONNECT: 0,0
+
+AT+CMQTTTOPIC=0,6
+
+AT+CMQTTTOPIC=0,6
+>
+
+test1z
+
+
+OK
+
+AT+CMQTTPAYLOAD=0,18
+
+AT+CMQTTPAYLOAD=0,18
+>
+
+linhkienthuduc.com
+
+
+OK
+
+AT+CMQTTPUB=0,1,60,1
+
+AT+CMQTTPUB=0,1,60,1
+OK
+
++CMQTTPUB: 0,0
+
+AT+CMQTTSUBTOPIC=0,6,0
+
+AT+CMQTTSUBTOPIC=0,6,0
+>
+
+test1z
+
+
+OK
+
+AT+CMQTTSUB=0
+
+AT+CMQTTSUB=0
+OK
+
++CMQTTRXSTART: 0,6,18
+
++CMQTTRXTOPIC: 0,6
+test1z
+
++CMQTTRXPAYLOAD: 0,18
+linhkienthuduc.com
+
++CMQTTRXEND: 0
+
++CMQTTSUB: 0,0

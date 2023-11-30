@@ -1,0 +1,192 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccrgpffJ.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"fatfs.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.MX_FATFS_Init,"ax",%progbits
+  18              		.align	1
+  19              		.global	MX_FATFS_Init
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	MX_FATFS_Init:
+  25              	.LFB65:
+  26              		.file 1 "FATFS/App/fatfs.c"
+   1:FATFS/App/fatfs.c **** /* USER CODE BEGIN Header */
+   2:FATFS/App/fatfs.c **** /**
+   3:FATFS/App/fatfs.c ****   ******************************************************************************
+   4:FATFS/App/fatfs.c ****   * @file   fatfs.c
+   5:FATFS/App/fatfs.c ****   * @brief  Code for fatfs applications
+   6:FATFS/App/fatfs.c ****   ******************************************************************************
+   7:FATFS/App/fatfs.c ****   * @attention
+   8:FATFS/App/fatfs.c ****   *
+   9:FATFS/App/fatfs.c ****   * Copyright (c) 2023 STMicroelectronics.
+  10:FATFS/App/fatfs.c ****   * All rights reserved.
+  11:FATFS/App/fatfs.c ****   *
+  12:FATFS/App/fatfs.c ****   * This software is licensed under terms that can be found in the LICENSE file
+  13:FATFS/App/fatfs.c ****   * in the root directory of this software component.
+  14:FATFS/App/fatfs.c ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  15:FATFS/App/fatfs.c ****   *
+  16:FATFS/App/fatfs.c ****   ******************************************************************************
+  17:FATFS/App/fatfs.c ****   */
+  18:FATFS/App/fatfs.c **** /* USER CODE END Header */
+  19:FATFS/App/fatfs.c **** #include "fatfs.h"
+  20:FATFS/App/fatfs.c **** 
+  21:FATFS/App/fatfs.c **** uint8_t retUSER;    /* Return value for USER */
+  22:FATFS/App/fatfs.c **** char USERPath[4];   /* USER logical drive path */
+  23:FATFS/App/fatfs.c **** FATFS USERFatFS;    /* File system object for USER logical drive */
+  24:FATFS/App/fatfs.c **** FIL USERFile;       /* File object for USER */
+  25:FATFS/App/fatfs.c **** 
+  26:FATFS/App/fatfs.c **** /* USER CODE BEGIN Variables */
+  27:FATFS/App/fatfs.c **** 
+  28:FATFS/App/fatfs.c **** /* USER CODE END Variables */
+  29:FATFS/App/fatfs.c **** 
+  30:FATFS/App/fatfs.c **** void MX_FATFS_Init(void)
+  31:FATFS/App/fatfs.c **** {
+  27              		.loc 1 31 1 view -0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccrgpffJ.s 			page 2
+
+
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 08B5     		push	{r3, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+  32:FATFS/App/fatfs.c ****   /*## FatFS: Link the USER driver ###########################*/
+  33:FATFS/App/fatfs.c ****   retUSER = FATFS_LinkDriver(&USER_Driver, USERPath);
+  36              		.loc 1 33 3 view .LVU1
+  37              		.loc 1 33 13 is_stmt 0 view .LVU2
+  38 0002 0349     		ldr	r1, .L3
+  39 0004 0348     		ldr	r0, .L3+4
+  40 0006 FFF7FEFF 		bl	FATFS_LinkDriver
+  41              	.LVL0:
+  42              		.loc 1 33 11 view .LVU3
+  43 000a 034B     		ldr	r3, .L3+8
+  44 000c 1870     		strb	r0, [r3]
+  34:FATFS/App/fatfs.c **** 
+  35:FATFS/App/fatfs.c ****   /* USER CODE BEGIN Init */
+  36:FATFS/App/fatfs.c ****   /* additional user code for init */
+  37:FATFS/App/fatfs.c ****   /* USER CODE END Init */
+  38:FATFS/App/fatfs.c **** }
+  45              		.loc 1 38 1 view .LVU4
+  46 000e 08BD     		pop	{r3, pc}
+  47              	.L4:
+  48              		.align	2
+  49              	.L3:
+  50 0010 00000000 		.word	.LANCHOR0
+  51 0014 00000000 		.word	USER_Driver
+  52 0018 00000000 		.word	.LANCHOR1
+  53              		.cfi_endproc
+  54              	.LFE65:
+  56              		.section	.text.get_fattime,"ax",%progbits
+  57              		.align	1
+  58              		.global	get_fattime
+  59              		.syntax unified
+  60              		.thumb
+  61              		.thumb_func
+  63              	get_fattime:
+  64              	.LFB66:
+  39:FATFS/App/fatfs.c **** 
+  40:FATFS/App/fatfs.c **** /**
+  41:FATFS/App/fatfs.c ****   * @brief  Gets Time from RTC
+  42:FATFS/App/fatfs.c ****   * @param  None
+  43:FATFS/App/fatfs.c ****   * @retval Time in DWORD
+  44:FATFS/App/fatfs.c ****   */
+  45:FATFS/App/fatfs.c **** DWORD get_fattime(void)
+  46:FATFS/App/fatfs.c **** {
+  65              		.loc 1 46 1 is_stmt 1 view -0
+  66              		.cfi_startproc
+  67              		@ args = 0, pretend = 0, frame = 0
+  68              		@ frame_needed = 0, uses_anonymous_args = 0
+  69              		@ link register save eliminated.
+  47:FATFS/App/fatfs.c ****   /* USER CODE BEGIN get_fattime */
+  48:FATFS/App/fatfs.c ****   return 0;
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccrgpffJ.s 			page 3
+
+
+  70              		.loc 1 48 3 view .LVU6
+  49:FATFS/App/fatfs.c ****   /* USER CODE END get_fattime */
+  50:FATFS/App/fatfs.c **** }
+  71              		.loc 1 50 1 is_stmt 0 view .LVU7
+  72 0000 0020     		movs	r0, #0
+  73 0002 7047     		bx	lr
+  74              		.cfi_endproc
+  75              	.LFE66:
+  77              		.global	USERFile
+  78              		.global	USERFatFS
+  79              		.global	USERPath
+  80              		.global	retUSER
+  81              		.section	.bss.USERFatFS,"aw",%nobits
+  82              		.align	2
+  85              	USERFatFS:
+  86 0000 00000000 		.space	4144
+  86      00000000 
+  86      00000000 
+  86      00000000 
+  86      00000000 
+  87              		.section	.bss.USERFile,"aw",%nobits
+  88              		.align	2
+  91              	USERFile:
+  92 0000 00000000 		.space	4140
+  92      00000000 
+  92      00000000 
+  92      00000000 
+  92      00000000 
+  93              		.section	.bss.USERPath,"aw",%nobits
+  94              		.align	2
+  95              		.set	.LANCHOR0,. + 0
+  98              	USERPath:
+  99 0000 00000000 		.space	4
+ 100              		.section	.bss.retUSER,"aw",%nobits
+ 101              		.set	.LANCHOR1,. + 0
+ 104              	retUSER:
+ 105 0000 00       		.space	1
+ 106              		.text
+ 107              	.Letext0:
+ 108              		.file 2 "Middlewares/Third_Party/FatFs/src/integer.h"
+ 109              		.file 3 "d:\\10 2021.10\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 110              		.file 4 "d:\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 111              		.file 5 "Middlewares/Third_Party/FatFs/src/ff.h"
+ 112              		.file 6 "Middlewares/Third_Party/FatFs/src/diskio.h"
+ 113              		.file 7 "Middlewares/Third_Party/FatFs/src/ff_gen_drv.h"
+ 114              		.file 8 "Core/Inc/user_diskio.h"
+ 115              		.file 9 "FATFS/App/fatfs.h"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccrgpffJ.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fatfs.c
+C:\Users\Admin\AppData\Local\Temp\ccrgpffJ.s:18     .text.MX_FATFS_Init:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccrgpffJ.s:24     .text.MX_FATFS_Init:00000000 MX_FATFS_Init
+C:\Users\Admin\AppData\Local\Temp\ccrgpffJ.s:50     .text.MX_FATFS_Init:00000010 $d
+C:\Users\Admin\AppData\Local\Temp\ccrgpffJ.s:57     .text.get_fattime:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccrgpffJ.s:63     .text.get_fattime:00000000 get_fattime
+C:\Users\Admin\AppData\Local\Temp\ccrgpffJ.s:91     .bss.USERFile:00000000 USERFile
+C:\Users\Admin\AppData\Local\Temp\ccrgpffJ.s:85     .bss.USERFatFS:00000000 USERFatFS
+C:\Users\Admin\AppData\Local\Temp\ccrgpffJ.s:98     .bss.USERPath:00000000 USERPath
+C:\Users\Admin\AppData\Local\Temp\ccrgpffJ.s:104    .bss.retUSER:00000000 retUSER
+C:\Users\Admin\AppData\Local\Temp\ccrgpffJ.s:82     .bss.USERFatFS:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccrgpffJ.s:88     .bss.USERFile:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccrgpffJ.s:94     .bss.USERPath:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccrgpffJ.s:105    .bss.retUSER:00000000 $d
+
+UNDEFINED SYMBOLS
+FATFS_LinkDriver
+USER_Driver

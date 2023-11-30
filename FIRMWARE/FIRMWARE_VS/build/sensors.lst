@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 1
   39              	.L2:
   18:Core/Src/sensors.c **** 		;
   40              		.loc 1 18 3 discriminator 1 view .LVU3
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 2
 
 
   17:Core/Src/sensors.c **** 	while ((__HAL_TIM_GET_COUNTER(&htim1)) < time)
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 1
   25:Core/Src/sensors.c **** 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   88              		.loc 1 25 2 is_stmt 1 view .LVU14
   89              		.loc 1 25 23 is_stmt 0 view .LVU15
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 3
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 3
 
 
   90 0010 0123     		movs	r3, #1
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 1
  139 000c 0393     		str	r3, [sp, #12]
   33:Core/Src/sensors.c **** 	GPIO_InitStruct.Pin = GPIO_Pin;
  140              		.loc 1 33 2 is_stmt 1 view .LVU25
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 4
 
 
  141              		.loc 1 33 22 is_stmt 0 view .LVU26
@@ -227,18 +227,18 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 1
  178              		.cfi_def_cfa_offset 8
  179              		.cfi_offset 4, -8
  180              		.cfi_offset 14, -4
-  42:Core/Src/sensors.c **** 	uint8_t Response = 0;
+  42:Core/Src/sensors.c **** 	uint8_t Response = INIT_FAIL;
  181              		.loc 1 42 2 view .LVU34
  182              	.LVL7:
   43:Core/Src/sensors.c **** 	Set_Pin_Output(DS18B20_SENSOR_GPIO_Port, DS18B20_SENSOR_Pin);		// set the pin as output
  183              		.loc 1 43 2 view .LVU35
- 184 0002 114C     		ldr	r4, .L13
+ 184 0002 0F4C     		ldr	r4, .L11
  185 0004 0821     		movs	r1, #8
  186 0006 2046     		mov	r0, r4
  187 0008 FFF7FEFF 		bl	Set_Pin_Output
  188              	.LVL8:
   44:Core/Src/sensors.c **** 	HAL_GPIO_WritePin(DS18B20_SENSOR_GPIO_Port, DS18B20_SENSOR_Pin, 0); // pull the pin low
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 5
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 5
 
 
  189              		.loc 1 44 2 view .LVU36
@@ -272,95 +272,80 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 1
  211 002e 2046     		mov	r0, r4
  212 0030 FFF7FEFF 		bl	HAL_GPIO_ReadPin
  213              	.LVL13:
- 214              		.loc 1 50 5 view .LVU42
- 215 0034 30B9     		cbnz	r0, .L11
-  51:Core/Src/sensors.c **** 		Response = 1; // if the pin is low i.e the presence pulse is detected
- 216              		.loc 1 51 12 view .LVU43
- 217 0036 0124     		movs	r4, #1
- 218              	.L10:
- 219              	.LVL14:
+  51:Core/Src/sensors.c **** 		Response = INIT_SUCCESS; // if the pin is low i.e the presence pulse is detected
   52:Core/Src/sensors.c **** 	else
-  53:Core/Src/sensors.c **** 		Response = -1;
+  53:Core/Src/sensors.c **** 		Response = INIT_FAIL;
   54:Core/Src/sensors.c **** 
   55:Core/Src/sensors.c **** 	delay(400); // 480 us delay totally.
- 220              		.loc 1 55 2 is_stmt 1 view .LVU44
- 221 0038 4FF4C870 		mov	r0, #400
- 222 003c FFF7FEFF 		bl	delay
- 223              	.LVL15:
+ 214              		.loc 1 55 2 is_stmt 1 view .LVU42
+ 215 0034 4FF4C870 		mov	r0, #400
+ 216 0038 FFF7FEFF 		bl	delay
+ 217              	.LVL14:
   56:Core/Src/sensors.c **** 
   57:Core/Src/sensors.c **** 	return Response;
- 224              		.loc 1 57 2 view .LVU45
+ 218              		.loc 1 57 2 view .LVU43
   58:Core/Src/sensors.c **** }
- 225              		.loc 1 58 1 is_stmt 0 view .LVU46
- 226 0040 2046     		mov	r0, r4
- 227 0042 10BD     		pop	{r4, pc}
- 228              	.LVL16:
- 229              	.L11:
-  53:Core/Src/sensors.c **** 
- 230              		.loc 1 53 12 view .LVU47
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 6
+ 219              		.loc 1 58 1 is_stmt 0 view .LVU44
+ 220 003c 0120     		movs	r0, #1
+ 221 003e 10BD     		pop	{r4, pc}
+ 222              	.L12:
+ 223              		.align	2
+ 224              	.L11:
+ 225 0040 00100140 		.word	1073811456
+ 226              		.cfi_endproc
+ 227              	.LFE71:
+ 229              		.section	.text.DS18B20_Write,"ax",%progbits
+ 230              		.align	1
+ 231              		.global	DS18B20_Write
+ 232              		.syntax unified
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 6
 
 
- 231 0044 FF24     		movs	r4, #255
- 232 0046 F7E7     		b	.L10
- 233              	.L14:
- 234              		.align	2
- 235              	.L13:
- 236 0048 00100140 		.word	1073811456
- 237              		.cfi_endproc
- 238              	.LFE71:
- 240              		.section	.text.DS18B20_Write,"ax",%progbits
- 241              		.align	1
- 242              		.global	DS18B20_Write
- 243              		.syntax unified
- 244              		.thumb
- 245              		.thumb_func
- 247              	DS18B20_Write:
- 248              	.LVL17:
- 249              	.LFB72:
+ 233              		.thumb
+ 234              		.thumb_func
+ 236              	DS18B20_Write:
+ 237              	.LVL15:
+ 238              	.LFB72:
   59:Core/Src/sensors.c **** 
   60:Core/Src/sensors.c **** void DS18B20_Write(uint8_t data)
   61:Core/Src/sensors.c **** {
- 250              		.loc 1 61 1 is_stmt 1 view -0
- 251              		.cfi_startproc
- 252              		@ args = 0, pretend = 0, frame = 0
- 253              		@ frame_needed = 0, uses_anonymous_args = 0
- 254              		.loc 1 61 1 is_stmt 0 view .LVU49
- 255 0000 70B5     		push	{r4, r5, r6, lr}
- 256              	.LCFI7:
- 257              		.cfi_def_cfa_offset 16
- 258              		.cfi_offset 4, -16
- 259              		.cfi_offset 5, -12
- 260              		.cfi_offset 6, -8
- 261              		.cfi_offset 14, -4
- 262 0002 0646     		mov	r6, r0
+ 239              		.loc 1 61 1 is_stmt 1 view -0
+ 240              		.cfi_startproc
+ 241              		@ args = 0, pretend = 0, frame = 0
+ 242              		@ frame_needed = 0, uses_anonymous_args = 0
+ 243              		.loc 1 61 1 is_stmt 0 view .LVU46
+ 244 0000 70B5     		push	{r4, r5, r6, lr}
+ 245              	.LCFI7:
+ 246              		.cfi_def_cfa_offset 16
+ 247              		.cfi_offset 4, -16
+ 248              		.cfi_offset 5, -12
+ 249              		.cfi_offset 6, -8
+ 250              		.cfi_offset 14, -4
+ 251 0002 0646     		mov	r6, r0
   62:Core/Src/sensors.c **** 	Set_Pin_Output(DS18B20_SENSOR_GPIO_Port, DS18B20_SENSOR_Pin); // set as output
- 263              		.loc 1 62 2 is_stmt 1 view .LVU50
- 264 0004 0821     		movs	r1, #8
- 265 0006 1A48     		ldr	r0, .L22
- 266              	.LVL18:
- 267              		.loc 1 62 2 is_stmt 0 view .LVU51
- 268 0008 FFF7FEFF 		bl	Set_Pin_Output
- 269              	.LVL19:
+ 252              		.loc 1 62 2 is_stmt 1 view .LVU47
+ 253 0004 0821     		movs	r1, #8
+ 254 0006 1A48     		ldr	r0, .L20
+ 255              	.LVL16:
+ 256              		.loc 1 62 2 is_stmt 0 view .LVU48
+ 257 0008 FFF7FEFF 		bl	Set_Pin_Output
+ 258              	.LVL17:
   63:Core/Src/sensors.c **** 
   64:Core/Src/sensors.c **** 	for (int i = 0; i < 8; i++)
- 270              		.loc 1 64 2 is_stmt 1 view .LVU52
- 271              	.LBB2:
- 272              		.loc 1 64 7 view .LVU53
- 273              		.loc 1 64 11 is_stmt 0 view .LVU54
- 274 000c 0024     		movs	r4, #0
- 275              		.loc 1 64 2 view .LVU55
- 276 000e 11E0     		b	.L16
- 277              	.LVL20:
- 278              	.L17:
+ 259              		.loc 1 64 2 is_stmt 1 view .LVU49
+ 260              	.LBB2:
+ 261              		.loc 1 64 7 view .LVU50
+ 262              		.loc 1 64 11 is_stmt 0 view .LVU51
+ 263 000c 0024     		movs	r4, #0
+ 264              		.loc 1 64 2 view .LVU52
+ 265 000e 11E0     		b	.L14
+ 266              	.LVL18:
+ 267              	.L15:
   65:Core/Src/sensors.c **** 	{
   66:Core/Src/sensors.c **** 
   67:Core/Src/sensors.c **** 		if ((data & (1 << i)) != 0) // if the bit is high
   68:Core/Src/sensors.c **** 		{
   69:Core/Src/sensors.c **** 			// write 1
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 7
-
-
   70:Core/Src/sensors.c **** 
   71:Core/Src/sensors.c **** 			Set_Pin_Output(DS18B20_SENSOR_GPIO_Port, DS18B20_SENSOR_Pin);		// set as output
   72:Core/Src/sensors.c **** 			HAL_GPIO_WritePin(DS18B20_SENSOR_GPIO_Port, DS18B20_SENSOR_Pin, 0); // pull the pin LOW
@@ -373,156 +358,159 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 1
   79:Core/Src/sensors.c **** 		else // if the bit is low
   80:Core/Src/sensors.c **** 		{
   81:Core/Src/sensors.c **** 			// write 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 7
+
+
   82:Core/Src/sensors.c **** 
   83:Core/Src/sensors.c **** 			Set_Pin_Output(DS18B20_SENSOR_GPIO_Port, DS18B20_SENSOR_Pin);
- 279              		.loc 1 83 4 is_stmt 1 view .LVU56
- 280 0010 174D     		ldr	r5, .L22
- 281 0012 0821     		movs	r1, #8
- 282 0014 2846     		mov	r0, r5
- 283 0016 FFF7FEFF 		bl	Set_Pin_Output
- 284              	.LVL21:
+ 268              		.loc 1 83 4 is_stmt 1 view .LVU53
+ 269 0010 174D     		ldr	r5, .L20
+ 270 0012 0821     		movs	r1, #8
+ 271 0014 2846     		mov	r0, r5
+ 272 0016 FFF7FEFF 		bl	Set_Pin_Output
+ 273              	.LVL19:
   84:Core/Src/sensors.c **** 			HAL_GPIO_WritePin(DS18B20_SENSOR_GPIO_Port, DS18B20_SENSOR_Pin, 0); // pull the pin LOW
- 285              		.loc 1 84 4 view .LVU57
- 286 001a 0022     		movs	r2, #0
- 287 001c 0821     		movs	r1, #8
- 288 001e 2846     		mov	r0, r5
- 289 0020 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 290              	.LVL22:
+ 274              		.loc 1 84 4 view .LVU54
+ 275 001a 0022     		movs	r2, #0
+ 276 001c 0821     		movs	r1, #8
+ 277 001e 2846     		mov	r0, r5
+ 278 0020 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 279              	.LVL20:
   85:Core/Src/sensors.c **** 			delay(50);															// wait for 60 us
- 291              		.loc 1 85 4 view .LVU58
- 292 0024 3220     		movs	r0, #50
- 293 0026 FFF7FEFF 		bl	delay
- 294              	.LVL23:
+ 280              		.loc 1 85 4 view .LVU55
+ 281 0024 3220     		movs	r0, #50
+ 282 0026 FFF7FEFF 		bl	delay
+ 283              	.LVL21:
   86:Core/Src/sensors.c **** 
   87:Core/Src/sensors.c **** 			Set_Pin_Input(DS18B20_SENSOR_GPIO_Port, DS18B20_SENSOR_Pin);
- 295              		.loc 1 87 4 view .LVU59
- 296 002a 0821     		movs	r1, #8
- 297 002c 2846     		mov	r0, r5
- 298 002e FFF7FEFF 		bl	Set_Pin_Input
- 299              	.LVL24:
- 300              	.L18:
+ 284              		.loc 1 87 4 view .LVU56
+ 285 002a 0821     		movs	r1, #8
+ 286 002c 2846     		mov	r0, r5
+ 287 002e FFF7FEFF 		bl	Set_Pin_Input
+ 288              	.LVL22:
+ 289              	.L16:
   64:Core/Src/sensors.c **** 	{
- 301              		.loc 1 64 25 discriminator 2 view .LVU60
+ 290              		.loc 1 64 25 discriminator 2 view .LVU57
   64:Core/Src/sensors.c **** 	{
- 302              		.loc 1 64 26 is_stmt 0 discriminator 2 view .LVU61
- 303 0032 0134     		adds	r4, r4, #1
- 304              	.LVL25:
- 305              	.L16:
+ 291              		.loc 1 64 26 is_stmt 0 discriminator 2 view .LVU58
+ 292 0032 0134     		adds	r4, r4, #1
+ 293              	.LVL23:
+ 294              	.L14:
   64:Core/Src/sensors.c **** 	{
- 306              		.loc 1 64 18 is_stmt 1 discriminator 1 view .LVU62
+ 295              		.loc 1 64 18 is_stmt 1 discriminator 1 view .LVU59
   64:Core/Src/sensors.c **** 	{
- 307              		.loc 1 64 2 is_stmt 0 discriminator 1 view .LVU63
- 308 0034 072C     		cmp	r4, #7
- 309 0036 19DC     		bgt	.L21
+ 296              		.loc 1 64 2 is_stmt 0 discriminator 1 view .LVU60
+ 297 0034 072C     		cmp	r4, #7
+ 298 0036 19DC     		bgt	.L19
   67:Core/Src/sensors.c **** 		{
- 310              		.loc 1 67 3 is_stmt 1 view .LVU64
+ 299              		.loc 1 67 3 is_stmt 1 view .LVU61
   67:Core/Src/sensors.c **** 		{
- 311              		.loc 1 67 25 is_stmt 0 view .LVU65
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 8
-
-
- 312 0038 46FA04F3 		asr	r3, r6, r4
+ 300              		.loc 1 67 25 is_stmt 0 view .LVU62
+ 301 0038 46FA04F3 		asr	r3, r6, r4
   67:Core/Src/sensors.c **** 		{
- 313              		.loc 1 67 6 view .LVU66
- 314 003c 13F0010F 		tst	r3, #1
- 315 0040 E6D0     		beq	.L17
+ 302              		.loc 1 67 6 view .LVU63
+ 303 003c 13F0010F 		tst	r3, #1
+ 304 0040 E6D0     		beq	.L15
   71:Core/Src/sensors.c **** 			HAL_GPIO_WritePin(DS18B20_SENSOR_GPIO_Port, DS18B20_SENSOR_Pin, 0); // pull the pin LOW
- 316              		.loc 1 71 4 is_stmt 1 view .LVU67
- 317 0042 0B4D     		ldr	r5, .L22
- 318 0044 0821     		movs	r1, #8
- 319 0046 2846     		mov	r0, r5
- 320 0048 FFF7FEFF 		bl	Set_Pin_Output
- 321              	.LVL26:
+ 305              		.loc 1 71 4 is_stmt 1 view .LVU64
+ 306 0042 0B4D     		ldr	r5, .L20
+ 307 0044 0821     		movs	r1, #8
+ 308 0046 2846     		mov	r0, r5
+ 309 0048 FFF7FEFF 		bl	Set_Pin_Output
+ 310              	.LVL24:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 8
+
+
   72:Core/Src/sensors.c **** 			delay(1);															// wait for 1 us
- 322              		.loc 1 72 4 view .LVU68
- 323 004c 0022     		movs	r2, #0
- 324 004e 0821     		movs	r1, #8
- 325 0050 2846     		mov	r0, r5
- 326 0052 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 327              	.LVL27:
+ 311              		.loc 1 72 4 view .LVU65
+ 312 004c 0022     		movs	r2, #0
+ 313 004e 0821     		movs	r1, #8
+ 314 0050 2846     		mov	r0, r5
+ 315 0052 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 316              	.LVL25:
   73:Core/Src/sensors.c **** 
- 328              		.loc 1 73 4 view .LVU69
- 329 0056 0120     		movs	r0, #1
- 330 0058 FFF7FEFF 		bl	delay
- 331              	.LVL28:
+ 317              		.loc 1 73 4 view .LVU66
+ 318 0056 0120     		movs	r0, #1
+ 319 0058 FFF7FEFF 		bl	delay
+ 320              	.LVL26:
   75:Core/Src/sensors.c **** 			delay(50);													 // wait for 60 us
- 332              		.loc 1 75 4 view .LVU70
- 333 005c 0821     		movs	r1, #8
- 334 005e 2846     		mov	r0, r5
- 335 0060 FFF7FEFF 		bl	Set_Pin_Input
- 336              	.LVL29:
+ 321              		.loc 1 75 4 view .LVU67
+ 322 005c 0821     		movs	r1, #8
+ 323 005e 2846     		mov	r0, r5
+ 324 0060 FFF7FEFF 		bl	Set_Pin_Input
+ 325              	.LVL27:
   76:Core/Src/sensors.c **** 		}
- 337              		.loc 1 76 4 view .LVU71
- 338 0064 3220     		movs	r0, #50
- 339 0066 FFF7FEFF 		bl	delay
- 340              	.LVL30:
- 341 006a E2E7     		b	.L18
- 342              	.L21:
- 343              	.LBE2:
+ 326              		.loc 1 76 4 view .LVU68
+ 327 0064 3220     		movs	r0, #50
+ 328 0066 FFF7FEFF 		bl	delay
+ 329              	.LVL28:
+ 330 006a E2E7     		b	.L16
+ 331              	.L19:
+ 332              	.LBE2:
   88:Core/Src/sensors.c **** 		}
   89:Core/Src/sensors.c **** 	}
   90:Core/Src/sensors.c **** }
- 344              		.loc 1 90 1 is_stmt 0 view .LVU72
- 345 006c 70BD     		pop	{r4, r5, r6, pc}
- 346              	.LVL31:
- 347              	.L23:
- 348              		.loc 1 90 1 view .LVU73
- 349 006e 00BF     		.align	2
- 350              	.L22:
- 351 0070 00100140 		.word	1073811456
- 352              		.cfi_endproc
- 353              	.LFE72:
- 355              		.section	.text.DS18B20_Read,"ax",%progbits
- 356              		.align	1
- 357              		.global	DS18B20_Read
- 358              		.syntax unified
- 359              		.thumb
- 360              		.thumb_func
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 9
-
-
- 362              	DS18B20_Read:
- 363              	.LFB73:
+ 333              		.loc 1 90 1 is_stmt 0 view .LVU69
+ 334 006c 70BD     		pop	{r4, r5, r6, pc}
+ 335              	.LVL29:
+ 336              	.L21:
+ 337              		.loc 1 90 1 view .LVU70
+ 338 006e 00BF     		.align	2
+ 339              	.L20:
+ 340 0070 00100140 		.word	1073811456
+ 341              		.cfi_endproc
+ 342              	.LFE72:
+ 344              		.section	.text.DS18B20_Read,"ax",%progbits
+ 345              		.align	1
+ 346              		.global	DS18B20_Read
+ 347              		.syntax unified
+ 348              		.thumb
+ 349              		.thumb_func
+ 351              	DS18B20_Read:
+ 352              	.LFB73:
   91:Core/Src/sensors.c **** 
   92:Core/Src/sensors.c **** uint8_t DS18B20_Read(void)
   93:Core/Src/sensors.c **** {
- 364              		.loc 1 93 1 is_stmt 1 view -0
- 365              		.cfi_startproc
- 366              		@ args = 0, pretend = 0, frame = 0
- 367              		@ frame_needed = 0, uses_anonymous_args = 0
- 368 0000 70B5     		push	{r4, r5, r6, lr}
- 369              	.LCFI8:
- 370              		.cfi_def_cfa_offset 16
- 371              		.cfi_offset 4, -16
- 372              		.cfi_offset 5, -12
- 373              		.cfi_offset 6, -8
- 374              		.cfi_offset 14, -4
+ 353              		.loc 1 93 1 is_stmt 1 view -0
+ 354              		.cfi_startproc
+ 355              		@ args = 0, pretend = 0, frame = 0
+ 356              		@ frame_needed = 0, uses_anonymous_args = 0
+ 357 0000 70B5     		push	{r4, r5, r6, lr}
+ 358              	.LCFI8:
+ 359              		.cfi_def_cfa_offset 16
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 9
+
+
+ 360              		.cfi_offset 4, -16
+ 361              		.cfi_offset 5, -12
+ 362              		.cfi_offset 6, -8
+ 363              		.cfi_offset 14, -4
   94:Core/Src/sensors.c **** 	uint8_t value = 0;
- 375              		.loc 1 94 2 view .LVU75
- 376              	.LVL32:
+ 364              		.loc 1 94 2 view .LVU72
+ 365              	.LVL30:
   95:Core/Src/sensors.c **** 
   96:Core/Src/sensors.c **** 	Set_Pin_Input(DS18B20_SENSOR_GPIO_Port, DS18B20_SENSOR_Pin);
- 377              		.loc 1 96 2 view .LVU76
- 378 0002 0821     		movs	r1, #8
- 379 0004 1448     		ldr	r0, .L30
- 380 0006 FFF7FEFF 		bl	Set_Pin_Input
- 381              	.LVL33:
+ 366              		.loc 1 96 2 view .LVU73
+ 367 0002 0821     		movs	r1, #8
+ 368 0004 1448     		ldr	r0, .L28
+ 369 0006 FFF7FEFF 		bl	Set_Pin_Input
+ 370              	.LVL31:
   97:Core/Src/sensors.c **** 
   98:Core/Src/sensors.c **** 	for (int i = 0; i < 8; i++)
- 382              		.loc 1 98 2 view .LVU77
- 383              	.LBB3:
- 384              		.loc 1 98 7 view .LVU78
- 385              		.loc 1 98 11 is_stmt 0 view .LVU79
- 386 000a 0025     		movs	r5, #0
- 387              	.LBE3:
+ 371              		.loc 1 98 2 view .LVU74
+ 372              	.LBB3:
+ 373              		.loc 1 98 7 view .LVU75
+ 374              		.loc 1 98 11 is_stmt 0 view .LVU76
+ 375 000a 0025     		movs	r5, #0
+ 376              	.LBE3:
   94:Core/Src/sensors.c **** 
- 388              		.loc 1 94 10 view .LVU80
- 389 000c 2E46     		mov	r6, r5
- 390              	.LBB4:
- 391              		.loc 1 98 2 view .LVU81
- 392 000e 03E0     		b	.L25
- 393              	.LVL34:
- 394              	.L26:
+ 377              		.loc 1 94 10 view .LVU77
+ 378 000c 2E46     		mov	r6, r5
+ 379              	.LBB4:
+ 380              		.loc 1 98 2 view .LVU78
+ 381 000e 03E0     		b	.L23
+ 382              	.LVL32:
+ 383              	.L24:
   99:Core/Src/sensors.c **** 	{
  100:Core/Src/sensors.c **** 		Set_Pin_Output(DS18B20_SENSOR_GPIO_Port, DS18B20_SENSOR_Pin); // set as output
  101:Core/Src/sensors.c **** 
@@ -535,868 +523,931 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 1
  108:Core/Src/sensors.c **** 			value |= 1 << i; // read = 1
  109:Core/Src/sensors.c **** 		}
  110:Core/Src/sensors.c **** 		delay(50); // wait for 60 us
- 395              		.loc 1 110 3 is_stmt 1 discriminator 2 view .LVU82
- 396 0010 3220     		movs	r0, #50
- 397 0012 FFF7FEFF 		bl	delay
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 10
+ 384              		.loc 1 110 3 is_stmt 1 discriminator 2 view .LVU79
+ 385 0010 3220     		movs	r0, #50
+ 386 0012 FFF7FEFF 		bl	delay
+ 387              	.LVL33:
+  98:Core/Src/sensors.c **** 	{
+ 388              		.loc 1 98 25 discriminator 2 view .LVU80
+  98:Core/Src/sensors.c **** 	{
+ 389              		.loc 1 98 26 is_stmt 0 discriminator 2 view .LVU81
+ 390 0016 0135     		adds	r5, r5, #1
+ 391              	.LVL34:
+ 392              	.L23:
+  98:Core/Src/sensors.c **** 	{
+ 393              		.loc 1 98 18 is_stmt 1 discriminator 1 view .LVU82
+  98:Core/Src/sensors.c **** 	{
+ 394              		.loc 1 98 2 is_stmt 0 discriminator 1 view .LVU83
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 10
 
 
- 398              	.LVL35:
-  98:Core/Src/sensors.c **** 	{
- 399              		.loc 1 98 25 discriminator 2 view .LVU83
-  98:Core/Src/sensors.c **** 	{
- 400              		.loc 1 98 26 is_stmt 0 discriminator 2 view .LVU84
- 401 0016 0135     		adds	r5, r5, #1
- 402              	.LVL36:
- 403              	.L25:
-  98:Core/Src/sensors.c **** 	{
- 404              		.loc 1 98 18 is_stmt 1 discriminator 1 view .LVU85
-  98:Core/Src/sensors.c **** 	{
- 405              		.loc 1 98 2 is_stmt 0 discriminator 1 view .LVU86
- 406 0018 072D     		cmp	r5, #7
- 407 001a 1BDC     		bgt	.L29
+ 395 0018 072D     		cmp	r5, #7
+ 396 001a 1BDC     		bgt	.L27
  100:Core/Src/sensors.c **** 
- 408              		.loc 1 100 3 is_stmt 1 view .LVU87
- 409 001c 0E4C     		ldr	r4, .L30
- 410 001e 0821     		movs	r1, #8
- 411 0020 2046     		mov	r0, r4
- 412 0022 FFF7FEFF 		bl	Set_Pin_Output
- 413              	.LVL37:
+ 397              		.loc 1 100 3 is_stmt 1 view .LVU84
+ 398 001c 0E4C     		ldr	r4, .L28
+ 399 001e 0821     		movs	r1, #8
+ 400 0020 2046     		mov	r0, r4
+ 401 0022 FFF7FEFF 		bl	Set_Pin_Output
+ 402              	.LVL35:
  102:Core/Src/sensors.c **** 		delay(1);															// wait for > 1us
- 414              		.loc 1 102 3 view .LVU88
- 415 0026 0022     		movs	r2, #0
- 416 0028 0821     		movs	r1, #8
- 417 002a 2046     		mov	r0, r4
- 418 002c FFF7FEFF 		bl	HAL_GPIO_WritePin
- 419              	.LVL38:
+ 403              		.loc 1 102 3 view .LVU85
+ 404 0026 0022     		movs	r2, #0
+ 405 0028 0821     		movs	r1, #8
+ 406 002a 2046     		mov	r0, r4
+ 407 002c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 408              	.LVL36:
  103:Core/Src/sensors.c **** 
- 420              		.loc 1 103 3 view .LVU89
- 421 0030 0120     		movs	r0, #1
- 422 0032 FFF7FEFF 		bl	delay
- 423              	.LVL39:
+ 409              		.loc 1 103 3 view .LVU86
+ 410 0030 0120     		movs	r0, #1
+ 411 0032 FFF7FEFF 		bl	delay
+ 412              	.LVL37:
  105:Core/Src/sensors.c **** 		if (HAL_GPIO_ReadPin(DS18B20_SENSOR_GPIO_Port, DS18B20_SENSOR_Pin)) // if the pin is HIGH
- 424              		.loc 1 105 3 view .LVU90
- 425 0036 0821     		movs	r1, #8
- 426 0038 2046     		mov	r0, r4
- 427 003a FFF7FEFF 		bl	Set_Pin_Input
- 428              	.LVL40:
+ 413              		.loc 1 105 3 view .LVU87
+ 414 0036 0821     		movs	r1, #8
+ 415 0038 2046     		mov	r0, r4
+ 416 003a FFF7FEFF 		bl	Set_Pin_Input
+ 417              	.LVL38:
  106:Core/Src/sensors.c **** 		{
- 429              		.loc 1 106 3 view .LVU91
+ 418              		.loc 1 106 3 view .LVU88
  106:Core/Src/sensors.c **** 		{
- 430              		.loc 1 106 7 is_stmt 0 view .LVU92
- 431 003e 0821     		movs	r1, #8
- 432 0040 2046     		mov	r0, r4
- 433 0042 FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 434              	.LVL41:
+ 419              		.loc 1 106 7 is_stmt 0 view .LVU89
+ 420 003e 0821     		movs	r1, #8
+ 421 0040 2046     		mov	r0, r4
+ 422 0042 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 423              	.LVL39:
  106:Core/Src/sensors.c **** 		{
- 435              		.loc 1 106 6 view .LVU93
- 436 0046 0028     		cmp	r0, #0
- 437 0048 E2D0     		beq	.L26
+ 424              		.loc 1 106 6 view .LVU90
+ 425 0046 0028     		cmp	r0, #0
+ 426 0048 E2D0     		beq	.L24
  108:Core/Src/sensors.c **** 		}
- 438              		.loc 1 108 4 is_stmt 1 view .LVU94
+ 427              		.loc 1 108 4 is_stmt 1 view .LVU91
  108:Core/Src/sensors.c **** 		}
- 439              		.loc 1 108 15 is_stmt 0 view .LVU95
- 440 004a 0123     		movs	r3, #1
- 441 004c AB40     		lsls	r3, r3, r5
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 11
+ 428              		.loc 1 108 15 is_stmt 0 view .LVU92
+ 429 004a 0123     		movs	r3, #1
+ 430 004c AB40     		lsls	r3, r3, r5
+ 108:Core/Src/sensors.c **** 		}
+ 431              		.loc 1 108 10 view .LVU93
+ 432 004e 1E43     		orrs	r6, r6, r3
+ 433              	.LVL40:
+ 108:Core/Src/sensors.c **** 		}
+ 434              		.loc 1 108 10 view .LVU94
+ 435 0050 F6B2     		uxtb	r6, r6
+ 436              	.LVL41:
+ 108:Core/Src/sensors.c **** 		}
+ 437              		.loc 1 108 10 view .LVU95
+ 438 0052 DDE7     		b	.L24
+ 439              	.L27:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 11
 
 
  108:Core/Src/sensors.c **** 		}
- 442              		.loc 1 108 10 view .LVU96
- 443 004e 1E43     		orrs	r6, r6, r3
- 444              	.LVL42:
- 108:Core/Src/sensors.c **** 		}
- 445              		.loc 1 108 10 view .LVU97
- 446 0050 F6B2     		uxtb	r6, r6
- 447              	.LVL43:
- 108:Core/Src/sensors.c **** 		}
- 448              		.loc 1 108 10 view .LVU98
- 449 0052 DDE7     		b	.L26
- 450              	.L29:
- 108:Core/Src/sensors.c **** 		}
- 451              		.loc 1 108 10 view .LVU99
- 452              	.LBE4:
+ 440              		.loc 1 108 10 view .LVU96
+ 441              	.LBE4:
  111:Core/Src/sensors.c **** 	}
  112:Core/Src/sensors.c **** 	return value;
- 453              		.loc 1 112 2 is_stmt 1 view .LVU100
+ 442              		.loc 1 112 2 is_stmt 1 view .LVU97
  113:Core/Src/sensors.c **** }
- 454              		.loc 1 113 1 is_stmt 0 view .LVU101
- 455 0054 3046     		mov	r0, r6
- 456 0056 70BD     		pop	{r4, r5, r6, pc}
- 457              	.LVL44:
- 458              	.L31:
- 459              		.loc 1 113 1 view .LVU102
- 460              		.align	2
- 461              	.L30:
- 462 0058 00100140 		.word	1073811456
- 463              		.cfi_endproc
- 464              	.LFE73:
- 466              		.global	__aeabi_ui2f
- 467              		.global	__aeabi_fmul
- 468              		.section	.text.DS18B20_Result,"ax",%progbits
- 469              		.align	1
- 470              		.global	DS18B20_Result
- 471              		.syntax unified
- 472              		.thumb
- 473              		.thumb_func
- 475              	DS18B20_Result:
- 476              	.LFB74:
+ 443              		.loc 1 113 1 is_stmt 0 view .LVU98
+ 444 0054 3046     		mov	r0, r6
+ 445 0056 70BD     		pop	{r4, r5, r6, pc}
+ 446              	.LVL42:
+ 447              	.L29:
+ 448              		.loc 1 113 1 view .LVU99
+ 449              		.align	2
+ 450              	.L28:
+ 451 0058 00100140 		.word	1073811456
+ 452              		.cfi_endproc
+ 453              	.LFE73:
+ 455              		.section	.rodata.DS18B20_Result.str1.4,"aMS",%progbits,1
+ 456              		.align	2
+ 457              	.LC0:
+ 458 0000 496E6974 		.ascii	"Init ds18b20 fail\012Init again\012\000"
+ 458      20647331 
+ 458      38623230 
+ 458      20666169 
+ 458      6C0A496E 
+ 459              		.global	__aeabi_ui2f
+ 460              		.global	__aeabi_fmul
+ 461              		.section	.text.DS18B20_Result,"ax",%progbits
+ 462              		.align	1
+ 463              		.global	DS18B20_Result
+ 464              		.syntax unified
+ 465              		.thumb
+ 466              		.thumb_func
+ 468              	DS18B20_Result:
+ 469              	.LFB74:
  114:Core/Src/sensors.c **** 
  115:Core/Src/sensors.c **** float DS18B20_Result(void)
  116:Core/Src/sensors.c **** {
- 477              		.loc 1 116 1 is_stmt 1 view -0
- 478              		.cfi_startproc
- 479              		@ args = 0, pretend = 0, frame = 0
- 480              		@ frame_needed = 0, uses_anonymous_args = 0
- 481 0000 10B5     		push	{r4, lr}
- 482              	.LCFI9:
- 483              		.cfi_def_cfa_offset 8
- 484              		.cfi_offset 4, -8
- 485              		.cfi_offset 14, -4
- 117:Core/Src/sensors.c **** 	uint8_t Presence = 0;
- 486              		.loc 1 117 2 view .LVU104
- 487              	.LVL45:
+ 470              		.loc 1 116 1 is_stmt 1 view -0
+ 471              		.cfi_startproc
+ 472              		@ args = 0, pretend = 0, frame = 0
+ 473              		@ frame_needed = 0, uses_anonymous_args = 0
+ 474 0000 10B5     		push	{r4, lr}
+ 475              	.LCFI9:
+ 476              		.cfi_def_cfa_offset 8
+ 477              		.cfi_offset 4, -8
+ 478              		.cfi_offset 14, -4
+ 117:Core/Src/sensors.c **** 	uint8_t Presence = INIT_FAIL;
+ 479              		.loc 1 117 2 view .LVU101
+ 480              	.LVL43:
  118:Core/Src/sensors.c **** 	uint8_t Temp_byte1, Temp_byte2;
- 488              		.loc 1 118 2 view .LVU105
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 12
-
-
+ 481              		.loc 1 118 2 view .LVU102
  119:Core/Src/sensors.c **** 	uint16_t TEMP;
- 489              		.loc 1 119 2 view .LVU106
+ 482              		.loc 1 119 2 view .LVU103
  120:Core/Src/sensors.c **** 	float Temperature;
- 490              		.loc 1 120 2 view .LVU107
+ 483              		.loc 1 120 2 view .LVU104
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 12
+
+
  121:Core/Src/sensors.c **** 	Presence = DS18B20_Start();
- 491              		.loc 1 121 2 view .LVU108
- 492              		.loc 1 121 13 is_stmt 0 view .LVU109
- 493 0002 FFF7FEFF 		bl	DS18B20_Start
- 494              	.LVL46:
- 122:Core/Src/sensors.c **** 	HAL_Delay(1);
- 495              		.loc 1 122 2 is_stmt 1 view .LVU110
- 496 0006 0120     		movs	r0, #1
- 497 0008 FFF7FEFF 		bl	HAL_Delay
- 498              	.LVL47:
- 123:Core/Src/sensors.c **** 	DS18B20_Write(0xCC); // skip ROM
- 499              		.loc 1 123 2 view .LVU111
- 500 000c CC20     		movs	r0, #204
- 501 000e FFF7FEFF 		bl	DS18B20_Write
- 502              	.LVL48:
- 124:Core/Src/sensors.c **** 	DS18B20_Write(0x44); // convert t
- 503              		.loc 1 124 2 view .LVU112
- 504 0012 4420     		movs	r0, #68
- 505 0014 FFF7FEFF 		bl	DS18B20_Write
- 506              	.LVL49:
- 125:Core/Src/sensors.c **** 	HAL_Delay(800);
- 507              		.loc 1 125 2 view .LVU113
- 508 0018 4FF44870 		mov	r0, #800
- 509 001c FFF7FEFF 		bl	HAL_Delay
- 510              	.LVL50:
- 126:Core/Src/sensors.c **** 
- 127:Core/Src/sensors.c **** 	Presence = DS18B20_Start();
- 511              		.loc 1 127 2 view .LVU114
- 512              		.loc 1 127 13 is_stmt 0 view .LVU115
- 513 0020 FFF7FEFF 		bl	DS18B20_Start
- 514              	.LVL51:
- 128:Core/Src/sensors.c **** 	HAL_Delay(1);
- 515              		.loc 1 128 2 is_stmt 1 view .LVU116
- 516 0024 0120     		movs	r0, #1
- 517 0026 FFF7FEFF 		bl	HAL_Delay
- 518              	.LVL52:
- 129:Core/Src/sensors.c **** 	DS18B20_Write(0xCC); // skip ROM
- 519              		.loc 1 129 2 view .LVU117
- 520 002a CC20     		movs	r0, #204
- 521 002c FFF7FEFF 		bl	DS18B20_Write
- 522              	.LVL53:
- 130:Core/Src/sensors.c **** 	DS18B20_Write(0xBE); // Read Scratch-pad
- 523              		.loc 1 130 2 view .LVU118
- 524 0030 BE20     		movs	r0, #190
- 525 0032 FFF7FEFF 		bl	DS18B20_Write
- 526              	.LVL54:
+ 484              		.loc 1 121 2 view .LVU105
+ 485              		.loc 1 121 13 is_stmt 0 view .LVU106
+ 486 0002 FFF7FEFF 		bl	DS18B20_Start
+ 487              	.LVL44:
+ 122:Core/Src/sensors.c **** 	while(Presence!=INIT_SUCCESS)
+ 488              		.loc 1 122 2 is_stmt 1 view .LVU107
+ 489              		.loc 1 122 7 is_stmt 0 view .LVU108
+ 490 0006 04E0     		b	.L31
+ 491              	.L32:
+ 123:Core/Src/sensors.c **** 	{
+ 124:Core/Src/sensors.c **** 		log_data("Init ds18b20 fail\nInit again\n");
+ 492              		.loc 1 124 3 is_stmt 1 view .LVU109
+ 493 0008 1648     		ldr	r0, .L34
+ 494              	.LVL45:
+ 495              		.loc 1 124 3 is_stmt 0 view .LVU110
+ 496 000a FFF7FEFF 		bl	log_data
+ 497              	.LVL46:
+ 125:Core/Src/sensors.c **** 		Presence = DS18B20_Start();
+ 498              		.loc 1 125 3 is_stmt 1 view .LVU111
+ 499              		.loc 1 125 14 is_stmt 0 view .LVU112
+ 500 000e FFF7FEFF 		bl	DS18B20_Start
+ 501              	.LVL47:
+ 502              	.L31:
+ 122:Core/Src/sensors.c **** 	while(Presence!=INIT_SUCCESS)
+ 503              		.loc 1 122 7 is_stmt 1 view .LVU113
+ 504 0012 0128     		cmp	r0, #1
+ 505 0014 F8D1     		bne	.L32
+ 126:Core/Src/sensors.c **** 	}
+ 127:Core/Src/sensors.c **** 	HAL_Delay(1);
+ 506              		.loc 1 127 2 view .LVU114
+ 507 0016 FFF7FEFF 		bl	HAL_Delay
+ 508              	.LVL48:
+ 128:Core/Src/sensors.c **** 	DS18B20_Write(0xCC); // skip ROM
+ 509              		.loc 1 128 2 view .LVU115
+ 510 001a CC20     		movs	r0, #204
+ 511 001c FFF7FEFF 		bl	DS18B20_Write
+ 512              	.LVL49:
+ 129:Core/Src/sensors.c **** 	DS18B20_Write(0x44); // convert t
+ 513              		.loc 1 129 2 view .LVU116
+ 514 0020 4420     		movs	r0, #68
+ 515 0022 FFF7FEFF 		bl	DS18B20_Write
+ 516              	.LVL50:
+ 130:Core/Src/sensors.c **** 	HAL_Delay(800);
+ 517              		.loc 1 130 2 view .LVU117
+ 518 0026 4FF44870 		mov	r0, #800
+ 519 002a FFF7FEFF 		bl	HAL_Delay
+ 520              	.LVL51:
  131:Core/Src/sensors.c **** 
- 132:Core/Src/sensors.c **** 	Temp_byte1 = DS18B20_Read();
- 527              		.loc 1 132 2 view .LVU119
- 528              		.loc 1 132 15 is_stmt 0 view .LVU120
- 529 0036 FFF7FEFF 		bl	DS18B20_Read
- 530              	.LVL55:
- 531 003a 0446     		mov	r4, r0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 13
+ 132:Core/Src/sensors.c **** 	Presence = DS18B20_Start();
+ 521              		.loc 1 132 2 view .LVU118
+ 522              		.loc 1 132 13 is_stmt 0 view .LVU119
+ 523 002e FFF7FEFF 		bl	DS18B20_Start
+ 524              	.LVL52:
+ 133:Core/Src/sensors.c **** 	HAL_Delay(1);
+ 525              		.loc 1 133 2 is_stmt 1 view .LVU120
+ 526 0032 0120     		movs	r0, #1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 13
 
 
- 532              	.LVL56:
- 133:Core/Src/sensors.c **** 	Temp_byte2 = DS18B20_Read();
- 533              		.loc 1 133 2 is_stmt 1 view .LVU121
- 534              		.loc 1 133 15 is_stmt 0 view .LVU122
- 535 003c FFF7FEFF 		bl	DS18B20_Read
- 536              	.LVL57:
- 134:Core/Src/sensors.c **** 	TEMP = (Temp_byte2 << 8) | Temp_byte1;
- 537              		.loc 1 134 2 is_stmt 1 view .LVU123
- 538              		.loc 1 134 27 is_stmt 0 view .LVU124
- 539 0040 44EA0020 		orr	r0, r4, r0, lsl #8
- 540              	.LVL58:
- 135:Core/Src/sensors.c **** 	Temperature = (float)TEMP / 16;
- 541              		.loc 1 135 2 is_stmt 1 view .LVU125
- 542              		.loc 1 135 16 is_stmt 0 view .LVU126
- 543 0044 80B2     		uxth	r0, r0
- 544              		.loc 1 135 16 view .LVU127
- 545 0046 FFF7FEFF 		bl	__aeabi_ui2f
- 546              	.LVL59:
- 547              		.loc 1 135 14 view .LVU128
- 548 004a 4FF07651 		mov	r1, #1031798784
- 549 004e FFF7FEFF 		bl	__aeabi_fmul
- 550              	.LVL60:
- 136:Core/Src/sensors.c **** 	return Temperature;
- 551              		.loc 1 136 2 is_stmt 1 view .LVU129
- 137:Core/Src/sensors.c **** }
- 552              		.loc 1 137 1 is_stmt 0 view .LVU130
- 553 0052 10BD     		pop	{r4, pc}
- 554              		.loc 1 137 1 view .LVU131
- 555              		.cfi_endproc
- 556              	.LFE74:
- 558              		.section	.text.DHT11_Start,"ax",%progbits
- 559              		.align	1
- 560              		.global	DHT11_Start
- 561              		.syntax unified
- 562              		.thumb
- 563              		.thumb_func
- 565              	DHT11_Start:
- 566              	.LFB75:
- 138:Core/Src/sensors.c **** 
- 139:Core/Src/sensors.c **** /*****************************DHT11*************************/
- 140:Core/Src/sensors.c **** void DHT11_Start(void)
- 141:Core/Src/sensors.c **** {
- 567              		.loc 1 141 1 is_stmt 1 view -0
- 568              		.cfi_startproc
- 569              		@ args = 0, pretend = 0, frame = 0
- 570              		@ frame_needed = 0, uses_anonymous_args = 0
- 571 0000 10B5     		push	{r4, lr}
- 572              	.LCFI10:
- 573              		.cfi_def_cfa_offset 8
- 574              		.cfi_offset 4, -8
- 575              		.cfi_offset 14, -4
- 142:Core/Src/sensors.c **** 	Set_Pin_Output(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin);		// set the pin as output
- 576              		.loc 1 142 2 view .LVU133
- 577 0002 0D4C     		ldr	r4, .L36
- 578 0004 1021     		movs	r1, #16
- 579 0006 2046     		mov	r0, r4
- 580 0008 FFF7FEFF 		bl	Set_Pin_Output
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 14
+ 527 0034 FFF7FEFF 		bl	HAL_Delay
+ 528              	.LVL53:
+ 134:Core/Src/sensors.c **** 	DS18B20_Write(0xCC); // skip ROM
+ 529              		.loc 1 134 2 view .LVU121
+ 530 0038 CC20     		movs	r0, #204
+ 531 003a FFF7FEFF 		bl	DS18B20_Write
+ 532              	.LVL54:
+ 135:Core/Src/sensors.c **** 	DS18B20_Write(0xBE); // Read Scratch-pad
+ 533              		.loc 1 135 2 view .LVU122
+ 534 003e BE20     		movs	r0, #190
+ 535 0040 FFF7FEFF 		bl	DS18B20_Write
+ 536              	.LVL55:
+ 136:Core/Src/sensors.c **** 
+ 137:Core/Src/sensors.c **** 	Temp_byte1 = DS18B20_Read();
+ 537              		.loc 1 137 2 view .LVU123
+ 538              		.loc 1 137 15 is_stmt 0 view .LVU124
+ 539 0044 FFF7FEFF 		bl	DS18B20_Read
+ 540              	.LVL56:
+ 541 0048 0446     		mov	r4, r0
+ 542              	.LVL57:
+ 138:Core/Src/sensors.c **** 	Temp_byte2 = DS18B20_Read();
+ 543              		.loc 1 138 2 is_stmt 1 view .LVU125
+ 544              		.loc 1 138 15 is_stmt 0 view .LVU126
+ 545 004a FFF7FEFF 		bl	DS18B20_Read
+ 546              	.LVL58:
+ 139:Core/Src/sensors.c **** 	TEMP = (Temp_byte2 << 8) | Temp_byte1;
+ 547              		.loc 1 139 2 is_stmt 1 view .LVU127
+ 548              		.loc 1 139 27 is_stmt 0 view .LVU128
+ 549 004e 44EA0020 		orr	r0, r4, r0, lsl #8
+ 550              	.LVL59:
+ 140:Core/Src/sensors.c **** 	Temperature = (float)TEMP / 16;
+ 551              		.loc 1 140 2 is_stmt 1 view .LVU129
+ 552              		.loc 1 140 16 is_stmt 0 view .LVU130
+ 553 0052 80B2     		uxth	r0, r0
+ 554              		.loc 1 140 16 view .LVU131
+ 555 0054 FFF7FEFF 		bl	__aeabi_ui2f
+ 556              	.LVL60:
+ 557              		.loc 1 140 14 view .LVU132
+ 558 0058 4FF07651 		mov	r1, #1031798784
+ 559 005c FFF7FEFF 		bl	__aeabi_fmul
+ 560              	.LVL61:
+ 141:Core/Src/sensors.c **** 	return Temperature;
+ 561              		.loc 1 141 2 is_stmt 1 view .LVU133
+ 142:Core/Src/sensors.c **** }
+ 562              		.loc 1 142 1 is_stmt 0 view .LVU134
+ 563 0060 10BD     		pop	{r4, pc}
+ 564              	.LVL62:
+ 565              	.L35:
+ 566              		.loc 1 142 1 view .LVU135
+ 567 0062 00BF     		.align	2
+ 568              	.L34:
+ 569 0064 00000000 		.word	.LC0
+ 570              		.cfi_endproc
+ 571              	.LFE74:
+ 573              		.section	.text.DHT11_Start,"ax",%progbits
+ 574              		.align	1
+ 575              		.global	DHT11_Start
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 14
 
 
- 581              	.LVL61:
- 143:Core/Src/sensors.c **** 	HAL_GPIO_WritePin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin, 0); // pull the pin low
- 582              		.loc 1 143 2 view .LVU134
- 583 000c 0022     		movs	r2, #0
- 584 000e 1021     		movs	r1, #16
- 585 0010 2046     		mov	r0, r4
- 586 0012 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 587              	.LVL62:
- 144:Core/Src/sensors.c **** 	delay(18000);													// wait for 18ms		1.2ms for DHT22 10ms
- 588              		.loc 1 144 2 view .LVU135
- 589 0016 44F25060 		movw	r0, #18000
- 590 001a FFF7FEFF 		bl	delay
- 591              	.LVL63:
- 145:Core/Src/sensors.c **** 	HAL_GPIO_WritePin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin, 1); // pull the pin high
- 592              		.loc 1 145 2 view .LVU136
- 593 001e 0122     		movs	r2, #1
- 594 0020 1021     		movs	r1, #16
- 595 0022 2046     		mov	r0, r4
- 596 0024 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 597              	.LVL64:
- 146:Core/Src/sensors.c **** 	delay(20);														// wait for 20us
- 598              		.loc 1 146 2 view .LVU137
- 599 0028 1420     		movs	r0, #20
- 600 002a FFF7FEFF 		bl	delay
- 601              	.LVL65:
- 147:Core/Src/sensors.c **** 	Set_Pin_Input(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin);		// set as input
- 602              		.loc 1 147 2 view .LVU138
- 603 002e 1021     		movs	r1, #16
- 604 0030 2046     		mov	r0, r4
- 605 0032 FFF7FEFF 		bl	Set_Pin_Input
- 606              	.LVL66:
- 148:Core/Src/sensors.c **** }
- 607              		.loc 1 148 1 is_stmt 0 view .LVU139
- 608 0036 10BD     		pop	{r4, pc}
- 609              	.L37:
- 610              		.align	2
- 611              	.L36:
- 612 0038 00100140 		.word	1073811456
- 613              		.cfi_endproc
- 614              	.LFE75:
- 616              		.section	.text.DHT11_Check_Response,"ax",%progbits
- 617              		.align	1
- 618              		.global	DHT11_Check_Response
- 619              		.syntax unified
- 620              		.thumb
- 621              		.thumb_func
- 623              	DHT11_Check_Response:
- 624              	.LFB76:
- 149:Core/Src/sensors.c **** 
- 150:Core/Src/sensors.c **** uint8_t DHT11_Check_Response(void)
- 151:Core/Src/sensors.c **** {
- 625              		.loc 1 151 1 is_stmt 1 view -0
- 626              		.cfi_startproc
- 627              		@ args = 0, pretend = 0, frame = 0
- 628              		@ frame_needed = 0, uses_anonymous_args = 0
- 629 0000 10B5     		push	{r4, lr}
- 630              	.LCFI11:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 15
+ 576              		.syntax unified
+ 577              		.thumb
+ 578              		.thumb_func
+ 580              	DHT11_Start:
+ 581              	.LFB75:
+ 143:Core/Src/sensors.c **** 
+ 144:Core/Src/sensors.c **** /*****************************DHT11*************************/
+ 145:Core/Src/sensors.c **** void DHT11_Start(void)
+ 146:Core/Src/sensors.c **** {
+ 582              		.loc 1 146 1 is_stmt 1 view -0
+ 583              		.cfi_startproc
+ 584              		@ args = 0, pretend = 0, frame = 0
+ 585              		@ frame_needed = 0, uses_anonymous_args = 0
+ 586 0000 10B5     		push	{r4, lr}
+ 587              	.LCFI10:
+ 588              		.cfi_def_cfa_offset 8
+ 589              		.cfi_offset 4, -8
+ 590              		.cfi_offset 14, -4
+ 147:Core/Src/sensors.c **** 	Set_Pin_Output(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin);		// set the pin as output
+ 591              		.loc 1 147 2 view .LVU137
+ 592 0002 0D4C     		ldr	r4, .L38
+ 593 0004 1021     		movs	r1, #16
+ 594 0006 2046     		mov	r0, r4
+ 595 0008 FFF7FEFF 		bl	Set_Pin_Output
+ 596              	.LVL63:
+ 148:Core/Src/sensors.c **** 	HAL_GPIO_WritePin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin, 0); // pull the pin low
+ 597              		.loc 1 148 2 view .LVU138
+ 598 000c 0022     		movs	r2, #0
+ 599 000e 1021     		movs	r1, #16
+ 600 0010 2046     		mov	r0, r4
+ 601 0012 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 602              	.LVL64:
+ 149:Core/Src/sensors.c **** 	delay(18000);													// wait for 18ms		1.2ms for DHT22 10ms
+ 603              		.loc 1 149 2 view .LVU139
+ 604 0016 44F25060 		movw	r0, #18000
+ 605 001a FFF7FEFF 		bl	delay
+ 606              	.LVL65:
+ 150:Core/Src/sensors.c **** 	HAL_GPIO_WritePin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin, 1); // pull the pin high
+ 607              		.loc 1 150 2 view .LVU140
+ 608 001e 0122     		movs	r2, #1
+ 609 0020 1021     		movs	r1, #16
+ 610 0022 2046     		mov	r0, r4
+ 611 0024 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 612              	.LVL66:
+ 151:Core/Src/sensors.c **** 	delay(20);														// wait for 20us
+ 613              		.loc 1 151 2 view .LVU141
+ 614 0028 1420     		movs	r0, #20
+ 615 002a FFF7FEFF 		bl	delay
+ 616              	.LVL67:
+ 152:Core/Src/sensors.c **** 	Set_Pin_Input(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin);		// set as input
+ 617              		.loc 1 152 2 view .LVU142
+ 618 002e 1021     		movs	r1, #16
+ 619 0030 2046     		mov	r0, r4
+ 620 0032 FFF7FEFF 		bl	Set_Pin_Input
+ 621              	.LVL68:
+ 153:Core/Src/sensors.c **** }
+ 622              		.loc 1 153 1 is_stmt 0 view .LVU143
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 15
 
 
- 631              		.cfi_def_cfa_offset 8
- 632              		.cfi_offset 4, -8
- 633              		.cfi_offset 14, -4
- 152:Core/Src/sensors.c **** 	uint8_t Response = 0;
- 634              		.loc 1 152 2 view .LVU141
- 635              	.LVL67:
- 153:Core/Src/sensors.c **** 	delay(40);
- 636              		.loc 1 153 2 view .LVU142
- 637 0002 2820     		movs	r0, #40
- 638 0004 FFF7FEFF 		bl	delay
- 639              	.LVL68:
- 154:Core/Src/sensors.c **** 	if (!(HAL_GPIO_ReadPin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin))) // if the pin is low
- 640              		.loc 1 154 2 view .LVU143
- 641              		.loc 1 154 8 is_stmt 0 view .LVU144
- 642 0008 1021     		movs	r1, #16
- 643 000a 0C48     		ldr	r0, .L45
- 644 000c FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 645              	.LVL69:
- 646              		.loc 1 154 5 view .LVU145
- 647 0010 40B1     		cbz	r0, .L44
- 152:Core/Src/sensors.c **** 	uint8_t Response = 0;
- 648              		.loc 1 152 10 view .LVU146
- 649 0012 0024     		movs	r4, #0
- 650              	.LVL70:
- 651              	.L40:
- 155:Core/Src/sensors.c **** 	{
- 156:Core/Src/sensors.c **** 		delay(80);
- 157:Core/Src/sensors.c **** 		if ((HAL_GPIO_ReadPin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin)))
- 158:Core/Src/sensors.c **** 			Response = 1; // if the pin is high, response is ok
- 159:Core/Src/sensors.c **** 		else
- 160:Core/Src/sensors.c **** 			Response = -1; // 255
- 161:Core/Src/sensors.c **** 	}
- 162:Core/Src/sensors.c **** 	while ((HAL_GPIO_ReadPin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin)))
- 163:Core/Src/sensors.c **** 		; // wait for the pin to go low
- 652              		.loc 1 163 3 is_stmt 1 discriminator 1 view .LVU147
- 162:Core/Src/sensors.c **** 		; // wait for the pin to go low
- 653              		.loc 1 162 8 discriminator 1 view .LVU148
- 162:Core/Src/sensors.c **** 		; // wait for the pin to go low
- 654              		.loc 1 162 10 is_stmt 0 discriminator 1 view .LVU149
- 655 0014 1021     		movs	r1, #16
- 656 0016 0948     		ldr	r0, .L45
- 657 0018 FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 658              	.LVL71:
- 162:Core/Src/sensors.c **** 		; // wait for the pin to go low
- 659              		.loc 1 162 8 discriminator 1 view .LVU150
- 660 001c 0028     		cmp	r0, #0
- 661 001e F9D1     		bne	.L40
- 164:Core/Src/sensors.c **** 
- 165:Core/Src/sensors.c **** 	return Response;
- 662              		.loc 1 165 2 is_stmt 1 view .LVU151
- 166:Core/Src/sensors.c **** }
- 663              		.loc 1 166 1 is_stmt 0 view .LVU152
- 664 0020 2046     		mov	r0, r4
- 665 0022 10BD     		pop	{r4, pc}
- 666              	.LVL72:
- 667              	.L44:
- 156:Core/Src/sensors.c **** 		if ((HAL_GPIO_ReadPin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin)))
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 16
+ 623 0036 10BD     		pop	{r4, pc}
+ 624              	.L39:
+ 625              		.align	2
+ 626              	.L38:
+ 627 0038 00100140 		.word	1073811456
+ 628              		.cfi_endproc
+ 629              	.LFE75:
+ 631              		.section	.text.DHT11_Check_Response,"ax",%progbits
+ 632              		.align	1
+ 633              		.global	DHT11_Check_Response
+ 634              		.syntax unified
+ 635              		.thumb
+ 636              		.thumb_func
+ 638              	DHT11_Check_Response:
+ 639              	.LFB76:
+ 154:Core/Src/sensors.c **** 
+ 155:Core/Src/sensors.c **** uint8_t DHT11_Check_Response(void)
+ 156:Core/Src/sensors.c **** {
+ 640              		.loc 1 156 1 is_stmt 1 view -0
+ 641              		.cfi_startproc
+ 642              		@ args = 0, pretend = 0, frame = 0
+ 643              		@ frame_needed = 0, uses_anonymous_args = 0
+ 644 0000 08B5     		push	{r3, lr}
+ 645              	.LCFI11:
+ 646              		.cfi_def_cfa_offset 8
+ 647              		.cfi_offset 3, -8
+ 648              		.cfi_offset 14, -4
+ 157:Core/Src/sensors.c **** 	uint8_t Response = INIT_FAIL;
+ 649              		.loc 1 157 2 view .LVU145
+ 650              	.LVL69:
+ 158:Core/Src/sensors.c **** 	delay(40);
+ 651              		.loc 1 158 2 view .LVU146
+ 652 0002 2820     		movs	r0, #40
+ 653 0004 FFF7FEFF 		bl	delay
+ 654              	.LVL70:
+ 159:Core/Src/sensors.c **** 	if (!(HAL_GPIO_ReadPin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin))) // if the pin is low
+ 655              		.loc 1 159 2 view .LVU147
+ 656              		.loc 1 159 8 is_stmt 0 view .LVU148
+ 657 0008 1021     		movs	r1, #16
+ 658 000a 0A48     		ldr	r0, .L45
+ 659 000c FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 660              	.LVL71:
+ 661              		.loc 1 159 5 view .LVU149
+ 662 0010 38B1     		cbz	r0, .L44
+ 663              	.L42:
+ 160:Core/Src/sensors.c **** 	{
+ 161:Core/Src/sensors.c **** 		delay(80);
+ 162:Core/Src/sensors.c **** 		if ((HAL_GPIO_ReadPin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin)))
+ 163:Core/Src/sensors.c **** 			Response = INIT_SUCCESS; // if the pin is high, response is ok
+ 164:Core/Src/sensors.c **** 		else
+ 165:Core/Src/sensors.c **** 			Response = INIT_FAIL; // 255
+ 166:Core/Src/sensors.c **** 	}
+ 167:Core/Src/sensors.c **** 	while ((HAL_GPIO_ReadPin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin)))
+ 168:Core/Src/sensors.c **** 		; // wait for the pin to go low
+ 664              		.loc 1 168 3 is_stmt 1 discriminator 1 view .LVU150
+ 167:Core/Src/sensors.c **** 		; // wait for the pin to go low
+ 665              		.loc 1 167 8 discriminator 1 view .LVU151
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 16
 
 
- 668              		.loc 1 156 3 is_stmt 1 view .LVU153
- 669 0024 5020     		movs	r0, #80
- 670 0026 FFF7FEFF 		bl	delay
- 671              	.LVL73:
- 157:Core/Src/sensors.c **** 			Response = 1; // if the pin is high, response is ok
- 672              		.loc 1 157 3 view .LVU154
- 157:Core/Src/sensors.c **** 			Response = 1; // if the pin is high, response is ok
- 673              		.loc 1 157 8 is_stmt 0 view .LVU155
- 674 002a 1021     		movs	r1, #16
- 675 002c 0348     		ldr	r0, .L45
- 676 002e FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 677              	.LVL74:
- 157:Core/Src/sensors.c **** 			Response = 1; // if the pin is high, response is ok
- 678              		.loc 1 157 6 view .LVU156
- 679 0032 08B1     		cbz	r0, .L42
- 158:Core/Src/sensors.c **** 		else
- 680              		.loc 1 158 13 view .LVU157
- 681 0034 0124     		movs	r4, #1
- 682 0036 EDE7     		b	.L40
- 683              	.L42:
- 160:Core/Src/sensors.c **** 	}
- 684              		.loc 1 160 13 view .LVU158
- 685 0038 FF24     		movs	r4, #255
- 686              	.LVL75:
- 160:Core/Src/sensors.c **** 	}
- 687              		.loc 1 160 13 view .LVU159
- 688 003a EBE7     		b	.L40
- 689              	.L46:
- 690              		.align	2
- 691              	.L45:
- 692 003c 00100140 		.word	1073811456
- 693              		.cfi_endproc
- 694              	.LFE76:
- 696              		.section	.text.DHT11_Read,"ax",%progbits
- 697              		.align	1
- 698              		.global	DHT11_Read
- 699              		.syntax unified
- 700              		.thumb
- 701              		.thumb_func
- 703              	DHT11_Read:
- 704              	.LFB77:
- 167:Core/Src/sensors.c **** 
- 168:Core/Src/sensors.c **** uint8_t DHT11_Read(void)
- 169:Core/Src/sensors.c **** {
- 705              		.loc 1 169 1 is_stmt 1 view -0
- 706              		.cfi_startproc
- 707              		@ args = 0, pretend = 0, frame = 0
- 708              		@ frame_needed = 0, uses_anonymous_args = 0
- 709 0000 38B5     		push	{r3, r4, r5, lr}
- 710              	.LCFI12:
- 711              		.cfi_def_cfa_offset 16
- 712              		.cfi_offset 3, -16
- 713              		.cfi_offset 4, -12
- 714              		.cfi_offset 5, -8
- 715              		.cfi_offset 14, -4
- 716 0002 0025     		movs	r5, #0
- 170:Core/Src/sensors.c **** 	uint8_t i, j;
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 17
+ 167:Core/Src/sensors.c **** 		; // wait for the pin to go low
+ 666              		.loc 1 167 10 is_stmt 0 discriminator 1 view .LVU152
+ 667 0012 1021     		movs	r1, #16
+ 668 0014 0748     		ldr	r0, .L45
+ 669 0016 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 670              	.LVL72:
+ 167:Core/Src/sensors.c **** 		; // wait for the pin to go low
+ 671              		.loc 1 167 8 discriminator 1 view .LVU153
+ 672 001a 0028     		cmp	r0, #0
+ 673 001c F9D1     		bne	.L42
+ 169:Core/Src/sensors.c **** 
+ 170:Core/Src/sensors.c **** 	return Response;
+ 674              		.loc 1 170 2 is_stmt 1 view .LVU154
+ 171:Core/Src/sensors.c **** }
+ 675              		.loc 1 171 1 is_stmt 0 view .LVU155
+ 676 001e 0120     		movs	r0, #1
+ 677 0020 08BD     		pop	{r3, pc}
+ 678              	.L44:
+ 161:Core/Src/sensors.c **** 		if ((HAL_GPIO_ReadPin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin)))
+ 679              		.loc 1 161 3 is_stmt 1 view .LVU156
+ 680 0022 5020     		movs	r0, #80
+ 681 0024 FFF7FEFF 		bl	delay
+ 682              	.LVL73:
+ 162:Core/Src/sensors.c **** 			Response = INIT_SUCCESS; // if the pin is high, response is ok
+ 683              		.loc 1 162 3 view .LVU157
+ 162:Core/Src/sensors.c **** 			Response = INIT_SUCCESS; // if the pin is high, response is ok
+ 684              		.loc 1 162 8 is_stmt 0 view .LVU158
+ 685 0028 1021     		movs	r1, #16
+ 686 002a 0248     		ldr	r0, .L45
+ 687 002c FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 688              	.LVL74:
+ 689 0030 EFE7     		b	.L42
+ 690              	.L46:
+ 691 0032 00BF     		.align	2
+ 692              	.L45:
+ 693 0034 00100140 		.word	1073811456
+ 694              		.cfi_endproc
+ 695              	.LFE76:
+ 697              		.section	.text.DHT11_Read,"ax",%progbits
+ 698              		.align	1
+ 699              		.global	DHT11_Read
+ 700              		.syntax unified
+ 701              		.thumb
+ 702              		.thumb_func
+ 704              	DHT11_Read:
+ 705              	.LFB77:
+ 172:Core/Src/sensors.c **** 
+ 173:Core/Src/sensors.c **** uint8_t DHT11_Read(void)
+ 174:Core/Src/sensors.c **** {
+ 706              		.loc 1 174 1 is_stmt 1 view -0
+ 707              		.cfi_startproc
+ 708              		@ args = 0, pretend = 0, frame = 0
+ 709              		@ frame_needed = 0, uses_anonymous_args = 0
+ 710 0000 38B5     		push	{r3, r4, r5, lr}
+ 711              	.LCFI12:
+ 712              		.cfi_def_cfa_offset 16
+ 713              		.cfi_offset 3, -16
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 17
 
 
- 717              		.loc 1 170 2 view .LVU161
- 171:Core/Src/sensors.c **** 	for (j = 0; j < 8; j++)
- 718              		.loc 1 171 2 view .LVU162
- 719              	.LVL76:
- 720              		.loc 1 171 9 is_stmt 0 view .LVU163
- 721 0004 2C46     		mov	r4, r5
- 722              		.loc 1 171 2 view .LVU164
- 723 0006 0DE0     		b	.L48
- 724              	.LVL77:
- 725              	.L50:
- 172:Core/Src/sensors.c **** 	{
- 173:Core/Src/sensors.c **** 		while (!(HAL_GPIO_ReadPin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin)));	// wait for the pin to go 
- 174:Core/Src/sensors.c **** 		delay(40);														   // wait for 40 us
- 175:Core/Src/sensors.c **** 		if (!(HAL_GPIO_ReadPin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin))) // if the pin is low
- 176:Core/Src/sensors.c **** 		{
- 177:Core/Src/sensors.c **** 			i &= ~(1 << (7 - j)); // write 0
- 178:Core/Src/sensors.c **** 		}
- 179:Core/Src/sensors.c **** 		else
- 180:Core/Src/sensors.c **** 			i |= (1 << (7 - j)); // if the pin is high, write 1
- 726              		.loc 1 180 4 is_stmt 1 view .LVU165
- 727              		.loc 1 180 18 is_stmt 0 view .LVU166
- 728 0008 C4F10702 		rsb	r2, r4, #7
- 729              		.loc 1 180 12 view .LVU167
- 730 000c 0123     		movs	r3, #1
- 731 000e 9340     		lsls	r3, r3, r2
- 732              		.loc 1 180 6 view .LVU168
- 733 0010 2B43     		orrs	r3, r3, r5
- 734 0012 DDB2     		uxtb	r5, r3
- 735              	.LVL78:
- 736              	.L52:
- 181:Core/Src/sensors.c **** 		while ((HAL_GPIO_ReadPin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin)))
- 182:Core/Src/sensors.c **** 			; // wait for the pin to go low
- 737              		.loc 1 182 4 is_stmt 1 discriminator 1 view .LVU169
- 181:Core/Src/sensors.c **** 		while ((HAL_GPIO_ReadPin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin)))
- 738              		.loc 1 181 9 discriminator 1 view .LVU170
- 181:Core/Src/sensors.c **** 		while ((HAL_GPIO_ReadPin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin)))
- 739              		.loc 1 181 11 is_stmt 0 discriminator 1 view .LVU171
- 740 0014 1021     		movs	r1, #16
- 741 0016 1048     		ldr	r0, .L55
- 742 0018 FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 743              	.LVL79:
- 181:Core/Src/sensors.c **** 		while ((HAL_GPIO_ReadPin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin)))
- 744              		.loc 1 181 9 discriminator 1 view .LVU172
- 745 001c 0028     		cmp	r0, #0
- 746 001e F9D1     		bne	.L52
- 171:Core/Src/sensors.c **** 	{
- 747              		.loc 1 171 21 is_stmt 1 discriminator 2 view .LVU173
- 171:Core/Src/sensors.c **** 	{
- 748              		.loc 1 171 22 is_stmt 0 discriminator 2 view .LVU174
- 749 0020 0134     		adds	r4, r4, #1
- 750              	.LVL80:
- 171:Core/Src/sensors.c **** 	{
- 751              		.loc 1 171 22 discriminator 2 view .LVU175
- 752 0022 E4B2     		uxtb	r4, r4
- 753              	.LVL81:
- 754              	.L48:
- 171:Core/Src/sensors.c **** 	{
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 18
+ 714              		.cfi_offset 4, -12
+ 715              		.cfi_offset 5, -8
+ 716              		.cfi_offset 14, -4
+ 717 0002 0025     		movs	r5, #0
+ 175:Core/Src/sensors.c **** 	uint8_t i, j;
+ 718              		.loc 1 175 2 view .LVU160
+ 176:Core/Src/sensors.c **** 	for (j = 0; j < 8; j++)
+ 719              		.loc 1 176 2 view .LVU161
+ 720              	.LVL75:
+ 721              		.loc 1 176 9 is_stmt 0 view .LVU162
+ 722 0004 2C46     		mov	r4, r5
+ 723              		.loc 1 176 2 view .LVU163
+ 724 0006 0DE0     		b	.L48
+ 725              	.LVL76:
+ 726              	.L50:
+ 177:Core/Src/sensors.c **** 	{
+ 178:Core/Src/sensors.c **** 		while (!(HAL_GPIO_ReadPin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin)));	// wait for the pin to go 
+ 179:Core/Src/sensors.c **** 		delay(40);														   // wait for 40 us
+ 180:Core/Src/sensors.c **** 		if (!(HAL_GPIO_ReadPin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin))) // if the pin is low
+ 181:Core/Src/sensors.c **** 		{
+ 182:Core/Src/sensors.c **** 			i &= ~(1 << (7 - j)); // write 0
+ 183:Core/Src/sensors.c **** 		}
+ 184:Core/Src/sensors.c **** 		else
+ 185:Core/Src/sensors.c **** 			i |= (1 << (7 - j)); // if the pin is high, write 1
+ 727              		.loc 1 185 4 is_stmt 1 view .LVU164
+ 728              		.loc 1 185 18 is_stmt 0 view .LVU165
+ 729 0008 C4F10702 		rsb	r2, r4, #7
+ 730              		.loc 1 185 12 view .LVU166
+ 731 000c 0123     		movs	r3, #1
+ 732 000e 9340     		lsls	r3, r3, r2
+ 733              		.loc 1 185 6 view .LVU167
+ 734 0010 2B43     		orrs	r3, r3, r5
+ 735 0012 DDB2     		uxtb	r5, r3
+ 736              	.LVL77:
+ 737              	.L52:
+ 186:Core/Src/sensors.c **** 		while ((HAL_GPIO_ReadPin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin)))
+ 187:Core/Src/sensors.c **** 			; // wait for the pin to go low
+ 738              		.loc 1 187 4 is_stmt 1 discriminator 1 view .LVU168
+ 186:Core/Src/sensors.c **** 		while ((HAL_GPIO_ReadPin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin)))
+ 739              		.loc 1 186 9 discriminator 1 view .LVU169
+ 186:Core/Src/sensors.c **** 		while ((HAL_GPIO_ReadPin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin)))
+ 740              		.loc 1 186 11 is_stmt 0 discriminator 1 view .LVU170
+ 741 0014 1021     		movs	r1, #16
+ 742 0016 1048     		ldr	r0, .L55
+ 743 0018 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 744              	.LVL78:
+ 186:Core/Src/sensors.c **** 		while ((HAL_GPIO_ReadPin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin)))
+ 745              		.loc 1 186 9 discriminator 1 view .LVU171
+ 746 001c 0028     		cmp	r0, #0
+ 747 001e F9D1     		bne	.L52
+ 176:Core/Src/sensors.c **** 	{
+ 748              		.loc 1 176 21 is_stmt 1 discriminator 2 view .LVU172
+ 176:Core/Src/sensors.c **** 	{
+ 749              		.loc 1 176 22 is_stmt 0 discriminator 2 view .LVU173
+ 750 0020 0134     		adds	r4, r4, #1
+ 751              	.LVL79:
+ 176:Core/Src/sensors.c **** 	{
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 18
 
 
- 755              		.loc 1 171 14 is_stmt 1 discriminator 1 view .LVU176
- 171:Core/Src/sensors.c **** 	{
- 756              		.loc 1 171 2 is_stmt 0 discriminator 1 view .LVU177
- 757 0024 072C     		cmp	r4, #7
- 758 0026 15D8     		bhi	.L54
- 759              	.L49:
- 173:Core/Src/sensors.c **** 		delay(40);														   // wait for 40 us
- 760              		.loc 1 173 72 is_stmt 1 discriminator 1 view .LVU178
- 173:Core/Src/sensors.c **** 		delay(40);														   // wait for 40 us
- 761              		.loc 1 173 9 discriminator 1 view .LVU179
- 173:Core/Src/sensors.c **** 		delay(40);														   // wait for 40 us
- 762              		.loc 1 173 12 is_stmt 0 discriminator 1 view .LVU180
- 763 0028 1021     		movs	r1, #16
- 764 002a 0B48     		ldr	r0, .L55
- 765 002c FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 766              	.LVL82:
- 173:Core/Src/sensors.c **** 		delay(40);														   // wait for 40 us
- 767              		.loc 1 173 9 discriminator 1 view .LVU181
- 768 0030 0028     		cmp	r0, #0
- 769 0032 F9D0     		beq	.L49
- 174:Core/Src/sensors.c **** 		if (!(HAL_GPIO_ReadPin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin))) // if the pin is low
- 770              		.loc 1 174 3 is_stmt 1 view .LVU182
- 771 0034 2820     		movs	r0, #40
- 772 0036 FFF7FEFF 		bl	delay
- 773              	.LVL83:
- 175:Core/Src/sensors.c **** 		{
- 774              		.loc 1 175 3 view .LVU183
- 175:Core/Src/sensors.c **** 		{
- 775              		.loc 1 175 9 is_stmt 0 view .LVU184
- 776 003a 1021     		movs	r1, #16
- 777 003c 0648     		ldr	r0, .L55
- 778 003e FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 779              	.LVL84:
- 175:Core/Src/sensors.c **** 		{
- 780              		.loc 1 175 6 view .LVU185
- 781 0042 0028     		cmp	r0, #0
- 782 0044 E0D1     		bne	.L50
- 177:Core/Src/sensors.c **** 		}
- 783              		.loc 1 177 4 is_stmt 1 view .LVU186
- 177:Core/Src/sensors.c **** 		}
- 784              		.loc 1 177 19 is_stmt 0 view .LVU187
- 785 0046 C4F10702 		rsb	r2, r4, #7
- 177:Core/Src/sensors.c **** 		}
- 786              		.loc 1 177 13 view .LVU188
- 787 004a 0123     		movs	r3, #1
- 788 004c 9340     		lsls	r3, r3, r2
- 177:Core/Src/sensors.c **** 		}
- 789              		.loc 1 177 6 view .LVU189
- 790 004e 25EA0305 		bic	r5, r5, r3
- 791              	.LVL85:
- 177:Core/Src/sensors.c **** 		}
- 792              		.loc 1 177 6 view .LVU190
- 793 0052 DFE7     		b	.L52
- 794              	.L54:
- 183:Core/Src/sensors.c **** 	}
- 184:Core/Src/sensors.c **** 	return i;
- 795              		.loc 1 184 2 is_stmt 1 view .LVU191
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 19
+ 752              		.loc 1 176 22 discriminator 2 view .LVU174
+ 753 0022 E4B2     		uxtb	r4, r4
+ 754              	.LVL80:
+ 755              	.L48:
+ 176:Core/Src/sensors.c **** 	{
+ 756              		.loc 1 176 14 is_stmt 1 discriminator 1 view .LVU175
+ 176:Core/Src/sensors.c **** 	{
+ 757              		.loc 1 176 2 is_stmt 0 discriminator 1 view .LVU176
+ 758 0024 072C     		cmp	r4, #7
+ 759 0026 15D8     		bhi	.L54
+ 760              	.L49:
+ 178:Core/Src/sensors.c **** 		delay(40);														   // wait for 40 us
+ 761              		.loc 1 178 72 is_stmt 1 discriminator 1 view .LVU177
+ 178:Core/Src/sensors.c **** 		delay(40);														   // wait for 40 us
+ 762              		.loc 1 178 9 discriminator 1 view .LVU178
+ 178:Core/Src/sensors.c **** 		delay(40);														   // wait for 40 us
+ 763              		.loc 1 178 12 is_stmt 0 discriminator 1 view .LVU179
+ 764 0028 1021     		movs	r1, #16
+ 765 002a 0B48     		ldr	r0, .L55
+ 766 002c FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 767              	.LVL81:
+ 178:Core/Src/sensors.c **** 		delay(40);														   // wait for 40 us
+ 768              		.loc 1 178 9 discriminator 1 view .LVU180
+ 769 0030 0028     		cmp	r0, #0
+ 770 0032 F9D0     		beq	.L49
+ 179:Core/Src/sensors.c **** 		if (!(HAL_GPIO_ReadPin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin))) // if the pin is low
+ 771              		.loc 1 179 3 is_stmt 1 view .LVU181
+ 772 0034 2820     		movs	r0, #40
+ 773 0036 FFF7FEFF 		bl	delay
+ 774              	.LVL82:
+ 180:Core/Src/sensors.c **** 		{
+ 775              		.loc 1 180 3 view .LVU182
+ 180:Core/Src/sensors.c **** 		{
+ 776              		.loc 1 180 9 is_stmt 0 view .LVU183
+ 777 003a 1021     		movs	r1, #16
+ 778 003c 0648     		ldr	r0, .L55
+ 779 003e FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 780              	.LVL83:
+ 180:Core/Src/sensors.c **** 		{
+ 781              		.loc 1 180 6 view .LVU184
+ 782 0042 0028     		cmp	r0, #0
+ 783 0044 E0D1     		bne	.L50
+ 182:Core/Src/sensors.c **** 		}
+ 784              		.loc 1 182 4 is_stmt 1 view .LVU185
+ 182:Core/Src/sensors.c **** 		}
+ 785              		.loc 1 182 19 is_stmt 0 view .LVU186
+ 786 0046 C4F10702 		rsb	r2, r4, #7
+ 182:Core/Src/sensors.c **** 		}
+ 787              		.loc 1 182 13 view .LVU187
+ 788 004a 0123     		movs	r3, #1
+ 789 004c 9340     		lsls	r3, r3, r2
+ 182:Core/Src/sensors.c **** 		}
+ 790              		.loc 1 182 6 view .LVU188
+ 791 004e 25EA0305 		bic	r5, r5, r3
+ 792              	.LVL84:
+ 182:Core/Src/sensors.c **** 		}
+ 793              		.loc 1 182 6 view .LVU189
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 19
 
 
- 185:Core/Src/sensors.c **** }
- 796              		.loc 1 185 1 is_stmt 0 view .LVU192
- 797 0054 2846     		mov	r0, r5
- 798 0056 38BD     		pop	{r3, r4, r5, pc}
- 799              	.LVL86:
- 800              	.L56:
- 801              		.loc 1 185 1 view .LVU193
- 802              		.align	2
- 803              	.L55:
- 804 0058 00100140 		.word	1073811456
- 805              		.cfi_endproc
- 806              	.LFE77:
- 808              		.section	.text.DHT11_Result,"ax",%progbits
- 809              		.align	1
- 810              		.global	DHT11_Result
- 811              		.syntax unified
- 812              		.thumb
- 813              		.thumb_func
- 815              	DHT11_Result:
- 816              	.LVL87:
- 817              	.LFB78:
- 186:Core/Src/sensors.c **** 
- 187:Core/Src/sensors.c **** float DHT11_Result(float* Temperature, float* Humidity)
- 188:Core/Src/sensors.c **** {
- 818              		.loc 1 188 1 is_stmt 1 view -0
- 819              		.cfi_startproc
- 820              		@ args = 0, pretend = 0, frame = 0
- 821              		@ frame_needed = 0, uses_anonymous_args = 0
- 822              		.loc 1 188 1 is_stmt 0 view .LVU195
- 823 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
- 824              	.LCFI13:
- 825              		.cfi_def_cfa_offset 24
- 826              		.cfi_offset 3, -24
- 827              		.cfi_offset 4, -20
- 828              		.cfi_offset 5, -16
- 829              		.cfi_offset 6, -12
- 830              		.cfi_offset 7, -8
- 831              		.cfi_offset 14, -4
- 832 0002 0646     		mov	r6, r0
- 833 0004 0C46     		mov	r4, r1
- 189:Core/Src/sensors.c **** 	uint8_t Presence = 0;
- 834              		.loc 1 189 2 is_stmt 1 view .LVU196
- 835              	.LVL88:
- 190:Core/Src/sensors.c **** 	uint8_t Rh_byte1, Rh_byte2, Temp_byte1, Temp_byte2;
- 836              		.loc 1 190 2 view .LVU197
- 191:Core/Src/sensors.c **** 	uint16_t SUM, RH, TEMP;
- 837              		.loc 1 191 2 view .LVU198
- 192:Core/Src/sensors.c **** 	// float Temperature = 0;
- 193:Core/Src/sensors.c **** 	// float Humidity = 0;
- 194:Core/Src/sensors.c **** 	DHT11_Start();
- 838              		.loc 1 194 2 view .LVU199
- 839 0006 FFF7FEFF 		bl	DHT11_Start
- 840              	.LVL89:
- 195:Core/Src/sensors.c **** 	Presence = DHT11_Check_Response();
- 841              		.loc 1 195 2 view .LVU200
- 842              		.loc 1 195 13 is_stmt 0 view .LVU201
- 843 000a FFF7FEFF 		bl	DHT11_Check_Response
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 20
+ 794 0052 DFE7     		b	.L52
+ 795              	.L54:
+ 188:Core/Src/sensors.c **** 	}
+ 189:Core/Src/sensors.c **** 	return i;
+ 796              		.loc 1 189 2 is_stmt 1 view .LVU190
+ 190:Core/Src/sensors.c **** }
+ 797              		.loc 1 190 1 is_stmt 0 view .LVU191
+ 798 0054 2846     		mov	r0, r5
+ 799 0056 38BD     		pop	{r3, r4, r5, pc}
+ 800              	.LVL85:
+ 801              	.L56:
+ 802              		.loc 1 190 1 view .LVU192
+ 803              		.align	2
+ 804              	.L55:
+ 805 0058 00100140 		.word	1073811456
+ 806              		.cfi_endproc
+ 807              	.LFE77:
+ 809              		.section	.rodata.DHT11_Result.str1.4,"aMS",%progbits,1
+ 810              		.align	2
+ 811              	.LC1:
+ 812 0000 496E6974 		.ascii	"Init dht11 fail\012init again\012\000"
+ 812      20646874 
+ 812      31312066 
+ 812      61696C0A 
+ 812      696E6974 
+ 813              		.section	.text.DHT11_Result,"ax",%progbits
+ 814              		.align	1
+ 815              		.global	DHT11_Result
+ 816              		.syntax unified
+ 817              		.thumb
+ 818              		.thumb_func
+ 820              	DHT11_Result:
+ 821              	.LVL86:
+ 822              	.LFB78:
+ 191:Core/Src/sensors.c **** 
+ 192:Core/Src/sensors.c **** float DHT11_Result(float* Temperature, float* Humidity)
+ 193:Core/Src/sensors.c **** {
+ 823              		.loc 1 193 1 is_stmt 1 view -0
+ 824              		.cfi_startproc
+ 825              		@ args = 0, pretend = 0, frame = 0
+ 826              		@ frame_needed = 0, uses_anonymous_args = 0
+ 827              		.loc 1 193 1 is_stmt 0 view .LVU194
+ 828 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 829              	.LCFI13:
+ 830              		.cfi_def_cfa_offset 24
+ 831              		.cfi_offset 3, -24
+ 832              		.cfi_offset 4, -20
+ 833              		.cfi_offset 5, -16
+ 834              		.cfi_offset 6, -12
+ 835              		.cfi_offset 7, -8
+ 836              		.cfi_offset 14, -4
+ 837 0002 0646     		mov	r6, r0
+ 838 0004 0C46     		mov	r4, r1
+ 194:Core/Src/sensors.c **** 	uint8_t Presence = 0;
+ 839              		.loc 1 194 2 is_stmt 1 view .LVU195
+ 840              	.LVL87:
+ 195:Core/Src/sensors.c **** 	uint8_t Rh_byte1, Rh_byte2, Temp_byte1, Temp_byte2;
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 20
 
 
- 844              	.LVL90:
- 196:Core/Src/sensors.c **** 	Rh_byte1 = DHT11_Read();
- 845              		.loc 1 196 2 is_stmt 1 view .LVU202
- 846              		.loc 1 196 13 is_stmt 0 view .LVU203
- 847 000e FFF7FEFF 		bl	DHT11_Read
- 848              	.LVL91:
- 849 0012 0546     		mov	r5, r0
- 850              	.LVL92:
- 197:Core/Src/sensors.c **** 	Rh_byte2 = DHT11_Read();
- 851              		.loc 1 197 2 is_stmt 1 view .LVU204
- 852              		.loc 1 197 13 is_stmt 0 view .LVU205
- 853 0014 FFF7FEFF 		bl	DHT11_Read
- 854              	.LVL93:
- 198:Core/Src/sensors.c **** 	Temp_byte1 = DHT11_Read();
- 855              		.loc 1 198 2 is_stmt 1 view .LVU206
- 856              		.loc 1 198 15 is_stmt 0 view .LVU207
- 857 0018 FFF7FEFF 		bl	DHT11_Read
- 858              	.LVL94:
- 859 001c 0746     		mov	r7, r0
- 860              	.LVL95:
- 199:Core/Src/sensors.c **** 	Temp_byte2 = DHT11_Read();
- 861              		.loc 1 199 2 is_stmt 1 view .LVU208
- 862              		.loc 1 199 15 is_stmt 0 view .LVU209
- 863 001e FFF7FEFF 		bl	DHT11_Read
- 864              	.LVL96:
- 200:Core/Src/sensors.c **** 	SUM = DHT11_Read();
- 865              		.loc 1 200 2 is_stmt 1 view .LVU210
- 866              		.loc 1 200 8 is_stmt 0 view .LVU211
- 867 0022 FFF7FEFF 		bl	DHT11_Read
- 868              	.LVL97:
- 201:Core/Src/sensors.c **** 
- 202:Core/Src/sensors.c **** 	TEMP = Temp_byte1;
- 869              		.loc 1 202 2 is_stmt 1 view .LVU212
- 203:Core/Src/sensors.c **** 	RH = Rh_byte1;
- 870              		.loc 1 203 2 view .LVU213
- 204:Core/Src/sensors.c **** 
- 205:Core/Src/sensors.c **** 	*Temperature = (float)TEMP;
- 871              		.loc 1 205 2 view .LVU214
- 872              		.loc 1 205 17 is_stmt 0 view .LVU215
- 873 0026 3846     		mov	r0, r7
- 874 0028 FFF7FEFF 		bl	__aeabi_ui2f
- 875              	.LVL98:
- 876              		.loc 1 205 15 view .LVU216
- 877 002c 3060     		str	r0, [r6]	@ float
- 206:Core/Src/sensors.c **** 	*Humidity = (float)RH;
- 878              		.loc 1 206 2 is_stmt 1 view .LVU217
- 879              		.loc 1 206 14 is_stmt 0 view .LVU218
- 880 002e 2846     		mov	r0, r5
- 881 0030 FFF7FEFF 		bl	__aeabi_ui2f
- 882              	.LVL99:
- 883              		.loc 1 206 12 view .LVU219
- 884 0034 2060     		str	r0, [r4]	@ float
- 207:Core/Src/sensors.c **** }
- 885              		.loc 1 207 1 view .LVU220
- 886 0036 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
- 887              		.loc 1 207 1 view .LVU221
- 888              		.cfi_endproc
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 21
+ 841              		.loc 1 195 2 view .LVU196
+ 196:Core/Src/sensors.c **** 	uint16_t SUM, RH, TEMP;
+ 842              		.loc 1 196 2 view .LVU197
+ 197:Core/Src/sensors.c **** 	// float Temperature = 0;
+ 198:Core/Src/sensors.c **** 	// float Humidity = 0;
+ 199:Core/Src/sensors.c **** 	DHT11_Start();
+ 843              		.loc 1 199 2 view .LVU198
+ 844 0006 FFF7FEFF 		bl	DHT11_Start
+ 845              	.LVL88:
+ 200:Core/Src/sensors.c **** 	Presence = DHT11_Check_Response();
+ 846              		.loc 1 200 2 view .LVU199
+ 847              		.loc 1 200 13 is_stmt 0 view .LVU200
+ 848 000a FFF7FEFF 		bl	DHT11_Check_Response
+ 849              	.LVL89:
+ 201:Core/Src/sensors.c **** 	while(Presence!=INIT_SUCCESS)
+ 850              		.loc 1 201 2 is_stmt 1 view .LVU201
+ 851              		.loc 1 201 7 is_stmt 0 view .LVU202
+ 852 000e 04E0     		b	.L58
+ 853              	.L59:
+ 202:Core/Src/sensors.c **** 	{
+ 203:Core/Src/sensors.c **** 		log_data("Init dht11 fail\ninit again\n");
+ 854              		.loc 1 203 3 is_stmt 1 view .LVU203
+ 855 0010 0D48     		ldr	r0, .L61
+ 856              	.LVL90:
+ 857              		.loc 1 203 3 is_stmt 0 view .LVU204
+ 858 0012 FFF7FEFF 		bl	log_data
+ 859              	.LVL91:
+ 204:Core/Src/sensors.c **** 		Presence = DHT11_Check_Response();
+ 860              		.loc 1 204 3 is_stmt 1 view .LVU205
+ 861              		.loc 1 204 14 is_stmt 0 view .LVU206
+ 862 0016 FFF7FEFF 		bl	DHT11_Check_Response
+ 863              	.LVL92:
+ 864              	.L58:
+ 201:Core/Src/sensors.c **** 	while(Presence!=INIT_SUCCESS)
+ 865              		.loc 1 201 7 is_stmt 1 view .LVU207
+ 866 001a 0128     		cmp	r0, #1
+ 867 001c F8D1     		bne	.L59
+ 205:Core/Src/sensors.c **** 	}
+ 206:Core/Src/sensors.c **** 	Rh_byte1 = DHT11_Read();
+ 868              		.loc 1 206 2 view .LVU208
+ 869              		.loc 1 206 13 is_stmt 0 view .LVU209
+ 870 001e FFF7FEFF 		bl	DHT11_Read
+ 871              	.LVL93:
+ 872              		.loc 1 206 13 view .LVU210
+ 873 0022 0546     		mov	r5, r0
+ 874              	.LVL94:
+ 207:Core/Src/sensors.c **** 	Rh_byte2 = DHT11_Read();
+ 875              		.loc 1 207 2 is_stmt 1 view .LVU211
+ 876              		.loc 1 207 13 is_stmt 0 view .LVU212
+ 877 0024 FFF7FEFF 		bl	DHT11_Read
+ 878              	.LVL95:
+ 208:Core/Src/sensors.c **** 	Temp_byte1 = DHT11_Read();
+ 879              		.loc 1 208 2 is_stmt 1 view .LVU213
+ 880              		.loc 1 208 15 is_stmt 0 view .LVU214
+ 881 0028 FFF7FEFF 		bl	DHT11_Read
+ 882              	.LVL96:
+ 883 002c 0746     		mov	r7, r0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 21
 
 
- 889              	.LFE78:
- 891              		.global	__aeabi_fsub
- 892              		.section	.text.Level_Result,"ax",%progbits
- 893              		.align	1
- 894              		.global	Level_Result
- 895              		.syntax unified
- 896              		.thumb
- 897              		.thumb_func
- 899              	Level_Result:
- 900              	.LFB79:
- 208:Core/Src/sensors.c **** 
- 209:Core/Src/sensors.c **** /************for LEVEL***************/
- 210:Core/Src/sensors.c **** //4095 -> 0cm
- 211:Core/Src/sensors.c **** float Level_Result()
- 212:Core/Src/sensors.c **** {
- 901              		.loc 1 212 1 is_stmt 1 view -0
- 902              		.cfi_startproc
- 903              		@ args = 0, pretend = 0, frame = 0
- 904              		@ frame_needed = 0, uses_anonymous_args = 0
- 905 0000 08B5     		push	{r3, lr}
- 906              	.LCFI14:
- 907              		.cfi_def_cfa_offset 8
- 908              		.cfi_offset 3, -8
- 909              		.cfi_offset 14, -4
- 213:Core/Src/sensors.c **** 	uint16_t value_level;
- 910              		.loc 1 213 2 view .LVU223
- 214:Core/Src/sensors.c **** 	float level;
- 911              		.loc 1 214 2 view .LVU224
- 215:Core/Src/sensors.c **** 	value_level = HAL_ADC_GetValue(&hadc2);
- 912              		.loc 1 215 2 view .LVU225
- 913              		.loc 1 215 16 is_stmt 0 view .LVU226
- 914 0002 0748     		ldr	r0, .L61
- 915 0004 FFF7FEFF 		bl	HAL_ADC_GetValue
- 916              	.LVL100:
- 216:Core/Src/sensors.c **** 	level = 10.0-(10/4095)*(float)value_level;
- 917              		.loc 1 216 2 is_stmt 1 view .LVU227
- 918              		.loc 1 216 25 is_stmt 0 view .LVU228
- 919 0008 80B2     		uxth	r0, r0
- 920              		.loc 1 216 25 view .LVU229
- 921 000a FFF7FEFF 		bl	__aeabi_ui2f
- 922              	.LVL101:
- 923              		.loc 1 216 24 view .LVU230
- 924 000e 0021     		movs	r1, #0
- 925 0010 FFF7FEFF 		bl	__aeabi_fmul
- 926              	.LVL102:
- 927 0014 0146     		mov	r1, r0
- 928              		.loc 1 216 8 view .LVU231
- 929 0016 0348     		ldr	r0, .L61+4
- 930 0018 FFF7FEFF 		bl	__aeabi_fsub
- 931              	.LVL103:
- 217:Core/Src/sensors.c **** 	return level;
- 932              		.loc 1 217 2 is_stmt 1 view .LVU232
- 218:Core/Src/sensors.c **** }
- 933              		.loc 1 218 1 is_stmt 0 view .LVU233
- 934 001c 08BD     		pop	{r3, pc}
- 935              	.L62:
- 936 001e 00BF     		.align	2
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 22
+ 884              	.LVL97:
+ 209:Core/Src/sensors.c **** 	Temp_byte2 = DHT11_Read();
+ 885              		.loc 1 209 2 is_stmt 1 view .LVU215
+ 886              		.loc 1 209 15 is_stmt 0 view .LVU216
+ 887 002e FFF7FEFF 		bl	DHT11_Read
+ 888              	.LVL98:
+ 210:Core/Src/sensors.c **** 	SUM = DHT11_Read();
+ 889              		.loc 1 210 2 is_stmt 1 view .LVU217
+ 890              		.loc 1 210 8 is_stmt 0 view .LVU218
+ 891 0032 FFF7FEFF 		bl	DHT11_Read
+ 892              	.LVL99:
+ 211:Core/Src/sensors.c **** 
+ 212:Core/Src/sensors.c **** 	TEMP = Temp_byte1;
+ 893              		.loc 1 212 2 is_stmt 1 view .LVU219
+ 213:Core/Src/sensors.c **** 	RH = Rh_byte1;
+ 894              		.loc 1 213 2 view .LVU220
+ 214:Core/Src/sensors.c **** 
+ 215:Core/Src/sensors.c **** 	*Temperature = (float)TEMP;
+ 895              		.loc 1 215 2 view .LVU221
+ 896              		.loc 1 215 17 is_stmt 0 view .LVU222
+ 897 0036 3846     		mov	r0, r7
+ 898 0038 FFF7FEFF 		bl	__aeabi_ui2f
+ 899              	.LVL100:
+ 900              		.loc 1 215 15 view .LVU223
+ 901 003c 3060     		str	r0, [r6]	@ float
+ 216:Core/Src/sensors.c **** 	*Humidity = (float)RH;
+ 902              		.loc 1 216 2 is_stmt 1 view .LVU224
+ 903              		.loc 1 216 14 is_stmt 0 view .LVU225
+ 904 003e 2846     		mov	r0, r5
+ 905 0040 FFF7FEFF 		bl	__aeabi_ui2f
+ 906              	.LVL101:
+ 907              		.loc 1 216 12 view .LVU226
+ 908 0044 2060     		str	r0, [r4]	@ float
+ 217:Core/Src/sensors.c **** }
+ 909              		.loc 1 217 1 view .LVU227
+ 910 0046 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 911              	.LVL102:
+ 912              	.L62:
+ 913              		.loc 1 217 1 view .LVU228
+ 914              		.align	2
+ 915              	.L61:
+ 916 0048 00000000 		.word	.LC1
+ 917              		.cfi_endproc
+ 918              	.LFE78:
+ 920              		.global	__aeabi_fsub
+ 921              		.section	.text.Level_Result,"ax",%progbits
+ 922              		.align	1
+ 923              		.global	Level_Result
+ 924              		.syntax unified
+ 925              		.thumb
+ 926              		.thumb_func
+ 928              	Level_Result:
+ 929              	.LFB79:
+ 218:Core/Src/sensors.c **** 
+ 219:Core/Src/sensors.c **** /************for LEVEL***************/
+ 220:Core/Src/sensors.c **** //4095 -> 0cm
+ 221:Core/Src/sensors.c **** float Level_Result()
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 22
 
 
- 937              	.L61:
- 938 0020 00000000 		.word	hadc2
- 939 0024 00002041 		.word	1092616192
- 940              		.cfi_endproc
- 941              	.LFE79:
- 943              		.global	__aeabi_f2d
- 944              		.global	__aeabi_dmul
- 945              		.global	__aeabi_d2f
- 946              		.section	.text.Accqui_Result,"ax",%progbits
- 947              		.align	1
- 948              		.global	Accqui_Result
- 949              		.syntax unified
- 950              		.thumb
- 951              		.thumb_func
- 953              	Accqui_Result:
- 954              	.LFB80:
- 219:Core/Src/sensors.c **** 
- 220:Core/Src/sensors.c **** /************for ADC ACCQUI***************/
- 221:Core/Src/sensors.c **** //4095-> 3.3V
- 222:Core/Src/sensors.c **** float Accqui_Result()
- 223:Core/Src/sensors.c **** {
- 955              		.loc 1 223 1 is_stmt 1 view -0
- 956              		.cfi_startproc
- 957              		@ args = 0, pretend = 0, frame = 0
- 958              		@ frame_needed = 0, uses_anonymous_args = 0
- 959 0000 08B5     		push	{r3, lr}
- 960              	.LCFI15:
- 961              		.cfi_def_cfa_offset 8
- 962              		.cfi_offset 3, -8
- 963              		.cfi_offset 14, -4
- 224:Core/Src/sensors.c **** 	uint16_t value_accqui;
- 964              		.loc 1 224 2 view .LVU235
- 225:Core/Src/sensors.c **** 	float vol_accqi;
- 965              		.loc 1 225 2 view .LVU236
- 226:Core/Src/sensors.c **** 	value_accqui = HAL_ADC_GetValue(&hadc1);
- 966              		.loc 1 226 2 view .LVU237
- 967              		.loc 1 226 17 is_stmt 0 view .LVU238
- 968 0002 0B48     		ldr	r0, .L65+8
- 969 0004 FFF7FEFF 		bl	HAL_ADC_GetValue
- 970              	.LVL104:
- 227:Core/Src/sensors.c **** 	vol_accqi = (3.3/4095)*(float)value_accqui;
- 971              		.loc 1 227 2 is_stmt 1 view .LVU239
- 972              		.loc 1 227 25 is_stmt 0 view .LVU240
- 973 0008 80B2     		uxth	r0, r0
- 974              		.loc 1 227 25 view .LVU241
- 975 000a FFF7FEFF 		bl	__aeabi_ui2f
- 976              	.LVL105:
- 977              		.loc 1 227 25 view .LVU242
- 978 000e FFF7FEFF 		bl	__aeabi_f2d
- 979              	.LVL106:
- 980              		.loc 1 227 24 view .LVU243
- 981 0012 05A3     		adr	r3, .L65
- 982 0014 D3E90023 		ldrd	r2, [r3]
- 983 0018 FFF7FEFF 		bl	__aeabi_dmul
- 984              	.LVL107:
- 985              		.loc 1 227 12 view .LVU244
- 986 001c FFF7FEFF 		bl	__aeabi_d2f
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 23
+ 222:Core/Src/sensors.c **** {
+ 930              		.loc 1 222 1 is_stmt 1 view -0
+ 931              		.cfi_startproc
+ 932              		@ args = 0, pretend = 0, frame = 0
+ 933              		@ frame_needed = 0, uses_anonymous_args = 0
+ 934 0000 08B5     		push	{r3, lr}
+ 935              	.LCFI14:
+ 936              		.cfi_def_cfa_offset 8
+ 937              		.cfi_offset 3, -8
+ 938              		.cfi_offset 14, -4
+ 223:Core/Src/sensors.c **** 	uint16_t value_level;
+ 939              		.loc 1 223 2 view .LVU230
+ 224:Core/Src/sensors.c **** 	float level;
+ 940              		.loc 1 224 2 view .LVU231
+ 225:Core/Src/sensors.c **** 	value_level = HAL_ADC_GetValue(&hadc2);
+ 941              		.loc 1 225 2 view .LVU232
+ 942              		.loc 1 225 16 is_stmt 0 view .LVU233
+ 943 0002 0748     		ldr	r0, .L65
+ 944 0004 FFF7FEFF 		bl	HAL_ADC_GetValue
+ 945              	.LVL103:
+ 226:Core/Src/sensors.c **** 	level = 10.0-(10/4095)*(float)value_level;
+ 946              		.loc 1 226 2 is_stmt 1 view .LVU234
+ 947              		.loc 1 226 25 is_stmt 0 view .LVU235
+ 948 0008 80B2     		uxth	r0, r0
+ 949              		.loc 1 226 25 view .LVU236
+ 950 000a FFF7FEFF 		bl	__aeabi_ui2f
+ 951              	.LVL104:
+ 952              		.loc 1 226 24 view .LVU237
+ 953 000e 0021     		movs	r1, #0
+ 954 0010 FFF7FEFF 		bl	__aeabi_fmul
+ 955              	.LVL105:
+ 956 0014 0146     		mov	r1, r0
+ 957              		.loc 1 226 8 view .LVU238
+ 958 0016 0348     		ldr	r0, .L65+4
+ 959 0018 FFF7FEFF 		bl	__aeabi_fsub
+ 960              	.LVL106:
+ 227:Core/Src/sensors.c **** 	return level;
+ 961              		.loc 1 227 2 is_stmt 1 view .LVU239
+ 228:Core/Src/sensors.c **** }
+ 962              		.loc 1 228 1 is_stmt 0 view .LVU240
+ 963 001c 08BD     		pop	{r3, pc}
+ 964              	.L66:
+ 965 001e 00BF     		.align	2
+ 966              	.L65:
+ 967 0020 00000000 		.word	hadc2
+ 968 0024 00002041 		.word	1092616192
+ 969              		.cfi_endproc
+ 970              	.LFE79:
+ 972              		.global	__aeabi_f2d
+ 973              		.global	__aeabi_dmul
+ 974              		.global	__aeabi_d2f
+ 975              		.section	.text.Accqui_Result,"ax",%progbits
+ 976              		.align	1
+ 977              		.global	Accqui_Result
+ 978              		.syntax unified
+ 979              		.thumb
+ 980              		.thumb_func
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 23
 
 
- 987              	.LVL108:
- 228:Core/Src/sensors.c **** 	return vol_accqi;
- 988              		.loc 1 228 2 is_stmt 1 view .LVU245
- 229:Core/Src/sensors.c **** }
- 989              		.loc 1 229 1 is_stmt 0 view .LVU246
- 990 0020 08BD     		pop	{r3, pc}
- 991              	.L66:
- 992 0022 00BFAFF3 		.align	3
- 992      0080
- 993              	.L65:
- 994 0028 B4D934E7 		.word	-415966796
- 995 002c 0C684A3F 		.word	1061840908
- 996 0030 00000000 		.word	hadc1
- 997              		.cfi_endproc
- 998              	.LFE80:
- 1000              		.global	detect
- 1001              		.section	.bss.detect,"aw",%nobits
- 1002              		.align	2
- 1005              	detect:
- 1006 0000 00000000 		.space	4
- 1007              		.text
- 1008              	.Letext0:
- 1009              		.file 2 "d:\\10 2021.10\\arm-none-eabi\\include\\machine\\_default_types.h"
- 1010              		.file 3 "d:\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
- 1011              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h"
- 1012              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h"
- 1013              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 1014              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
- 1015              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 1016              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h"
- 1017              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
- 1018              		.file 11 "Core/Inc/tim.h"
- 1019              		.file 12 "Core/Inc/adc.h"
- 1020              		.file 13 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s 			page 24
+ 982              	Accqui_Result:
+ 983              	.LFB80:
+ 229:Core/Src/sensors.c **** 
+ 230:Core/Src/sensors.c **** /************for ADC ACCQUI***************/
+ 231:Core/Src/sensors.c **** //4095-> 3.3V
+ 232:Core/Src/sensors.c **** float Accqui_Result()
+ 233:Core/Src/sensors.c **** {
+ 984              		.loc 1 233 1 is_stmt 1 view -0
+ 985              		.cfi_startproc
+ 986              		@ args = 0, pretend = 0, frame = 0
+ 987              		@ frame_needed = 0, uses_anonymous_args = 0
+ 988 0000 08B5     		push	{r3, lr}
+ 989              	.LCFI15:
+ 990              		.cfi_def_cfa_offset 8
+ 991              		.cfi_offset 3, -8
+ 992              		.cfi_offset 14, -4
+ 234:Core/Src/sensors.c **** 	uint16_t value_accqui;
+ 993              		.loc 1 234 2 view .LVU242
+ 235:Core/Src/sensors.c **** 	float vol_accqi;
+ 994              		.loc 1 235 2 view .LVU243
+ 236:Core/Src/sensors.c **** 	value_accqui = HAL_ADC_GetValue(&hadc1);
+ 995              		.loc 1 236 2 view .LVU244
+ 996              		.loc 1 236 17 is_stmt 0 view .LVU245
+ 997 0002 0B48     		ldr	r0, .L69+8
+ 998 0004 FFF7FEFF 		bl	HAL_ADC_GetValue
+ 999              	.LVL107:
+ 237:Core/Src/sensors.c **** 	vol_accqi = (3.3/4095)*(float)value_accqui;
+ 1000              		.loc 1 237 2 is_stmt 1 view .LVU246
+ 1001              		.loc 1 237 25 is_stmt 0 view .LVU247
+ 1002 0008 80B2     		uxth	r0, r0
+ 1003              		.loc 1 237 25 view .LVU248
+ 1004 000a FFF7FEFF 		bl	__aeabi_ui2f
+ 1005              	.LVL108:
+ 1006              		.loc 1 237 25 view .LVU249
+ 1007 000e FFF7FEFF 		bl	__aeabi_f2d
+ 1008              	.LVL109:
+ 1009              		.loc 1 237 24 view .LVU250
+ 1010 0012 05A3     		adr	r3, .L69
+ 1011 0014 D3E90023 		ldrd	r2, [r3]
+ 1012 0018 FFF7FEFF 		bl	__aeabi_dmul
+ 1013              	.LVL110:
+ 1014              		.loc 1 237 12 view .LVU251
+ 1015 001c FFF7FEFF 		bl	__aeabi_d2f
+ 1016              	.LVL111:
+ 238:Core/Src/sensors.c **** 	return vol_accqi;
+ 1017              		.loc 1 238 2 is_stmt 1 view .LVU252
+ 239:Core/Src/sensors.c **** }
+ 1018              		.loc 1 239 1 is_stmt 0 view .LVU253
+ 1019 0020 08BD     		pop	{r3, pc}
+ 1020              	.L70:
+ 1021 0022 00BFAFF3 		.align	3
+ 1021      0080
+ 1022              	.L69:
+ 1023 0028 B4D934E7 		.word	-415966796
+ 1024 002c 0C684A3F 		.word	1061840908
+ 1025 0030 00000000 		.word	hadc1
+ 1026              		.cfi_endproc
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 24
+
+
+ 1027              	.LFE80:
+ 1029              		.global	detect
+ 1030              		.section	.bss.detect,"aw",%nobits
+ 1031              		.align	2
+ 1034              	detect:
+ 1035 0000 00000000 		.space	4
+ 1036              		.text
+ 1037              	.Letext0:
+ 1038              		.file 2 "d:\\10 2021.10\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 1039              		.file 3 "d:\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 1040              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h"
+ 1041              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h"
+ 1042              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 1043              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 1044              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 1045              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h"
+ 1046              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
+ 1047              		.file 11 "Core/Inc/tim.h"
+ 1048              		.file 12 "Core/Inc/adc.h"
+ 1049              		.file 13 "Core/Inc/debug.h"
+ 1050              		.file 14 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 25
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 sensors.c
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:18     .text.delay:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:24     .text.delay:00000000 delay
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:52     .text.delay:00000010 $d
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:57     .text.Set_Pin_Output:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:63     .text.Set_Pin_Output:00000000 Set_Pin_Output
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:112    .text.Set_Pin_Input:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:118    .text.Set_Pin_Input:00000000 Set_Pin_Input
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:164    .text.DS18B20_Start:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:170    .text.DS18B20_Start:00000000 DS18B20_Start
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:236    .text.DS18B20_Start:00000048 $d
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:241    .text.DS18B20_Write:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:247    .text.DS18B20_Write:00000000 DS18B20_Write
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:351    .text.DS18B20_Write:00000070 $d
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:356    .text.DS18B20_Read:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:362    .text.DS18B20_Read:00000000 DS18B20_Read
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:462    .text.DS18B20_Read:00000058 $d
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:469    .text.DS18B20_Result:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:475    .text.DS18B20_Result:00000000 DS18B20_Result
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:559    .text.DHT11_Start:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:565    .text.DHT11_Start:00000000 DHT11_Start
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:612    .text.DHT11_Start:00000038 $d
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:617    .text.DHT11_Check_Response:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:623    .text.DHT11_Check_Response:00000000 DHT11_Check_Response
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:692    .text.DHT11_Check_Response:0000003c $d
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:697    .text.DHT11_Read:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:703    .text.DHT11_Read:00000000 DHT11_Read
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:804    .text.DHT11_Read:00000058 $d
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:809    .text.DHT11_Result:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:815    .text.DHT11_Result:00000000 DHT11_Result
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:893    .text.Level_Result:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:899    .text.Level_Result:00000000 Level_Result
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:938    .text.Level_Result:00000020 $d
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:947    .text.Accqui_Result:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:953    .text.Accqui_Result:00000000 Accqui_Result
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:994    .text.Accqui_Result:00000028 $d
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:1005   .bss.detect:00000000 detect
-C:\Users\Admin\AppData\Local\Temp\ccCdQXHc.s:1002   .bss.detect:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:18     .text.delay:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:24     .text.delay:00000000 delay
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:52     .text.delay:00000010 $d
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:57     .text.Set_Pin_Output:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:63     .text.Set_Pin_Output:00000000 Set_Pin_Output
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:112    .text.Set_Pin_Input:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:118    .text.Set_Pin_Input:00000000 Set_Pin_Input
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:164    .text.DS18B20_Start:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:170    .text.DS18B20_Start:00000000 DS18B20_Start
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:225    .text.DS18B20_Start:00000040 $d
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:230    .text.DS18B20_Write:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:236    .text.DS18B20_Write:00000000 DS18B20_Write
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:340    .text.DS18B20_Write:00000070 $d
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:345    .text.DS18B20_Read:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:351    .text.DS18B20_Read:00000000 DS18B20_Read
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:451    .text.DS18B20_Read:00000058 $d
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:456    .rodata.DS18B20_Result.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:462    .text.DS18B20_Result:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:468    .text.DS18B20_Result:00000000 DS18B20_Result
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:569    .text.DS18B20_Result:00000064 $d
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:574    .text.DHT11_Start:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:580    .text.DHT11_Start:00000000 DHT11_Start
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:627    .text.DHT11_Start:00000038 $d
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:632    .text.DHT11_Check_Response:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:638    .text.DHT11_Check_Response:00000000 DHT11_Check_Response
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:693    .text.DHT11_Check_Response:00000034 $d
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:698    .text.DHT11_Read:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:704    .text.DHT11_Read:00000000 DHT11_Read
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:805    .text.DHT11_Read:00000058 $d
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:810    .rodata.DHT11_Result.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:814    .text.DHT11_Result:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:820    .text.DHT11_Result:00000000 DHT11_Result
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:916    .text.DHT11_Result:00000048 $d
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:922    .text.Level_Result:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:928    .text.Level_Result:00000000 Level_Result
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:967    .text.Level_Result:00000020 $d
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:976    .text.Accqui_Result:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:982    .text.Accqui_Result:00000000 Accqui_Result
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:1023   .text.Accqui_Result:00000028 $d
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:1034   .bss.detect:00000000 detect
+C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s:1031   .bss.detect:00000000 $d
 
 UNDEFINED SYMBOLS
 htim1
@@ -1405,11 +1456,15 @@ HAL_GPIO_WritePin
 HAL_GPIO_ReadPin
 __aeabi_ui2f
 __aeabi_fmul
+log_data
 HAL_Delay
 __aeabi_fsub
 HAL_ADC_GetValue
 hadc2
 __aeabi_f2d
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccfo34X2.s 			page 26
+
+
 __aeabi_dmul
 __aeabi_d2f
 hadc1

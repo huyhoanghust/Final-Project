@@ -5,6 +5,12 @@
         "stm32f1xx_hal_conf.h": "c",
         "sensors.h": "c",
         "tim.h": "c",
-        "stdbool.h": "c"
+        "stdbool.h": "c",
+        "sd.h": "c",
+        "fatfs.h": "c",
+        "ff.h": "c",
+        "fatfs_sd.h": "c",
+        "ff_gen_drv.h": "c",
+        "diskio.h": "c"
     }
 }

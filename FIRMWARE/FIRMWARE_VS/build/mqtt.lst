@@ -1,0 +1,1225 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"mqtt.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.rodata.mqtt_disconnectServer.str1.4,"aMS",%progbits,1
+  18              		.align	2
+  19              	.LC0:
+  20 0000 41542B43 		.ascii	"AT+CMQTTDISC=%d,%d\015\012\000"
+  20      4D515454 
+  20      44495343 
+  20      3D25642C 
+  20      25640D0A 
+  21 0015 000000   		.align	2
+  22              	.LC1:
+  23 0018 2B434D51 		.ascii	"+CMQTTDISC: 0,0\015\012\000"
+  23      54544449 
+  23      53433A20 
+  23      302C300D 
+  23      0A00
+  24 002a 0000     		.align	2
+  25              	.LC2:
+  26 002c 41542B43 		.ascii	"AT+CMQTTREL=%d\015\012\000"
+  26      4D515454 
+  26      52454C3D 
+  26      25640D0A 
+  26      00
+  27 003d 000000   		.align	2
+  28              	.LC3:
+  29 0040 4F4B0D0A 		.ascii	"OK\015\012\000"
+  29      00
+  30 0045 000000   		.align	2
+  31              	.LC4:
+  32 0048 2B434D51 		.ascii	"+CMQTTSTOP: 0\015\012\000"
+  32      54545354 
+  32      4F503A20 
+  32      300D0A00 
+  33              		.align	2
+  34              	.LC5:
+  35 0058 41542B43 		.ascii	"AT+CMQTTSTOP\015\012\000"
+  35      4D515454 
+  35      53544F50 
+  35      0D0A00
+  36              		.section	.text.mqtt_disconnectServer,"ax",%progbits
+  37              		.align	1
+  38              		.global	mqtt_disconnectServer
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s 			page 2
+
+
+  39              		.syntax unified
+  40              		.thumb
+  41              		.thumb_func
+  43              	mqtt_disconnectServer:
+  44              	.LFB68:
+  45              		.file 1 "Core/Src/mqtt.c"
+   1:Core/Src/mqtt.c **** #include "mqtt.h"
+   2:Core/Src/mqtt.c **** 
+   3:Core/Src/mqtt.c **** mqttServer_t mqttServer ={
+   4:Core/Src/mqtt.c ****     .host = "broker.mqttdashboard.com",
+   5:Core/Src/mqtt.c ****     .port = 1883,
+   6:Core/Src/mqtt.c ****     .serverType=0,  //TCP
+   7:Core/Src/mqtt.c **** };
+   8:Core/Src/mqtt.c **** 
+   9:Core/Src/mqtt.c **** mqttClient_t mqttClient={
+  10:Core/Src/mqtt.c ****     .clientID="DATN_Tracking_20191855",
+  11:Core/Src/mqtt.c ****     .keepAliveInterval = 60,
+  12:Core/Src/mqtt.c ****     .username="",
+  13:Core/Src/mqtt.c ****     .pass="",
+  14:Core/Src/mqtt.c ****     .clientIndex=0,
+  15:Core/Src/mqtt.c ****     .QoS=0,
+  16:Core/Src/mqtt.c **** };
+  17:Core/Src/mqtt.c **** 
+  18:Core/Src/mqtt.c **** mqttData_t mqttData;
+  19:Core/Src/mqtt.c **** 
+  20:Core/Src/mqtt.c **** char ATcommand[100]={0};
+  21:Core/Src/mqtt.c **** 
+  22:Core/Src/mqtt.c **** extern char simRxResponse[100];
+  23:Core/Src/mqtt.c **** 
+  24:Core/Src/mqtt.c **** void mqtt_disconnectServer()
+  25:Core/Src/mqtt.c **** {
+  46              		.loc 1 25 1 view -0
+  47              		.cfi_startproc
+  48              		@ args = 0, pretend = 0, frame = 0
+  49              		@ frame_needed = 0, uses_anonymous_args = 0
+  50 0000 10B5     		push	{r4, lr}
+  51              	.LCFI0:
+  52              		.cfi_def_cfa_offset 8
+  53              		.cfi_offset 4, -8
+  54              		.cfi_offset 14, -4
+  26:Core/Src/mqtt.c ****     memset(ATcommand,'\0',sizeof(ATcommand));
+  55              		.loc 1 26 5 view .LVU1
+  56 0002 204C     		ldr	r4, .L9
+  57 0004 6422     		movs	r2, #100
+  58 0006 0021     		movs	r1, #0
+  59 0008 2046     		mov	r0, r4
+  60 000a FFF7FEFF 		bl	memset
+  61              	.LVL0:
+  27:Core/Src/mqtt.c ****     sprintf(ATcommand,"AT+CMQTTDISC=%d,%d\r\n",mqttClient.clientIndex, mqttClient.keepAliveInterval
+  62              		.loc 1 27 5 view .LVU2
+  63              		.loc 1 27 82 is_stmt 0 view .LVU3
+  64 000e 1E4A     		ldr	r2, .L9+4
+  65              		.loc 1 27 5 view .LVU4
+  66 0010 9389     		ldrh	r3, [r2, #12]
+  67 0012 1269     		ldr	r2, [r2, #16]
+  68 0014 1D49     		ldr	r1, .L9+8
+  69 0016 2046     		mov	r0, r4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s 			page 3
+
+
+  70 0018 FFF7FEFF 		bl	sprintf
+  71              	.LVL1:
+  28:Core/Src/mqtt.c ****     if(sim7672_send_command(ATcommand,"+CMQTTDISC: 0,0\r\n",TIME_SHORT))
+  72              		.loc 1 28 5 is_stmt 1 view .LVU5
+  73              		.loc 1 28 8 is_stmt 0 view .LVU6
+  74 001c 4FF4FA72 		mov	r2, #500
+  75 0020 1B49     		ldr	r1, .L9+12
+  76 0022 2046     		mov	r0, r4
+  77 0024 FFF7FEFF 		bl	sim7672_send_command
+  78              	.LVL2:
+  79              		.loc 1 28 7 view .LVU7
+  80 0028 18BB     		cbnz	r0, .L6
+  81              	.L2:
+  29:Core/Src/mqtt.c ****     {
+  30:Core/Src/mqtt.c ****         sim7672_errorHandle();
+  31:Core/Src/mqtt.c ****     }
+  32:Core/Src/mqtt.c ****     HAL_Delay(100);
+  82              		.loc 1 32 5 is_stmt 1 view .LVU8
+  83 002a 6420     		movs	r0, #100
+  84 002c FFF7FEFF 		bl	HAL_Delay
+  85              	.LVL3:
+  33:Core/Src/mqtt.c ****     memset(ATcommand,'\0',sizeof(ATcommand));
+  86              		.loc 1 33 5 view .LVU9
+  87 0030 144C     		ldr	r4, .L9
+  88 0032 6422     		movs	r2, #100
+  89 0034 0021     		movs	r1, #0
+  90 0036 2046     		mov	r0, r4
+  91 0038 FFF7FEFF 		bl	memset
+  92              	.LVL4:
+  34:Core/Src/mqtt.c ****     sprintf(ATcommand,"AT+CMQTTREL=%d\r\n",mqttClient.clientIndex);
+  93              		.loc 1 34 5 view .LVU10
+  94 003c 124B     		ldr	r3, .L9+4
+  95 003e 1A69     		ldr	r2, [r3, #16]
+  96 0040 1449     		ldr	r1, .L9+16
+  97 0042 2046     		mov	r0, r4
+  98 0044 FFF7FEFF 		bl	sprintf
+  99              	.LVL5:
+  35:Core/Src/mqtt.c ****     if(sim7672_send_command(ATcommand, "OK\r\n",TIME_MEDIUM))
+ 100              		.loc 1 35 5 view .LVU11
+ 101              		.loc 1 35 8 is_stmt 0 view .LVU12
+ 102 0048 4FF47A72 		mov	r2, #1000
+ 103 004c 1249     		ldr	r1, .L9+20
+ 104 004e 2046     		mov	r0, r4
+ 105 0050 FFF7FEFF 		bl	sim7672_send_command
+ 106              	.LVL6:
+ 107              		.loc 1 35 7 view .LVU13
+ 108 0054 80B9     		cbnz	r0, .L7
+ 109              	.L3:
+  36:Core/Src/mqtt.c ****     {
+  37:Core/Src/mqtt.c ****         sim7672_errorHandle();
+  38:Core/Src/mqtt.c ****     }
+  39:Core/Src/mqtt.c ****     HAL_Delay(100);
+ 110              		.loc 1 39 5 is_stmt 1 view .LVU14
+ 111 0056 6420     		movs	r0, #100
+ 112 0058 FFF7FEFF 		bl	HAL_Delay
+ 113              	.LVL7:
+  40:Core/Src/mqtt.c ****     if(sim7672_send_command("AT+CMQTTSTOP\r\n","+CMQTTSTOP: 0\r\n",TIME_SHORT))
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s 			page 4
+
+
+ 114              		.loc 1 40 5 view .LVU15
+ 115              		.loc 1 40 8 is_stmt 0 view .LVU16
+ 116 005c 4FF4FA72 		mov	r2, #500
+ 117 0060 0E49     		ldr	r1, .L9+24
+ 118 0062 0F48     		ldr	r0, .L9+28
+ 119 0064 FFF7FEFF 		bl	sim7672_send_command
+ 120              	.LVL8:
+ 121              		.loc 1 40 7 view .LVU17
+ 122 0068 48B9     		cbnz	r0, .L8
+ 123              	.L4:
+  41:Core/Src/mqtt.c ****     {
+  42:Core/Src/mqtt.c ****         sim7672_errorHandle();
+  43:Core/Src/mqtt.c ****     }
+  44:Core/Src/mqtt.c ****     HAL_Delay(100);
+ 124              		.loc 1 44 5 is_stmt 1 view .LVU18
+ 125 006a 6420     		movs	r0, #100
+ 126 006c FFF7FEFF 		bl	HAL_Delay
+ 127              	.LVL9:
+  45:Core/Src/mqtt.c **** }
+ 128              		.loc 1 45 1 is_stmt 0 view .LVU19
+ 129 0070 10BD     		pop	{r4, pc}
+ 130              	.L6:
+  30:Core/Src/mqtt.c ****     }
+ 131              		.loc 1 30 9 is_stmt 1 view .LVU20
+ 132 0072 FFF7FEFF 		bl	sim7672_errorHandle
+ 133              	.LVL10:
+ 134 0076 D8E7     		b	.L2
+ 135              	.L7:
+  37:Core/Src/mqtt.c ****     }
+ 136              		.loc 1 37 9 view .LVU21
+ 137 0078 FFF7FEFF 		bl	sim7672_errorHandle
+ 138              	.LVL11:
+ 139 007c EBE7     		b	.L3
+ 140              	.L8:
+  42:Core/Src/mqtt.c ****     }
+ 141              		.loc 1 42 9 view .LVU22
+ 142 007e FFF7FEFF 		bl	sim7672_errorHandle
+ 143              	.LVL12:
+ 144 0082 F2E7     		b	.L4
+ 145              	.L10:
+ 146              		.align	2
+ 147              	.L9:
+ 148 0084 00000000 		.word	.LANCHOR0
+ 149 0088 00000000 		.word	.LANCHOR1
+ 150 008c 00000000 		.word	.LC0
+ 151 0090 18000000 		.word	.LC1
+ 152 0094 2C000000 		.word	.LC2
+ 153 0098 40000000 		.word	.LC3
+ 154 009c 48000000 		.word	.LC4
+ 155 00a0 58000000 		.word	.LC5
+ 156              		.cfi_endproc
+ 157              	.LFE68:
+ 159              		.section	.rodata.mqtt_connectServer.str1.4,"aMS",%progbits,1
+ 160              		.align	2
+ 161              	.LC6:
+ 162 0000 2B434D51 		.ascii	"+CMQTTSTART: 0\015\012\000"
+ 162      54545354 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s 			page 5
+
+
+ 162      4152543A 
+ 162      20300D0A 
+ 162      00
+ 163 0011 000000   		.align	2
+ 164              	.LC7:
+ 165 0014 41542B43 		.ascii	"AT+CMQTTSTART\015\012\000"
+ 165      4D515454 
+ 165      53544152 
+ 165      540D0A00 
+ 166              		.align	2
+ 167              	.LC8:
+ 168 0024 41542B43 		.ascii	"AT+CMQTTACCQ=%d,\"%s\",%d\015\012\000"
+ 168      4D515454 
+ 168      41434351 
+ 168      3D25642C 
+ 168      22257322 
+ 169 003e 0000     		.align	2
+ 170              	.LC9:
+ 171 0040 41542B43 		.ascii	"AT+CMQTTCONNECT=%d,\"tcp://%s:%d\",%d,1\015\012\000"
+ 171      4D515454 
+ 171      434F4E4E 
+ 171      4543543D 
+ 171      25642C22 
+ 172              		.align	2
+ 173              	.LC10:
+ 174 0068 2B434D51 		.ascii	"+CMQTTCONNECT: 0,0\015\012\000"
+ 174      5454434F 
+ 174      4E4E4543 
+ 174      543A2030 
+ 174      2C300D0A 
+ 175              		.section	.text.mqtt_connectServer,"ax",%progbits
+ 176              		.align	1
+ 177              		.global	mqtt_connectServer
+ 178              		.syntax unified
+ 179              		.thumb
+ 180              		.thumb_func
+ 182              	mqtt_connectServer:
+ 183              	.LFB69:
+  46:Core/Src/mqtt.c **** 
+  47:Core/Src/mqtt.c **** void mqtt_connectServer()
+  48:Core/Src/mqtt.c **** {
+ 184              		.loc 1 48 1 view -0
+ 185              		.cfi_startproc
+ 186              		@ args = 0, pretend = 0, frame = 0
+ 187              		@ frame_needed = 0, uses_anonymous_args = 0
+ 188 0000 10B5     		push	{r4, lr}
+ 189              	.LCFI1:
+ 190              		.cfi_def_cfa_offset 8
+ 191              		.cfi_offset 4, -8
+ 192              		.cfi_offset 14, -4
+ 193 0002 82B0     		sub	sp, sp, #8
+ 194              	.LCFI2:
+ 195              		.cfi_def_cfa_offset 16
+  49:Core/Src/mqtt.c ****     memset(ATcommand,'\0',sizeof(ATcommand));
+ 196              		.loc 1 49 5 view .LVU24
+ 197 0004 6422     		movs	r2, #100
+ 198 0006 0021     		movs	r1, #0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s 			page 6
+
+
+ 199 0008 2448     		ldr	r0, .L19
+ 200 000a FFF7FEFF 		bl	memset
+ 201              	.LVL13:
+  50:Core/Src/mqtt.c ****     //start MQTT
+  51:Core/Src/mqtt.c ****     if(sim7672_send_command("AT+CMQTTSTART\r\n","+CMQTTSTART: 0\r\n",TIME_VERY_SHORT)!=SIM_TRUE)
+ 202              		.loc 1 51 5 view .LVU25
+ 203              		.loc 1 51 8 is_stmt 0 view .LVU26
+ 204 000e C822     		movs	r2, #200
+ 205 0010 2349     		ldr	r1, .L19+4
+ 206 0012 2448     		ldr	r0, .L19+8
+ 207 0014 FFF7FEFF 		bl	sim7672_send_command
+ 208              	.LVL14:
+ 209              		.loc 1 51 7 view .LVU27
+ 210 0018 0128     		cmp	r0, #1
+ 211 001a 36D1     		bne	.L16
+ 212              	.L12:
+  52:Core/Src/mqtt.c ****     {
+  53:Core/Src/mqtt.c ****         sim7672_errorHandle();
+  54:Core/Src/mqtt.c ****     }
+  55:Core/Src/mqtt.c ****     HAL_Delay(100);
+ 213              		.loc 1 55 5 is_stmt 1 view .LVU28
+ 214 001c 6420     		movs	r0, #100
+ 215 001e FFF7FEFF 		bl	HAL_Delay
+ 216              	.LVL15:
+  56:Core/Src/mqtt.c ****     //accquire MQTT client
+  57:Core/Src/mqtt.c ****     sprintf(ATcommand,"AT+CMQTTACCQ=%d,\"%s\",%d\r\n",mqttClient.clientIndex,mqttClient.clientID,mq
+ 217              		.loc 1 57 5 view .LVU29
+ 218 0022 214A     		ldr	r2, .L19+12
+ 219 0024 1D4C     		ldr	r4, .L19
+ 220 0026 214B     		ldr	r3, .L19+16
+ 221 0028 9B68     		ldr	r3, [r3, #8]
+ 222 002a 0093     		str	r3, [sp]
+ 223 002c 9368     		ldr	r3, [r2, #8]
+ 224 002e 1269     		ldr	r2, [r2, #16]
+ 225 0030 1F49     		ldr	r1, .L19+20
+ 226 0032 2046     		mov	r0, r4
+ 227 0034 FFF7FEFF 		bl	sprintf
+ 228              	.LVL16:
+  58:Core/Src/mqtt.c ****     if(sim7672_send_command(ATcommand,"OK\r\n",TIME_VERY_SHORT)!=SIM_TRUE)
+ 229              		.loc 1 58 5 view .LVU30
+ 230              		.loc 1 58 8 is_stmt 0 view .LVU31
+ 231 0038 C822     		movs	r2, #200
+ 232 003a 1E49     		ldr	r1, .L19+24
+ 233 003c 2046     		mov	r0, r4
+ 234 003e FFF7FEFF 		bl	sim7672_send_command
+ 235              	.LVL17:
+ 236              		.loc 1 58 7 view .LVU32
+ 237 0042 0128     		cmp	r0, #1
+ 238 0044 24D1     		bne	.L17
+ 239              	.L13:
+  59:Core/Src/mqtt.c ****     {
+  60:Core/Src/mqtt.c ****         sim7672_errorHandle();
+  61:Core/Src/mqtt.c ****     }
+  62:Core/Src/mqtt.c ****     HAL_Delay(100);
+ 240              		.loc 1 62 5 is_stmt 1 view .LVU33
+ 241 0046 6420     		movs	r0, #100
+ 242 0048 FFF7FEFF 		bl	HAL_Delay
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s 			page 7
+
+
+ 243              	.LVL18:
+  63:Core/Src/mqtt.c ****     memset(ATcommand,'\0',sizeof(ATcommand));
+ 244              		.loc 1 63 5 view .LVU34
+ 245 004c 134C     		ldr	r4, .L19
+ 246 004e 6422     		movs	r2, #100
+ 247 0050 0021     		movs	r1, #0
+ 248 0052 2046     		mov	r0, r4
+ 249 0054 FFF7FEFF 		bl	memset
+ 250              	.LVL19:
+  64:Core/Src/mqtt.c ****     //connect to MQTT server
+  65:Core/Src/mqtt.c ****     sprintf(ATcommand,"AT+CMQTTCONNECT=%d,\"tcp://%s:%d\",%d,1\r\n",mqttClient.clientIndex,mqttServ
+ 251              		.loc 1 65 5 view .LVU35
+ 252              		.loc 1 65 118 is_stmt 0 view .LVU36
+ 253 0058 144B     		ldr	r3, .L19+16
+ 254 005a 9988     		ldrh	r1, [r3, #4]
+ 255              		.loc 1 65 134 view .LVU37
+ 256 005c 124A     		ldr	r2, .L19+12
+ 257 005e 9089     		ldrh	r0, [r2, #12]
+ 258              		.loc 1 65 5 view .LVU38
+ 259 0060 0190     		str	r0, [sp, #4]
+ 260 0062 0091     		str	r1, [sp]
+ 261 0064 1B68     		ldr	r3, [r3]
+ 262 0066 1269     		ldr	r2, [r2, #16]
+ 263 0068 1349     		ldr	r1, .L19+28
+ 264 006a 2046     		mov	r0, r4
+ 265 006c FFF7FEFF 		bl	sprintf
+ 266              	.LVL20:
+  66:Core/Src/mqtt.c ****     if(sim7672_send_command(ATcommand,"+CMQTTCONNECT: 0,0\r\n",TIME_LONG)!=SIM_TRUE)
+ 267              		.loc 1 66 5 is_stmt 1 view .LVU39
+ 268              		.loc 1 66 8 is_stmt 0 view .LVU40
+ 269 0070 40F2DC52 		movw	r2, #1500
+ 270 0074 1149     		ldr	r1, .L19+32
+ 271 0076 2046     		mov	r0, r4
+ 272 0078 FFF7FEFF 		bl	sim7672_send_command
+ 273              	.LVL21:
+ 274              		.loc 1 66 7 view .LVU41
+ 275 007c 0128     		cmp	r0, #1
+ 276 007e 0AD1     		bne	.L18
+ 277              	.L14:
+  67:Core/Src/mqtt.c ****     {
+  68:Core/Src/mqtt.c ****         sim7672_errorHandle();
+  69:Core/Src/mqtt.c ****     }
+  70:Core/Src/mqtt.c ****     HAL_Delay(100);
+ 278              		.loc 1 70 5 is_stmt 1 view .LVU42
+ 279 0080 6420     		movs	r0, #100
+ 280 0082 FFF7FEFF 		bl	HAL_Delay
+ 281              	.LVL22:
+  71:Core/Src/mqtt.c **** }
+ 282              		.loc 1 71 1 is_stmt 0 view .LVU43
+ 283 0086 02B0     		add	sp, sp, #8
+ 284              	.LCFI3:
+ 285              		.cfi_remember_state
+ 286              		.cfi_def_cfa_offset 8
+ 287              		@ sp needed
+ 288 0088 10BD     		pop	{r4, pc}
+ 289              	.L16:
+ 290              	.LCFI4:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s 			page 8
+
+
+ 291              		.cfi_restore_state
+  53:Core/Src/mqtt.c ****     }
+ 292              		.loc 1 53 9 is_stmt 1 view .LVU44
+ 293 008a FFF7FEFF 		bl	sim7672_errorHandle
+ 294              	.LVL23:
+ 295 008e C5E7     		b	.L12
+ 296              	.L17:
+  60:Core/Src/mqtt.c ****     }
+ 297              		.loc 1 60 9 view .LVU45
+ 298 0090 FFF7FEFF 		bl	sim7672_errorHandle
+ 299              	.LVL24:
+ 300 0094 D7E7     		b	.L13
+ 301              	.L18:
+  68:Core/Src/mqtt.c ****     }
+ 302              		.loc 1 68 9 view .LVU46
+ 303 0096 FFF7FEFF 		bl	sim7672_errorHandle
+ 304              	.LVL25:
+ 305 009a F1E7     		b	.L14
+ 306              	.L20:
+ 307              		.align	2
+ 308              	.L19:
+ 309 009c 00000000 		.word	.LANCHOR0
+ 310 00a0 00000000 		.word	.LC6
+ 311 00a4 14000000 		.word	.LC7
+ 312 00a8 00000000 		.word	.LANCHOR1
+ 313 00ac 00000000 		.word	.LANCHOR2
+ 314 00b0 24000000 		.word	.LC8
+ 315 00b4 40000000 		.word	.LC3
+ 316 00b8 40000000 		.word	.LC9
+ 317 00bc 68000000 		.word	.LC10
+ 318              		.cfi_endproc
+ 319              	.LFE69:
+ 321              		.section	.rodata.mqtt_pub.str1.4,"aMS",%progbits,1
+ 322              		.align	2
+ 323              	.LC11:
+ 324 0000 41542B43 		.ascii	"AT+CMQTTTOPIC=%d,%d\015\012\000"
+ 324      4D515454 
+ 324      544F5049 
+ 324      433D2564 
+ 324      2C25640D 
+ 325 0016 0000     		.align	2
+ 326              	.LC12:
+ 327 0018 3E00     		.ascii	">\000"
+ 328 001a 0000     		.align	2
+ 329              	.LC13:
+ 330 001c 41542B43 		.ascii	"AT+CMQTTPAYLOAD=%d,%d\015\012\000"
+ 330      4D515454 
+ 330      5041594C 
+ 330      4F41443D 
+ 330      25642C25 
+ 331              		.align	2
+ 332              	.LC14:
+ 333 0034 41542B43 		.ascii	"AT+CMQTTPUB=%d,%d,%d\015\012\000"
+ 333      4D515454 
+ 333      5055423D 
+ 333      25642C25 
+ 333      642C2564 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s 			page 9
+
+
+ 334 004b 00       		.align	2
+ 335              	.LC15:
+ 336 004c 2B434D51 		.ascii	"+CMQTTPUB: 0,0\015\012\000"
+ 336      54545055 
+ 336      423A2030 
+ 336      2C300D0A 
+ 336      00
+ 337              		.section	.text.mqtt_pub,"ax",%progbits
+ 338              		.align	1
+ 339              		.global	mqtt_pub
+ 340              		.syntax unified
+ 341              		.thumb
+ 342              		.thumb_func
+ 344              	mqtt_pub:
+ 345              	.LVL26:
+ 346              	.LFB70:
+  72:Core/Src/mqtt.c **** 
+  73:Core/Src/mqtt.c **** void mqtt_pub(char *topic, char *payload)
+  74:Core/Src/mqtt.c **** {
+ 347              		.loc 1 74 1 view -0
+ 348              		.cfi_startproc
+ 349              		@ args = 0, pretend = 0, frame = 0
+ 350              		@ frame_needed = 0, uses_anonymous_args = 0
+ 351              		.loc 1 74 1 is_stmt 0 view .LVU48
+ 352 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 353              	.LCFI5:
+ 354              		.cfi_def_cfa_offset 24
+ 355              		.cfi_offset 4, -24
+ 356              		.cfi_offset 5, -20
+ 357              		.cfi_offset 6, -16
+ 358              		.cfi_offset 7, -12
+ 359              		.cfi_offset 8, -8
+ 360              		.cfi_offset 14, -4
+ 361 0004 82B0     		sub	sp, sp, #8
+ 362              	.LCFI6:
+ 363              		.cfi_def_cfa_offset 32
+ 364 0006 0546     		mov	r5, r0
+ 365 0008 0C46     		mov	r4, r1
+  75:Core/Src/mqtt.c ****     int len_topic = strlen(topic);
+ 366              		.loc 1 75 5 is_stmt 1 view .LVU49
+ 367              		.loc 1 75 21 is_stmt 0 view .LVU50
+ 368 000a FFF7FEFF 		bl	strlen
+ 369              	.LVL27:
+ 370              		.loc 1 75 21 view .LVU51
+ 371 000e 8046     		mov	r8, r0
+ 372              	.LVL28:
+  76:Core/Src/mqtt.c ****     int len_payload=strlen(payload);
+ 373              		.loc 1 76 5 is_stmt 1 view .LVU52
+ 374              		.loc 1 76 21 is_stmt 0 view .LVU53
+ 375 0010 2046     		mov	r0, r4
+ 376              	.LVL29:
+ 377              		.loc 1 76 21 view .LVU54
+ 378 0012 FFF7FEFF 		bl	strlen
+ 379              	.LVL30:
+ 380 0016 0646     		mov	r6, r0
+ 381              	.LVL31:
+  77:Core/Src/mqtt.c **** 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s 			page 10
+
+
+  78:Core/Src/mqtt.c ****     memset(ATcommand,'\0',sizeof(ATcommand));
+ 382              		.loc 1 78 5 is_stmt 1 view .LVU55
+ 383 0018 364F     		ldr	r7, .L33
+ 384 001a 6422     		movs	r2, #100
+ 385 001c 0021     		movs	r1, #0
+ 386 001e 3846     		mov	r0, r7
+ 387              	.LVL32:
+ 388              		.loc 1 78 5 is_stmt 0 view .LVU56
+ 389 0020 FFF7FEFF 		bl	memset
+ 390              	.LVL33:
+  79:Core/Src/mqtt.c ****     sprintf(ATcommand,"AT+CMQTTTOPIC=%d,%d\r\n",mqttClient.clientIndex,len_topic);
+ 391              		.loc 1 79 5 is_stmt 1 view .LVU57
+ 392 0024 4346     		mov	r3, r8
+ 393 0026 344A     		ldr	r2, .L33+4
+ 394 0028 1269     		ldr	r2, [r2, #16]
+ 395 002a 3449     		ldr	r1, .L33+8
+ 396 002c 3846     		mov	r0, r7
+ 397 002e FFF7FEFF 		bl	sprintf
+ 398              	.LVL34:
+  80:Core/Src/mqtt.c ****     if(sim7672_send_command(ATcommand,">",TIME_VERY_SHORT)!=SIM_TRUE)
+ 399              		.loc 1 80 5 view .LVU58
+ 400              		.loc 1 80 8 is_stmt 0 view .LVU59
+ 401 0032 C822     		movs	r2, #200
+ 402 0034 3249     		ldr	r1, .L33+12
+ 403 0036 3846     		mov	r0, r7
+ 404 0038 FFF7FEFF 		bl	sim7672_send_command
+ 405              	.LVL35:
+ 406              		.loc 1 80 7 view .LVU60
+ 407 003c 0128     		cmp	r0, #1
+ 408 003e 49D1     		bne	.L28
+ 409              	.L22:
+  81:Core/Src/mqtt.c ****     {
+  82:Core/Src/mqtt.c ****         sim7672_errorHandle();
+  83:Core/Src/mqtt.c ****     }
+  84:Core/Src/mqtt.c ****     HAL_Delay(100);
+ 410              		.loc 1 84 5 is_stmt 1 view .LVU61
+ 411 0040 6420     		movs	r0, #100
+ 412 0042 FFF7FEFF 		bl	HAL_Delay
+ 413              	.LVL36:
+  85:Core/Src/mqtt.c ****     //sim7672_sendcmd_notresp(topic);
+  86:Core/Src/mqtt.c ****     if(sim7672_send_command(topic,"OK\r\n",TIME_VERY_SHORT)!=SIM_TRUE)
+ 414              		.loc 1 86 5 view .LVU62
+ 415              		.loc 1 86 8 is_stmt 0 view .LVU63
+ 416 0046 C822     		movs	r2, #200
+ 417 0048 2E49     		ldr	r1, .L33+16
+ 418 004a 2846     		mov	r0, r5
+ 419 004c FFF7FEFF 		bl	sim7672_send_command
+ 420              	.LVL37:
+ 421              		.loc 1 86 7 view .LVU64
+ 422 0050 0128     		cmp	r0, #1
+ 423 0052 42D1     		bne	.L29
+ 424              	.L23:
+  87:Core/Src/mqtt.c ****     {
+  88:Core/Src/mqtt.c ****         sim7672_errorHandle();
+  89:Core/Src/mqtt.c ****     }
+  90:Core/Src/mqtt.c ****     HAL_Delay(100);
+ 425              		.loc 1 90 5 is_stmt 1 view .LVU65
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s 			page 11
+
+
+ 426 0054 6420     		movs	r0, #100
+ 427 0056 FFF7FEFF 		bl	HAL_Delay
+ 428              	.LVL38:
+  91:Core/Src/mqtt.c **** 
+  92:Core/Src/mqtt.c ****     memset(ATcommand,'\0',sizeof(ATcommand));
+ 429              		.loc 1 92 5 view .LVU66
+ 430 005a 264D     		ldr	r5, .L33
+ 431              	.LVL39:
+ 432              		.loc 1 92 5 is_stmt 0 view .LVU67
+ 433 005c 6422     		movs	r2, #100
+ 434 005e 0021     		movs	r1, #0
+ 435 0060 2846     		mov	r0, r5
+ 436 0062 FFF7FEFF 		bl	memset
+ 437              	.LVL40:
+  93:Core/Src/mqtt.c ****     sprintf(ATcommand,"AT+CMQTTPAYLOAD=%d,%d\r\n",mqttClient.clientIndex,len_payload);
+ 438              		.loc 1 93 5 is_stmt 1 view .LVU68
+ 439 0066 3346     		mov	r3, r6
+ 440 0068 234A     		ldr	r2, .L33+4
+ 441 006a 1269     		ldr	r2, [r2, #16]
+ 442 006c 2649     		ldr	r1, .L33+20
+ 443 006e 2846     		mov	r0, r5
+ 444 0070 FFF7FEFF 		bl	sprintf
+ 445              	.LVL41:
+  94:Core/Src/mqtt.c ****     if(sim7672_send_command(ATcommand,">",TIME_VERY_SHORT)!=SIM_TRUE)
+ 446              		.loc 1 94 5 view .LVU69
+ 447              		.loc 1 94 8 is_stmt 0 view .LVU70
+ 448 0074 C822     		movs	r2, #200
+ 449 0076 2249     		ldr	r1, .L33+12
+ 450 0078 2846     		mov	r0, r5
+ 451 007a FFF7FEFF 		bl	sim7672_send_command
+ 452              	.LVL42:
+ 453              		.loc 1 94 7 view .LVU71
+ 454 007e 0128     		cmp	r0, #1
+ 455 0080 2ED1     		bne	.L30
+ 456              	.L24:
+  95:Core/Src/mqtt.c ****     {
+  96:Core/Src/mqtt.c ****         sim7672_errorHandle();
+  97:Core/Src/mqtt.c ****     }
+  98:Core/Src/mqtt.c ****     HAL_Delay(100);
+ 457              		.loc 1 98 5 is_stmt 1 view .LVU72
+ 458 0082 6420     		movs	r0, #100
+ 459 0084 FFF7FEFF 		bl	HAL_Delay
+ 460              	.LVL43:
+  99:Core/Src/mqtt.c ****     if(sim7672_send_command(payload,"OK\r\n",TIME_VERY_SHORT)!=SIM_TRUE)
+ 461              		.loc 1 99 5 view .LVU73
+ 462              		.loc 1 99 8 is_stmt 0 view .LVU74
+ 463 0088 C822     		movs	r2, #200
+ 464 008a 1E49     		ldr	r1, .L33+16
+ 465 008c 2046     		mov	r0, r4
+ 466 008e FFF7FEFF 		bl	sim7672_send_command
+ 467              	.LVL44:
+ 468              		.loc 1 99 7 view .LVU75
+ 469 0092 0128     		cmp	r0, #1
+ 470 0094 27D1     		bne	.L31
+ 471              	.L25:
+ 100:Core/Src/mqtt.c ****     {
+ 101:Core/Src/mqtt.c ****         sim7672_errorHandle();
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s 			page 12
+
+
+ 102:Core/Src/mqtt.c ****     }
+ 103:Core/Src/mqtt.c ****     HAL_Delay(100);
+ 472              		.loc 1 103 5 is_stmt 1 view .LVU76
+ 473 0096 6420     		movs	r0, #100
+ 474 0098 FFF7FEFF 		bl	HAL_Delay
+ 475              	.LVL45:
+ 104:Core/Src/mqtt.c **** 
+ 105:Core/Src/mqtt.c ****     memset(ATcommand,'\0',sizeof(ATcommand));
+ 476              		.loc 1 105 5 view .LVU77
+ 477 009c 154C     		ldr	r4, .L33
+ 478              	.LVL46:
+ 479              		.loc 1 105 5 is_stmt 0 view .LVU78
+ 480 009e 6422     		movs	r2, #100
+ 481 00a0 0021     		movs	r1, #0
+ 482 00a2 2046     		mov	r0, r4
+ 483 00a4 FFF7FEFF 		bl	memset
+ 484              	.LVL47:
+ 106:Core/Src/mqtt.c ****     sprintf(ATcommand,"AT+CMQTTPUB=%d,%d,%d\r\n",mqttClient.clientIndex,mqttClient.QoS,mqttClient.k
+ 485              		.loc 1 106 5 is_stmt 1 view .LVU79
+ 486              		.loc 1 106 98 is_stmt 0 view .LVU80
+ 487 00a8 134A     		ldr	r2, .L33+4
+ 488 00aa 9389     		ldrh	r3, [r2, #12]
+ 489              		.loc 1 106 5 view .LVU81
+ 490 00ac 0093     		str	r3, [sp]
+ 491 00ae 5369     		ldr	r3, [r2, #20]
+ 492 00b0 1269     		ldr	r2, [r2, #16]
+ 493 00b2 1649     		ldr	r1, .L33+24
+ 494 00b4 2046     		mov	r0, r4
+ 495 00b6 FFF7FEFF 		bl	sprintf
+ 496              	.LVL48:
+ 107:Core/Src/mqtt.c ****     if(sim7672_send_command(ATcommand,"+CMQTTPUB: 0,0\r\n",TIME_VERY_SHORT)!=SIM_TRUE)
+ 497              		.loc 1 107 5 is_stmt 1 view .LVU82
+ 498              		.loc 1 107 8 is_stmt 0 view .LVU83
+ 499 00ba C822     		movs	r2, #200
+ 500 00bc 1449     		ldr	r1, .L33+28
+ 501 00be 2046     		mov	r0, r4
+ 502 00c0 FFF7FEFF 		bl	sim7672_send_command
+ 503              	.LVL49:
+ 504              		.loc 1 107 7 view .LVU84
+ 505 00c4 0128     		cmp	r0, #1
+ 506 00c6 11D1     		bne	.L32
+ 507              	.L26:
+ 108:Core/Src/mqtt.c ****     {
+ 109:Core/Src/mqtt.c ****         sim7672_errorHandle();
+ 110:Core/Src/mqtt.c ****     }
+ 111:Core/Src/mqtt.c ****     HAL_Delay(100);
+ 508              		.loc 1 111 5 is_stmt 1 view .LVU85
+ 509 00c8 6420     		movs	r0, #100
+ 510 00ca FFF7FEFF 		bl	HAL_Delay
+ 511              	.LVL50:
+ 112:Core/Src/mqtt.c **** }
+ 512              		.loc 1 112 1 is_stmt 0 view .LVU86
+ 513 00ce 02B0     		add	sp, sp, #8
+ 514              	.LCFI7:
+ 515              		.cfi_remember_state
+ 516              		.cfi_def_cfa_offset 24
+ 517              		@ sp needed
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s 			page 13
+
+
+ 518 00d0 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 519              	.LVL51:
+ 520              	.L28:
+ 521              	.LCFI8:
+ 522              		.cfi_restore_state
+  82:Core/Src/mqtt.c ****     }
+ 523              		.loc 1 82 9 is_stmt 1 view .LVU87
+ 524 00d4 FFF7FEFF 		bl	sim7672_errorHandle
+ 525              	.LVL52:
+ 526 00d8 B2E7     		b	.L22
+ 527              	.L29:
+  88:Core/Src/mqtt.c ****     }
+ 528              		.loc 1 88 9 view .LVU88
+ 529 00da FFF7FEFF 		bl	sim7672_errorHandle
+ 530              	.LVL53:
+ 531 00de B9E7     		b	.L23
+ 532              	.LVL54:
+ 533              	.L30:
+  96:Core/Src/mqtt.c ****     }
+ 534              		.loc 1 96 9 view .LVU89
+ 535 00e0 FFF7FEFF 		bl	sim7672_errorHandle
+ 536              	.LVL55:
+ 537 00e4 CDE7     		b	.L24
+ 538              	.L31:
+ 101:Core/Src/mqtt.c ****     }
+ 539              		.loc 1 101 9 view .LVU90
+ 540 00e6 FFF7FEFF 		bl	sim7672_errorHandle
+ 541              	.LVL56:
+ 542 00ea D4E7     		b	.L25
+ 543              	.LVL57:
+ 544              	.L32:
+ 109:Core/Src/mqtt.c ****     }
+ 545              		.loc 1 109 9 view .LVU91
+ 546 00ec FFF7FEFF 		bl	sim7672_errorHandle
+ 547              	.LVL58:
+ 548 00f0 EAE7     		b	.L26
+ 549              	.L34:
+ 550 00f2 00BF     		.align	2
+ 551              	.L33:
+ 552 00f4 00000000 		.word	.LANCHOR0
+ 553 00f8 00000000 		.word	.LANCHOR1
+ 554 00fc 00000000 		.word	.LC11
+ 555 0100 18000000 		.word	.LC12
+ 556 0104 40000000 		.word	.LC3
+ 557 0108 1C000000 		.word	.LC13
+ 558 010c 34000000 		.word	.LC14
+ 559 0110 4C000000 		.word	.LC15
+ 560              		.cfi_endproc
+ 561              	.LFE70:
+ 563              		.section	.rodata.mqtt_sub.str1.4,"aMS",%progbits,1
+ 564              		.align	2
+ 565              	.LC16:
+ 566 0000 41542B43 		.ascii	"AT+CMQTTSUBTOPIC=%d,%d,%d\015\012\000"
+ 566      4D515454 
+ 566      53554254 
+ 566      4F504943 
+ 566      3D25642C 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s 			page 14
+
+
+ 567              		.align	2
+ 568              	.LC17:
+ 569 001c 41542B43 		.ascii	"AT+CMQTTSUB=%d\015\012\000"
+ 569      4D515454 
+ 569      5355423D 
+ 569      25640D0A 
+ 569      00
+ 570 002d 000000   		.align	2
+ 571              	.LC18:
+ 572 0030 2B434D51 		.ascii	"+CMQTTSUB: 0,0\015\012\000"
+ 572      54545355 
+ 572      423A2030 
+ 572      2C300D0A 
+ 572      00
+ 573 0041 000000   		.align	2
+ 574              	.LC19:
+ 575 0044 2B434D51 		.ascii	"+CMQTTRXPAYLOAD:\000"
+ 575      54545258 
+ 575      5041594C 
+ 575      4F41443A 
+ 575      00
+ 576 0055 000000   		.align	2
+ 577              	.LC20:
+ 578 0058 7061796C 		.ascii	"payload:\000"
+ 578      6F61643A 
+ 578      00
+ 579              		.section	.text.mqtt_sub,"ax",%progbits
+ 580              		.align	1
+ 581              		.global	mqtt_sub
+ 582              		.syntax unified
+ 583              		.thumb
+ 584              		.thumb_func
+ 586              	mqtt_sub:
+ 587              	.LVL59:
+ 588              	.LFB71:
+ 113:Core/Src/mqtt.c **** /*
+ 114:Core/Src/mqtt.c **** AT+CMQTTSUB=0
+ 115:Core/Src/mqtt.c **** OK
+ 116:Core/Src/mqtt.c **** 
+ 117:Core/Src/mqtt.c **** +CMQTTRXSTART: 0,6,18
+ 118:Core/Src/mqtt.c **** 
+ 119:Core/Src/mqtt.c **** +CMQTTRXTOPIC: 0,6
+ 120:Core/Src/mqtt.c **** test1z
+ 121:Core/Src/mqtt.c **** 
+ 122:Core/Src/mqtt.c **** +CMQTTRXPAYLOAD: 0,18
+ 123:Core/Src/mqtt.c **** payload
+ 124:Core/Src/mqtt.c **** 
+ 125:Core/Src/mqtt.c **** +CMQTTRXEND: 0
+ 126:Core/Src/mqtt.c **** 
+ 127:Core/Src/mqtt.c **** +CMQTTSUB: 0,0
+ 128:Core/Src/mqtt.c **** */
+ 129:Core/Src/mqtt.c **** void mqtt_sub(char *topic)
+ 130:Core/Src/mqtt.c **** {
+ 589              		.loc 1 130 1 view -0
+ 590              		.cfi_startproc
+ 591              		@ args = 0, pretend = 0, frame = 0
+ 592              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s 			page 15
+
+
+ 593              		.loc 1 130 1 is_stmt 0 view .LVU93
+ 594 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 595              	.LCFI9:
+ 596              		.cfi_def_cfa_offset 20
+ 597              		.cfi_offset 4, -20
+ 598              		.cfi_offset 5, -16
+ 599              		.cfi_offset 6, -12
+ 600              		.cfi_offset 7, -8
+ 601              		.cfi_offset 14, -4
+ 602 0002 83B0     		sub	sp, sp, #12
+ 603              	.LCFI10:
+ 604              		.cfi_def_cfa_offset 32
+ 605 0004 0446     		mov	r4, r0
+ 131:Core/Src/mqtt.c ****     int len_topic = strlen(topic);
+ 606              		.loc 1 131 5 is_stmt 1 view .LVU94
+ 607              		.loc 1 131 21 is_stmt 0 view .LVU95
+ 608 0006 FFF7FEFF 		bl	strlen
+ 609              	.LVL60:
+ 610              		.loc 1 131 21 view .LVU96
+ 611 000a 0646     		mov	r6, r0
+ 612              	.LVL61:
+ 132:Core/Src/mqtt.c ****     memset(ATcommand,'\0',sizeof(ATcommand));
+ 613              		.loc 1 132 5 is_stmt 1 view .LVU97
+ 614 000c 334D     		ldr	r5, .L44
+ 615 000e 6422     		movs	r2, #100
+ 616 0010 0021     		movs	r1, #0
+ 617 0012 2846     		mov	r0, r5
+ 618              	.LVL62:
+ 619              		.loc 1 132 5 is_stmt 0 view .LVU98
+ 620 0014 FFF7FEFF 		bl	memset
+ 621              	.LVL63:
+ 133:Core/Src/mqtt.c ****     sprintf(ATcommand,"AT+CMQTTSUBTOPIC=%d,%d,%d\r\n",mqttClient.clientIndex,len_topic,mqttClient.Q
+ 622              		.loc 1 133 5 is_stmt 1 view .LVU99
+ 623 0018 314A     		ldr	r2, .L44+4
+ 624 001a 5369     		ldr	r3, [r2, #20]
+ 625 001c 0093     		str	r3, [sp]
+ 626 001e 3346     		mov	r3, r6
+ 627 0020 1269     		ldr	r2, [r2, #16]
+ 628 0022 3049     		ldr	r1, .L44+8
+ 629 0024 2846     		mov	r0, r5
+ 630 0026 FFF7FEFF 		bl	sprintf
+ 631              	.LVL64:
+ 134:Core/Src/mqtt.c ****     if(sim7672_send_command(ATcommand,">",TIME_VERY_SHORT)!=SIM_TRUE)
+ 632              		.loc 1 134 5 view .LVU100
+ 633              		.loc 1 134 8 is_stmt 0 view .LVU101
+ 634 002a C822     		movs	r2, #200
+ 635 002c 2E49     		ldr	r1, .L44+12
+ 636 002e 2846     		mov	r0, r5
+ 637 0030 FFF7FEFF 		bl	sim7672_send_command
+ 638              	.LVL65:
+ 639              		.loc 1 134 7 view .LVU102
+ 640 0034 0128     		cmp	r0, #1
+ 641 0036 47D1     		bne	.L41
+ 642              	.L36:
+ 135:Core/Src/mqtt.c ****     {
+ 136:Core/Src/mqtt.c ****         sim7672_errorHandle();
+ 137:Core/Src/mqtt.c ****     }
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s 			page 16
+
+
+ 138:Core/Src/mqtt.c ****     HAL_Delay(100);
+ 643              		.loc 1 138 5 is_stmt 1 view .LVU103
+ 644 0038 6420     		movs	r0, #100
+ 645 003a FFF7FEFF 		bl	HAL_Delay
+ 646              	.LVL66:
+ 139:Core/Src/mqtt.c ****     //sim7672_sendcmd_notresp(topic);
+ 140:Core/Src/mqtt.c ****     if(sim7672_send_command(topic,"OK\r\n",TIME_VERY_SHORT)!=SIM_TRUE)
+ 647              		.loc 1 140 5 view .LVU104
+ 648              		.loc 1 140 8 is_stmt 0 view .LVU105
+ 649 003e C822     		movs	r2, #200
+ 650 0040 2A49     		ldr	r1, .L44+16
+ 651 0042 2046     		mov	r0, r4
+ 652 0044 FFF7FEFF 		bl	sim7672_send_command
+ 653              	.LVL67:
+ 654              		.loc 1 140 7 view .LVU106
+ 655 0048 0128     		cmp	r0, #1
+ 656 004a 40D1     		bne	.L42
+ 657              	.L37:
+ 141:Core/Src/mqtt.c ****     {
+ 142:Core/Src/mqtt.c ****         sim7672_errorHandle();
+ 143:Core/Src/mqtt.c ****     }
+ 144:Core/Src/mqtt.c ****     HAL_Delay(100);
+ 658              		.loc 1 144 5 is_stmt 1 view .LVU107
+ 659 004c 6420     		movs	r0, #100
+ 660 004e FFF7FEFF 		bl	HAL_Delay
+ 661              	.LVL68:
+ 145:Core/Src/mqtt.c ****     memset(ATcommand,'\0',sizeof(ATcommand));
+ 662              		.loc 1 145 5 view .LVU108
+ 663 0052 224C     		ldr	r4, .L44
+ 664              	.LVL69:
+ 665              		.loc 1 145 5 is_stmt 0 view .LVU109
+ 666 0054 6422     		movs	r2, #100
+ 667 0056 0021     		movs	r1, #0
+ 668 0058 2046     		mov	r0, r4
+ 669 005a FFF7FEFF 		bl	memset
+ 670              	.LVL70:
+ 146:Core/Src/mqtt.c ****     sprintf(ATcommand,"AT+CMQTTSUB=%d\r\n",mqttClient.clientIndex);
+ 671              		.loc 1 146 5 is_stmt 1 view .LVU110
+ 672 005e 204B     		ldr	r3, .L44+4
+ 673 0060 1A69     		ldr	r2, [r3, #16]
+ 674 0062 2349     		ldr	r1, .L44+20
+ 675 0064 2046     		mov	r0, r4
+ 676 0066 FFF7FEFF 		bl	sprintf
+ 677              	.LVL71:
+ 147:Core/Src/mqtt.c ****     if(sim7672_send_command(ATcommand,"+CMQTTSUB: 0,0\r\n",TIME_LONG)!=SIM_TRUE)
+ 678              		.loc 1 147 5 view .LVU111
+ 679              		.loc 1 147 8 is_stmt 0 view .LVU112
+ 680 006a 40F2DC52 		movw	r2, #1500
+ 681 006e 2149     		ldr	r1, .L44+24
+ 682 0070 2046     		mov	r0, r4
+ 683 0072 FFF7FEFF 		bl	sim7672_send_command
+ 684              	.LVL72:
+ 685              		.loc 1 147 7 view .LVU113
+ 686 0076 0128     		cmp	r0, #1
+ 687 0078 2CD1     		bne	.L43
+ 688              	.L38:
+ 148:Core/Src/mqtt.c ****     {
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s 			page 17
+
+
+ 149:Core/Src/mqtt.c ****         sim7672_errorHandle();
+ 150:Core/Src/mqtt.c ****     }
+ 151:Core/Src/mqtt.c ****     HAL_Delay(100);
+ 689              		.loc 1 151 5 is_stmt 1 view .LVU114
+ 690 007a 6420     		movs	r0, #100
+ 691 007c FFF7FEFF 		bl	HAL_Delay
+ 692              	.LVL73:
+ 152:Core/Src/mqtt.c ****     //FInd Topic
+ 153:Core/Src/mqtt.c **** 
+ 154:Core/Src/mqtt.c ****     //Find Payload
+ 155:Core/Src/mqtt.c ****     char *payloadStart = strstr(simRxResponse,"+CMQTTRXPAYLOAD:");
+ 693              		.loc 1 155 5 view .LVU115
+ 694              		.loc 1 155 26 is_stmt 0 view .LVU116
+ 695 0080 1D49     		ldr	r1, .L44+28
+ 696 0082 1E48     		ldr	r0, .L44+32
+ 697 0084 FFF7FEFF 		bl	strstr
+ 698              	.LVL74:
+ 156:Core/Src/mqtt.c ****     if(payloadStart!=NULL)
+ 699              		.loc 1 156 5 is_stmt 1 view .LVU117
+ 700              		.loc 1 156 7 is_stmt 0 view .LVU118
+ 701 0088 E0B1     		cbz	r0, .L35
+ 157:Core/Src/mqtt.c ****     {
+ 158:Core/Src/mqtt.c ****         // Di chuyển con trỏ đến sau dấu xuống dòng đầu tiên
+ 159:Core/Src/mqtt.c ****         payloadStart=strchr(payloadStart,'\n');
+ 702              		.loc 1 159 9 is_stmt 1 view .LVU119
+ 703              		.loc 1 159 22 is_stmt 0 view .LVU120
+ 704 008a 0A21     		movs	r1, #10
+ 705 008c FFF7FEFF 		bl	strchr
+ 706              	.LVL75:
+ 160:Core/Src/mqtt.c ****         if (payloadStart != NULL) {
+ 707              		.loc 1 160 9 is_stmt 1 view .LVU121
+ 708              		.loc 1 160 12 is_stmt 0 view .LVU122
+ 709 0090 0446     		mov	r4, r0
+ 710 0092 B8B1     		cbz	r0, .L35
+ 711              	.LBB2:
+ 161:Core/Src/mqtt.c ****             // Tìm vị trí bắt đầu thực sự của payload
+ 162:Core/Src/mqtt.c ****             payloadStart++;
+ 712              		.loc 1 162 13 is_stmt 1 view .LVU123
+ 713              		.loc 1 162 25 is_stmt 0 view .LVU124
+ 714 0094 0134     		adds	r4, r4, #1
+ 715              	.LVL76:
+ 163:Core/Src/mqtt.c ****             
+ 164:Core/Src/mqtt.c ****             // Tìm vị trí kết thúc của payload
+ 165:Core/Src/mqtt.c ****             char *payloadEnd = strstr(payloadStart, "\n");
+ 716              		.loc 1 165 13 is_stmt 1 view .LVU125
+ 717              		.loc 1 165 32 is_stmt 0 view .LVU126
+ 718 0096 0A21     		movs	r1, #10
+ 719 0098 2046     		mov	r0, r4
+ 720 009a FFF7FEFF 		bl	strchr
+ 721              	.LVL77:
+ 166:Core/Src/mqtt.c ****             
+ 167:Core/Src/mqtt.c ****             if (payloadEnd != NULL) {
+ 722              		.loc 1 167 13 is_stmt 1 view .LVU127
+ 723              		.loc 1 167 16 is_stmt 0 view .LVU128
+ 724 009e 88B1     		cbz	r0, .L35
+ 168:Core/Src/mqtt.c ****                 // Copy payload vào một buffer mới để xử lý
+ 169:Core/Src/mqtt.c ****                 strncpy(mqttData.payload, payloadStart, payloadEnd - payloadStart);
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s 			page 18
+
+
+ 725              		.loc 1 169 17 is_stmt 1 view .LVU129
+ 726              		.loc 1 169 68 is_stmt 0 view .LVU130
+ 727 00a0 051B     		subs	r5, r0, r4
+ 728              		.loc 1 169 17 view .LVU131
+ 729 00a2 174E     		ldr	r6, .L44+36
+ 730              	.LVL78:
+ 731              		.loc 1 169 17 view .LVU132
+ 732 00a4 06F11407 		add	r7, r6, #20
+ 733 00a8 2A46     		mov	r2, r5
+ 734 00aa 2146     		mov	r1, r4
+ 735 00ac 3846     		mov	r0, r7
+ 736              	.LVL79:
+ 737              		.loc 1 169 17 view .LVU133
+ 738 00ae FFF7FEFF 		bl	strncpy
+ 739              	.LVL80:
+ 170:Core/Src/mqtt.c ****                 mqttData.payload[payloadEnd - payloadStart] = '\0';
+ 740              		.loc 1 170 17 is_stmt 1 view .LVU134
+ 741              		.loc 1 170 61 is_stmt 0 view .LVU135
+ 742 00b2 3544     		add	r5, r5, r6
+ 743 00b4 0023     		movs	r3, #0
+ 744 00b6 2B75     		strb	r3, [r5, #20]
+ 171:Core/Src/mqtt.c ****                 log_data("payload:");
+ 745              		.loc 1 171 17 is_stmt 1 view .LVU136
+ 746 00b8 1248     		ldr	r0, .L44+40
+ 747 00ba FFF7FEFF 		bl	log_data
+ 748              	.LVL81:
+ 172:Core/Src/mqtt.c ****                 log_data(mqttData.payload);
+ 749              		.loc 1 172 17 view .LVU137
+ 750 00be 3846     		mov	r0, r7
+ 751 00c0 FFF7FEFF 		bl	log_data
+ 752              	.LVL82:
+ 753              	.L35:
+ 754              		.loc 1 172 17 is_stmt 0 view .LVU138
+ 755              	.LBE2:
+ 173:Core/Src/mqtt.c ****             }
+ 174:Core/Src/mqtt.c ****         }
+ 175:Core/Src/mqtt.c ****     }
+ 176:Core/Src/mqtt.c **** }...
+ 756              		.loc 1 176 1 view .LVU139
+ 757 00c4 03B0     		add	sp, sp, #12
+ 758              	.LCFI11:
+ 759              		.cfi_remember_state
+ 760              		.cfi_def_cfa_offset 20
+ 761              		@ sp needed
+ 762 00c6 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 763              	.LVL83:
+ 764              	.L41:
+ 765              	.LCFI12:
+ 766              		.cfi_restore_state
+ 136:Core/Src/mqtt.c ****         sim7672_errorHandle();
+ 767              		.loc 1 136 9 is_stmt 1 view .LVU140
+ 768 00c8 FFF7FEFF 		bl	sim7672_errorHandle
+ 769              	.LVL84:
+ 770 00cc B4E7     		b	.L36
+ 771              	.L42:
+ 142:Core/Src/mqtt.c ****         sim7672_errorHandle();
+ 772              		.loc 1 142 9 view .LVU141
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s 			page 19
+
+
+ 773 00ce FFF7FEFF 		bl	sim7672_errorHandle
+ 774              	.LVL85:
+ 775 00d2 BBE7     		b	.L37
+ 776              	.LVL86:
+ 777              	.L43:
+ 149:Core/Src/mqtt.c ****         sim7672_errorHandle();
+ 778              		.loc 1 149 9 view .LVU142
+ 779 00d4 FFF7FEFF 		bl	sim7672_errorHandle
+ 780              	.LVL87:
+ 781 00d8 CFE7     		b	.L38
+ 782              	.L45:
+ 783 00da 00BF     		.align	2
+ 784              	.L44:
+ 785 00dc 00000000 		.word	.LANCHOR0
+ 786 00e0 00000000 		.word	.LANCHOR1
+ 787 00e4 00000000 		.word	.LC16
+ 788 00e8 18000000 		.word	.LC12
+ 789 00ec 40000000 		.word	.LC3
+ 790 00f0 1C000000 		.word	.LC17
+ 791 00f4 30000000 		.word	.LC18
+ 792 00f8 44000000 		.word	.LC19
+ 793 00fc 00000000 		.word	simRxResponse
+ 794 0100 00000000 		.word	.LANCHOR3
+ 795 0104 58000000 		.word	.LC20
+ 796              		.cfi_endproc
+ 797              	.LFE71:
+ 799              		.global	ATcommand
+ 800              		.global	mqttData
+ 801              		.global	mqttClient
+ 802              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 803              		.align	2
+ 804              	.LC21:
+ 805 0000 00       		.ascii	"\000"
+ 806 0001 000000   		.align	2
+ 807              	.LC22:
+ 808 0004 4441544E 		.ascii	"DATN_Tracking_20191855\000"
+ 808      5F547261 
+ 808      636B696E 
+ 808      675F3230 
+ 808      31393138 
+ 809              		.global	mqttServer
+ 810 001b 00       		.align	2
+ 811              	.LC23:
+ 812 001c 62726F6B 		.ascii	"broker.mqttdashboard.com\000"
+ 812      65722E6D 
+ 812      71747464 
+ 812      61736862 
+ 812      6F617264 
+ 813              		.section	.bss.ATcommand,"aw",%nobits
+ 814              		.align	2
+ 815              		.set	.LANCHOR0,. + 0
+ 818              	ATcommand:
+ 819 0000 00000000 		.space	100
+ 819      00000000 
+ 819      00000000 
+ 819      00000000 
+ 819      00000000 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s 			page 20
+
+
+ 820              		.section	.bss.mqttData,"aw",%nobits
+ 821              		.align	2
+ 822              		.set	.LANCHOR3,. + 0
+ 825              	mqttData:
+ 826 0000 00000000 		.space	120
+ 826      00000000 
+ 826      00000000 
+ 826      00000000 
+ 826      00000000 
+ 827              		.section	.data.mqttClient,"aw"
+ 828              		.align	2
+ 829              		.set	.LANCHOR1,. + 0
+ 832              	mqttClient:
+ 833 0000 00000000 		.word	.LC21
+ 834 0004 00000000 		.word	.LC21
+ 835 0008 04000000 		.word	.LC22
+ 836 000c 3C00     		.short	60
+ 837 000e 0000     		.space	2
+ 838 0010 00000000 		.word	0
+ 839 0014 00000000 		.word	0
+ 840              		.section	.data.mqttServer,"aw"
+ 841              		.align	2
+ 842              		.set	.LANCHOR2,. + 0
+ 845              	mqttServer:
+ 846 0000 1C000000 		.word	.LC23
+ 847 0004 5B07     		.short	1883
+ 848 0006 0000     		.space	2
+ 849 0008 00000000 		.word	0
+ 850              		.text
+ 851              	.Letext0:
+ 852              		.file 2 "d:\\10 2021.10\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 853              		.file 3 "d:\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 854              		.file 4 "Core/Inc/mqtt.h"
+ 855              		.file 5 "d:\\10 2021.10\\arm-none-eabi\\include\\string.h"
+ 856              		.file 6 "Core/Inc/debug.h"
+ 857              		.file 7 "<built-in>"
+ 858              		.file 8 "d:\\10 2021.10\\arm-none-eabi\\include\\stdio.h"
+ 859              		.file 9 "Core/Inc/sim4g_lte.h"
+ 860              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s 			page 21
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 mqtt.c
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:18     .rodata.mqtt_disconnectServer.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:37     .text.mqtt_disconnectServer:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:43     .text.mqtt_disconnectServer:00000000 mqtt_disconnectServer
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:148    .text.mqtt_disconnectServer:00000084 $d
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:160    .rodata.mqtt_connectServer.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:176    .text.mqtt_connectServer:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:182    .text.mqtt_connectServer:00000000 mqtt_connectServer
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:309    .text.mqtt_connectServer:0000009c $d
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:322    .rodata.mqtt_pub.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:338    .text.mqtt_pub:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:344    .text.mqtt_pub:00000000 mqtt_pub
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:552    .text.mqtt_pub:000000f4 $d
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:564    .rodata.mqtt_sub.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:580    .text.mqtt_sub:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:586    .text.mqtt_sub:00000000 mqtt_sub
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:785    .text.mqtt_sub:000000dc $d
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:818    .bss.ATcommand:00000000 ATcommand
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:825    .bss.mqttData:00000000 mqttData
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:832    .data.mqttClient:00000000 mqttClient
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:803    .rodata.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:845    .data.mqttServer:00000000 mqttServer
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:814    .bss.ATcommand:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:821    .bss.mqttData:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:828    .data.mqttClient:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccSFB3jd.s:841    .data.mqttServer:00000000 $d
+
+UNDEFINED SYMBOLS
+memset
+sprintf
+sim7672_send_command
+HAL_Delay
+sim7672_errorHandle
+strlen
+strstr
+strchr
+strncpy
+log_data
+simRxResponse

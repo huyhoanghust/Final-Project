@@ -1,3 +1,8 @@
-gnss.c:4:6:reverse	2
-gnss.c:21:5:intToStr	4
-gnss.c:48:6:ftoa	2
+gnss.c:11:6:reverse	2
+gnss.c:28:5:intToStr	4
+gnss.c:55:6:ftoa	2
+gnss.c:72:6:l70_callback	6
+gnss.c:99:7:l70_receiveGPS	2
+gnss.c:109:6:l70_init	1
+gnss.c:122:6:l70_handleGPS	1
+gnss.c:149:6:l70_sleep	1

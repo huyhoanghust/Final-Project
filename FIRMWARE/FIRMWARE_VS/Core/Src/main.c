@@ -31,6 +31,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "adc.h"
+#include "fatfs.h"
 #include "i2c.h"
 #include "rtc.h"
 #include "spi.h"
@@ -45,6 +46,8 @@
 #include "debug.h"
 #include "sim4g_lte.h"
 #include "gnss.h"
+#include "fatfs_sd.h"
+#include "mqtt.h"
 
 #include <stdio.h>
 #include <stdint.h>
@@ -77,13 +80,14 @@ enum check
   CHANGE,
   NOT_CHANGE
 };
+
 volatile int npn_flag_check = NOT_CHANGE;
 int npn_count = 0;
 
 enum State
 {
-	Stop,
-	Move
+  Stop,
+  Move
 };
 
 int Vehical_State;
@@ -91,7 +95,7 @@ int Vehical_State;
 float current_time, last_time;
 float Vehical_veloc;
 
-//RTC
+/************************************RTC************************/
 RTC_TimeTypeDef sTime = {0};
 RTC_DateTypeDef sDate = {0};
 RTC_AlarmTypeDef sAlarm = {0};
@@ -103,16 +107,37 @@ uint8_t day = 0;
 uint8_t month = 0;
 uint8_t year = 0;
 
-volatile int check =0;
+volatile int check = 0;
 
-volatile uint8_t buftest[100]={0};
+volatile uint8_t buftest[100] = {0};
 volatile uint8_t buffchar;
-volatile int k1=0;
-
+volatile int k1 = 0;
+/*********************************** GPS************************/
+#define GPS 1
 char *GPSResponse;
 char latData[15] = {0};
 char longData[15] = {0};
 char simMessage[200] = {0};
+
+char l70Data1;
+char gnss_str[100] = {0};
+
+/************************************* SSDCARD*******************/
+#define SDCard 0
+FATFS fs;                      // file system
+FIL fil;                       // file
+FRESULT fresult;               // store the result
+char SD_buffer_w[1024] = {0};  // write data
+char SD_buffer_r[10224] = {0}; // read data
+char SD_file_name[50] = {0};
+UINT br, bw; // file read.write count
+
+FATFS *pfs;
+DWORD fre_clust;
+uint32_t total, free_space;
+
+/**************************************SIM 4G***************************/
+#define SIM 0
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -123,61 +148,57 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void set_timer(long time)
+{
+  TIM3->CNT = 60000 - time * 10;
+}
+
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-  if(huart == &huart1)
+  if (huart == &huart1)
   {
-    // log_data("RXcallback\n");
     sim7672_callback();
-    // buftest[k1++]=buffchar;
-    // log_data((char*)&buftest[k1-1]);
-    // HAL_UART_Receive_IT(&huart1, (uint8_t *)&buffchar, 1);
-    // log_data("RXcallback\n");
   }
 
-  if(huart== &huart4)
+  if (huart == &huart4)
   {
-    log_data("L70 call\n");
     l70_callback();
   }
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-  //reset timer 2
+  // reset timer 2
   HAL_TIM_Base_Stop(&htim2);
-  TIM2 -> CNT = 0;
+  TIM2->CNT = 0;
 
   current_time = HAL_GetTick();
 
-	npn_flag_check = CHANGE;
+  npn_flag_check = CHANGE;
   Vehical_State = Move;
   npn_count++;
-  if (npn_count==20)
+  if (npn_count == 20)
   {
-    float time_cycle = current_time-last_time;
-    Vehical_veloc=(1.0*3000)/(time_cycle);
-    //tinh toan van toc
+    float time_cycle = current_time - last_time;
+    Vehical_veloc = (1.0 * 3000) / (time_cycle);
+    // tinh toan van toc
   }
-  //start timer2
+  // start timer2
   HAL_TIM_Base_Start_IT(&htim2);
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-  if(htim == &htim2)
+  if (htim == &htim2)
   {
     npn_flag_check = NOT_CHANGE;
     Vehical_State = Stop;
   }
-  if(htim == &htim3)
+  if (htim == &htim3)
   {
-    log_data("timecallback\n");
-    sim7672_timerCallback();
+
   }
 }
-
-
 
 /* USER CODE END 0 */
 
@@ -223,44 +244,79 @@ int main(void)
   MX_TIM2_Init();
   MX_TIM3_Init();
   MX_RTC_Init();
+  MX_FATFS_Init();
   /* USER CODE BEGIN 2 */
   log_data("\nGSHT START\n");
-
-  sim7672_pwrkey();
-  sim7672_reset();
+#if SIM
+  // sim7672_pwrOn();
+  // HAL_Delay(5000);
   sim7672_init();
-  sim7672_start_LTE();
-  // HAL_UART_Receive_IT(&huart1, (uint8_t *)&buffchar, 1);
-    // sim_sendcmd("ATE1\r\n");
-    // HAL_Delay(3000);
-    // memset(buftest, '\0', sizeof(buftest));
-    // sim_sendcmd("AT\r\n");
-    // HAL_Delay(3000);
-    // memset(buftest, '\0', sizeof(buftest));
-    // sim_sendcmd("AT+CFUN?\r\n");
-    // HAL_Delay(3000);
-    // memset(buftest, '\0', sizeof(buftest));
-    // sim_sendcmd("ATE0\r\n");
-    // HAL_Delay(3000);
-    // memset(buftest, '\0', sizeof(buftest));a
-    // sim_sendcmd("AT\r\n");
-    // HAL_Delay(3000);
-    // memset(buftest, '\0', sizeof(buftest));
-    // sim_sendcmd("AT+CFUN?\r\n");
-    // HAL_Delay(3000);
-  // l70_init();
-  //   GPSResponse = l70_receiveGPS();
-  // l70_handleGPS(latData, longData, GPSResponse);
-  // sprintf(simMessage, "https://www.google.com/maps/search/?api=1&query=%s,%s\n", latData, longData);
-  // log_data(simMessage);
+  sim7672_check_signalStrength();
+  HAL_Delay(500);
+  // mqtt_disconnectServer();
+  HAL_Delay(1000);
+  mqtt_connectServer();
+  mqtt_pub("test1z","123456789");
+  HAL_Delay(500);
+  mqtt_sub("test1z");
+#endif
 
-  // HAL_UART_Transmit(&huart1, (uint8_t *)"ATE0\r\n", strlen("AT\r\n"), 100);
-  // HAL_Delay(200);
+#if GPS
+  sim7672_pwrOff();
+  l70_init();
+  HAL_Delay(1000);
+#endif
 
-  //   //log_data("AT\n");
-  //   HAL_UART_Transmit(&huart1, (uint8_t *)"ATE1\r\n", strlen("AT\r\n"), 100);
-  //   HAL_Delay(3000);
-    // HAL_UART_Transmit(&huart1, (uint8_t *)"AT\r\n", strlen("AT\r\n"), 100);
+#if SDCard
+
+  fresult = f_mount(&fs, "/", 1);
+  if (fresult != FR_OK)
+    send_uart("ERROR!!! in mounting SD CARD...\n\n");
+  else
+    send_uart("*******************\nSD CARD mounted successfully...\n\n");
+
+  /* ********************************Create second file with read write access and open it */
+  fresult = f_open(&fil, "file2.txt", FA_WRITE);
+  if (fresult != FR_OK) send_uart ("open error...\n\n");
+  else send_uart("open successfully...\n\n");
+  // f_lseek(&fil, f_size(&fil));
+  f_puts("This data is from the FILE1.txt. And it was written using ...f_puts... \nthis full function", &fil);
+  // f_puts("\nThis is updated data and it should be in the end",&fil);
+  fresult = f_close(&fil);
+  if (fresult != FR_OK) send_uart ("write error...\n\n");
+  else send_uart("write successfully...\n\n");
+  send_uart ("File2.txt created and data is written\n");
+  // clearing buffer to show that result obtained is from the file
+  clear_buffer();
+
+  /* ***********************************Open second file to read */
+  fresult = f_open(&fil, "file2.txt", FA_READ);
+  if (fresult != FR_OK)
+    send_uart("open error...\n\n");
+  else
+    send_uart("open successfully...\n\n");
+
+  /* Read data from the file
+   * Please see the function details for the arguments */
+  // f_gets(buffer, f_size(&fil), &fil);
+  while (f_gets(buffer, sizeof(buffer), &fil) != NULL)
+  {
+    // Xử lý dữ liệu theo nhu cầu của bạn, ví dụ: gửi qua UART
+    send_uart(buffer);
+  }
+  // f_read (&fil, buffer, f_size(&fil), &br);
+  send_uart("data: ");
+  send_uart(buffer);
+  send_uart("\n\n");
+
+  /* Close file */
+  f_close(&fil);
+
+  clear_buffer();
+  /* Close file */
+  f_close(&fil);
+#endif
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -271,17 +327,14 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-    //     HAL_UART_Transmit(&huart1, (uint8_t *)"AT+CFUN?\r\n", strlen("AT+CFUN?\r\n"), 100);
-    // HAL_Delay(200);
-    // // HAL_UART_Transmit(&huart1, (uint8_t *)"AT\r\n", strlen("AT\r\n"), 100);
-    // // log_data("AT\n");
-    // HAL_UART_Receive(&huart1, (uint8_t*)buftest, sizeof(buftest)-1,2000);
-    // log_data(buftest);
-    // HAL_Delay(3000);
-    //log_data("AT\n");
+    #if GPS
+    GPSResponse = l70_receiveGPS();
+    l70_handleGPS(GPSResponse);
+    HAL_Delay(2000);
+    #endif
     // log_data("test...");
     // HAL_Delay(2000);
-    //HAL_Delay(2000);
+    // HAL_Delay(2000);
   }
   /* USER CODE END 3 */
 }

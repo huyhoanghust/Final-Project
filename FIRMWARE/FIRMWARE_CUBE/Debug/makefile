@@ -60,8 +60,8 @@ all: main-build
 main-build: DATN_GSHT.elf secondary-outputs
 
 # Tool invocations
-DATN_GSHT.elf DATN_GSHT.map: $(OBJS) $(USER_OBJS) E:\DATN\FIRMWARE\STM32F103RCTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "DATN_GSHT.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"E:\DATN\FIRMWARE\STM32F103RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="DATN_GSHT.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+DATN_GSHT.elf DATN_GSHT.map: $(OBJS) $(USER_OBJS) E:\DATN\FIRMWARE\FIRMWARE_CUBE\STM32F103RCTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "DATN_GSHT.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"E:\DATN\FIRMWARE\FIRMWARE_CUBE\STM32F103RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="DATN_GSHT.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

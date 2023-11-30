@@ -28,10 +28,16 @@ build/main.o: Core/Src/main.c Core/Inc/main.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h Core/Inc/adc.h \
- Core/Inc/main.h Core/Inc/i2c.h Core/Inc/rtc.h Core/Inc/spi.h \
- Core/Inc/tim.h Core/Inc/usart.h Core/Inc/gpio.h Core/Inc/sensors.h \
- Core/Inc/tim.h Core/Inc/adc.h Core/Inc/rc522.h Core/Inc/debug.h \
- Core/Inc/sim4g_lte.h Core/Inc/debug.h Core/Inc/gnss.h
+ Core/Inc/main.h FATFS/App/fatfs.h Middlewares/Third_Party/FatFs/src/ff.h \
+ Middlewares/Third_Party/FatFs/src/integer.h FATFS/Target/ffconf.h \
+ Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
+ Middlewares/Third_Party/FatFs/src/diskio.h \
+ Middlewares/Third_Party/FatFs/src/ff.h Core/Inc/user_diskio.h \
+ Core/Inc/i2c.h Core/Inc/rtc.h Core/Inc/spi.h Core/Inc/tim.h \
+ Core/Inc/usart.h Core/Inc/gpio.h Core/Inc/sensors.h Core/Inc/tim.h \
+ Core/Inc/adc.h Core/Inc/debug.h Core/Inc/rc522.h Core/Inc/debug.h \
+ Core/Inc/sim4g_lte.h Core/Inc/gnss.h Core/Inc/fatfs_sd.h Core/Inc/mqtt.h \
+ Core/Inc/sim4g_lte.h
 Core/Inc/main.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 Core/Inc/stm32f1xx_hal_conf.h:
@@ -66,6 +72,14 @@ Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
 Core/Inc/adc.h:
 Core/Inc/main.h:
+FATFS/App/fatfs.h:
+Middlewares/Third_Party/FatFs/src/ff.h:
+Middlewares/Third_Party/FatFs/src/integer.h:
+FATFS/Target/ffconf.h:
+Middlewares/Third_Party/FatFs/src/ff_gen_drv.h:
+Middlewares/Third_Party/FatFs/src/diskio.h:
+Middlewares/Third_Party/FatFs/src/ff.h:
+Core/Inc/user_diskio.h:
 Core/Inc/i2c.h:
 Core/Inc/rtc.h:
 Core/Inc/spi.h:
@@ -75,8 +89,11 @@ Core/Inc/gpio.h:
 Core/Inc/sensors.h:
 Core/Inc/tim.h:
 Core/Inc/adc.h:
+Core/Inc/debug.h:
 Core/Inc/rc522.h:
 Core/Inc/debug.h:
 Core/Inc/sim4g_lte.h:
-Core/Inc/debug.h:
 Core/Inc/gnss.h:
+Core/Inc/fatfs_sd.h:
+Core/Inc/mqtt.h:
+Core/Inc/sim4g_lte.h:

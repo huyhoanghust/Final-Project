@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -27,74 +27,109 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 1
   25              	.LVL0:
   26              	.LFB68:
   27              		.file 1 "Core/Src/gnss.c"
-   1:Core/Src/gnss.c **** #include "gnss.h"
-   2:Core/Src/gnss.c **** 
-   3:Core/Src/gnss.c **** l70GPGGAType_t l70GPGGA = {0};
-   4:Core/Src/gnss.c **** int k = 0;
-   5:Core/Src/gnss.c **** char l70RxData[100] = {0};
-   6:Core/Src/gnss.c **** char l70Data = 0;
-   7:Core/Src/gnss.c **** l70Data_t l70RxState;
-   8:Core/Src/gnss.c **** 
-   9:Core/Src/gnss.c **** 
-  10:Core/Src/gnss.c **** // Reverses a string 'str' of length 'len'
-  11:Core/Src/gnss.c **** void reverse(char* str, int len)
-  12:Core/Src/gnss.c **** {
-  28              		.loc 1 12 1 view -0
+   1:Core/Src/gnss.c **** /**
+   2:Core/Src/gnss.c ****  * @file gnss.c
+   3:Core/Src/gnss.c ****  * @author hoanghuyhust (hoangnh191855@sis.hust.edu.vn)
+   4:Core/Src/gnss.c ****  * @brief
+   5:Core/Src/gnss.c ****  * @version 0.1
+   6:Core/Src/gnss.c ****  * @date 2023-11-13
+   7:Core/Src/gnss.c ****  *
+   8:Core/Src/gnss.c ****  * @copyright Copyright (c) 2023
+   9:Core/Src/gnss.c ****  *
+  10:Core/Src/gnss.c ****  */
+  11:Core/Src/gnss.c **** /*$GPRMC,170047.00,A,4121.23302,N,00201.31654,W,2.703,   ,200417,   , ,A*64
+  12:Core/Src/gnss.c **** $GPRMC,hhmmss.ss,A,llll.ll,   a,yyyyy.yy,   a,x.x,  x.x,ddmmyy,x.x,a,m*hh
+  13:Core/Src/gnss.c ****        |         | |          | |           | |     |   |      |   | | \- 13 Checksum
+  14:Core/Src/gnss.c ****        |         | |          | |           | |     |   |      |   | \--- 12 Mode indicator, (A=Aut
+  15:Core/Src/gnss.c ****        |         | |          | |           | |     |   |      |   \----- 11 E or W of magnetic var
+  16:Core/Src/gnss.c ****        |         | |          | |           | |     |   |      \--------- 10 Magnetic variation deg
+  17:Core/Src/gnss.c ****        |         | |          | |           | |     |   \----------------  9 UTC date of fix
+  18:Core/Src/gnss.c ****        |         | |          | |           | |     \--------------------  8 Track made good in deg
+  19:Core/Src/gnss.c ****        |         | |          | |           | \--------------------------  7 Speed over ground in k
+  20:Core/Src/gnss.c ****        |         | |          | |           \----------------------------  6 E or W of longitude
+  21:Core/Src/gnss.c ****        |         | |          | \----------------------------------------  5 Longitude of fix
+  22:Core/Src/gnss.c ****        |         | |          \------------------------------------------  4 N or S of longitude
+  23:Core/Src/gnss.c ****        |         | \-----------------------------------------------------  3 Latitude of fix
+  24:Core/Src/gnss.c ****        |         \-------------------------------------------------------  2 Data status (A=Valid p
+  25:Core/Src/gnss.c ****        \-----------------------------------------------------------------  1 UTC time of fix
+  26:Core/Src/gnss.c **** */
+  27:Core/Src/gnss.c **** #include "gnss.h"
+  28:Core/Src/gnss.c **** 
+  29:Core/Src/gnss.c **** l70GPGGAType_t l70GPGGA = {0};
+  30:Core/Src/gnss.c **** int k = 0;
+  31:Core/Src/gnss.c **** char l70RxData[100] = {0};
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 2
+
+
+  32:Core/Src/gnss.c **** char l70Data = 0;
+  33:Core/Src/gnss.c **** l70DataRecive_t l70RxState;
+  34:Core/Src/gnss.c **** l70GPRMCType_t l70GPRMC;
+  35:Core/Src/gnss.c **** l70Data_t l70DataAfterHadler;
+  36:Core/Src/gnss.c **** l70Utctime_t l70Utctime;
+  37:Core/Src/gnss.c **** l70Date_t l70Date;
+  38:Core/Src/gnss.c **** 
+  39:Core/Src/gnss.c **** double speed_knot;
+  40:Core/Src/gnss.c **** double speed_km;
+  41:Core/Src/gnss.c **** 
+  42:Core/Src/gnss.c **** // Reverses a string 'str' of length 'len'
+  43:Core/Src/gnss.c **** void reverse(char *str, int len)
+  44:Core/Src/gnss.c **** {
+  28              		.loc 1 44 1 view -0
   29              		.cfi_startproc
   30              		@ args = 0, pretend = 0, frame = 0
   31              		@ frame_needed = 0, uses_anonymous_args = 0
   32              		@ link register save eliminated.
-  13:Core/Src/gnss.c ****     int i = 0, j = len - 1, temp;
-  33              		.loc 1 13 5 view .LVU1
-  34              		.loc 1 13 16 is_stmt 0 view .LVU2
+  45:Core/Src/gnss.c ****     int i = 0, j = len - 1, temp;
+  33              		.loc 1 45 5 view .LVU1
+  34              		.loc 1 45 16 is_stmt 0 view .LVU2
   35 0000 0139     		subs	r1, r1, #1
   36              	.LVL1:
-  14:Core/Src/gnss.c ****     while (i < j)
-  37              		.loc 1 14 5 is_stmt 1 view .LVU3
-  13:Core/Src/gnss.c ****     int i = 0, j = len - 1, temp;
-  38              		.loc 1 13 9 is_stmt 0 view .LVU4
+  46:Core/Src/gnss.c ****     while (i < j)
+  37              		.loc 1 46 5 is_stmt 1 view .LVU3
+  45:Core/Src/gnss.c ****     int i = 0, j = len - 1, temp;
+  38              		.loc 1 45 9 is_stmt 0 view .LVU4
   39 0002 0023     		movs	r3, #0
-  40              		.loc 1 14 11 view .LVU5
+  40              		.loc 1 46 11 view .LVU5
   41 0004 07E0     		b	.L2
   42              	.LVL2:
   43              	.L3:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 2
-
-
-  15:Core/Src/gnss.c ****     {
-  16:Core/Src/gnss.c ****         temp = str[i];
-  44              		.loc 1 16 9 is_stmt 1 view .LVU6
-  45              		.loc 1 16 19 is_stmt 0 view .LVU7
+  47:Core/Src/gnss.c ****     {
+  48:Core/Src/gnss.c ****         temp = str[i];
+  44              		.loc 1 48 9 is_stmt 1 view .LVU6
+  45              		.loc 1 48 19 is_stmt 0 view .LVU7
   46 0006 C25C     		ldrb	r2, [r0, r3]	@ zero_extendqisi2
   47              	.LVL3:
-  17:Core/Src/gnss.c ****         str[i] = str[j];
-  48              		.loc 1 17 9 is_stmt 1 view .LVU8
-  49              		.loc 1 17 21 is_stmt 0 view .LVU9
+  49:Core/Src/gnss.c ****         str[i] = str[j];
+  48              		.loc 1 49 9 is_stmt 1 view .LVU8
+  49              		.loc 1 49 21 is_stmt 0 view .LVU9
   50 0008 10F801C0 		ldrb	ip, [r0, r1]	@ zero_extendqisi2
-  51              		.loc 1 17 16 view .LVU10
+  51              		.loc 1 49 16 view .LVU10
   52 000c 00F803C0 		strb	ip, [r0, r3]
-  18:Core/Src/gnss.c ****         str[j] = temp;
-  53              		.loc 1 18 9 is_stmt 1 view .LVU11
-  54              		.loc 1 18 16 is_stmt 0 view .LVU12
+  50:Core/Src/gnss.c ****         str[j] = temp;
+  53              		.loc 1 50 9 is_stmt 1 view .LVU11
+  54              		.loc 1 50 16 is_stmt 0 view .LVU12
   55 0010 4254     		strb	r2, [r0, r1]
-  19:Core/Src/gnss.c ****         i++;
-  56              		.loc 1 19 9 is_stmt 1 view .LVU13
-  57              		.loc 1 19 10 is_stmt 0 view .LVU14
+  51:Core/Src/gnss.c ****         i++;
+  56              		.loc 1 51 9 is_stmt 1 view .LVU13
+  57              		.loc 1 51 10 is_stmt 0 view .LVU14
   58 0012 0133     		adds	r3, r3, #1
   59              	.LVL4:
-  20:Core/Src/gnss.c ****         j--;
-  60              		.loc 1 20 9 is_stmt 1 view .LVU15
-  61              		.loc 1 20 10 is_stmt 0 view .LVU16
+  52:Core/Src/gnss.c ****         j--;
+  60              		.loc 1 52 9 is_stmt 1 view .LVU15
+  61              		.loc 1 52 10 is_stmt 0 view .LVU16
   62 0014 0139     		subs	r1, r1, #1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 3
+
+
   63              	.LVL5:
   64              	.L2:
-  14:Core/Src/gnss.c ****     {
-  65              		.loc 1 14 11 is_stmt 1 view .LVU17
+  46:Core/Src/gnss.c ****     {
+  65              		.loc 1 46 11 is_stmt 1 view .LVU17
   66 0016 8B42     		cmp	r3, r1
   67 0018 F5DB     		blt	.L3
-  21:Core/Src/gnss.c ****     }
-  22:Core/Src/gnss.c **** }
-  68              		.loc 1 22 1 is_stmt 0 view .LVU18
+  53:Core/Src/gnss.c ****     }
+  54:Core/Src/gnss.c **** }
+  68              		.loc 1 54 1 is_stmt 0 view .LVU18
   69 001a 7047     		bx	lr
   70              		.cfi_endproc
   71              	.LFE68:
@@ -107,21 +142,18 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 1
   80              	intToStr:
   81              	.LVL6:
   82              	.LFB69:
-  23:Core/Src/gnss.c **** 
-  24:Core/Src/gnss.c **** // Converts a given integer x to string str[]. 
-  25:Core/Src/gnss.c **** // d is the number of digits required in the output. 
-  26:Core/Src/gnss.c **** // If d is more than the number of digits in x, 
-  27:Core/Src/gnss.c **** // then 0s are added at the beginning.
-  28:Core/Src/gnss.c **** int intToStr(int x, char str[], int d)
-  29:Core/Src/gnss.c **** {
-  83              		.loc 1 29 1 is_stmt 1 view -0
+  55:Core/Src/gnss.c **** 
+  56:Core/Src/gnss.c **** // Converts a given integer x to string str[].
+  57:Core/Src/gnss.c **** // d is the number of digits required in the output.
+  58:Core/Src/gnss.c **** // If d is more than the number of digits in x,
+  59:Core/Src/gnss.c **** // then 0s are added at the beginning.
+  60:Core/Src/gnss.c **** int intToStr(int x, char str[], int d)
+  61:Core/Src/gnss.c **** {
+  83              		.loc 1 61 1 is_stmt 1 view -0
   84              		.cfi_startproc
   85              		@ args = 0, pretend = 0, frame = 0
   86              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 3
-
-
-  87              		.loc 1 29 1 is_stmt 0 view .LVU20
+  87              		.loc 1 61 1 is_stmt 0 view .LVU20
   88 0000 70B5     		push	{r4, r5, r6, lr}
   89              	.LCFI0:
   90              		.cfi_def_cfa_offset 16
@@ -130,42 +162,45 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 1
   93              		.cfi_offset 6, -8
   94              		.cfi_offset 14, -4
   95 0002 0E46     		mov	r6, r1
-  30:Core/Src/gnss.c ****     int i = 0;
-  96              		.loc 1 30 5 is_stmt 1 view .LVU21
+  62:Core/Src/gnss.c ****     int i = 0;
+  96              		.loc 1 62 5 is_stmt 1 view .LVU21
   97              	.LVL7:
-  31:Core/Src/gnss.c ****     if (x == 0)
-  98              		.loc 1 31 5 view .LVU22
-  99              		.loc 1 31 8 is_stmt 0 view .LVU23
+  63:Core/Src/gnss.c ****     if (x == 0)
+  98              		.loc 1 63 5 view .LVU22
+  99              		.loc 1 63 8 is_stmt 0 view .LVU23
  100 0004 18B9     		cbnz	r0, .L10
-  32:Core/Src/gnss.c ****     {
-  33:Core/Src/gnss.c ****         str[i++] = '0';
- 101              		.loc 1 33 9 is_stmt 1 view .LVU24
+  64:Core/Src/gnss.c ****     {
+  65:Core/Src/gnss.c ****         str[i++] = '0';
+ 101              		.loc 1 65 9 is_stmt 1 view .LVU24
  102              	.LVL8:
- 103              		.loc 1 33 18 is_stmt 0 view .LVU25
+ 103              		.loc 1 65 18 is_stmt 0 view .LVU25
  104 0006 3023     		movs	r3, #48
  105 0008 0B70     		strb	r3, [r1]
- 106              		.loc 1 33 14 view .LVU26
+ 106              		.loc 1 65 14 view .LVU26
  107 000a 0124     		movs	r4, #1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 4
+
+
  108 000c 15E0     		b	.L6
  109              	.LVL9:
  110              	.L10:
- 111              		.loc 1 33 14 view .LVU27
+ 111              		.loc 1 65 14 view .LVU27
  112 000e 0546     		mov	r5, r0
-  30:Core/Src/gnss.c ****     if (x == 0)
- 113              		.loc 1 30 9 view .LVU28
+  62:Core/Src/gnss.c ****     if (x == 0)
+ 113              		.loc 1 62 9 view .LVU28
  114 0010 0024     		movs	r4, #0
  115              	.LVL10:
  116              	.L5:
-  34:Core/Src/gnss.c ****     }
-  35:Core/Src/gnss.c ****     else
-  36:Core/Src/gnss.c ****     {
-  37:Core/Src/gnss.c ****         while (x)
- 117              		.loc 1 37 15 is_stmt 1 view .LVU29
+  66:Core/Src/gnss.c ****     }
+  67:Core/Src/gnss.c ****     else
+  68:Core/Src/gnss.c ****     {
+  69:Core/Src/gnss.c ****         while (x)
+ 117              		.loc 1 69 15 is_stmt 1 view .LVU29
  118 0012 95B1     		cbz	r5, .L6
-  38:Core/Src/gnss.c ****         {
-  39:Core/Src/gnss.c ****             str[i++] = (x % 10) + '0';
- 119              		.loc 1 39 13 view .LVU30
- 120              		.loc 1 39 27 is_stmt 0 view .LVU31
+  70:Core/Src/gnss.c ****         {
+  71:Core/Src/gnss.c ****             str[i++] = (x % 10) + '0';
+ 119              		.loc 1 71 13 view .LVU30
+ 120              		.loc 1 71 27 is_stmt 0 view .LVU31
  121 0014 0E49     		ldr	r1, .L12
  122 0016 81FB0531 		smull	r3, r1, r1, r5
  123 001a EB17     		asrs	r3, r5, #31
@@ -174,73 +209,70 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 1
  126 0022 03EB8303 		add	r3, r3, r3, lsl #2
  127 0026 A5EB4303 		sub	r3, r5, r3, lsl #1
  128              	.LVL11:
- 129              		.loc 1 39 33 view .LVU32
+ 129              		.loc 1 71 33 view .LVU32
  130 002a 3033     		adds	r3, r3, #48
- 131              		.loc 1 39 22 view .LVU33
+ 131              		.loc 1 71 22 view .LVU33
  132 002c 3355     		strb	r3, [r6, r4]
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 4
-
-
-  40:Core/Src/gnss.c ****             x = x / 10;
- 133              		.loc 1 40 13 is_stmt 1 view .LVU34
- 134              		.loc 1 40 15 is_stmt 0 view .LVU35
+  72:Core/Src/gnss.c ****             x = x / 10;
+ 133              		.loc 1 72 13 is_stmt 1 view .LVU34
+ 134              		.loc 1 72 15 is_stmt 0 view .LVU35
  135 002e 0D46     		mov	r5, r1
  136              	.LVL12:
-  39:Core/Src/gnss.c ****             x = x / 10;
- 137              		.loc 1 39 18 view .LVU36
+  71:Core/Src/gnss.c ****             x = x / 10;
+ 137              		.loc 1 71 18 view .LVU36
  138 0030 0134     		adds	r4, r4, #1
  139              	.LVL13:
-  39:Core/Src/gnss.c ****             x = x / 10;
- 140              		.loc 1 39 18 view .LVU37
+  71:Core/Src/gnss.c ****             x = x / 10;
+ 140              		.loc 1 71 18 view .LVU37
  141 0032 EEE7     		b	.L5
  142              	.LVL14:
  143              	.L9:
-  41:Core/Src/gnss.c ****         }
-  42:Core/Src/gnss.c ****     }
-  43:Core/Src/gnss.c ****     
-  44:Core/Src/gnss.c ****     // If number of digits required is more, then
-  45:Core/Src/gnss.c ****     // add 0s at the beginning
-  46:Core/Src/gnss.c ****     while (i < d)
-  47:Core/Src/gnss.c ****         str[i++] = '0';
- 144              		.loc 1 47 9 is_stmt 1 view .LVU38
- 145              		.loc 1 47 18 is_stmt 0 view .LVU39
+  73:Core/Src/gnss.c ****         }
+  74:Core/Src/gnss.c ****     }
+  75:Core/Src/gnss.c **** 
+  76:Core/Src/gnss.c ****     // If number of digits required is more, then
+  77:Core/Src/gnss.c ****     // add 0s at the beginning
+  78:Core/Src/gnss.c ****     while (i < d)
+  79:Core/Src/gnss.c ****         str[i++] = '0';
+ 144              		.loc 1 79 9 is_stmt 1 view .LVU38
+ 145              		.loc 1 79 18 is_stmt 0 view .LVU39
  146 0034 3023     		movs	r3, #48
  147 0036 3355     		strb	r3, [r6, r4]
- 148              		.loc 1 47 14 view .LVU40
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 5
+
+
+ 148              		.loc 1 79 14 view .LVU40
  149 0038 0134     		adds	r4, r4, #1
  150              	.LVL15:
  151              	.L6:
-  46:Core/Src/gnss.c ****         str[i++] = '0';
- 152              		.loc 1 46 11 is_stmt 1 view .LVU41
+  78:Core/Src/gnss.c ****         str[i++] = '0';
+ 152              		.loc 1 78 11 is_stmt 1 view .LVU41
  153 003a 9442     		cmp	r4, r2
  154 003c FADB     		blt	.L9
-  48:Core/Src/gnss.c **** 
-  49:Core/Src/gnss.c ****     reverse(str, i);
- 155              		.loc 1 49 5 view .LVU42
+  80:Core/Src/gnss.c **** 
+  81:Core/Src/gnss.c ****     reverse(str, i);
+ 155              		.loc 1 81 5 view .LVU42
  156 003e 2146     		mov	r1, r4
  157 0040 3046     		mov	r0, r6
  158 0042 FFF7FEFF 		bl	reverse
  159              	.LVL16:
-  50:Core/Src/gnss.c ****     str[i] = '\0';
- 160              		.loc 1 50 5 view .LVU43
- 161              		.loc 1 50 12 is_stmt 0 view .LVU44
+  82:Core/Src/gnss.c ****     str[i] = '\0';
+ 160              		.loc 1 82 5 view .LVU43
+ 161              		.loc 1 82 12 is_stmt 0 view .LVU44
  162 0046 0023     		movs	r3, #0
  163 0048 3355     		strb	r3, [r6, r4]
-  51:Core/Src/gnss.c ****     return i;
- 164              		.loc 1 51 5 is_stmt 1 view .LVU45
-  52:Core/Src/gnss.c **** }
- 165              		.loc 1 52 1 is_stmt 0 view .LVU46
+  83:Core/Src/gnss.c ****     return i;
+ 164              		.loc 1 83 5 is_stmt 1 view .LVU45
+  84:Core/Src/gnss.c **** }
+ 165              		.loc 1 84 1 is_stmt 0 view .LVU46
  166 004a 2046     		mov	r0, r4
  167 004c 70BD     		pop	{r4, r5, r6, pc}
  168              	.LVL17:
  169              	.L13:
- 170              		.loc 1 52 1 view .LVU47
+ 170              		.loc 1 84 1 view .LVU47
  171 004e 00BF     		.align	2
  172              	.L12:
  173 0050 67666666 		.word	1717986919
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 5
-
-
  174              		.cfi_endproc
  175              	.LFE69:
  177              		.global	__aeabi_f2iz
@@ -259,15 +291,18 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 1
  191              	ftoa:
  192              	.LVL18:
  193              	.LFB70:
-  53:Core/Src/gnss.c **** 
-  54:Core/Src/gnss.c **** // Converts a floating-point/double number to a string.
-  55:Core/Src/gnss.c **** void ftoa(float n, char* res, int afterpoint)
-  56:Core/Src/gnss.c **** {
- 194              		.loc 1 56 1 is_stmt 1 view -0
+  85:Core/Src/gnss.c **** 
+  86:Core/Src/gnss.c **** // Converts a floating-point/double number to a string.
+  87:Core/Src/gnss.c **** void ftoa(float n, char *res, int afterpoint)
+  88:Core/Src/gnss.c **** {
+ 194              		.loc 1 88 1 is_stmt 1 view -0
  195              		.cfi_startproc
  196              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 6
+
+
  197              		@ frame_needed = 0, uses_anonymous_args = 0
- 198              		.loc 1 56 1 is_stmt 0 view .LVU49
+ 198              		.loc 1 88 1 is_stmt 0 view .LVU49
  199 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
  200              	.LCFI1:
  201              		.cfi_def_cfa_offset 32
@@ -282,92 +317,89 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 1
  210 0004 0646     		mov	r6, r0
  211 0006 0C46     		mov	r4, r1
  212 0008 1746     		mov	r7, r2
-  57:Core/Src/gnss.c ****     // Extract integer part
-  58:Core/Src/gnss.c ****     int ipart = (int)n;
- 213              		.loc 1 58 5 is_stmt 1 view .LVU50
- 214              		.loc 1 58 9 is_stmt 0 view .LVU51
+  89:Core/Src/gnss.c ****     // Extract integer part
+  90:Core/Src/gnss.c ****     int ipart = (int)n;
+ 213              		.loc 1 90 5 is_stmt 1 view .LVU50
+ 214              		.loc 1 90 9 is_stmt 0 view .LVU51
  215 000a FFF7FEFF 		bl	__aeabi_f2iz
  216              	.LVL19:
- 217              		.loc 1 58 9 view .LVU52
+ 217              		.loc 1 90 9 view .LVU52
  218 000e 0546     		mov	r5, r0
  219              	.LVL20:
-  59:Core/Src/gnss.c ****     // Extract floating part
-  60:Core/Src/gnss.c ****     float fpart = n - (float)ipart;
- 220              		.loc 1 60 5 is_stmt 1 view .LVU53
- 221              		.loc 1 60 23 is_stmt 0 view .LVU54
+  91:Core/Src/gnss.c ****     // Extract floating part
+  92:Core/Src/gnss.c ****     float fpart = n - (float)ipart;
+ 220              		.loc 1 92 5 is_stmt 1 view .LVU53
+ 221              		.loc 1 92 23 is_stmt 0 view .LVU54
  222 0010 FFF7FEFF 		bl	__aeabi_i2f
  223              	.LVL21:
- 224              		.loc 1 60 23 view .LVU55
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 6
-
-
+ 224              		.loc 1 92 23 view .LVU55
  225 0014 0146     		mov	r1, r0
- 226              		.loc 1 60 11 view .LVU56
+ 226              		.loc 1 92 11 view .LVU56
  227 0016 3046     		mov	r0, r6
  228 0018 FFF7FEFF 		bl	__aeabi_fsub
  229              	.LVL22:
  230 001c 0646     		mov	r6, r0
  231              	.LVL23:
-  61:Core/Src/gnss.c ****     // convert integer part to string
-  62:Core/Src/gnss.c ****     int i = intToStr(ipart, res, 0);
- 232              		.loc 1 62 5 is_stmt 1 view .LVU57
- 233              		.loc 1 62 13 is_stmt 0 view .LVU58
+  93:Core/Src/gnss.c ****     // convert integer part to string
+  94:Core/Src/gnss.c ****     int i = intToStr(ipart, res, 0);
+ 232              		.loc 1 94 5 is_stmt 1 view .LVU57
+ 233              		.loc 1 94 13 is_stmt 0 view .LVU58
  234 001e 0022     		movs	r2, #0
  235 0020 2146     		mov	r1, r4
  236 0022 2846     		mov	r0, r5
  237              	.LVL24:
- 238              		.loc 1 62 13 view .LVU59
+ 238              		.loc 1 94 13 view .LVU59
  239 0024 FFF7FEFF 		bl	intToStr
  240              	.LVL25:
-  63:Core/Src/gnss.c ****     // check for display option after point
-  64:Core/Src/gnss.c ****     if (afterpoint != 0)
- 241              		.loc 1 64 5 is_stmt 1 view .LVU60
- 242              		.loc 1 64 8 is_stmt 0 view .LVU61
+  95:Core/Src/gnss.c ****     // check for display option after point
+  96:Core/Src/gnss.c ****     if (afterpoint != 0)
+ 241              		.loc 1 96 5 is_stmt 1 view .LVU60
+ 242              		.loc 1 96 8 is_stmt 0 view .LVU61
  243 0028 0FB9     		cbnz	r7, .L17
  244              	.LVL26:
  245              	.L14:
-  65:Core/Src/gnss.c ****     {
-  66:Core/Src/gnss.c ****         res[i] = '.'; // add dot
-  67:Core/Src/gnss.c ****         fpart = fpart * pow(10, afterpoint);
-  68:Core/Src/gnss.c ****         intToStr((int)fpart, res + i + 1, afterpoint);
-  69:Core/Src/gnss.c ****     }
-  70:Core/Src/gnss.c **** }
- 246              		.loc 1 70 1 view .LVU62
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 7
+
+
+  97:Core/Src/gnss.c ****     {
+  98:Core/Src/gnss.c ****         res[i] = '.'; // add dot
+  99:Core/Src/gnss.c ****         fpart = fpart * pow(10, afterpoint);
+ 100:Core/Src/gnss.c ****         intToStr((int)fpart, res + i + 1, afterpoint);
+ 101:Core/Src/gnss.c ****     }
+ 102:Core/Src/gnss.c **** }
+ 246              		.loc 1 102 1 view .LVU62
  247 002a BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
  248              	.LVL27:
  249              	.L17:
- 250              		.loc 1 70 1 view .LVU63
+ 250              		.loc 1 102 1 view .LVU63
  251 002e 0546     		mov	r5, r0
  252              	.LVL28:
-  66:Core/Src/gnss.c ****         fpart = fpart * pow(10, afterpoint);
- 253              		.loc 1 66 9 is_stmt 1 view .LVU64
-  66:Core/Src/gnss.c ****         fpart = fpart * pow(10, afterpoint);
- 254              		.loc 1 66 16 is_stmt 0 view .LVU65
+  98:Core/Src/gnss.c ****         fpart = fpart * pow(10, afterpoint);
+ 253              		.loc 1 98 9 is_stmt 1 view .LVU64
+  98:Core/Src/gnss.c ****         fpart = fpart * pow(10, afterpoint);
+ 254              		.loc 1 98 16 is_stmt 0 view .LVU65
  255 0030 2E23     		movs	r3, #46
  256 0032 2354     		strb	r3, [r4, r0]
-  67:Core/Src/gnss.c ****         intToStr((int)fpart, res + i + 1, afterpoint);
- 257              		.loc 1 67 9 is_stmt 1 view .LVU66
-  67:Core/Src/gnss.c ****         intToStr((int)fpart, res + i + 1, afterpoint);
- 258              		.loc 1 67 25 is_stmt 0 view .LVU67
+  99:Core/Src/gnss.c ****         intToStr((int)fpart, res + i + 1, afterpoint);
+ 257              		.loc 1 99 9 is_stmt 1 view .LVU66
+  99:Core/Src/gnss.c ****         intToStr((int)fpart, res + i + 1, afterpoint);
+ 258              		.loc 1 99 25 is_stmt 0 view .LVU67
  259 0034 3846     		mov	r0, r7
  260              	.LVL29:
-  67:Core/Src/gnss.c ****         intToStr((int)fpart, res + i + 1, afterpoint);
- 261              		.loc 1 67 25 view .LVU68
+  99:Core/Src/gnss.c ****         intToStr((int)fpart, res + i + 1, afterpoint);
+ 261              		.loc 1 99 25 view .LVU68
  262 0036 FFF7FEFF 		bl	__aeabi_i2d
  263              	.LVL30:
  264 003a 0246     		mov	r2, r0
  265 003c 0B46     		mov	r3, r1
  266 003e 0020     		movs	r0, #0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 7
-
-
  267 0040 0B49     		ldr	r1, .L18
  268 0042 FFF7FEFF 		bl	pow
  269              	.LVL31:
  270 0046 8046     		mov	r8, r0
  271 0048 8946     		mov	r9, r1
-  67:Core/Src/gnss.c ****         intToStr((int)fpart, res + i + 1, afterpoint);
- 272              		.loc 1 67 23 view .LVU69
+  99:Core/Src/gnss.c ****         intToStr((int)fpart, res + i + 1, afterpoint);
+ 272              		.loc 1 99 23 view .LVU69
  273 004a 3046     		mov	r0, r6
  274 004c FFF7FEFF 		bl	__aeabi_f2d
  275              	.LVL32:
@@ -375,30 +407,33 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 1
  277 0052 4B46     		mov	r3, r9
  278 0054 FFF7FEFF 		bl	__aeabi_dmul
  279              	.LVL33:
-  67:Core/Src/gnss.c ****         intToStr((int)fpart, res + i + 1, afterpoint);
- 280              		.loc 1 67 15 view .LVU70
+  99:Core/Src/gnss.c ****         intToStr((int)fpart, res + i + 1, afterpoint);
+ 280              		.loc 1 99 15 view .LVU70
  281 0058 FFF7FEFF 		bl	__aeabi_d2f
  282              	.LVL34:
-  68:Core/Src/gnss.c ****     }
- 283              		.loc 1 68 9 is_stmt 1 view .LVU71
-  68:Core/Src/gnss.c ****     }
- 284              		.loc 1 68 38 is_stmt 0 view .LVU72
+ 100:Core/Src/gnss.c ****     }
+ 283              		.loc 1 100 9 is_stmt 1 view .LVU71
+ 100:Core/Src/gnss.c ****     }
+ 284              		.loc 1 100 38 is_stmt 0 view .LVU72
  285 005c 691C     		adds	r1, r5, #1
-  68:Core/Src/gnss.c ****     }
- 286              		.loc 1 68 9 view .LVU73
+ 100:Core/Src/gnss.c ****     }
+ 286              		.loc 1 100 9 view .LVU73
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 8
+
+
  287 005e 0C44     		add	r4, r4, r1
  288              	.LVL35:
-  68:Core/Src/gnss.c ****     }
- 289              		.loc 1 68 9 view .LVU74
+ 100:Core/Src/gnss.c ****     }
+ 289              		.loc 1 100 9 view .LVU74
  290 0060 FFF7FEFF 		bl	__aeabi_f2iz
  291              	.LVL36:
-  68:Core/Src/gnss.c ****     }
- 292              		.loc 1 68 9 view .LVU75
+ 100:Core/Src/gnss.c ****     }
+ 292              		.loc 1 100 9 view .LVU75
  293 0064 3A46     		mov	r2, r7
  294 0066 2146     		mov	r1, r4
  295 0068 FFF7FEFF 		bl	intToStr
  296              	.LVL37:
- 297              		.loc 1 70 1 view .LVU76
+ 297              		.loc 1 102 1 view .LVU76
  298 006c DDE7     		b	.L14
  299              	.L19:
  300 006e 00BF     		.align	2
@@ -406,748 +441,1208 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 1
  302 0070 00002440 		.word	1076101120
  303              		.cfi_endproc
  304              	.LFE70:
- 306              		.section	.text.l70_callback,"ax",%progbits
- 307              		.align	1
- 308              		.global	l70_callback
- 309              		.syntax unified
- 310              		.thumb
- 311              		.thumb_func
- 313              	l70_callback:
- 314              	.LFB71:
-  71:Core/Src/gnss.c **** 
-  72:Core/Src/gnss.c **** void l70_callback(void)
-  73:Core/Src/gnss.c **** {
- 315              		.loc 1 73 1 is_stmt 1 view -0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 8
+ 306              		.section	.rodata.l70_init.str1.4,"aMS",%progbits,1
+ 307              		.align	2
+ 308              	.LC0:
+ 309 0000 24504D54 		.ascii	"$PMTK314,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0*29\015"
+ 309      4B333134 
+ 309      2C302C31 
+ 309      2C302C30 
+ 309      2C302C30 
+ 310 0032 0A00     		.ascii	"\012\000"
+ 311              		.section	.text.l70_init,"ax",%progbits
+ 312              		.align	1
+ 313              		.global	l70_init
+ 314              		.syntax unified
+ 315              		.thumb
+ 316              		.thumb_func
+ 318              	l70_init:
+ 319              	.LFB71:
+ 103:Core/Src/gnss.c **** 
+ 104:Core/Src/gnss.c **** /*
+ 105:Core/Src/gnss.c **** init module with  PMTK_API_SET_NMEA_OUTPUT
+ 106:Core/Src/gnss.c **** */
+ 107:Core/Src/gnss.c **** void l70_init(void)
+ 108:Core/Src/gnss.c **** {
+ 320              		.loc 1 108 1 is_stmt 1 view -0
+ 321              		.cfi_startproc
+ 322              		@ args = 0, pretend = 0, frame = 0
+ 323              		@ frame_needed = 0, uses_anonymous_args = 0
+ 324 0000 10B5     		push	{r4, lr}
+ 325              	.LCFI2:
+ 326              		.cfi_def_cfa_offset 8
+ 327              		.cfi_offset 4, -8
+ 328              		.cfi_offset 14, -4
+ 109:Core/Src/gnss.c ****     // Output once every one position fix
+ 110:Core/Src/gnss.c ****     // GGA interval fix data
+ 111:Core/Src/gnss.c ****     HAL_GPIO_WritePin(GNSS_RESET_GPIO_Port, GNSS_CTRL_PWR_Pin, GPIO_PIN_RESET);
+ 329              		.loc 1 111 5 view .LVU78
+ 330 0002 124C     		ldr	r4, .L22
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 9
 
 
- 316              		.cfi_startproc
- 317              		@ args = 0, pretend = 0, frame = 0
- 318              		@ frame_needed = 0, uses_anonymous_args = 0
- 319 0000 08B5     		push	{r3, lr}
- 320              	.LCFI2:
- 321              		.cfi_def_cfa_offset 8
- 322              		.cfi_offset 3, -8
- 323              		.cfi_offset 14, -4
-  74:Core/Src/gnss.c ****     //Start receive Data
-  75:Core/Src/gnss.c ****     if(l70Data == '$' && l70RxState == L70_START_DATA)
- 324              		.loc 1 75 5 view .LVU78
- 325              		.loc 1 75 16 is_stmt 0 view .LVU79
- 326 0002 1E4B     		ldr	r3, .L29
- 327 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 328              		.loc 1 75 7 view .LVU80
- 329 0006 242B     		cmp	r3, #36
- 330 0008 0BD0     		beq	.L26
- 331              	.L21:
-  76:Core/Src/gnss.c ****     {
-  77:Core/Src/gnss.c ****         l70RxData[k++] = l70Data;
-  78:Core/Src/gnss.c ****         l70RxState = L70_DATA;
-  79:Core/Src/gnss.c ****         HAL_UART_Receive_IT(&huart4, (uint8_t*)&l70Data, 1);
-  80:Core/Src/gnss.c ****     }
-  81:Core/Src/gnss.c ****     //End process
-  82:Core/Src/gnss.c ****     else if(l70Data == '\n' && l70RxState == L70_DATA)
- 332              		.loc 1 82 10 is_stmt 1 view .LVU81
- 333              		.loc 1 82 12 is_stmt 0 view .LVU82
- 334 000a 0A2B     		cmp	r3, #10
- 335 000c 1BD0     		beq	.L27
- 336              	.L23:
-  83:Core/Src/gnss.c ****     {
-  84:Core/Src/gnss.c ****         l70RxData[k++] = l70Data;
-  85:Core/Src/gnss.c ****         l70RxState = L70_END_DATA;
-  86:Core/Src/gnss.c ****     }
-  87:Core/Src/gnss.c ****     //Receving Data
-  88:Core/Src/gnss.c ****     else if(l70RxState == L70_DATA)
- 337              		.loc 1 88 10 is_stmt 1 view .LVU83
- 338              		.loc 1 88 24 is_stmt 0 view .LVU84
- 339 000e 1C4A     		ldr	r2, .L29+4
- 340 0010 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
- 341              		.loc 1 88 12 view .LVU85
- 342 0012 012A     		cmp	r2, #1
- 343 0014 25D0     		beq	.L28
-  89:Core/Src/gnss.c ****     {
-  90:Core/Src/gnss.c ****         l70RxData[k++] = l70Data;
-  91:Core/Src/gnss.c ****         HAL_UART_Receive_IT(&huart4, (uint8_t*)&l70Data, 1);
-  92:Core/Src/gnss.c ****     }
-  93:Core/Src/gnss.c ****     else 
-  94:Core/Src/gnss.c ****     {
-  95:Core/Src/gnss.c ****         HAL_UART_Receive_IT(&huart4, (uint8_t*)&l70Data, 1);
- 344              		.loc 1 95 9 is_stmt 1 view .LVU86
- 345 0016 0122     		movs	r2, #1
- 346 0018 1849     		ldr	r1, .L29
- 347 001a 1A48     		ldr	r0, .L29+8
- 348 001c FFF7FEFF 		bl	HAL_UART_Receive_IT
- 349              	.LVL38:
- 350              	.L20:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 9
+ 331 0004 0022     		movs	r2, #0
+ 332 0006 4FF48071 		mov	r1, #256
+ 333 000a 2046     		mov	r0, r4
+ 334 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 335              	.LVL38:
+ 112:Core/Src/gnss.c ****     HAL_Delay(100);
+ 336              		.loc 1 112 5 view .LVU79
+ 337 0010 6420     		movs	r0, #100
+ 338 0012 FFF7FEFF 		bl	HAL_Delay
+ 339              	.LVL39:
+ 113:Core/Src/gnss.c ****     HAL_GPIO_WritePin(GNSS_RESET_GPIO_Port, GNSS_CTRL_PWR_Pin, GPIO_PIN_SET);
+ 340              		.loc 1 113 5 view .LVU80
+ 341 0016 0122     		movs	r2, #1
+ 342 0018 4FF48071 		mov	r1, #256
+ 343 001c 2046     		mov	r0, r4
+ 344 001e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 345              	.LVL40:
+ 114:Core/Src/gnss.c ****     HAL_Delay(100);
+ 346              		.loc 1 114 5 view .LVU81
+ 347 0022 6420     		movs	r0, #100
+ 348 0024 FFF7FEFF 		bl	HAL_Delay
+ 349              	.LVL41:
+ 115:Core/Src/gnss.c ****     HAL_GPIO_WritePin(GNSS_RESET_GPIO_Port, GNSS_CTRL_PWR_Pin, GPIO_PIN_RESET);
+ 350              		.loc 1 115 5 view .LVU82
+ 351 0028 0022     		movs	r2, #0
+ 352 002a 4FF48071 		mov	r1, #256
+ 353 002e 2046     		mov	r0, r4
+ 354 0030 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 355              	.LVL42:
+ 116:Core/Src/gnss.c ****     HAL_Delay(100);
+ 356              		.loc 1 116 5 view .LVU83
+ 357 0034 6420     		movs	r0, #100
+ 358 0036 FFF7FEFF 		bl	HAL_Delay
+ 359              	.LVL43:
+ 117:Core/Src/gnss.c ****     HAL_UART_Transmit(&huart4, (uint8_t *)"$PMTK314,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0*29\r\n",
+ 360              		.loc 1 117 5 view .LVU84
+ 361 003a 4FF47A73 		mov	r3, #1000
+ 362 003e 3322     		movs	r2, #51
+ 363 0040 0349     		ldr	r1, .L22+4
+ 364 0042 0448     		ldr	r0, .L22+8
+ 365 0044 FFF7FEFF 		bl	HAL_UART_Transmit
+ 366              	.LVL44:
+ 118:Core/Src/gnss.c ****                       strlen("$PMTK314,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0*29\r\n"), 1000);
+ 119:Core/Src/gnss.c **** }
+ 367              		.loc 1 119 1 is_stmt 0 view .LVU85
+ 368 0048 10BD     		pop	{r4, pc}
+ 369              	.L23:
+ 370 004a 00BF     		.align	2
+ 371              	.L22:
+ 372 004c 00100140 		.word	1073811456
+ 373 0050 00000000 		.word	.LC0
+ 374 0054 00000000 		.word	huart4
+ 375              		.cfi_endproc
+ 376              	.LFE71:
+ 378              		.section	.text.l70_callback,"ax",%progbits
+ 379              		.align	1
+ 380              		.global	l70_callback
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 10
 
 
-  96:Core/Src/gnss.c ****     }
-  97:Core/Src/gnss.c **** }
- 351              		.loc 1 97 1 is_stmt 0 view .LVU87
- 352 0020 08BD     		pop	{r3, pc}
- 353              	.L26:
-  75:Core/Src/gnss.c ****     {
- 354              		.loc 1 75 37 discriminator 1 view .LVU88
- 355 0022 174A     		ldr	r2, .L29+4
- 356 0024 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
-  75:Core/Src/gnss.c ****     {
- 357              		.loc 1 75 23 discriminator 1 view .LVU89
- 358 0026 002A     		cmp	r2, #0
- 359 0028 EFD1     		bne	.L21
-  77:Core/Src/gnss.c ****         l70RxState = L70_DATA;
- 360              		.loc 1 77 9 is_stmt 1 view .LVU90
-  77:Core/Src/gnss.c ****         l70RxState = L70_DATA;
- 361              		.loc 1 77 20 is_stmt 0 view .LVU91
- 362 002a 1749     		ldr	r1, .L29+12
- 363 002c 0A68     		ldr	r2, [r1]
- 364 002e 501C     		adds	r0, r2, #1
- 365 0030 0860     		str	r0, [r1]
-  77:Core/Src/gnss.c ****         l70RxState = L70_DATA;
- 366              		.loc 1 77 24 view .LVU92
- 367 0032 1649     		ldr	r1, .L29+16
- 368 0034 8B54     		strb	r3, [r1, r2]
-  78:Core/Src/gnss.c ****         HAL_UART_Receive_IT(&huart4, (uint8_t*)&l70Data, 1);
- 369              		.loc 1 78 9 is_stmt 1 view .LVU93
-  78:Core/Src/gnss.c ****         HAL_UART_Receive_IT(&huart4, (uint8_t*)&l70Data, 1);
- 370              		.loc 1 78 20 is_stmt 0 view .LVU94
- 371 0036 0122     		movs	r2, #1
- 372 0038 114B     		ldr	r3, .L29+4
- 373 003a 1A70     		strb	r2, [r3]
-  79:Core/Src/gnss.c ****     }
- 374              		.loc 1 79 9 is_stmt 1 view .LVU95
- 375 003c 0F49     		ldr	r1, .L29
- 376 003e 1148     		ldr	r0, .L29+8
- 377 0040 FFF7FEFF 		bl	HAL_UART_Receive_IT
- 378              	.LVL39:
- 379 0044 ECE7     		b	.L20
- 380              	.L27:
-  82:Core/Src/gnss.c ****     {
- 381              		.loc 1 82 43 is_stmt 0 discriminator 1 view .LVU96
- 382 0046 0E4A     		ldr	r2, .L29+4
- 383 0048 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
-  82:Core/Src/gnss.c ****     {
- 384              		.loc 1 82 29 discriminator 1 view .LVU97
- 385 004a 012A     		cmp	r2, #1
- 386 004c DFD1     		bne	.L23
-  84:Core/Src/gnss.c ****         l70RxState = L70_END_DATA;
- 387              		.loc 1 84 9 is_stmt 1 view .LVU98
-  84:Core/Src/gnss.c ****         l70RxState = L70_END_DATA;
- 388              		.loc 1 84 20 is_stmt 0 view .LVU99
- 389 004e 0E49     		ldr	r1, .L29+12
- 390 0050 0A68     		ldr	r2, [r1]
- 391 0052 501C     		adds	r0, r2, #1
- 392 0054 0860     		str	r0, [r1]
-  84:Core/Src/gnss.c ****         l70RxState = L70_END_DATA;
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 10
+ 381              		.syntax unified
+ 382              		.thumb
+ 383              		.thumb_func
+ 385              	l70_callback:
+ 386              	.LFB72:
+ 120:Core/Src/gnss.c **** 
+ 121:Core/Src/gnss.c **** void l70_callback(void)
+ 122:Core/Src/gnss.c **** {
+ 387              		.loc 1 122 1 is_stmt 1 view -0
+ 388              		.cfi_startproc
+ 389              		@ args = 0, pretend = 0, frame = 0
+ 390              		@ frame_needed = 0, uses_anonymous_args = 0
+ 391 0000 08B5     		push	{r3, lr}
+ 392              	.LCFI3:
+ 393              		.cfi_def_cfa_offset 8
+ 394              		.cfi_offset 3, -8
+ 395              		.cfi_offset 14, -4
+ 123:Core/Src/gnss.c ****     // Start receive Data
+ 124:Core/Src/gnss.c ****     if (l70Data == '$' && l70RxState == L70_START_DATA)
+ 396              		.loc 1 124 5 view .LVU87
+ 397              		.loc 1 124 17 is_stmt 0 view .LVU88
+ 398 0002 1E4B     		ldr	r3, .L33
+ 399 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 400              		.loc 1 124 8 view .LVU89
+ 401 0006 242B     		cmp	r3, #36
+ 402 0008 0BD0     		beq	.L30
+ 403              	.L25:
+ 125:Core/Src/gnss.c ****     {
+ 126:Core/Src/gnss.c ****         l70RxData[k++] = l70Data;
+ 127:Core/Src/gnss.c ****         l70RxState = L70_DATA;
+ 128:Core/Src/gnss.c ****         HAL_UART_Receive_IT(&huart4, (uint8_t *)&l70Data, 1);
+ 129:Core/Src/gnss.c ****     }
+ 130:Core/Src/gnss.c ****     // End process
+ 131:Core/Src/gnss.c ****     else if (l70Data == '\n' && l70RxState == L70_DATA)
+ 404              		.loc 1 131 10 is_stmt 1 view .LVU90
+ 405              		.loc 1 131 13 is_stmt 0 view .LVU91
+ 406 000a 0A2B     		cmp	r3, #10
+ 407 000c 1BD0     		beq	.L31
+ 408              	.L27:
+ 132:Core/Src/gnss.c ****     {
+ 133:Core/Src/gnss.c ****         l70RxData[k++] = l70Data;
+ 134:Core/Src/gnss.c ****         l70RxState = L70_END_DATA;
+ 135:Core/Src/gnss.c ****     }
+ 136:Core/Src/gnss.c ****     // Receving Data
+ 137:Core/Src/gnss.c ****     else if (l70RxState == L70_DATA)
+ 409              		.loc 1 137 10 is_stmt 1 view .LVU92
+ 410              		.loc 1 137 25 is_stmt 0 view .LVU93
+ 411 000e 1C4A     		ldr	r2, .L33+4
+ 412 0010 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 413              		.loc 1 137 13 view .LVU94
+ 414 0012 012A     		cmp	r2, #1
+ 415 0014 25D0     		beq	.L32
+ 138:Core/Src/gnss.c ****     {
+ 139:Core/Src/gnss.c ****         l70RxData[k++] = l70Data;
+ 140:Core/Src/gnss.c ****         HAL_UART_Receive_IT(&huart4, (uint8_t *)&l70Data, 1);
+ 141:Core/Src/gnss.c ****     }
+ 142:Core/Src/gnss.c ****     else
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 11
 
 
- 393              		.loc 1 84 24 view .LVU100
- 394 0056 0D49     		ldr	r1, .L29+16
- 395 0058 8B54     		strb	r3, [r1, r2]
-  85:Core/Src/gnss.c ****     }
- 396              		.loc 1 85 9 is_stmt 1 view .LVU101
-  85:Core/Src/gnss.c ****     }
- 397              		.loc 1 85 20 is_stmt 0 view .LVU102
- 398 005a 094B     		ldr	r3, .L29+4
- 399 005c 0222     		movs	r2, #2
- 400 005e 1A70     		strb	r2, [r3]
- 401 0060 DEE7     		b	.L20
- 402              	.L28:
-  90:Core/Src/gnss.c ****         HAL_UART_Receive_IT(&huart4, (uint8_t*)&l70Data, 1);
- 403              		.loc 1 90 9 is_stmt 1 view .LVU103
-  90:Core/Src/gnss.c ****         HAL_UART_Receive_IT(&huart4, (uint8_t*)&l70Data, 1);
- 404              		.loc 1 90 20 is_stmt 0 view .LVU104
- 405 0062 0949     		ldr	r1, .L29+12
- 406 0064 0A68     		ldr	r2, [r1]
- 407 0066 501C     		adds	r0, r2, #1
- 408 0068 0860     		str	r0, [r1]
-  90:Core/Src/gnss.c ****         HAL_UART_Receive_IT(&huart4, (uint8_t*)&l70Data, 1);
- 409              		.loc 1 90 24 view .LVU105
- 410 006a 0849     		ldr	r1, .L29+16
- 411 006c 8B54     		strb	r3, [r1, r2]
-  91:Core/Src/gnss.c ****     }
- 412              		.loc 1 91 9 is_stmt 1 view .LVU106
- 413 006e 0122     		movs	r2, #1
- 414 0070 0249     		ldr	r1, .L29
- 415 0072 0448     		ldr	r0, .L29+8
- 416 0074 FFF7FEFF 		bl	HAL_UART_Receive_IT
- 417              	.LVL40:
- 418 0078 D2E7     		b	.L20
- 419              	.L30:
- 420 007a 00BF     		.align	2
- 421              	.L29:
- 422 007c 00000000 		.word	.LANCHOR0
- 423 0080 00000000 		.word	.LANCHOR1
- 424 0084 00000000 		.word	huart4
- 425 0088 00000000 		.word	.LANCHOR2
- 426 008c 00000000 		.word	.LANCHOR3
- 427              		.cfi_endproc
- 428              	.LFE71:
- 430              		.section	.text.l70_receiveGPS,"ax",%progbits
- 431              		.align	1
- 432              		.global	l70_receiveGPS
- 433              		.syntax unified
- 434              		.thumb
- 435              		.thumb_func
- 437              	l70_receiveGPS:
- 438              	.LFB72:
-  98:Core/Src/gnss.c **** 
-  99:Core/Src/gnss.c **** char *l70_receiveGPS(void)
- 100:Core/Src/gnss.c **** {
- 439              		.loc 1 100 1 view -0
- 440              		.cfi_startproc
- 441              		@ args = 0, pretend = 0, frame = 0
- 442              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 11
+ 143:Core/Src/gnss.c ****     {
+ 144:Core/Src/gnss.c ****         HAL_UART_Receive_IT(&huart4, (uint8_t *)&l70Data, 1);
+ 416              		.loc 1 144 9 is_stmt 1 view .LVU95
+ 417 0016 0122     		movs	r2, #1
+ 418 0018 1849     		ldr	r1, .L33
+ 419 001a 1A48     		ldr	r0, .L33+8
+ 420 001c FFF7FEFF 		bl	HAL_UART_Receive_IT
+ 421              	.LVL45:
+ 422              	.L24:
+ 145:Core/Src/gnss.c ****     }
+ 146:Core/Src/gnss.c **** }
+ 423              		.loc 1 146 1 is_stmt 0 view .LVU96
+ 424 0020 08BD     		pop	{r3, pc}
+ 425              	.L30:
+ 124:Core/Src/gnss.c ****     {
+ 426              		.loc 1 124 38 discriminator 1 view .LVU97
+ 427 0022 174A     		ldr	r2, .L33+4
+ 428 0024 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 124:Core/Src/gnss.c ****     {
+ 429              		.loc 1 124 24 discriminator 1 view .LVU98
+ 430 0026 002A     		cmp	r2, #0
+ 431 0028 EFD1     		bne	.L25
+ 126:Core/Src/gnss.c ****         l70RxState = L70_DATA;
+ 432              		.loc 1 126 9 is_stmt 1 view .LVU99
+ 126:Core/Src/gnss.c ****         l70RxState = L70_DATA;
+ 433              		.loc 1 126 20 is_stmt 0 view .LVU100
+ 434 002a 1749     		ldr	r1, .L33+12
+ 435 002c 0A68     		ldr	r2, [r1]
+ 436 002e 501C     		adds	r0, r2, #1
+ 437 0030 0860     		str	r0, [r1]
+ 126:Core/Src/gnss.c ****         l70RxState = L70_DATA;
+ 438              		.loc 1 126 24 view .LVU101
+ 439 0032 1649     		ldr	r1, .L33+16
+ 440 0034 8B54     		strb	r3, [r1, r2]
+ 127:Core/Src/gnss.c ****         HAL_UART_Receive_IT(&huart4, (uint8_t *)&l70Data, 1);
+ 441              		.loc 1 127 9 is_stmt 1 view .LVU102
+ 127:Core/Src/gnss.c ****         HAL_UART_Receive_IT(&huart4, (uint8_t *)&l70Data, 1);
+ 442              		.loc 1 127 20 is_stmt 0 view .LVU103
+ 443 0036 0122     		movs	r2, #1
+ 444 0038 114B     		ldr	r3, .L33+4
+ 445 003a 1A70     		strb	r2, [r3]
+ 128:Core/Src/gnss.c ****     }
+ 446              		.loc 1 128 9 is_stmt 1 view .LVU104
+ 447 003c 0F49     		ldr	r1, .L33
+ 448 003e 1148     		ldr	r0, .L33+8
+ 449 0040 FFF7FEFF 		bl	HAL_UART_Receive_IT
+ 450              	.LVL46:
+ 451 0044 ECE7     		b	.L24
+ 452              	.L31:
+ 131:Core/Src/gnss.c ****     {
+ 453              		.loc 1 131 44 is_stmt 0 discriminator 1 view .LVU105
+ 454 0046 0E4A     		ldr	r2, .L33+4
+ 455 0048 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 131:Core/Src/gnss.c ****     {
+ 456              		.loc 1 131 30 discriminator 1 view .LVU106
+ 457 004a 012A     		cmp	r2, #1
+ 458 004c DFD1     		bne	.L27
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 12
 
 
- 443 0000 10B5     		push	{r4, lr}
- 444              	.LCFI3:
- 445              		.cfi_def_cfa_offset 8
- 446              		.cfi_offset 4, -8
- 447              		.cfi_offset 14, -4
- 101:Core/Src/gnss.c ****     k = 0;
- 448              		.loc 1 101 5 view .LVU108
- 449              		.loc 1 101 7 is_stmt 0 view .LVU109
- 450 0002 0024     		movs	r4, #0
- 451 0004 094B     		ldr	r3, .L34
- 452 0006 1C60     		str	r4, [r3]
- 102:Core/Src/gnss.c ****     memset(l70RxData, '\0', sizeof(l70RxData));
- 453              		.loc 1 102 5 is_stmt 1 view .LVU110
- 454 0008 6422     		movs	r2, #100
- 455 000a 2146     		mov	r1, r4
- 456 000c 0848     		ldr	r0, .L34+4
- 457 000e FFF7FEFF 		bl	memset
- 458              	.LVL41:
- 103:Core/Src/gnss.c ****     l70RxState = L70_START_DATA;
- 459              		.loc 1 103 5 view .LVU111
- 460              		.loc 1 103 16 is_stmt 0 view .LVU112
- 461 0012 084B     		ldr	r3, .L34+8
- 462 0014 1C70     		strb	r4, [r3]
- 104:Core/Src/gnss.c ****     HAL_UART_Receive_IT(&huart4, (uint8_t*)&l70Data, 1);
- 463              		.loc 1 104 5 is_stmt 1 view .LVU113
- 464 0016 0122     		movs	r2, #1
- 465 0018 0749     		ldr	r1, .L34+12
- 466 001a 0848     		ldr	r0, .L34+16
- 467 001c FFF7FEFF 		bl	HAL_UART_Receive_IT
- 468              	.LVL42:
- 105:Core/Src/gnss.c ****     while(!(l70RxState == L70_END_DATA));
- 469              		.loc 1 105 5 view .LVU114
- 470              	.L32:
- 471              		.loc 1 105 41 discriminator 1 view .LVU115
- 472              		.loc 1 105 10 discriminator 1 view .LVU116
- 473              		.loc 1 105 11 is_stmt 0 discriminator 1 view .LVU117
- 474 0020 044B     		ldr	r3, .L34+8
- 475 0022 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 476              		.loc 1 105 10 discriminator 1 view .LVU118
- 477 0024 022B     		cmp	r3, #2
- 478 0026 FBD1     		bne	.L32
- 106:Core/Src/gnss.c ****     return l70RxData;
- 479              		.loc 1 106 5 is_stmt 1 view .LVU119
- 107:Core/Src/gnss.c **** }
- 480              		.loc 1 107 1 is_stmt 0 view .LVU120
- 481 0028 0148     		ldr	r0, .L34+4
- 482 002a 10BD     		pop	{r4, pc}
- 483              	.L35:
- 484              		.align	2
- 485              	.L34:
- 486 002c 00000000 		.word	.LANCHOR2
- 487 0030 00000000 		.word	.LANCHOR3
- 488 0034 00000000 		.word	.LANCHOR1
- 489 0038 00000000 		.word	.LANCHOR0
- 490 003c 00000000 		.word	huart4
- 491              		.cfi_endproc
- 492              	.LFE72:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 12
+ 133:Core/Src/gnss.c ****         l70RxState = L70_END_DATA;
+ 459              		.loc 1 133 9 is_stmt 1 view .LVU107
+ 133:Core/Src/gnss.c ****         l70RxState = L70_END_DATA;
+ 460              		.loc 1 133 20 is_stmt 0 view .LVU108
+ 461 004e 0E49     		ldr	r1, .L33+12
+ 462 0050 0A68     		ldr	r2, [r1]
+ 463 0052 501C     		adds	r0, r2, #1
+ 464 0054 0860     		str	r0, [r1]
+ 133:Core/Src/gnss.c ****         l70RxState = L70_END_DATA;
+ 465              		.loc 1 133 24 view .LVU109
+ 466 0056 0D49     		ldr	r1, .L33+16
+ 467 0058 8B54     		strb	r3, [r1, r2]
+ 134:Core/Src/gnss.c ****     }
+ 468              		.loc 1 134 9 is_stmt 1 view .LVU110
+ 134:Core/Src/gnss.c ****     }
+ 469              		.loc 1 134 20 is_stmt 0 view .LVU111
+ 470 005a 094B     		ldr	r3, .L33+4
+ 471 005c 0222     		movs	r2, #2
+ 472 005e 1A70     		strb	r2, [r3]
+ 473 0060 DEE7     		b	.L24
+ 474              	.L32:
+ 139:Core/Src/gnss.c ****         HAL_UART_Receive_IT(&huart4, (uint8_t *)&l70Data, 1);
+ 475              		.loc 1 139 9 is_stmt 1 view .LVU112
+ 139:Core/Src/gnss.c ****         HAL_UART_Receive_IT(&huart4, (uint8_t *)&l70Data, 1);
+ 476              		.loc 1 139 20 is_stmt 0 view .LVU113
+ 477 0062 0949     		ldr	r1, .L33+12
+ 478 0064 0A68     		ldr	r2, [r1]
+ 479 0066 501C     		adds	r0, r2, #1
+ 480 0068 0860     		str	r0, [r1]
+ 139:Core/Src/gnss.c ****         HAL_UART_Receive_IT(&huart4, (uint8_t *)&l70Data, 1);
+ 481              		.loc 1 139 24 view .LVU114
+ 482 006a 0849     		ldr	r1, .L33+16
+ 483 006c 8B54     		strb	r3, [r1, r2]
+ 140:Core/Src/gnss.c ****     }
+ 484              		.loc 1 140 9 is_stmt 1 view .LVU115
+ 485 006e 0122     		movs	r2, #1
+ 486 0070 0249     		ldr	r1, .L33
+ 487 0072 0448     		ldr	r0, .L33+8
+ 488 0074 FFF7FEFF 		bl	HAL_UART_Receive_IT
+ 489              	.LVL47:
+ 490 0078 D2E7     		b	.L24
+ 491              	.L34:
+ 492 007a 00BF     		.align	2
+ 493              	.L33:
+ 494 007c 00000000 		.word	.LANCHOR0
+ 495 0080 00000000 		.word	.LANCHOR1
+ 496 0084 00000000 		.word	huart4
+ 497 0088 00000000 		.word	.LANCHOR2
+ 498 008c 00000000 		.word	.LANCHOR3
+ 499              		.cfi_endproc
+ 500              	.LFE72:
+ 502              		.section	.text.l70_receiveGPS,"ax",%progbits
+ 503              		.align	1
+ 504              		.global	l70_receiveGPS
+ 505              		.syntax unified
+ 506              		.thumb
+ 507              		.thumb_func
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 13
 
 
- 494              		.section	.rodata.l70_init.str1.4,"aMS",%progbits,1
- 495              		.align	2
- 496              	.LC0:
- 497 0000 24504D54 		.ascii	"$PMTK314,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0*29\015"
- 497      4B333134 
- 497      2C302C30 
- 497      2C302C31 
- 497      2C302C30 
- 498 0032 0A00     		.ascii	"\012\000"
- 499              		.section	.text.l70_init,"ax",%progbits
- 500              		.align	1
- 501              		.global	l70_init
- 502              		.syntax unified
- 503              		.thumb
- 504              		.thumb_func
- 506              	l70_init:
- 507              	.LFB73:
- 108:Core/Src/gnss.c **** 
- 109:Core/Src/gnss.c **** void l70_init(void)
- 110:Core/Src/gnss.c **** {
- 508              		.loc 1 110 1 is_stmt 1 view -0
- 509              		.cfi_startproc
- 510              		@ args = 0, pretend = 0, frame = 0
- 511              		@ frame_needed = 0, uses_anonymous_args = 0
- 512 0000 08B5     		push	{r3, lr}
- 513              	.LCFI4:
- 514              		.cfi_def_cfa_offset 8
- 515              		.cfi_offset 3, -8
- 516              		.cfi_offset 14, -4
- 111:Core/Src/gnss.c ****     //Output once every one position fix
- 112:Core/Src/gnss.c ****     //GGA interval fix data
- 113:Core/Src/gnss.c ****     HAL_UART_Transmit_IT(&huart4 ,(uint8_t*)"$PMTK314,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0*29\r\n"
- 517              		.loc 1 113 5 view .LVU122
- 518 0002 3322     		movs	r2, #51
- 519 0004 0249     		ldr	r1, .L38
- 520 0006 0348     		ldr	r0, .L38+4
- 521 0008 FFF7FEFF 		bl	HAL_UART_Transmit_IT
- 522              	.LVL43:
- 114:Core/Src/gnss.c **** }
- 523              		.loc 1 114 1 is_stmt 0 view .LVU123
- 524 000c 08BD     		pop	{r3, pc}
- 525              	.L39:
- 526 000e 00BF     		.align	2
- 527              	.L38:
- 528 0010 00000000 		.word	.LC0
- 529 0014 00000000 		.word	huart4
- 530              		.cfi_endproc
- 531              	.LFE73:
- 533              		.section	.rodata.l70_handleGPS.str1.4,"aMS",%progbits,1
- 534              		.align	2
- 535              	.LC1:
- 536 0000 24475047 		.ascii	"$GPGGA\000"
- 536      474100
- 537 0007 00       		.align	2
- 538              	.LC2:
- 539 0008 24475047 		.ascii	"$GPGGA,%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,]\000"
- 539      47412C25 
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 13
+ 509              	l70_receiveGPS:
+ 510              	.LFB73:
+ 147:Core/Src/gnss.c **** 
+ 148:Core/Src/gnss.c **** char *l70_receiveGPS(void)
+ 149:Core/Src/gnss.c **** {
+ 511              		.loc 1 149 1 view -0
+ 512              		.cfi_startproc
+ 513              		@ args = 0, pretend = 0, frame = 0
+ 514              		@ frame_needed = 0, uses_anonymous_args = 0
+ 515 0000 10B5     		push	{r4, lr}
+ 516              	.LCFI4:
+ 517              		.cfi_def_cfa_offset 8
+ 518              		.cfi_offset 4, -8
+ 519              		.cfi_offset 14, -4
+ 150:Core/Src/gnss.c ****     k = 0;
+ 520              		.loc 1 150 5 view .LVU117
+ 521              		.loc 1 150 7 is_stmt 0 view .LVU118
+ 522 0002 0024     		movs	r4, #0
+ 523 0004 094B     		ldr	r3, .L38
+ 524 0006 1C60     		str	r4, [r3]
+ 151:Core/Src/gnss.c ****     memset(l70RxData, '\0', sizeof(l70RxData));
+ 525              		.loc 1 151 5 is_stmt 1 view .LVU119
+ 526 0008 6422     		movs	r2, #100
+ 527 000a 2146     		mov	r1, r4
+ 528 000c 0848     		ldr	r0, .L38+4
+ 529 000e FFF7FEFF 		bl	memset
+ 530              	.LVL48:
+ 152:Core/Src/gnss.c ****     l70RxState = L70_START_DATA;
+ 531              		.loc 1 152 5 view .LVU120
+ 532              		.loc 1 152 16 is_stmt 0 view .LVU121
+ 533 0012 084B     		ldr	r3, .L38+8
+ 534 0014 1C70     		strb	r4, [r3]
+ 153:Core/Src/gnss.c ****     HAL_UART_Receive_IT(&huart4, (uint8_t *)&l70Data, 1);
+ 535              		.loc 1 153 5 is_stmt 1 view .LVU122
+ 536 0016 0122     		movs	r2, #1
+ 537 0018 0749     		ldr	r1, .L38+12
+ 538 001a 0848     		ldr	r0, .L38+16
+ 539 001c FFF7FEFF 		bl	HAL_UART_Receive_IT
+ 540              	.LVL49:
+ 154:Core/Src/gnss.c ****     while (!(l70RxState == L70_END_DATA))
+ 541              		.loc 1 154 5 view .LVU123
+ 542              	.L36:
+ 155:Core/Src/gnss.c ****         ;
+ 543              		.loc 1 155 9 discriminator 1 view .LVU124
+ 154:Core/Src/gnss.c ****     while (!(l70RxState == L70_END_DATA))
+ 544              		.loc 1 154 11 discriminator 1 view .LVU125
+ 154:Core/Src/gnss.c ****     while (!(l70RxState == L70_END_DATA))
+ 545              		.loc 1 154 12 is_stmt 0 discriminator 1 view .LVU126
+ 546 0020 044B     		ldr	r3, .L38+8
+ 547 0022 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 154:Core/Src/gnss.c ****     while (!(l70RxState == L70_END_DATA))
+ 548              		.loc 1 154 11 discriminator 1 view .LVU127
+ 549 0024 022B     		cmp	r3, #2
+ 550 0026 FBD1     		bne	.L36
+ 156:Core/Src/gnss.c ****     return l70RxData;
+ 551              		.loc 1 156 5 is_stmt 1 view .LVU128
+ 157:Core/Src/gnss.c **** }
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 14
 
 
- 539      5B5E2C5D 
- 539      2C255B5E 
- 539      2C5D2C25 
- 540              		.global	__aeabi_d2iz
- 541              		.global	__aeabi_dadd
- 542              		.global	__aeabi_dsub
- 543              		.global	__aeabi_ddiv
- 544              		.section	.text.l70_handleGPS,"ax",%progbits
- 545              		.align	1
- 546              		.global	l70_handleGPS
- 547              		.syntax unified
- 548              		.thumb
- 549              		.thumb_func
- 551              	l70_handleGPS:
- 552              	.LVL44:
- 553              	.LFB74:
- 115:Core/Src/gnss.c **** 
- 116:Core/Src/gnss.c **** void l70_handleGPS(char *latData, char *longData, char *GPSResponse)
- 117:Core/Src/gnss.c **** {
- 554              		.loc 1 117 1 is_stmt 1 view -0
- 555              		.cfi_startproc
- 556              		@ args = 0, pretend = 0, frame = 16
- 557              		@ frame_needed = 0, uses_anonymous_args = 0
- 558              		.loc 1 117 1 is_stmt 0 view .LVU125
- 559 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
- 560              	.LCFI5:
- 561              		.cfi_def_cfa_offset 36
- 562              		.cfi_offset 4, -36
- 563              		.cfi_offset 5, -32
- 564              		.cfi_offset 6, -28
- 565              		.cfi_offset 7, -24
- 566              		.cfi_offset 8, -20
- 567              		.cfi_offset 9, -16
- 568              		.cfi_offset 10, -12
- 569              		.cfi_offset 11, -8
- 570              		.cfi_offset 14, -4
- 571 0004 8BB0     		sub	sp, sp, #44
- 572              	.LCFI6:
- 573              		.cfi_def_cfa_offset 80
- 574 0006 0890     		str	r0, [sp, #32]
- 575 0008 0991     		str	r1, [sp, #36]
- 118:Core/Src/gnss.c ****     int temp = 0;
- 576              		.loc 1 118 5 is_stmt 1 view .LVU126
- 577              	.LVL45:
- 119:Core/Src/gnss.c ****     double decPart = 0;
- 578              		.loc 1 119 5 view .LVU127
- 120:Core/Src/gnss.c ****     double intPart = 0;
- 579              		.loc 1 120 5 view .LVU128
- 121:Core/Src/gnss.c ****     double l70latitude = 0;
- 580              		.loc 1 121 5 view .LVU129
- 122:Core/Src/gnss.c ****     double l70longitude = 0;
- 581              		.loc 1 122 5 view .LVU130
- 123:Core/Src/gnss.c ****     GPSResponse = strstr(GPSResponse, "$GPGGA");
- 582              		.loc 1 123 5 view .LVU131
- 583              		.loc 1 123 19 is_stmt 0 view .LVU132
- 584 000a 4849     		ldr	r1, .L42
- 585              	.LVL46:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 14
+ 552              		.loc 1 157 1 is_stmt 0 view .LVU129
+ 553 0028 0148     		ldr	r0, .L38+4
+ 554 002a 10BD     		pop	{r4, pc}
+ 555              	.L39:
+ 556              		.align	2
+ 557              	.L38:
+ 558 002c 00000000 		.word	.LANCHOR2
+ 559 0030 00000000 		.word	.LANCHOR3
+ 560 0034 00000000 		.word	.LANCHOR1
+ 561 0038 00000000 		.word	.LANCHOR0
+ 562 003c 00000000 		.word	huart4
+ 563              		.cfi_endproc
+ 564              	.LFE73:
+ 566              		.global	__aeabi_d2iz
+ 567              		.global	__aeabi_dsub
+ 568              		.global	__aeabi_dadd
+ 569              		.global	__aeabi_ddiv
+ 570              		.section	.text.minuteTodegree,"ax",%progbits
+ 571              		.align	1
+ 572              		.global	minuteTodegree
+ 573              		.syntax unified
+ 574              		.thumb
+ 575              		.thumb_func
+ 577              	minuteTodegree:
+ 578              	.LVL50:
+ 579              	.LFB74:
+ 158:Core/Src/gnss.c **** 
+ 159:Core/Src/gnss.c **** double minuteTodegree(char *data)
+ 160:Core/Src/gnss.c **** {
+ 580              		.loc 1 160 1 is_stmt 1 view -0
+ 581              		.cfi_startproc
+ 582              		@ args = 0, pretend = 0, frame = 0
+ 583              		@ frame_needed = 0, uses_anonymous_args = 0
+ 584              		.loc 1 160 1 is_stmt 0 view .LVU131
+ 585 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 586              	.LCFI5:
+ 587              		.cfi_def_cfa_offset 32
+ 588              		.cfi_offset 4, -32
+ 589              		.cfi_offset 5, -28
+ 590              		.cfi_offset 6, -24
+ 591              		.cfi_offset 7, -20
+ 592              		.cfi_offset 8, -16
+ 593              		.cfi_offset 9, -12
+ 594              		.cfi_offset 10, -8
+ 595              		.cfi_offset 14, -4
+ 161:Core/Src/gnss.c ****     int temp = 0;
+ 596              		.loc 1 161 5 is_stmt 1 view .LVU132
+ 597              	.LVL51:
+ 162:Core/Src/gnss.c ****     double minutePart = 0;
+ 598              		.loc 1 162 5 view .LVU133
+ 163:Core/Src/gnss.c ****     double degreePart = 0;
+ 599              		.loc 1 163 5 view .LVU134
+ 164:Core/Src/gnss.c ****     double data_float = 0;
+ 600              		.loc 1 164 5 view .LVU135
+ 165:Core/Src/gnss.c ****     double data_degree;
+ 601              		.loc 1 165 5 view .LVU136
+ 166:Core/Src/gnss.c ****     // convert str to double
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 15
 
 
- 586              		.loc 1 123 19 view .LVU133
- 587 000c 1046     		mov	r0, r2
- 588              	.LVL47:
- 589              		.loc 1 123 19 view .LVU134
- 590 000e FFF7FEFF 		bl	strstr
- 591              	.LVL48:
- 124:Core/Src/gnss.c ****     sscanf(GPSResponse, "$GPGGA,%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,]",\
- 592              		.loc 1 124 5 is_stmt 1 view .LVU135
- 593 0012 474A     		ldr	r2, .L42+4
- 594 0014 02F10C05 		add	r5, r2, #12
- 595 0018 02F12703 		add	r3, r2, #39
- 596 001c 0493     		str	r3, [sp, #16]
- 597 001e 02F12603 		add	r3, r2, #38
- 598 0022 0393     		str	r3, [sp, #12]
- 599 0024 02F12503 		add	r3, r2, #37
- 600 0028 0293     		str	r3, [sp, #8]
- 601 002a 02F11904 		add	r4, r2, #25
- 602 002e 0194     		str	r4, [sp, #4]
- 603 0030 02F11803 		add	r3, r2, #24
- 604 0034 0093     		str	r3, [sp]
- 605 0036 2B46     		mov	r3, r5
- 606 0038 3E49     		ldr	r1, .L42+8
- 607 003a FFF7FEFF 		bl	sscanf
- 608              	.LVL49:
- 125:Core/Src/gnss.c ****      l70GPGGA.utcTime, l70GPGGA.latitude, &l70GPGGA.NorS, l70GPGGA.longitude,\
- 126:Core/Src/gnss.c ****      &l70GPGGA.EorW, &l70GPGGA.fixStatus, l70GPGGA.numberOfSatellites);
- 127:Core/Src/gnss.c ****     //convert str to double
- 128:Core/Src/gnss.c ****     l70latitude = atof(l70GPGGA.latitude);
- 609              		.loc 1 128 5 view .LVU136
- 610              		.loc 1 128 19 is_stmt 0 view .LVU137
- 611 003e 2846     		mov	r0, r5
- 612 0040 FFF7FEFF 		bl	atof
- 613              	.LVL50:
- 614 0044 0246     		mov	r2, r0
- 615 0046 0B46     		mov	r3, r1
- 616 0048 CDE90623 		strd	r2, [sp, #24]
- 617              	.LVL51:
- 129:Core/Src/gnss.c ****    //convert ddmm.mmmm to dddd.dddd (d: degree; m: minute)
- 130:Core/Src/gnss.c ****     temp = (int)l70latitude;
- 618              		.loc 1 130 5 is_stmt 1 view .LVU138
- 619              		.loc 1 130 10 is_stmt 0 view .LVU139
- 620 004c FFF7FEFF 		bl	__aeabi_d2iz
- 621              	.LVL52:
- 622              		.loc 1 130 10 view .LVU140
- 623 0050 8346     		mov	fp, r0
- 624              	.LVL53:
- 131:Core/Src/gnss.c ****     intPart = (double)(temp / 100);
- 625              		.loc 1 131 5 is_stmt 1 view .LVU141
- 626              		.loc 1 131 29 is_stmt 0 view .LVU142
- 627 0052 394D     		ldr	r5, .L42+12
- 628 0054 85FB0063 		smull	r6, r3, r5, r0
- 629 0058 4FEAE078 		asr	r8, r0, #31
- 630 005c C8EB6318 		rsb	r8, r8, r3, asr #5
- 631              		.loc 1 131 13 view .LVU143
- 632 0060 4046     		mov	r0, r8
- 633              	.LVL54:
- 634              		.loc 1 131 13 view .LVU144
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 15
+ 167:Core/Src/gnss.c ****     data_float = atof(data);
+ 602              		.loc 1 167 5 view .LVU137
+ 603              		.loc 1 167 18 is_stmt 0 view .LVU138
+ 604 0004 FFF7FEFF 		bl	atof
+ 605              	.LVL52:
+ 606              		.loc 1 167 18 view .LVU139
+ 607 0008 8046     		mov	r8, r0
+ 608 000a 8946     		mov	r9, r1
+ 609              	.LVL53:
+ 168:Core/Src/gnss.c ****     // convert ddmm.mmmm to dddd.dddd (d: degree; m: minute)
+ 169:Core/Src/gnss.c ****     temp = (int)data_float;
+ 610              		.loc 1 169 5 is_stmt 1 view .LVU140
+ 611              		.loc 1 169 10 is_stmt 0 view .LVU141
+ 612 000c FFF7FEFF 		bl	__aeabi_d2iz
+ 613              	.LVL54:
+ 614 0010 8246     		mov	r10, r0
+ 615              	.LVL55:
+ 170:Core/Src/gnss.c ****     degreePart = (double)(temp / 100);
+ 616              		.loc 1 170 5 is_stmt 1 view .LVU142
+ 617              		.loc 1 170 32 is_stmt 0 view .LVU143
+ 618 0012 154B     		ldr	r3, .L42
+ 619 0014 83FB0023 		smull	r2, r3, r3, r0
+ 620 0018 C617     		asrs	r6, r0, #31
+ 621 001a C6EB6316 		rsb	r6, r6, r3, asr #5
+ 622              		.loc 1 170 16 view .LVU144
+ 623 001e 3046     		mov	r0, r6
+ 624              	.LVL56:
+ 625              		.loc 1 170 16 view .LVU145
+ 626 0020 FFF7FEFF 		bl	__aeabi_i2d
+ 627              	.LVL57:
+ 628 0024 0446     		mov	r4, r0
+ 629 0026 0D46     		mov	r5, r1
+ 630              	.LVL58:
+ 171:Core/Src/gnss.c ****     minutePart = (double)(temp % 100) + (data_float - (double)temp);
+ 631              		.loc 1 171 5 is_stmt 1 view .LVU146
+ 632              		.loc 1 171 18 is_stmt 0 view .LVU147
+ 633 0028 6420     		movs	r0, #100
+ 634 002a 00FB16A0 		mls	r0, r0, r6, r10
+ 635 002e FFF7FEFF 		bl	__aeabi_i2d
+ 636              	.LVL59:
+ 637 0032 0646     		mov	r6, r0
+ 638 0034 0F46     		mov	r7, r1
+ 639              		.loc 1 171 55 view .LVU148
+ 640 0036 5046     		mov	r0, r10
+ 641 0038 FFF7FEFF 		bl	__aeabi_i2d
+ 642              	.LVL60:
+ 643 003c 0246     		mov	r2, r0
+ 644 003e 0B46     		mov	r3, r1
+ 645              		.loc 1 171 53 view .LVU149
+ 646 0040 4046     		mov	r0, r8
+ 647 0042 4946     		mov	r1, r9
+ 648 0044 FFF7FEFF 		bl	__aeabi_dsub
+ 649              	.LVL61:
+ 650 0048 0246     		mov	r2, r0
+ 651 004a 0B46     		mov	r3, r1
+ 652              		.loc 1 171 16 view .LVU150
+ 653 004c 3046     		mov	r0, r6
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 16
 
 
- 635 0062 FFF7FEFF 		bl	__aeabi_i2d
- 636              	.LVL55:
- 637 0066 0646     		mov	r6, r0
- 638 0068 0F46     		mov	r7, r1
- 639              	.LVL56:
- 132:Core/Src/gnss.c ****     decPart = (double)(temp % 100) + l70latitude - (double)temp;
- 640              		.loc 1 132 5 is_stmt 1 view .LVU145
- 641              		.loc 1 132 29 is_stmt 0 view .LVU146
- 642 006a 4FF0640A 		mov	r10, #100
- 643              		.loc 1 132 15 view .LVU147
- 644 006e 0AFB18B0 		mls	r0, r10, r8, fp
- 645 0072 FFF7FEFF 		bl	__aeabi_i2d
- 646              	.LVL57:
- 647              		.loc 1 132 36 view .LVU148
- 648 0076 DDE90623 		ldrd	r2, [sp, #24]
- 649 007a FFF7FEFF 		bl	__aeabi_dadd
- 650              	.LVL58:
- 651 007e 8046     		mov	r8, r0
- 652 0080 8946     		mov	r9, r1
- 653              		.loc 1 132 52 view .LVU149
- 654 0082 5846     		mov	r0, fp
- 655 0084 FFF7FEFF 		bl	__aeabi_i2d
- 656              	.LVL59:
- 657 0088 0246     		mov	r2, r0
- 658 008a 0B46     		mov	r3, r1
- 659              		.loc 1 132 13 view .LVU150
- 660 008c 4046     		mov	r0, r8
- 661 008e 4946     		mov	r1, r9
- 662 0090 FFF7FEFF 		bl	__aeabi_dsub
- 663              	.LVL60:
- 133:Core/Src/gnss.c ****     l70latitude = intPart + decPart / 60;
- 664              		.loc 1 133 5 is_stmt 1 view .LVU151
- 665              		.loc 1 133 37 is_stmt 0 view .LVU152
- 666 0094 0022     		movs	r2, #0
- 667 0096 294B     		ldr	r3, .L42+16
- 668 0098 FFF7FEFF 		bl	__aeabi_ddiv
- 669              	.LVL61:
- 670              		.loc 1 133 17 view .LVU153
- 671 009c 3246     		mov	r2, r6
- 672 009e 3B46     		mov	r3, r7
- 673 00a0 FFF7FEFF 		bl	__aeabi_dadd
- 674              	.LVL62:
- 675 00a4 CDE90601 		strd	r0, [sp, #24]
- 676              	.LVL63:
- 134:Core/Src/gnss.c ****     l70longitude = atof(l70GPGGA.longitude);
- 677              		.loc 1 134 5 is_stmt 1 view .LVU154
- 678              		.loc 1 134 20 is_stmt 0 view .LVU155
- 679 00a8 2046     		mov	r0, r4
- 680              	.LVL64:
- 681              		.loc 1 134 20 view .LVU156
- 682 00aa FFF7FEFF 		bl	atof
- 683              	.LVL65:
- 684 00ae 8046     		mov	r8, r0
- 685 00b0 8946     		mov	r9, r1
- 686              	.LVL66:
- 135:Core/Src/gnss.c ****     temp = (int)l70longitude;
- 687              		.loc 1 135 5 is_stmt 1 view .LVU157
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 16
+ 654 004e 3946     		mov	r1, r7
+ 655 0050 FFF7FEFF 		bl	__aeabi_dadd
+ 656              	.LVL62:
+ 172:Core/Src/gnss.c ****     data_degree = degreePart + minutePart / 60.0;
+ 657              		.loc 1 172 5 is_stmt 1 view .LVU151
+ 658              		.loc 1 172 43 is_stmt 0 view .LVU152
+ 659 0054 0022     		movs	r2, #0
+ 660 0056 054B     		ldr	r3, .L42+4
+ 661 0058 FFF7FEFF 		bl	__aeabi_ddiv
+ 662              	.LVL63:
+ 663              		.loc 1 172 17 view .LVU153
+ 664 005c 2246     		mov	r2, r4
+ 665 005e 2B46     		mov	r3, r5
+ 666 0060 FFF7FEFF 		bl	__aeabi_dadd
+ 667              	.LVL64:
+ 173:Core/Src/gnss.c ****     return data_degree;
+ 668              		.loc 1 173 5 is_stmt 1 view .LVU154
+ 174:Core/Src/gnss.c **** }
+ 669              		.loc 1 174 1 is_stmt 0 view .LVU155
+ 670 0064 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 671              	.LVL65:
+ 672              	.L43:
+ 673              		.loc 1 174 1 view .LVU156
+ 674              		.align	2
+ 675              	.L42:
+ 676 0068 1F85EB51 		.word	1374389535
+ 677 006c 00004E40 		.word	1078853632
+ 678              		.cfi_endproc
+ 679              	.LFE74:
+ 681              		.section	.rodata.l70_handleGPS.str1.4,"aMS",%progbits,1
+ 682              		.align	2
+ 683              	.LC1:
+ 684 0000 0A4D6573 		.ascii	"\012Message GPRMC:\012\000"
+ 684      73616765 
+ 684      20475052 
+ 684      4D433A0A 
+ 684      00
+ 685 0011 000000   		.align	2
+ 686              	.LC2:
+ 687 0014 24475052 		.ascii	"$GPRMC\000"
+ 687      4D4300
+ 688 001b 00       		.align	2
+ 689              	.LC3:
+ 690 001c 24475052 		.ascii	"$GPRMC,%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%["
+ 690      4D432C25 
+ 690      5B5E2C5D 
+ 690      2C255B5E 
+ 690      2C5D2C25 
+ 691 004f 5E2C5D2C 		.ascii	"^,],%[^,]\000"
+ 691      255B5E2C 
+ 691      5D00
+ 692 0059 000000   		.align	2
+ 693              	.LC4:
+ 694 005c 0A00     		.ascii	"\012\000"
+ 695 005e 0000     		.align	2
+ 696              	.LC5:
+ 697 0060 270A00   		.ascii	"'\012\000"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 17
 
 
- 688              		.loc 1 135 10 is_stmt 0 view .LVU158
- 689 00b2 FFF7FEFF 		bl	__aeabi_d2iz
- 690              	.LVL67:
- 691 00b6 0446     		mov	r4, r0
- 692              	.LVL68:
- 136:Core/Src/gnss.c ****     intPart = (double)(temp / 100);
- 693              		.loc 1 136 5 is_stmt 1 view .LVU159
- 694              		.loc 1 136 29 is_stmt 0 view .LVU160
- 695 00b8 85FB0035 		smull	r3, r5, r5, r0
- 696 00bc C317     		asrs	r3, r0, #31
- 697 00be C3EB6515 		rsb	r5, r3, r5, asr #5
- 698              		.loc 1 136 13 view .LVU161
- 699 00c2 2846     		mov	r0, r5
- 700              	.LVL69:
- 701              		.loc 1 136 13 view .LVU162
- 702 00c4 FFF7FEFF 		bl	__aeabi_i2d
- 703              	.LVL70:
- 704 00c8 0646     		mov	r6, r0
- 705              	.LVL71:
- 706              		.loc 1 136 13 view .LVU163
- 707 00ca 0F46     		mov	r7, r1
- 708              	.LVL72:
- 137:Core/Src/gnss.c ****     decPart = (double)(temp % 100) + l70longitude - (double)temp;
- 709              		.loc 1 137 5 is_stmt 1 view .LVU164
- 710              		.loc 1 137 15 is_stmt 0 view .LVU165
- 711 00cc 0AFB1540 		mls	r0, r10, r5, r4
- 712 00d0 FFF7FEFF 		bl	__aeabi_i2d
- 713              	.LVL73:
- 714              		.loc 1 137 36 view .LVU166
- 715 00d4 4246     		mov	r2, r8
- 716 00d6 4B46     		mov	r3, r9
- 717 00d8 FFF7FEFF 		bl	__aeabi_dadd
- 718              	.LVL74:
- 719 00dc 8046     		mov	r8, r0
- 720              	.LVL75:
- 721              		.loc 1 137 36 view .LVU167
- 722 00de 8946     		mov	r9, r1
- 723              		.loc 1 137 53 view .LVU168
- 724 00e0 2046     		mov	r0, r4
- 725 00e2 FFF7FEFF 		bl	__aeabi_i2d
- 726              	.LVL76:
- 727 00e6 0246     		mov	r2, r0
- 728 00e8 0B46     		mov	r3, r1
- 729              		.loc 1 137 13 view .LVU169
- 730 00ea 4046     		mov	r0, r8
- 731 00ec 4946     		mov	r1, r9
- 732 00ee FFF7FEFF 		bl	__aeabi_dsub
- 733              	.LVL77:
- 138:Core/Src/gnss.c ****     l70longitude = intPart + decPart / 60;
- 734              		.loc 1 138 5 is_stmt 1 view .LVU170
- 735              		.loc 1 138 38 is_stmt 0 view .LVU171
- 736 00f2 0022     		movs	r2, #0
- 737 00f4 114B     		ldr	r3, .L42+16
- 738 00f6 FFF7FEFF 		bl	__aeabi_ddiv
- 739              	.LVL78:
- 740              		.loc 1 138 18 view .LVU172
- 741 00fa 3246     		mov	r2, r6
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 17
+ 698              		.section	.text.l70_handleGPS,"ax",%progbits
+ 699              		.align	1
+ 700              		.global	l70_handleGPS
+ 701              		.syntax unified
+ 702              		.thumb
+ 703              		.thumb_func
+ 705              	l70_handleGPS:
+ 706              	.LVL66:
+ 707              	.LFB75:
+ 175:Core/Src/gnss.c **** 
+ 176:Core/Src/gnss.c **** void l70_handleGPS(char *GPSResponse)
+ 177:Core/Src/gnss.c **** {
+ 708              		.loc 1 177 1 is_stmt 1 view -0
+ 709              		.cfi_startproc
+ 710              		@ args = 0, pretend = 0, frame = 0
+ 711              		@ frame_needed = 0, uses_anonymous_args = 0
+ 712              		.loc 1 177 1 is_stmt 0 view .LVU158
+ 713 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 714              	.LCFI6:
+ 715              		.cfi_def_cfa_offset 36
+ 716              		.cfi_offset 4, -36
+ 717              		.cfi_offset 5, -32
+ 718              		.cfi_offset 6, -28
+ 719              		.cfi_offset 7, -24
+ 720              		.cfi_offset 8, -20
+ 721              		.cfi_offset 9, -16
+ 722              		.cfi_offset 10, -12
+ 723              		.cfi_offset 11, -8
+ 724              		.cfi_offset 14, -4
+ 725 0004 89B0     		sub	sp, sp, #36
+ 726              	.LCFI7:
+ 727              		.cfi_def_cfa_offset 72
+ 728 0006 0446     		mov	r4, r0
+ 178:Core/Src/gnss.c ****     // GPSResponse = strstr(GPSResponse, "$GPGGA");
+ 179:Core/Src/gnss.c ****     // sscanf(GPSResponse, "$GPGGA,%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,]",
+ 180:Core/Src/gnss.c ****     //  l70GPGGA.utcTime, l70GPGGA.latitude, &l70GPGGA.NorS, l70GPGGA.longitude,&l70GPGGA.EorW,
+ 181:Core/Src/gnss.c ****     //  &l70GPGGA.fixStatus, l70GPGGA.numberOfSatellites,l70GPGGA.HDOP,l70GPGGA.altitude);
+ 182:Core/Src/gnss.c ****     long int utctime;
+ 729              		.loc 1 182 5 is_stmt 1 view .LVU159
+ 183:Core/Src/gnss.c ****     long int date;
+ 730              		.loc 1 183 5 view .LVU160
+ 184:Core/Src/gnss.c ****     log_data("\nMessage GPRMC:\n");
+ 731              		.loc 1 184 5 view .LVU161
+ 732 0008 7748     		ldr	r0, .L46+8
+ 733              	.LVL67:
+ 734              		.loc 1 184 5 is_stmt 0 view .LVU162
+ 735 000a FFF7FEFF 		bl	log_data
+ 736              	.LVL68:
+ 185:Core/Src/gnss.c ****     log_data(GPSResponse);
+ 737              		.loc 1 185 5 is_stmt 1 view .LVU163
+ 738 000e 2046     		mov	r0, r4
+ 739 0010 FFF7FEFF 		bl	log_data
+ 740              	.LVL69:
+ 186:Core/Src/gnss.c ****     GPSResponse = strstr(GPSResponse, "$GPRMC");
+ 741              		.loc 1 186 5 view .LVU164
+ 742              		.loc 1 186 19 is_stmt 0 view .LVU165
+ 743 0014 7549     		ldr	r1, .L46+12
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 18
 
 
- 742 00fc 3B46     		mov	r3, r7
- 743 00fe FFF7FEFF 		bl	__aeabi_dadd
- 744              	.LVL79:
- 745 0102 0446     		mov	r4, r0
- 746              	.LVL80:
- 747              		.loc 1 138 18 view .LVU173
- 748 0104 0D46     		mov	r5, r1
- 749              	.LVL81:
- 139:Core/Src/gnss.c ****     ftoa(l70latitude, latData, 6);
- 750              		.loc 1 139 5 is_stmt 1 view .LVU174
- 751 0106 DDE90601 		ldrd	r0, [sp, #24]
- 752 010a FFF7FEFF 		bl	__aeabi_d2f
- 753              	.LVL82:
- 754 010e 0622     		movs	r2, #6
- 755 0110 0899     		ldr	r1, [sp, #32]
- 756 0112 FFF7FEFF 		bl	ftoa
- 757              	.LVL83:
- 140:Core/Src/gnss.c ****     ftoa(l70longitude, longData, 6);
- 758              		.loc 1 140 5 view .LVU175
- 759 0116 2046     		mov	r0, r4
- 760 0118 2946     		mov	r1, r5
- 761 011a FFF7FEFF 		bl	__aeabi_d2f
- 762              	.LVL84:
- 763 011e 0622     		movs	r2, #6
- 764 0120 0999     		ldr	r1, [sp, #36]
- 765 0122 FFF7FEFF 		bl	ftoa
- 766              	.LVL85:
- 141:Core/Src/gnss.c **** }
- 767              		.loc 1 141 1 is_stmt 0 view .LVU176
- 768 0126 0BB0     		add	sp, sp, #44
- 769              	.LCFI7:
- 770              		.cfi_def_cfa_offset 36
- 771              		@ sp needed
- 772 0128 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
- 773              	.LVL86:
- 774              	.L43:
- 775              		.loc 1 141 1 view .LVU177
- 776              		.align	2
- 777              	.L42:
- 778 012c 00000000 		.word	.LC1
- 779 0130 00000000 		.word	.LANCHOR4
- 780 0134 08000000 		.word	.LC2
- 781 0138 1F85EB51 		.word	1374389535
- 782 013c 00004E40 		.word	1078853632
- 783              		.cfi_endproc
- 784              	.LFE74:
- 786              		.section	.rodata.l70_sleep.str1.4,"aMS",%progbits,1
- 787              		.align	2
- 788              	.LC3:
- 789 0000 24504D54 		.ascii	"$PMTK161,0*28\015\012\000"
- 789      4B313631 
- 789      2C302A32 
- 789      380D0A00 
- 790              		.section	.text.l70_sleep,"ax",%progbits
- 791              		.align	1
- 792              		.global	l70_sleep
- 793              		.syntax unified
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 18
+ 744 0016 2046     		mov	r0, r4
+ 745 0018 FFF7FEFF 		bl	strstr
+ 746              	.LVL70:
+ 187:Core/Src/gnss.c ****     // log_data("\nMessage GPRMC:\n");
+ 188:Core/Src/gnss.c ****     sscanf(GPSResponse, "$GPRMC,%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,]",\
+ 747              		.loc 1 188 5 is_stmt 1 view .LVU166
+ 748 001c 744D     		ldr	r5, .L46+16
+ 749 001e 05F14B0A 		add	r10, r5, #75
+ 750 0022 CDF818A0 		str	r10, [sp, #24]
+ 751 0026 05F14103 		add	r3, r5, #65
+ 752 002a 0593     		str	r3, [sp, #20]
+ 753 002c 05F13706 		add	r6, r5, #55
+ 754 0030 0496     		str	r6, [sp, #16]
+ 755 0032 05F13603 		add	r3, r5, #54
+ 756 0036 0393     		str	r3, [sp, #12]
+ 757 0038 05F12207 		add	r7, r5, #34
+ 758 003c 0297     		str	r7, [sp, #8]
+ 759 003e 05F12103 		add	r3, r5, #33
+ 760 0042 0193     		str	r3, [sp, #4]
+ 761 0044 05F10D04 		add	r4, r5, #13
+ 762 0048 0094     		str	r4, [sp]
+ 763 004a 05F10C03 		add	r3, r5, #12
+ 764 004e 2A46     		mov	r2, r5
+ 765 0050 6849     		ldr	r1, .L46+20
+ 766 0052 FFF7FEFF 		bl	sscanf
+ 767              	.LVL71:
+ 189:Core/Src/gnss.c ****            l70GPRMC.utcTime, &l70GPRMC.dataValid, l70GPRMC.latitude, &l70GPRMC.NorS, l70GPRMC.longi
+ 190:Core/Src/gnss.c ****            &l70GPRMC.EorW, l70GPRMC.Speed, l70GPRMC.COGdirect, l70GPRMC.Date);
+ 191:Core/Src/gnss.c **** 
+ 192:Core/Src/gnss.c ****     // halder lat and long
+ 193:Core/Src/gnss.c ****     ftoa(minuteTodegree(l70GPRMC.latitude), l70DataAfterHadler.latitude, 6);
+ 768              		.loc 1 193 5 view .LVU167
+ 769              		.loc 1 193 10 is_stmt 0 view .LVU168
+ 770 0056 2046     		mov	r0, r4
+ 771 0058 FFF7FEFF 		bl	minuteTodegree
+ 772              	.LVL72:
+ 773              		.loc 1 193 5 view .LVU169
+ 774 005c 664C     		ldr	r4, .L46+24
+ 775 005e 04F10C09 		add	r9, r4, #12
+ 776 0062 FFF7FEFF 		bl	__aeabi_d2f
+ 777              	.LVL73:
+ 778 0066 0622     		movs	r2, #6
+ 779 0068 4946     		mov	r1, r9
+ 780 006a FFF7FEFF 		bl	ftoa
+ 781              	.LVL74:
+ 194:Core/Src/gnss.c ****     ftoa(minuteTodegree(l70GPRMC.longitude), l70DataAfterHadler.longitude, 6);
+ 782              		.loc 1 194 5 is_stmt 1 view .LVU170
+ 783              		.loc 1 194 10 is_stmt 0 view .LVU171
+ 784 006e 3846     		mov	r0, r7
+ 785 0070 FFF7FEFF 		bl	minuteTodegree
+ 786              	.LVL75:
+ 787              		.loc 1 194 5 view .LVU172
+ 788 0074 04F12008 		add	r8, r4, #32
+ 789 0078 FFF7FEFF 		bl	__aeabi_d2f
+ 790              	.LVL76:
+ 791 007c 0622     		movs	r2, #6
+ 792 007e 4146     		mov	r1, r8
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 19
 
 
- 794              		.thumb
- 795              		.thumb_func
- 797              	l70_sleep:
- 798              	.LFB75:
- 142:Core/Src/gnss.c **** 
- 143:Core/Src/gnss.c **** void l70_sleep(void)
- 144:Core/Src/gnss.c **** {
- 799              		.loc 1 144 1 is_stmt 1 view -0
- 800              		.cfi_startproc
- 801              		@ args = 0, pretend = 0, frame = 0
- 802              		@ frame_needed = 0, uses_anonymous_args = 0
- 803 0000 08B5     		push	{r3, lr}
- 804              	.LCFI8:
- 805              		.cfi_def_cfa_offset 8
- 806              		.cfi_offset 3, -8
- 807              		.cfi_offset 14, -4
- 145:Core/Src/gnss.c ****     HAL_UART_Transmit_IT(&huart4 ,(uint8_t*)"$PMTK161,0*28\r\n", strlen("$PMTK161,0*28\r\n"));
- 808              		.loc 1 145 5 view .LVU179
- 809 0002 0F22     		movs	r2, #15
- 810 0004 0249     		ldr	r1, .L46
- 811 0006 0348     		ldr	r0, .L46+4
- 812 0008 FFF7FEFF 		bl	HAL_UART_Transmit_IT
- 813              	.LVL87:
- 146:Core/Src/gnss.c **** }...
- 814              		.loc 1 146 1 is_stmt 0 view .LVU180
- 815 000c 08BD     		pop	{r3, pc}
- 816              	.L47:
- 817 000e 00BF     		.align	2
- 818              	.L46:
- 819 0010 00000000 		.word	.LC3
- 820 0014 00000000 		.word	huart4
- 821              		.cfi_endproc
- 822              	.LFE75:
- 824              		.global	l70RxState
- 825              		.global	l70Data
- 826              		.global	l70RxData
- 827              		.global	k
- 828              		.global	l70GPGGA
- 829              		.section	.bss.k,"aw",%nobits
- 830              		.align	2
- 831              		.set	.LANCHOR2,. + 0
- 834              	k:
- 835 0000 00000000 		.space	4
- 836              		.section	.bss.l70Data,"aw",%nobits
- 837              		.set	.LANCHOR0,. + 0
- 840              	l70Data:
- 841 0000 00       		.space	1
- 842              		.section	.bss.l70GPGGA,"aw",%nobits
- 843              		.align	2
- 844              		.set	.LANCHOR4,. + 0
- 847              	l70GPGGA:
- 848 0000 00000000 		.space	41
- 848      00000000 
- 848      00000000 
- 848      00000000 
- 848      00000000 
- 849              		.section	.bss.l70RxData,"aw",%nobits
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 19
+ 793 0080 FFF7FEFF 		bl	ftoa
+ 794              	.LVL77:
+ 195:Core/Src/gnss.c **** 
+ 196:Core/Src/gnss.c ****     /// halder speed
+ 197:Core/Src/gnss.c ****     speed_knot = atof(l70GPRMC.Speed);
+ 795              		.loc 1 197 5 is_stmt 1 view .LVU173
+ 796              		.loc 1 197 18 is_stmt 0 view .LVU174
+ 797 0084 3046     		mov	r0, r6
+ 798 0086 FFF7FEFF 		bl	atof
+ 799              	.LVL78:
+ 800 008a 0246     		mov	r2, r0
+ 801 008c 0B46     		mov	r3, r1
+ 802              		.loc 1 197 16 view .LVU175
+ 803 008e 5B4E     		ldr	r6, .L46+28
+ 804 0090 C6E90023 		strd	r2, [r6]
+ 198:Core/Src/gnss.c ****     speed_km = KNOT_TO_KM * speed_knot;
+ 805              		.loc 1 198 5 is_stmt 1 view .LVU176
+ 806              		.loc 1 198 27 is_stmt 0 view .LVU177
+ 807 0094 52A3     		adr	r3, .L46
+ 808 0096 D3E90023 		ldrd	r2, [r3]
+ 809 009a FFF7FEFF 		bl	__aeabi_dmul
+ 810              	.LVL79:
+ 811 009e 0246     		mov	r2, r0
+ 812 00a0 0B46     		mov	r3, r1
+ 813              		.loc 1 198 14 view .LVU178
+ 814 00a2 574E     		ldr	r6, .L46+32
+ 815 00a4 C6E90023 		strd	r2, [r6]
+ 199:Core/Src/gnss.c ****     ftoa(speed_km, l70DataAfterHadler.Speed, 1);
+ 816              		.loc 1 199 5 is_stmt 1 view .LVU179
+ 817 00a8 04F13407 		add	r7, r4, #52
+ 818 00ac FFF7FEFF 		bl	__aeabi_d2f
+ 819              	.LVL80:
+ 820 00b0 0122     		movs	r2, #1
+ 821 00b2 3946     		mov	r1, r7
+ 822 00b4 FFF7FEFF 		bl	ftoa
+ 823              	.LVL81:
+ 200:Core/Src/gnss.c **** 
+ 201:Core/Src/gnss.c ****     // halder date and time  time: "hhmmss.00"   datte: "dmy"
+ 202:Core/Src/gnss.c ****     utctime = (long int)(atof(l70GPRMC.utcTime));
+ 824              		.loc 1 202 5 view .LVU180
+ 825              		.loc 1 202 26 is_stmt 0 view .LVU181
+ 826 00b8 2846     		mov	r0, r5
+ 827 00ba FFF7FEFF 		bl	atof
+ 828              	.LVL82:
+ 829              		.loc 1 202 13 view .LVU182
+ 830 00be FFF7FEFF 		bl	__aeabi_d2iz
+ 831              	.LVL83:
+ 203:Core/Src/gnss.c ****     l70Utctime.sencond = utctime % 100;
+ 832              		.loc 1 203 5 is_stmt 1 view .LVU183
+ 833              		.loc 1 203 34 is_stmt 0 view .LVU184
+ 834 00c2 504D     		ldr	r5, .L46+36
+ 835 00c4 85FB0032 		smull	r3, r2, r5, r0
+ 836 00c8 C317     		asrs	r3, r0, #31
+ 837 00ca C3EB6212 		rsb	r2, r3, r2, asr #5
+ 838 00ce 6421     		movs	r1, #100
+ 839 00d0 01FB1202 		mls	r2, r1, r2, r0
+ 840              		.loc 1 203 24 view .LVU185
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 20
 
 
- 850              		.align	2
- 851              		.set	.LANCHOR3,. + 0
- 854              	l70RxData:
- 855 0000 00000000 		.space	100
- 855      00000000 
- 855      00000000 
- 855      00000000 
- 855      00000000 
- 856              		.section	.bss.l70RxState,"aw",%nobits
- 857              		.set	.LANCHOR1,. + 0
- 860              	l70RxState:
- 861 0000 00       		.space	1
- 862              		.text
- 863              	.Letext0:
- 864              		.file 2 "d:\\10 2021.10\\arm-none-eabi\\include\\machine\\_default_types.h"
- 865              		.file 3 "d:\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
- 866              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h"
- 867              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 868              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 869              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h"
- 870              		.file 8 "Core/Inc/gnss.h"
- 871              		.file 9 "d:\\10 2021.10\\arm-none-eabi\\include\\string.h"
- 872              		.file 10 "d:\\10 2021.10\\arm-none-eabi\\include\\stdio.h"
- 873              		.file 11 "d:\\10 2021.10\\arm-none-eabi\\include\\stdlib.h"
- 874              		.file 12 "<built-in>"
- 875              		.file 13 "d:\\10 2021.10\\arm-none-eabi\\include\\math.h"
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 20
+ 841 00d4 4C4E     		ldr	r6, .L46+40
+ 842 00d6 B260     		str	r2, [r6, #8]
+ 204:Core/Src/gnss.c ****     l70Utctime.minute = (utctime % 10000) / 100;
+ 843              		.loc 1 204 5 is_stmt 1 view .LVU186
+ 844              		.loc 1 204 34 is_stmt 0 view .LVU187
+ 845 00d8 4C4A     		ldr	r2, .L46+44
+ 846 00da 82FB00C1 		smull	ip, r1, r2, r0
+ 847 00de C3EB2132 		rsb	r2, r3, r1, asr #12
+ 848 00e2 42F2107C 		movw	ip, #10000
+ 849 00e6 0CFB1202 		mls	r2, ip, r2, r0
+ 850              		.loc 1 204 43 view .LVU188
+ 851 00ea 85FB02E0 		smull	lr, r0, r5, r2
+ 852              	.LVL84:
+ 853              		.loc 1 204 43 view .LVU189
+ 854 00ee D217     		asrs	r2, r2, #31
+ 855 00f0 C2EB6012 		rsb	r2, r2, r0, asr #5
+ 856              		.loc 1 204 23 view .LVU190
+ 857 00f4 7260     		str	r2, [r6, #4]
+ 205:Core/Src/gnss.c ****     l70Utctime.hour = GMT + utctime / 10000;
+ 858              		.loc 1 205 5 is_stmt 1 view .LVU191
+ 859              		.loc 1 205 37 is_stmt 0 view .LVU192
+ 860 00f6 C3EB2130 		rsb	r0, r3, r1, asr #12
+ 861              		.loc 1 205 27 view .LVU193
+ 862 00fa 0730     		adds	r0, r0, #7
+ 863              		.loc 1 205 21 view .LVU194
+ 864 00fc 3060     		str	r0, [r6]
+ 206:Core/Src/gnss.c ****     intToStr(l70Utctime.hour, l70DataAfterHadler.utcTime, 0);
+ 865              		.loc 1 206 5 is_stmt 1 view .LVU195
+ 866 00fe 0022     		movs	r2, #0
+ 867 0100 2146     		mov	r1, r4
+ 868 0102 FFF7FEFF 		bl	intToStr
+ 869              	.LVL85:
+ 207:Core/Src/gnss.c ****     l70DataAfterHadler.utcTime[2] = ':';
+ 870              		.loc 1 207 5 view .LVU196
+ 871              		.loc 1 207 35 is_stmt 0 view .LVU197
+ 872 0106 4FF03A0B 		mov	fp, #58
+ 873 010a 84F802B0 		strb	fp, [r4, #2]
+ 208:Core/Src/gnss.c ****     intToStr(l70Utctime.minute, l70DataAfterHadler.utcTime + 3, 0);
+ 874              		.loc 1 208 5 is_stmt 1 view .LVU198
+ 875 010e 0022     		movs	r2, #0
+ 876 0110 E11C     		adds	r1, r4, #3
+ 877 0112 7068     		ldr	r0, [r6, #4]
+ 878 0114 FFF7FEFF 		bl	intToStr
+ 879              	.LVL86:
+ 209:Core/Src/gnss.c ****     l70DataAfterHadler.utcTime[5] = ':';
+ 880              		.loc 1 209 5 view .LVU199
+ 881              		.loc 1 209 35 is_stmt 0 view .LVU200
+ 882 0118 84F805B0 		strb	fp, [r4, #5]
+ 210:Core/Src/gnss.c ****     intToStr(l70Utctime.sencond, l70DataAfterHadler.utcTime + 6, 0);
+ 883              		.loc 1 210 5 is_stmt 1 view .LVU201
+ 884 011c 0022     		movs	r2, #0
+ 885 011e A11D     		adds	r1, r4, #6
+ 886 0120 B068     		ldr	r0, [r6, #8]
+ 887 0122 FFF7FEFF 		bl	intToStr
+ 888              	.LVL87:
+ 211:Core/Src/gnss.c **** 
+ 212:Core/Src/gnss.c ****     date = (long int)(atof(l70GPRMC.Date));
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 21
+
+
+ 889              		.loc 1 212 5 view .LVU202
+ 890              		.loc 1 212 23 is_stmt 0 view .LVU203
+ 891 0126 5046     		mov	r0, r10
+ 892 0128 FFF7FEFF 		bl	atof
+ 893              	.LVL88:
+ 894              		.loc 1 212 10 view .LVU204
+ 895 012c FFF7FEFF 		bl	__aeabi_d2iz
+ 896              	.LVL89:
+ 213:Core/Src/gnss.c ****     l70Date.year = 2000 + date % 100;
+ 897              		.loc 1 213 5 is_stmt 1 view .LVU205
+ 898              		.loc 1 213 32 is_stmt 0 view .LVU206
+ 899 0130 85FB0063 		smull	r6, r3, r5, r0
+ 900 0134 C217     		asrs	r2, r0, #31
+ 901 0136 C2EB6313 		rsb	r3, r2, r3, asr #5
+ 902 013a 6421     		movs	r1, #100
+ 903 013c 01FB1303 		mls	r3, r1, r3, r0
+ 904              		.loc 1 213 25 view .LVU207
+ 905 0140 03F5FA63 		add	r3, r3, #2000
+ 906              		.loc 1 213 18 view .LVU208
+ 907 0144 324E     		ldr	r6, .L46+48
+ 908 0146 B360     		str	r3, [r6, #8]
+ 214:Core/Src/gnss.c ****     l70Date.month = (date % 10000) / 100;
+ 909              		.loc 1 214 5 is_stmt 1 view .LVU209
+ 910              		.loc 1 214 27 is_stmt 0 view .LVU210
+ 911 0148 304B     		ldr	r3, .L46+44
+ 912 014a 83FB0031 		smull	r3, r1, r3, r0
+ 913 014e C2EB2133 		rsb	r3, r2, r1, asr #12
+ 914 0152 42F2107C 		movw	ip, #10000
+ 915 0156 0CFB1303 		mls	r3, ip, r3, r0
+ 916              		.loc 1 214 36 view .LVU211
+ 917 015a 85FB0305 		smull	r0, r5, r5, r3
+ 918              	.LVL90:
+ 919              		.loc 1 214 36 view .LVU212
+ 920 015e DB17     		asrs	r3, r3, #31
+ 921 0160 C3EB6513 		rsb	r3, r3, r5, asr #5
+ 922              		.loc 1 214 19 view .LVU213
+ 923 0164 7360     		str	r3, [r6, #4]
+ 215:Core/Src/gnss.c ****     l70Date.day = date / 10000;
+ 924              		.loc 1 215 5 is_stmt 1 view .LVU214
+ 925              		.loc 1 215 24 is_stmt 0 view .LVU215
+ 926 0166 C2EB2130 		rsb	r0, r2, r1, asr #12
+ 927              		.loc 1 215 17 view .LVU216
+ 928 016a 3060     		str	r0, [r6]
+ 216:Core/Src/gnss.c ****     intToStr(l70Date.day, l70DataAfterHadler.Date, 0);
+ 929              		.loc 1 216 5 is_stmt 1 view .LVU217
+ 930 016c 04F1480A 		add	r10, r4, #72
+ 931 0170 0022     		movs	r2, #0
+ 932 0172 5146     		mov	r1, r10
+ 933 0174 FFF7FEFF 		bl	intToStr
+ 934              	.LVL91:
+ 217:Core/Src/gnss.c ****     l70DataAfterHadler.Date[2] = '/';
+ 935              		.loc 1 217 5 view .LVU218
+ 936              		.loc 1 217 32 is_stmt 0 view .LVU219
+ 937 0178 2F25     		movs	r5, #47
+ 938 017a 84F84A50 		strb	r5, [r4, #74]
+ 218:Core/Src/gnss.c ****     intToStr(l70Date.month, l70DataAfterHadler.Date + 3, 0);
+ 939              		.loc 1 218 5 is_stmt 1 view .LVU220
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 22
+
+
+ 940 017e 0022     		movs	r2, #0
+ 941 0180 04F14B01 		add	r1, r4, #75
+ 942 0184 7068     		ldr	r0, [r6, #4]
+ 943 0186 FFF7FEFF 		bl	intToStr
+ 944              	.LVL92:
+ 219:Core/Src/gnss.c ****     l70DataAfterHadler.Date[5] = '/';
+ 945              		.loc 1 219 5 view .LVU221
+ 946              		.loc 1 219 32 is_stmt 0 view .LVU222
+ 947 018a 84F84D50 		strb	r5, [r4, #77]
+ 220:Core/Src/gnss.c ****     intToStr(l70Date.year, l70DataAfterHadler.Date + 6, 0);
+ 948              		.loc 1 220 5 is_stmt 1 view .LVU223
+ 949 018e 0022     		movs	r2, #0
+ 950 0190 04F14E01 		add	r1, r4, #78
+ 951 0194 B068     		ldr	r0, [r6, #8]
+ 952 0196 FFF7FEFF 		bl	intToStr
+ 953              	.LVL93:
+ 221:Core/Src/gnss.c **** 
+ 222:Core/Src/gnss.c ****     log_data(l70DataAfterHadler.latitude);
+ 954              		.loc 1 222 5 view .LVU224
+ 955 019a 4846     		mov	r0, r9
+ 956 019c FFF7FEFF 		bl	log_data
+ 957              	.LVL94:
+ 223:Core/Src/gnss.c ****     log_data("\n");
+ 958              		.loc 1 223 5 view .LVU225
+ 959 01a0 1C4D     		ldr	r5, .L46+52
+ 960 01a2 2846     		mov	r0, r5
+ 961 01a4 FFF7FEFF 		bl	log_data
+ 962              	.LVL95:
+ 224:Core/Src/gnss.c ****     log_data(l70DataAfterHadler.longitude);
+ 963              		.loc 1 224 5 view .LVU226
+ 964 01a8 4046     		mov	r0, r8
+ 965 01aa FFF7FEFF 		bl	log_data
+ 966              	.LVL96:
+ 225:Core/Src/gnss.c ****     log_data("\n");
+ 967              		.loc 1 225 5 view .LVU227
+ 968 01ae 2846     		mov	r0, r5
+ 969 01b0 FFF7FEFF 		bl	log_data
+ 970              	.LVL97:
+ 226:Core/Src/gnss.c ****     log_data(l70DataAfterHadler.utcTime);
+ 971              		.loc 1 226 5 view .LVU228
+ 972 01b4 2046     		mov	r0, r4
+ 973 01b6 FFF7FEFF 		bl	log_data
+ 974              	.LVL98:
+ 227:Core/Src/gnss.c ****     log_data("\n");
+ 975              		.loc 1 227 5 view .LVU229
+ 976 01ba 2846     		mov	r0, r5
+ 977 01bc FFF7FEFF 		bl	log_data
+ 978              	.LVL99:
+ 228:Core/Src/gnss.c ****     log_data(l70DataAfterHadler.Date);
+ 979              		.loc 1 228 5 view .LVU230
+ 980 01c0 5046     		mov	r0, r10
+ 981 01c2 FFF7FEFF 		bl	log_data
+ 982              	.LVL100:
+ 229:Core/Src/gnss.c ****     log_data("\n");
+ 983              		.loc 1 229 5 view .LVU231
+ 984 01c6 2846     		mov	r0, r5
+ 985 01c8 FFF7FEFF 		bl	log_data
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 23
+
+
+ 986              	.LVL101:
+ 230:Core/Src/gnss.c ****     log_data(l70DataAfterHadler.Speed);
+ 987              		.loc 1 230 5 view .LVU232
+ 988 01cc 3846     		mov	r0, r7
+ 989 01ce FFF7FEFF 		bl	log_data
+ 990              	.LVL102:
+ 231:Core/Src/gnss.c ****     log_data("'\n");
+ 991              		.loc 1 231 5 view .LVU233
+ 992 01d2 1148     		ldr	r0, .L46+56
+ 993 01d4 FFF7FEFF 		bl	log_data
+ 994              	.LVL103:
+ 232:Core/Src/gnss.c **** }
+ 995              		.loc 1 232 1 is_stmt 0 view .LVU234
+ 996 01d8 09B0     		add	sp, sp, #36
+ 997              	.LCFI8:
+ 998              		.cfi_def_cfa_offset 36
+ 999              		@ sp needed
+ 1000 01da BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 1001              	.L47:
+ 1002 01de 00BF     		.align	3
+ 1003              	.L46:
+ 1004 01e0 6F1283C0 		.word	-1065151889
+ 1005 01e4 CAA1FD3F 		.word	1073586634
+ 1006 01e8 00000000 		.word	.LC1
+ 1007 01ec 14000000 		.word	.LC2
+ 1008 01f0 00000000 		.word	.LANCHOR4
+ 1009 01f4 1C000000 		.word	.LC3
+ 1010 01f8 00000000 		.word	.LANCHOR5
+ 1011 01fc 00000000 		.word	.LANCHOR6
+ 1012 0200 00000000 		.word	.LANCHOR7
+ 1013 0204 1F85EB51 		.word	1374389535
+ 1014 0208 00000000 		.word	.LANCHOR8
+ 1015 020c AD8BDB68 		.word	1759218605
+ 1016 0210 00000000 		.word	.LANCHOR9
+ 1017 0214 5C000000 		.word	.LC4
+ 1018 0218 60000000 		.word	.LC5
+ 1019              		.cfi_endproc
+ 1020              	.LFE75:
+ 1022              		.global	__aeabi_dcmpgt
+ 1023              		.section	.rodata.l70_checkSpeed.str1.4,"aMS",%progbits,1
+ 1024              		.align	2
+ 1025              	.LC6:
+ 1026 0000 5761726E 		.ascii	"Warning over speed!\012\000"
+ 1026      696E6720 
+ 1026      6F766572 
+ 1026      20737065 
+ 1026      6564210A 
+ 1027              		.section	.text.l70_checkSpeed,"ax",%progbits
+ 1028              		.align	1
+ 1029              		.global	l70_checkSpeed
+ 1030              		.syntax unified
+ 1031              		.thumb
+ 1032              		.thumb_func
+ 1034              	l70_checkSpeed:
+ 1035              	.LFB76:
+ 233:Core/Src/gnss.c **** 
+ 234:Core/Src/gnss.c **** void l70_checkSpeed()
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 24
+
+
+ 235:Core/Src/gnss.c **** {
+ 1036              		.loc 1 235 1 is_stmt 1 view -0
+ 1037              		.cfi_startproc
+ 1038              		@ args = 0, pretend = 0, frame = 0
+ 1039              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1040 0000 08B5     		push	{r3, lr}
+ 1041              	.LCFI9:
+ 1042              		.cfi_def_cfa_offset 8
+ 1043              		.cfi_offset 3, -8
+ 1044              		.cfi_offset 14, -4
+ 236:Core/Src/gnss.c ****     if (speed_km > 40.0)
+ 1045              		.loc 1 236 5 view .LVU236
+ 1046              		.loc 1 236 8 is_stmt 0 view .LVU237
+ 1047 0002 0022     		movs	r2, #0
+ 1048 0004 054B     		ldr	r3, .L54
+ 1049 0006 0649     		ldr	r1, .L54+4
+ 1050 0008 D1E90001 		ldrd	r0, [r1]
+ 1051 000c FFF7FEFF 		bl	__aeabi_dcmpgt
+ 1052              	.LVL104:
+ 1053 0010 00B9     		cbnz	r0, .L53
+ 1054              	.L48:
+ 237:Core/Src/gnss.c ****     {
+ 238:Core/Src/gnss.c ****         log_data("Warning over speed!\n");
+ 239:Core/Src/gnss.c ****         //gui thong tin qua toc do len server va luu vao flash va sdcard
+ 240:Core/Src/gnss.c ****     }
+ 241:Core/Src/gnss.c **** }
+ 1055              		.loc 1 241 1 view .LVU238
+ 1056 0012 08BD     		pop	{r3, pc}
+ 1057              	.L53:
+ 238:Core/Src/gnss.c ****         //gui thong tin qua toc do len server va luu vao flash va sdcard
+ 1058              		.loc 1 238 9 is_stmt 1 view .LVU239
+ 1059 0014 0348     		ldr	r0, .L54+8
+ 1060 0016 FFF7FEFF 		bl	log_data
+ 1061              	.LVL105:
+ 1062              		.loc 1 241 1 is_stmt 0 view .LVU240
+ 1063 001a FAE7     		b	.L48
+ 1064              	.L55:
+ 1065              		.align	2
+ 1066              	.L54:
+ 1067 001c 00004440 		.word	1078198272
+ 1068 0020 00000000 		.word	.LANCHOR7
+ 1069 0024 00000000 		.word	.LC6
+ 1070              		.cfi_endproc
+ 1071              	.LFE76:
+ 1073              		.section	.rodata.l70_sleep.str1.4,"aMS",%progbits,1
+ 1074              		.align	2
+ 1075              	.LC7:
+ 1076 0000 24504D54 		.ascii	"$PMTK161,0*28\015\012\000"
+ 1076      4B313631 
+ 1076      2C302A32 
+ 1076      380D0A00 
+ 1077              		.section	.text.l70_sleep,"ax",%progbits
+ 1078              		.align	1
+ 1079              		.global	l70_sleep
+ 1080              		.syntax unified
+ 1081              		.thumb
+ 1082              		.thumb_func
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 25
+
+
+ 1084              	l70_sleep:
+ 1085              	.LFB77:
+ 242:Core/Src/gnss.c **** 
+ 243:Core/Src/gnss.c **** void l70_sleep(void)
+ 244:Core/Src/gnss.c **** {
+ 1086              		.loc 1 244 1 is_stmt 1 view -0
+ 1087              		.cfi_startproc
+ 1088              		@ args = 0, pretend = 0, frame = 0
+ 1089              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1090 0000 08B5     		push	{r3, lr}
+ 1091              	.LCFI10:
+ 1092              		.cfi_def_cfa_offset 8
+ 1093              		.cfi_offset 3, -8
+ 1094              		.cfi_offset 14, -4
+ 245:Core/Src/gnss.c ****     HAL_UART_Transmit_IT(&huart4, (uint8_t *)"$PMTK161,0*28\r\n", strlen("$PMTK161,0*28\r\n"));
+ 1095              		.loc 1 245 5 view .LVU242
+ 1096 0002 0F22     		movs	r2, #15
+ 1097 0004 0249     		ldr	r1, .L58
+ 1098 0006 0348     		ldr	r0, .L58+4
+ 1099 0008 FFF7FEFF 		bl	HAL_UART_Transmit_IT
+ 1100              	.LVL106:
+ 246:Core/Src/gnss.c **** }...
+ 1101              		.loc 1 246 1 is_stmt 0 view .LVU243
+ 1102 000c 08BD     		pop	{r3, pc}
+ 1103              	.L59:
+ 1104 000e 00BF     		.align	2
+ 1105              	.L58:
+ 1106 0010 00000000 		.word	.LC7
+ 1107 0014 00000000 		.word	huart4
+ 1108              		.cfi_endproc
+ 1109              	.LFE77:
+ 1111              		.global	speed_km
+ 1112              		.global	speed_knot
+ 1113              		.global	l70Date
+ 1114              		.global	l70Utctime
+ 1115              		.global	l70DataAfterHadler
+ 1116              		.global	l70GPRMC
+ 1117              		.global	l70RxState
+ 1118              		.global	l70Data
+ 1119              		.global	l70RxData
+ 1120              		.global	k
+ 1121              		.global	l70GPGGA
+ 1122              		.section	.bss.k,"aw",%nobits
+ 1123              		.align	2
+ 1124              		.set	.LANCHOR2,. + 0
+ 1127              	k:
+ 1128 0000 00000000 		.space	4
+ 1129              		.section	.bss.l70Data,"aw",%nobits
+ 1130              		.set	.LANCHOR0,. + 0
+ 1133              	l70Data:
+ 1134 0000 00       		.space	1
+ 1135              		.section	.bss.l70DataAfterHadler,"aw",%nobits
+ 1136              		.align	2
+ 1137              		.set	.LANCHOR5,. + 0
+ 1140              	l70DataAfterHadler:
+ 1141 0000 00000000 		.space	82
+ 1141      00000000 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 26
+
+
+ 1141      00000000 
+ 1141      00000000 
+ 1141      00000000 
+ 1142              		.section	.bss.l70Date,"aw",%nobits
+ 1143              		.align	2
+ 1144              		.set	.LANCHOR9,. + 0
+ 1147              	l70Date:
+ 1148 0000 00000000 		.space	12
+ 1148      00000000 
+ 1148      00000000 
+ 1149              		.section	.bss.l70GPGGA,"aw",%nobits
+ 1150              		.align	2
+ 1153              	l70GPGGA:
+ 1154 0000 00000000 		.space	77
+ 1154      00000000 
+ 1154      00000000 
+ 1154      00000000 
+ 1154      00000000 
+ 1155              		.section	.bss.l70GPRMC,"aw",%nobits
+ 1156              		.align	2
+ 1157              		.set	.LANCHOR4,. + 0
+ 1160              	l70GPRMC:
+ 1161 0000 00000000 		.space	85
+ 1161      00000000 
+ 1161      00000000 
+ 1161      00000000 
+ 1161      00000000 
+ 1162              		.section	.bss.l70RxData,"aw",%nobits
+ 1163              		.align	2
+ 1164              		.set	.LANCHOR3,. + 0
+ 1167              	l70RxData:
+ 1168 0000 00000000 		.space	100
+ 1168      00000000 
+ 1168      00000000 
+ 1168      00000000 
+ 1168      00000000 
+ 1169              		.section	.bss.l70RxState,"aw",%nobits
+ 1170              		.set	.LANCHOR1,. + 0
+ 1173              	l70RxState:
+ 1174 0000 00       		.space	1
+ 1175              		.section	.bss.l70Utctime,"aw",%nobits
+ 1176              		.align	2
+ 1177              		.set	.LANCHOR8,. + 0
+ 1180              	l70Utctime:
+ 1181 0000 00000000 		.space	12
+ 1181      00000000 
+ 1181      00000000 
+ 1182              		.section	.bss.speed_km,"aw",%nobits
+ 1183              		.align	3
+ 1184              		.set	.LANCHOR7,. + 0
+ 1187              	speed_km:
+ 1188 0000 00000000 		.space	8
+ 1188      00000000 
+ 1189              		.section	.bss.speed_knot,"aw",%nobits
+ 1190              		.align	3
+ 1191              		.set	.LANCHOR6,. + 0
+ 1194              	speed_knot:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 27
+
+
+ 1195 0000 00000000 		.space	8
+ 1195      00000000 
+ 1196              		.text
+ 1197              	.Letext0:
+ 1198              		.file 2 "d:\\10 2021.10\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 1199              		.file 3 "d:\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 1200              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h"
+ 1201              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 1202              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 1203              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 1204              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h"
+ 1205              		.file 9 "Core/Inc/gnss.h"
+ 1206              		.file 10 "Core/Inc/debug.h"
+ 1207              		.file 11 "d:\\10 2021.10\\arm-none-eabi\\include\\string.h"
+ 1208              		.file 12 "d:\\10 2021.10\\arm-none-eabi\\include\\stdio.h"
+ 1209              		.file 13 "d:\\10 2021.10\\arm-none-eabi\\include\\stdlib.h"
+ 1210              		.file 14 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 1211              		.file 15 "<built-in>"
+ 1212              		.file 16 "d:\\10 2021.10\\arm-none-eabi\\include\\math.h"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 28
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 gnss.c
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:18     .text.reverse:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:24     .text.reverse:00000000 reverse
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:74     .text.intToStr:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:80     .text.intToStr:00000000 intToStr
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:173    .text.intToStr:00000050 $d
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:185    .text.ftoa:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:191    .text.ftoa:00000000 ftoa
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:302    .text.ftoa:00000070 $d
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:307    .text.l70_callback:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:313    .text.l70_callback:00000000 l70_callback
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:422    .text.l70_callback:0000007c $d
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:431    .text.l70_receiveGPS:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:437    .text.l70_receiveGPS:00000000 l70_receiveGPS
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:486    .text.l70_receiveGPS:0000002c $d
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:495    .rodata.l70_init.str1.4:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:500    .text.l70_init:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:506    .text.l70_init:00000000 l70_init
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:528    .text.l70_init:00000010 $d
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:534    .rodata.l70_handleGPS.str1.4:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:545    .text.l70_handleGPS:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:551    .text.l70_handleGPS:00000000 l70_handleGPS
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:778    .text.l70_handleGPS:0000012c $d
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:787    .rodata.l70_sleep.str1.4:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:791    .text.l70_sleep:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:797    .text.l70_sleep:00000000 l70_sleep
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:819    .text.l70_sleep:00000010 $d
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:860    .bss.l70RxState:00000000 l70RxState
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:840    .bss.l70Data:00000000 l70Data
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:854    .bss.l70RxData:00000000 l70RxData
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:834    .bss.k:00000000 k
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:847    .bss.l70GPGGA:00000000 l70GPGGA
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:830    .bss.k:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:841    .bss.l70Data:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:843    .bss.l70GPGGA:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:850    .bss.l70RxData:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s:861    .bss.l70RxState:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:18     .text.reverse:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:24     .text.reverse:00000000 reverse
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:74     .text.intToStr:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:80     .text.intToStr:00000000 intToStr
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:173    .text.intToStr:00000050 $d
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:185    .text.ftoa:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:191    .text.ftoa:00000000 ftoa
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:302    .text.ftoa:00000070 $d
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:307    .rodata.l70_init.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:312    .text.l70_init:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:318    .text.l70_init:00000000 l70_init
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:372    .text.l70_init:0000004c $d
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:379    .text.l70_callback:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:385    .text.l70_callback:00000000 l70_callback
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:494    .text.l70_callback:0000007c $d
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:503    .text.l70_receiveGPS:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:509    .text.l70_receiveGPS:00000000 l70_receiveGPS
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:558    .text.l70_receiveGPS:0000002c $d
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:571    .text.minuteTodegree:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:577    .text.minuteTodegree:00000000 minuteTodegree
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:676    .text.minuteTodegree:00000068 $d
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:682    .rodata.l70_handleGPS.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:699    .text.l70_handleGPS:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:705    .text.l70_handleGPS:00000000 l70_handleGPS
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1004   .text.l70_handleGPS:000001e0 $d
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1024   .rodata.l70_checkSpeed.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1028   .text.l70_checkSpeed:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1034   .text.l70_checkSpeed:00000000 l70_checkSpeed
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1067   .text.l70_checkSpeed:0000001c $d
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1074   .rodata.l70_sleep.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1078   .text.l70_sleep:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1084   .text.l70_sleep:00000000 l70_sleep
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1106   .text.l70_sleep:00000010 $d
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1187   .bss.speed_km:00000000 speed_km
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1194   .bss.speed_knot:00000000 speed_knot
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1147   .bss.l70Date:00000000 l70Date
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1180   .bss.l70Utctime:00000000 l70Utctime
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1140   .bss.l70DataAfterHadler:00000000 l70DataAfterHadler
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1160   .bss.l70GPRMC:00000000 l70GPRMC
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1173   .bss.l70RxState:00000000 l70RxState
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1133   .bss.l70Data:00000000 l70Data
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1167   .bss.l70RxData:00000000 l70RxData
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1127   .bss.k:00000000 k
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1153   .bss.l70GPGGA:00000000 l70GPGGA
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1123   .bss.k:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1134   .bss.l70Data:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1136   .bss.l70DataAfterHadler:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1143   .bss.l70Date:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1150   .bss.l70GPGGA:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1156   .bss.l70GPRMC:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1163   .bss.l70RxData:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1174   .bss.l70RxState:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1176   .bss.l70Utctime:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1183   .bss.speed_km:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s:1190   .bss.speed_knot:00000000 $d
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccqDf6x5.s 			page 29
+
+
 
 UNDEFINED SYMBOLS
 __aeabi_f2iz
@@ -1158,17 +1653,19 @@ __aeabi_f2d
 __aeabi_dmul
 __aeabi_d2f
 pow
-HAL_UART_Receive_IT
+HAL_GPIO_WritePin
+HAL_Delay
+HAL_UART_Transmit
 huart4
+HAL_UART_Receive_IT
 memset
-HAL_UART_Transmit_IT
 __aeabi_d2iz
-__aeabi_dadd
 __aeabi_dsub
+__aeabi_dadd
 __aeabi_ddiv
-strstr
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccFP7VGk.s 			page 21
-
-
-sscanf
 atof
+log_data
+strstr
+sscanf
+__aeabi_dcmpgt
+HAL_UART_Transmit_IT
