@@ -19,7 +19,7 @@ float DS18B20_Result(void);
 void DHT11_Start(void);
 uint8_t DHT11_Check_Response(void);
 uint8_t DHT11_Read(void);
-float DHT11_Result(float* Temperature, float* Humidity);
+float DHT11_Result(float Temperature, float Humidity);
 
 /************for LEVEL***************/
 //4095 -> 0cm

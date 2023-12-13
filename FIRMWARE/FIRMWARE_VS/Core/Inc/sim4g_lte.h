@@ -52,7 +52,8 @@ simState_t sim7672_send_command(char *simCommand, char *trueResponse, int waitms
 void sim7672_callback(void);
 void sim7672_start_LTE(void);
 uint8_t sim7672_check_signalStrength(void);
-void sim7672_errorHandle(void);
 void sim7672_checkSIMCard();
+void sim7672_sendSMS(char *simNumber, char *simMessage);
+void sim7672_errorHandle(void);
 
 #endif

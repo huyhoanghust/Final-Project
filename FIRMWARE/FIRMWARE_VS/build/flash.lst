@@ -1,0 +1,685 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"flash.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.CS_reset,"ax",%progbits
+  18              		.align	1
+  19              		.global	CS_reset
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	CS_reset:
+  25              	.LFB65:
+  26              		.file 1 "Core/Src/flash.c"
+   1:Core/Src/flash.c **** /**
+   2:Core/Src/flash.c ****  * @file flash.c
+   3:Core/Src/flash.c ****  * @author hoanghuyhust (hoangnh191855@sis.hust.edu.vn)
+   4:Core/Src/flash.c ****  * @brief 
+   5:Core/Src/flash.c ****  * @version 0.1
+   6:Core/Src/flash.c ****  * @date 2023-12-01
+   7:Core/Src/flash.c ****  * 
+   8:Core/Src/flash.c ****  * @copyright Copyright (c) 2023
+   9:Core/Src/flash.c ****  * 
+  10:Core/Src/flash.c ****  */
+  11:Core/Src/flash.c **** #include "flash.h"
+  12:Core/Src/flash.c **** 
+  13:Core/Src/flash.c **** uint8_t rxbuff[256] = {0};
+  14:Core/Src/flash.c **** uint8_t idbuffer[5] = {0};
+  15:Core/Src/flash.c **** 
+  16:Core/Src/flash.c **** /*
+  17:Core/Src/flash.c **** #define FLASH_SS_Pin GPIO_PIN_12
+  18:Core/Src/flash.c **** #define FLASH_SS_GPIO_Port GPIOB
+  19:Core/Src/flash.c **** #define FLASH_CLK_Pin GPIO_PIN_13
+  20:Core/Src/flash.c **** #define FLASH_CLK_GPIO_Port GPIOB
+  21:Core/Src/flash.c **** #define FLASH_MISO_Pin GPIO_PIN_14
+  22:Core/Src/flash.c **** #define FLASH_MISO_GPIO_Port GPIOB
+  23:Core/Src/flash.c **** #define FLASH_MOSI_Pin GPIO_PIN_15
+  24:Core/Src/flash.c **** #define FLASH_MOSI_GPIO_Port GPIOB
+  25:Core/Src/flash.c **** */
+  26:Core/Src/flash.c **** void CS_reset()
+  27:Core/Src/flash.c **** {
+  27              		.loc 1 27 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 08B5     		push	{r3, lr}
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s 			page 2
+
+
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+  28:Core/Src/flash.c ****     HAL_GPIO_WritePin(FLASH_SS_GPIO_Port, FLASH_SS_Pin, GPIO_PIN_RESET);
+  36              		.loc 1 28 5 view .LVU1
+  37 0002 0022     		movs	r2, #0
+  38 0004 4FF48051 		mov	r1, #4096
+  39 0008 0148     		ldr	r0, .L3
+  40 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  41              	.LVL0:
+  29:Core/Src/flash.c **** }
+  42              		.loc 1 29 1 is_stmt 0 view .LVU2
+  43 000e 08BD     		pop	{r3, pc}
+  44              	.L4:
+  45              		.align	2
+  46              	.L3:
+  47 0010 000C0140 		.word	1073810432
+  48              		.cfi_endproc
+  49              	.LFE65:
+  51              		.section	.text.CS_set,"ax",%progbits
+  52              		.align	1
+  53              		.global	CS_set
+  54              		.syntax unified
+  55              		.thumb
+  56              		.thumb_func
+  58              	CS_set:
+  59              	.LFB66:
+  30:Core/Src/flash.c **** 
+  31:Core/Src/flash.c **** void CS_set()
+  32:Core/Src/flash.c **** {
+  60              		.loc 1 32 1 is_stmt 1 view -0
+  61              		.cfi_startproc
+  62              		@ args = 0, pretend = 0, frame = 0
+  63              		@ frame_needed = 0, uses_anonymous_args = 0
+  64 0000 08B5     		push	{r3, lr}
+  65              	.LCFI1:
+  66              		.cfi_def_cfa_offset 8
+  67              		.cfi_offset 3, -8
+  68              		.cfi_offset 14, -4
+  33:Core/Src/flash.c ****     HAL_GPIO_WritePin(FLASH_SS_GPIO_Port, FLASH_SS_Pin, GPIO_PIN_SET);
+  69              		.loc 1 33 5 view .LVU4
+  70 0002 0122     		movs	r2, #1
+  71 0004 4FF48051 		mov	r1, #4096
+  72 0008 0148     		ldr	r0, .L7
+  73 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  74              	.LVL1:
+  34:Core/Src/flash.c **** }
+  75              		.loc 1 34 1 is_stmt 0 view .LVU5
+  76 000e 08BD     		pop	{r3, pc}
+  77              	.L8:
+  78              		.align	2
+  79              	.L7:
+  80 0010 000C0140 		.word	1073810432
+  81              		.cfi_endproc
+  82              	.LFE66:
+  84              		.section	.text.spi_sendRecive,"ax",%progbits
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s 			page 3
+
+
+  85              		.align	1
+  86              		.global	spi_sendRecive
+  87              		.syntax unified
+  88              		.thumb
+  89              		.thumb_func
+  91              	spi_sendRecive:
+  92              	.LVL2:
+  93              	.LFB67:
+  35:Core/Src/flash.c **** 
+  36:Core/Src/flash.c **** uint8_t spi_sendRecive(uint8_t txData)
+  37:Core/Src/flash.c **** {
+  94              		.loc 1 37 1 is_stmt 1 view -0
+  95              		.cfi_startproc
+  96              		@ args = 0, pretend = 0, frame = 16
+  97              		@ frame_needed = 0, uses_anonymous_args = 0
+  98              		.loc 1 37 1 is_stmt 0 view .LVU7
+  99 0000 00B5     		push	{lr}
+ 100              	.LCFI2:
+ 101              		.cfi_def_cfa_offset 4
+ 102              		.cfi_offset 14, -4
+ 103 0002 87B0     		sub	sp, sp, #28
+ 104              	.LCFI3:
+ 105              		.cfi_def_cfa_offset 32
+ 106 0004 8DF80F00 		strb	r0, [sp, #15]
+  38:Core/Src/flash.c ****     uint8_t rxData;
+ 107              		.loc 1 38 5 is_stmt 1 view .LVU8
+  39:Core/Src/flash.c ****     HAL_SPI_TransmitReceive(&hspi2, (uint8_t *)&txData, (uint8_t *)&rxData, 1, 1000);
+ 108              		.loc 1 39 5 view .LVU9
+ 109 0008 4FF47A73 		mov	r3, #1000
+ 110 000c 0093     		str	r3, [sp]
+ 111 000e 0123     		movs	r3, #1
+ 112 0010 0DF11702 		add	r2, sp, #23
+ 113 0014 0DF10F01 		add	r1, sp, #15
+ 114 0018 0348     		ldr	r0, .L11
+ 115              	.LVL3:
+ 116              		.loc 1 39 5 is_stmt 0 view .LVU10
+ 117 001a FFF7FEFF 		bl	HAL_SPI_TransmitReceive
+ 118              	.LVL4:
+  40:Core/Src/flash.c ****     return rxData;
+ 119              		.loc 1 40 5 is_stmt 1 view .LVU11
+  41:Core/Src/flash.c **** }
+ 120              		.loc 1 41 1 is_stmt 0 view .LVU12
+ 121 001e 9DF81700 		ldrb	r0, [sp, #23]	@ zero_extendqisi2
+ 122 0022 07B0     		add	sp, sp, #28
+ 123              	.LCFI4:
+ 124              		.cfi_def_cfa_offset 4
+ 125              		@ sp needed
+ 126 0024 5DF804FB 		ldr	pc, [sp], #4
+ 127              	.L12:
+ 128              		.align	2
+ 129              	.L11:
+ 130 0028 00000000 		.word	hspi2
+ 131              		.cfi_endproc
+ 132              	.LFE67:
+ 134              		.section	.rodata.w25q32_init.str1.4,"aMS",%progbits,1
+ 135              		.align	2
+ 136              	.LC0:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s 			page 4
+
+
+ 137 0000 466C6173 		.ascii	"Flash init fail\012\000"
+ 137      6820696E 
+ 137      69742066 
+ 137      61696C0A 
+ 137      00
+ 138              		.section	.text.w25q32_init,"ax",%progbits
+ 139              		.align	1
+ 140              		.global	w25q32_init
+ 141              		.syntax unified
+ 142              		.thumb
+ 143              		.thumb_func
+ 145              	w25q32_init:
+ 146              	.LFB68:
+  42:Core/Src/flash.c **** 
+  43:Core/Src/flash.c **** void w25q32_init()
+  44:Core/Src/flash.c **** {
+ 147              		.loc 1 44 1 is_stmt 1 view -0
+ 148              		.cfi_startproc
+ 149              		@ args = 0, pretend = 0, frame = 0
+ 150              		@ frame_needed = 0, uses_anonymous_args = 0
+ 151 0000 10B5     		push	{r4, lr}
+ 152              	.LCFI5:
+ 153              		.cfi_def_cfa_offset 8
+ 154              		.cfi_offset 4, -8
+ 155              		.cfi_offset 14, -4
+  45:Core/Src/flash.c ****     CS_reset();
+ 156              		.loc 1 45 5 view .LVU14
+ 157 0002 FFF7FEFF 		bl	CS_reset
+ 158              	.LVL5:
+  46:Core/Src/flash.c ****     spi_sendRecive(READID);
+ 159              		.loc 1 46 5 view .LVU15
+ 160 0006 9F20     		movs	r0, #159
+ 161 0008 FFF7FEFF 		bl	spi_sendRecive
+ 162              	.LVL6:
+  47:Core/Src/flash.c ****     idbuffer[0] = spi_sendRecive(0x00);
+ 163              		.loc 1 47 5 view .LVU16
+ 164              		.loc 1 47 19 is_stmt 0 view .LVU17
+ 165 000c 0020     		movs	r0, #0
+ 166 000e FFF7FEFF 		bl	spi_sendRecive
+ 167              	.LVL7:
+ 168              		.loc 1 47 17 view .LVU18
+ 169 0012 0D4C     		ldr	r4, .L19
+ 170 0014 2070     		strb	r0, [r4]
+  48:Core/Src/flash.c ****     idbuffer[1] = spi_sendRecive(0x00);
+ 171              		.loc 1 48 5 is_stmt 1 view .LVU19
+ 172              		.loc 1 48 19 is_stmt 0 view .LVU20
+ 173 0016 0020     		movs	r0, #0
+ 174 0018 FFF7FEFF 		bl	spi_sendRecive
+ 175              	.LVL8:
+ 176              		.loc 1 48 17 view .LVU21
+ 177 001c 6070     		strb	r0, [r4, #1]
+  49:Core/Src/flash.c ****     idbuffer[2] = spi_sendRecive(0x00);
+ 178              		.loc 1 49 5 is_stmt 1 view .LVU22
+ 179              		.loc 1 49 19 is_stmt 0 view .LVU23
+ 180 001e 0020     		movs	r0, #0
+ 181 0020 FFF7FEFF 		bl	spi_sendRecive
+ 182              	.LVL9:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s 			page 5
+
+
+ 183              		.loc 1 49 17 view .LVU24
+ 184 0024 A070     		strb	r0, [r4, #2]
+  50:Core/Src/flash.c ****     CS_set();
+ 185              		.loc 1 50 5 is_stmt 1 view .LVU25
+ 186 0026 FFF7FEFF 		bl	CS_set
+ 187              	.LVL10:
+  51:Core/Src/flash.c ****     if (idbuffer[0] != 0xef || idbuffer[1] != 0x40 || idbuffer[2] != 0x16)
+ 188              		.loc 1 51 5 view .LVU26
+ 189              		.loc 1 51 17 is_stmt 0 view .LVU27
+ 190 002a 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 191              		.loc 1 51 8 view .LVU28
+ 192 002c EF2B     		cmp	r3, #239
+ 193 002e 02D1     		bne	.L14
+ 194              		.loc 1 51 40 discriminator 1 view .LVU29
+ 195 0030 6378     		ldrb	r3, [r4, #1]	@ zero_extendqisi2
+ 196              		.loc 1 51 29 discriminator 1 view .LVU30
+ 197 0032 402B     		cmp	r3, #64
+ 198 0034 03D0     		beq	.L18
+ 199              	.L14:
+  52:Core/Src/flash.c ****     {
+  53:Core/Src/flash.c ****         log_data("Flash init fail\n");
+ 200              		.loc 1 53 9 is_stmt 1 view .LVU31
+ 201 0036 0548     		ldr	r0, .L19+4
+ 202 0038 FFF7FEFF 		bl	log_data
+ 203              	.LVL11:
+ 204              	.L16:
+  54:Core/Src/flash.c ****         while (1)
+ 205              		.loc 1 54 9 discriminator 1 view .LVU32
+  55:Core/Src/flash.c ****             ;
+ 206              		.loc 1 55 13 discriminator 1 view .LVU33
+  54:Core/Src/flash.c ****         while (1)
+ 207              		.loc 1 54 15 discriminator 1 view .LVU34
+ 208 003c FEE7     		b	.L16
+ 209              	.L18:
+  51:Core/Src/flash.c ****     {
+ 210              		.loc 1 51 63 is_stmt 0 discriminator 2 view .LVU35
+ 211 003e A378     		ldrb	r3, [r4, #2]	@ zero_extendqisi2
+  51:Core/Src/flash.c ****     {
+ 212              		.loc 1 51 52 discriminator 2 view .LVU36
+ 213 0040 162B     		cmp	r3, #22
+ 214 0042 F8D1     		bne	.L14
+  56:Core/Src/flash.c ****     }
+  57:Core/Src/flash.c **** }
+ 215              		.loc 1 57 1 view .LVU37
+ 216 0044 10BD     		pop	{r4, pc}
+ 217              	.L20:
+ 218 0046 00BF     		.align	2
+ 219              	.L19:
+ 220 0048 00000000 		.word	.LANCHOR0
+ 221 004c 00000000 		.word	.LC0
+ 222              		.cfi_endproc
+ 223              	.LFE68:
+ 225              		.section	.text.w25q32_sectorErase,"ax",%progbits
+ 226              		.align	1
+ 227              		.global	w25q32_sectorErase
+ 228              		.syntax unified
+ 229              		.thumb
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s 			page 6
+
+
+ 230              		.thumb_func
+ 232              	w25q32_sectorErase:
+ 233              	.LVL12:
+ 234              	.LFB69:
+  58:Core/Src/flash.c **** 
+  59:Core/Src/flash.c **** void w25q32_sectorErase(uint32_t u32Address)
+  60:Core/Src/flash.c **** {
+ 235              		.loc 1 60 1 is_stmt 1 view -0
+ 236              		.cfi_startproc
+ 237              		@ args = 0, pretend = 0, frame = 0
+ 238              		@ frame_needed = 0, uses_anonymous_args = 0
+ 239              		.loc 1 60 1 is_stmt 0 view .LVU39
+ 240 0000 10B5     		push	{r4, lr}
+ 241              	.LCFI6:
+ 242              		.cfi_def_cfa_offset 8
+ 243              		.cfi_offset 4, -8
+ 244              		.cfi_offset 14, -4
+ 245 0002 0446     		mov	r4, r0
+  61:Core/Src/flash.c ****     CS_reset();
+ 246              		.loc 1 61 5 is_stmt 1 view .LVU40
+ 247 0004 FFF7FEFF 		bl	CS_reset
+ 248              	.LVL13:
+  62:Core/Src/flash.c ****     // write enable
+  63:Core/Src/flash.c ****     spi_sendRecive(WRITE_ENABLE);
+ 249              		.loc 1 63 5 view .LVU41
+ 250 0008 0620     		movs	r0, #6
+ 251 000a FFF7FEFF 		bl	spi_sendRecive
+ 252              	.LVL14:
+  64:Core/Src/flash.c ****     CS_set();
+ 253              		.loc 1 64 5 view .LVU42
+ 254 000e FFF7FEFF 		bl	CS_set
+ 255              	.LVL15:
+  65:Core/Src/flash.c **** 
+  66:Core/Src/flash.c ****     HAL_Delay(1);
+ 256              		.loc 1 66 5 view .LVU43
+ 257 0012 0120     		movs	r0, #1
+ 258 0014 FFF7FEFF 		bl	HAL_Delay
+ 259              	.LVL16:
+  67:Core/Src/flash.c **** 
+  68:Core/Src/flash.c ****     CS_reset();
+ 260              		.loc 1 68 5 view .LVU44
+ 261 0018 FFF7FEFF 		bl	CS_reset
+ 262              	.LVL17:
+  69:Core/Src/flash.c ****     spi_sendRecive(ERASE_SECTOR);
+ 263              		.loc 1 69 5 view .LVU45
+ 264 001c 2020     		movs	r0, #32
+ 265 001e FFF7FEFF 		bl	spi_sendRecive
+ 266              	.LVL18:
+  70:Core/Src/flash.c ****     spi_sendRecive(u32Address >> 16);
+ 267              		.loc 1 70 5 view .LVU46
+ 268 0022 C4F30740 		ubfx	r0, r4, #16, #8
+ 269 0026 FFF7FEFF 		bl	spi_sendRecive
+ 270              	.LVL19:
+  71:Core/Src/flash.c ****     spi_sendRecive(u32Address >> 8);
+ 271              		.loc 1 71 5 view .LVU47
+ 272 002a C4F30720 		ubfx	r0, r4, #8, #8
+ 273 002e FFF7FEFF 		bl	spi_sendRecive
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s 			page 7
+
+
+ 274              	.LVL20:
+  72:Core/Src/flash.c ****     spi_sendRecive(u32Address);
+ 275              		.loc 1 72 5 view .LVU48
+ 276 0032 E0B2     		uxtb	r0, r4
+ 277 0034 FFF7FEFF 		bl	spi_sendRecive
+ 278              	.LVL21:
+  73:Core/Src/flash.c ****     CS_set();
+ 279              		.loc 1 73 5 view .LVU49
+ 280 0038 FFF7FEFF 		bl	CS_set
+ 281              	.LVL22:
+  74:Core/Src/flash.c **** 
+  75:Core/Src/flash.c ****     HAL_Delay(400);
+ 282              		.loc 1 75 5 view .LVU50
+ 283 003c 4FF4C870 		mov	r0, #400
+ 284 0040 FFF7FEFF 		bl	HAL_Delay
+ 285              	.LVL23:
+  76:Core/Src/flash.c **** }
+ 286              		.loc 1 76 1 is_stmt 0 view .LVU51
+ 287 0044 10BD     		pop	{r4, pc}
+ 288              		.loc 1 76 1 view .LVU52
+ 289              		.cfi_endproc
+ 290              	.LFE69:
+ 292              		.section	.text.w25q32_pageWrite,"ax",%progbits
+ 293              		.align	1
+ 294              		.global	w25q32_pageWrite
+ 295              		.syntax unified
+ 296              		.thumb
+ 297              		.thumb_func
+ 299              	w25q32_pageWrite:
+ 300              	.LVL24:
+ 301              	.LFB70:
+  77:Core/Src/flash.c **** void w25q32_pageWrite(uint32_t u32Address, uint8_t *u8data)
+  78:Core/Src/flash.c **** {
+ 302              		.loc 1 78 1 is_stmt 1 view -0
+ 303              		.cfi_startproc
+ 304              		@ args = 0, pretend = 0, frame = 0
+ 305              		@ frame_needed = 0, uses_anonymous_args = 0
+ 306              		.loc 1 78 1 is_stmt 0 view .LVU54
+ 307 0000 70B5     		push	{r4, r5, r6, lr}
+ 308              	.LCFI7:
+ 309              		.cfi_def_cfa_offset 16
+ 310              		.cfi_offset 4, -16
+ 311              		.cfi_offset 5, -12
+ 312              		.cfi_offset 6, -8
+ 313              		.cfi_offset 14, -4
+ 314 0002 0446     		mov	r4, r0
+ 315 0004 0E46     		mov	r6, r1
+  79:Core/Src/flash.c ****     int len = strlen((const char*)u8data);
+ 316              		.loc 1 79 5 is_stmt 1 view .LVU55
+ 317              		.loc 1 79 15 is_stmt 0 view .LVU56
+ 318 0006 0846     		mov	r0, r1
+ 319              	.LVL25:
+ 320              		.loc 1 79 15 view .LVU57
+ 321 0008 FFF7FEFF 		bl	strlen
+ 322              	.LVL26:
+ 323              		.loc 1 79 15 view .LVU58
+ 324 000c 0546     		mov	r5, r0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s 			page 8
+
+
+ 325              	.LVL27:
+  80:Core/Src/flash.c ****     CS_reset();
+ 326              		.loc 1 80 5 is_stmt 1 view .LVU59
+ 327 000e FFF7FEFF 		bl	CS_reset
+ 328              	.LVL28:
+  81:Core/Src/flash.c ****     // write enable
+  82:Core/Src/flash.c ****     spi_sendRecive(WRITE_ENABLE);
+ 329              		.loc 1 82 5 view .LVU60
+ 330 0012 0620     		movs	r0, #6
+ 331 0014 FFF7FEFF 		bl	spi_sendRecive
+ 332              	.LVL29:
+  83:Core/Src/flash.c ****     CS_set();
+ 333              		.loc 1 83 5 view .LVU61
+ 334 0018 FFF7FEFF 		bl	CS_set
+ 335              	.LVL30:
+  84:Core/Src/flash.c **** 
+  85:Core/Src/flash.c ****     HAL_Delay(1);
+ 336              		.loc 1 85 5 view .LVU62
+ 337 001c 0120     		movs	r0, #1
+ 338 001e FFF7FEFF 		bl	HAL_Delay
+ 339              	.LVL31:
+  86:Core/Src/flash.c **** 
+  87:Core/Src/flash.c ****     CS_reset();
+ 340              		.loc 1 87 5 view .LVU63
+ 341 0022 FFF7FEFF 		bl	CS_reset
+ 342              	.LVL32:
+  88:Core/Src/flash.c ****     spi_sendRecive(WRITE_PAGE);
+ 343              		.loc 1 88 5 view .LVU64
+ 344 0026 0220     		movs	r0, #2
+ 345 0028 FFF7FEFF 		bl	spi_sendRecive
+ 346              	.LVL33:
+  89:Core/Src/flash.c ****     spi_sendRecive(u32Address >> 16);
+ 347              		.loc 1 89 5 view .LVU65
+ 348 002c C4F30740 		ubfx	r0, r4, #16, #8
+ 349 0030 FFF7FEFF 		bl	spi_sendRecive
+ 350              	.LVL34:
+  90:Core/Src/flash.c ****     spi_sendRecive(u32Address >> 8);
+ 351              		.loc 1 90 5 view .LVU66
+ 352 0034 C4F30720 		ubfx	r0, r4, #8, #8
+ 353 0038 FFF7FEFF 		bl	spi_sendRecive
+ 354              	.LVL35:
+  91:Core/Src/flash.c ****     spi_sendRecive(u32Address);
+ 355              		.loc 1 91 5 view .LVU67
+ 356 003c E0B2     		uxtb	r0, r4
+ 357 003e FFF7FEFF 		bl	spi_sendRecive
+ 358              	.LVL36:
+  92:Core/Src/flash.c ****     for (int i = 0; i < len; i++)
+ 359              		.loc 1 92 5 view .LVU68
+ 360              	.LBB2:
+ 361              		.loc 1 92 10 view .LVU69
+ 362              		.loc 1 92 14 is_stmt 0 view .LVU70
+ 363 0042 0024     		movs	r4, #0
+ 364              	.LVL37:
+ 365              		.loc 1 92 5 view .LVU71
+ 366 0044 03E0     		b	.L24
+ 367              	.LVL38:
+ 368              	.L25:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s 			page 9
+
+
+  93:Core/Src/flash.c ****     {
+  94:Core/Src/flash.c ****         spi_sendRecive(u8data[i]);
+ 369              		.loc 1 94 9 is_stmt 1 discriminator 3 view .LVU72
+ 370 0046 305D     		ldrb	r0, [r6, r4]	@ zero_extendqisi2
+ 371 0048 FFF7FEFF 		bl	spi_sendRecive
+ 372              	.LVL39:
+  92:Core/Src/flash.c ****     for (int i = 0; i < len; i++)
+ 373              		.loc 1 92 30 discriminator 3 view .LVU73
+  92:Core/Src/flash.c ****     for (int i = 0; i < len; i++)
+ 374              		.loc 1 92 31 is_stmt 0 discriminator 3 view .LVU74
+ 375 004c 0134     		adds	r4, r4, #1
+ 376              	.LVL40:
+ 377              	.L24:
+  92:Core/Src/flash.c ****     for (int i = 0; i < len; i++)
+ 378              		.loc 1 92 21 is_stmt 1 discriminator 1 view .LVU75
+  92:Core/Src/flash.c ****     for (int i = 0; i < len; i++)
+ 379              		.loc 1 92 5 is_stmt 0 discriminator 1 view .LVU76
+ 380 004e AC42     		cmp	r4, r5
+ 381 0050 F9DB     		blt	.L25
+ 382              	.LBE2:
+  95:Core/Src/flash.c ****     }
+  96:Core/Src/flash.c ****     CS_set();
+ 383              		.loc 1 96 5 is_stmt 1 view .LVU77
+ 384 0052 FFF7FEFF 		bl	CS_set
+ 385              	.LVL41:
+  97:Core/Src/flash.c ****     HAL_Delay(3);
+ 386              		.loc 1 97 5 view .LVU78
+ 387 0056 0320     		movs	r0, #3
+ 388 0058 FFF7FEFF 		bl	HAL_Delay
+ 389              	.LVL42:
+  98:Core/Src/flash.c **** }
+ 390              		.loc 1 98 1 is_stmt 0 view .LVU79
+ 391 005c 70BD     		pop	{r4, r5, r6, pc}
+ 392              		.loc 1 98 1 view .LVU80
+ 393              		.cfi_endproc
+ 394              	.LFE70:
+ 396              		.section	.text.w25q32_read,"ax",%progbits
+ 397              		.align	1
+ 398              		.global	w25q32_read
+ 399              		.syntax unified
+ 400              		.thumb
+ 401              		.thumb_func
+ 403              	w25q32_read:
+ 404              	.LVL43:
+ 405              	.LFB71:
+  99:Core/Src/flash.c **** void w25q32_read(uint32_t u32Address, uint8_t *u8data, uint32_t len)
+ 100:Core/Src/flash.c **** {
+ 406              		.loc 1 100 1 is_stmt 1 view -0
+ 407              		.cfi_startproc
+ 408              		@ args = 0, pretend = 0, frame = 0
+ 409              		@ frame_needed = 0, uses_anonymous_args = 0
+ 410              		.loc 1 100 1 is_stmt 0 view .LVU82
+ 411 0000 70B5     		push	{r4, r5, r6, lr}
+ 412              	.LCFI8:
+ 413              		.cfi_def_cfa_offset 16
+ 414              		.cfi_offset 4, -16
+ 415              		.cfi_offset 5, -12
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s 			page 10
+
+
+ 416              		.cfi_offset 6, -8
+ 417              		.cfi_offset 14, -4
+ 418 0002 0446     		mov	r4, r0
+ 419 0004 0E46     		mov	r6, r1
+ 420 0006 1546     		mov	r5, r2
+ 101:Core/Src/flash.c ****     CS_reset();
+ 421              		.loc 1 101 5 is_stmt 1 view .LVU83
+ 422 0008 FFF7FEFF 		bl	CS_reset
+ 423              	.LVL44:
+ 102:Core/Src/flash.c ****     spi_sendRecive(READ_DATA);
+ 424              		.loc 1 102 5 view .LVU84
+ 425 000c 0320     		movs	r0, #3
+ 426 000e FFF7FEFF 		bl	spi_sendRecive
+ 427              	.LVL45:
+ 103:Core/Src/flash.c ****     spi_sendRecive(u32Address >> 16);
+ 428              		.loc 1 103 5 view .LVU85
+ 429 0012 C4F30740 		ubfx	r0, r4, #16, #8
+ 430 0016 FFF7FEFF 		bl	spi_sendRecive
+ 431              	.LVL46:
+ 104:Core/Src/flash.c ****     spi_sendRecive(u32Address >> 8);
+ 432              		.loc 1 104 5 view .LVU86
+ 433 001a C4F30720 		ubfx	r0, r4, #8, #8
+ 434 001e FFF7FEFF 		bl	spi_sendRecive
+ 435              	.LVL47:
+ 105:Core/Src/flash.c ****     spi_sendRecive(u32Address);
+ 436              		.loc 1 105 5 view .LVU87
+ 437 0022 E0B2     		uxtb	r0, r4
+ 438 0024 FFF7FEFF 		bl	spi_sendRecive
+ 439              	.LVL48:
+ 106:Core/Src/flash.c ****     for (uint32_t i = 0; i < len; i++)
+ 440              		.loc 1 106 5 view .LVU88
+ 441              	.LBB3:
+ 442              		.loc 1 106 10 view .LVU89
+ 443              		.loc 1 106 19 is_stmt 0 view .LVU90
+ 444 0028 0024     		movs	r4, #0
+ 445              	.LVL49:
+ 446              		.loc 1 106 5 view .LVU91
+ 447 002a 04E0     		b	.L28
+ 448              	.LVL50:
+ 449              	.L29:
+ 107:Core/Src/flash.c ****     {
+ 108:Core/Src/flash.c ****         u8data[i] = spi_sendRecive(0x00);
+ 450              		.loc 1 108 9 is_stmt 1 discriminator 3 view .LVU92
+ 451              		.loc 1 108 21 is_stmt 0 discriminator 3 view .LVU93
+ 452 002c 0020     		movs	r0, #0
+ 453 002e FFF7FEFF 		bl	spi_sendRecive
+ 454              	.LVL51:
+ 455              		.loc 1 108 19 discriminator 3 view .LVU94
+ 456 0032 3055     		strb	r0, [r6, r4]
+ 106:Core/Src/flash.c ****     for (uint32_t i = 0; i < len; i++)
+ 457              		.loc 1 106 35 is_stmt 1 discriminator 3 view .LVU95
+ 106:Core/Src/flash.c ****     for (uint32_t i = 0; i < len; i++)
+ 458              		.loc 1 106 36 is_stmt 0 discriminator 3 view .LVU96
+ 459 0034 0134     		adds	r4, r4, #1
+ 460              	.LVL52:
+ 461              	.L28:
+ 106:Core/Src/flash.c ****     for (uint32_t i = 0; i < len; i++)
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s 			page 11
+
+
+ 462              		.loc 1 106 26 is_stmt 1 discriminator 1 view .LVU97
+ 106:Core/Src/flash.c ****     for (uint32_t i = 0; i < len; i++)
+ 463              		.loc 1 106 5 is_stmt 0 discriminator 1 view .LVU98
+ 464 0036 AC42     		cmp	r4, r5
+ 465 0038 F8D3     		bcc	.L29
+ 466              	.LBE3:
+ 109:Core/Src/flash.c ****     }
+ 110:Core/Src/flash.c ****     CS_set();
+ 467              		.loc 1 110 5 is_stmt 1 view .LVU99
+ 468 003a FFF7FEFF 		bl	CS_set
+ 469              	.LVL53:
+ 111:Core/Src/flash.c **** }...
+ 470              		.loc 1 111 1 is_stmt 0 view .LVU100
+ 471 003e 70BD     		pop	{r4, r5, r6, pc}
+ 472              		.loc 1 111 1 view .LVU101
+ 473              		.cfi_endproc
+ 474              	.LFE71:
+ 476              		.global	idbuffer
+ 477              		.global	rxbuff
+ 478              		.section	.bss.idbuffer,"aw",%nobits
+ 479              		.align	2
+ 480              		.set	.LANCHOR0,. + 0
+ 483              	idbuffer:
+ 484 0000 00000000 		.space	5
+ 484      00
+ 485              		.section	.bss.rxbuff,"aw",%nobits
+ 486              		.align	2
+ 489              	rxbuff:
+ 490 0000 00000000 		.space	256
+ 490      00000000 
+ 490      00000000 
+ 490      00000000 
+ 490      00000000 
+ 491              		.text
+ 492              	.Letext0:
+ 493              		.file 2 "d:\\10 2021.10\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 494              		.file 3 "d:\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 495              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h"
+ 496              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 497              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 498              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 499              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h"
+ 500              		.file 9 "Core/Inc/flash.h"
+ 501              		.file 10 "d:\\10 2021.10\\arm-none-eabi\\include\\string.h"
+ 502              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 503              		.file 12 "Core/Inc/debug.h"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 flash.c
+C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s:18     .text.CS_reset:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s:24     .text.CS_reset:00000000 CS_reset
+C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s:47     .text.CS_reset:00000010 $d
+C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s:52     .text.CS_set:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s:58     .text.CS_set:00000000 CS_set
+C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s:80     .text.CS_set:00000010 $d
+C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s:85     .text.spi_sendRecive:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s:91     .text.spi_sendRecive:00000000 spi_sendRecive
+C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s:130    .text.spi_sendRecive:00000028 $d
+C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s:135    .rodata.w25q32_init.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s:139    .text.w25q32_init:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s:145    .text.w25q32_init:00000000 w25q32_init
+C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s:220    .text.w25q32_init:00000048 $d
+C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s:226    .text.w25q32_sectorErase:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s:232    .text.w25q32_sectorErase:00000000 w25q32_sectorErase
+C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s:293    .text.w25q32_pageWrite:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s:299    .text.w25q32_pageWrite:00000000 w25q32_pageWrite
+C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s:397    .text.w25q32_read:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s:403    .text.w25q32_read:00000000 w25q32_read
+C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s:483    .bss.idbuffer:00000000 idbuffer
+C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s:489    .bss.rxbuff:00000000 rxbuff
+C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s:479    .bss.idbuffer:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccahxIHZ.s:486    .bss.rxbuff:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_WritePin
+HAL_SPI_TransmitReceive
+hspi2
+log_data
+HAL_Delay
+strlen

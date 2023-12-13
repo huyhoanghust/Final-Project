@@ -1,14 +1,24 @@
+/**
+ * @file mqtt.c
+ * @author hoanghuyhust (hoangnh191855@sis.hust.edu.vn)
+ * @brief 
+ * @version 0.1
+ * @date 2023-12-01
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 #include "mqtt.h"
 
 mqttServer_t mqttServer ={
-    .host = "broker.mqttdashboard.com",
+    .host = "demo.thingsboard.io",
     .port = 1883,
     .serverType=0,  //TCP
 };
 
 mqttClient_t mqttClient={
     .clientID="DATN_Tracking_20191855",
-    .keepAliveInterval = 60,
+    .keepAliveInterval = 90,
     .username="",
     .pass="",
     .clientIndex=0,
@@ -17,7 +27,7 @@ mqttClient_t mqttClient={
 
 mqttData_t mqttData;
 
-char ATcommand[100]={0};
+char ATcommand[200]={0};
 
 extern char simRxResponse[100];
 
@@ -62,7 +72,9 @@ void mqtt_connectServer()
     HAL_Delay(100);
     memset(ATcommand,'\0',sizeof(ATcommand));
     //connect to MQTT server
-    sprintf(ATcommand,"AT+CMQTTCONNECT=%d,\"tcp://%s:%d\",%d,1\r\n",mqttClient.clientIndex,mqttServer.host,mqttServer.port,mqttClient.keepAliveInterval);
+    //AT+CMQTTCONNECT=0,"tcp://demo.thingsboard.io:1883",90,1,"57OrAgUzdWLWjWE760Ir","5437ac10-9460-11ee-ad71-4d1e7bacfffa"
+    sprintf(ATcommand,"AT+CMQTTCONNECT=%d,\"tcp://%s:%d\",%d,1,\"%s\",\"%s\"\r\n",\
+    mqttClient.clientIndex,mqttServer.host,mqttServer.port,mqttClient.keepAliveInterval,DEVICE_USERNAME,DEVICE_PASSWORD);
     if(sim7672_send_command(ATcommand,"+CMQTTCONNECT: 0,0\r\n",TIME_LONG)!=SIM_TRUE)
     {
         sim7672_errorHandle();
@@ -96,7 +108,7 @@ void mqtt_pub(char *topic, char *payload)
         sim7672_errorHandle();
     }
     HAL_Delay(100);
-    if(sim7672_send_command(payload,"OK\r\n",TIME_VERY_SHORT)!=SIM_TRUE)
+    if(sim7672_send_command(payload,"OK\r\n",TIME_MEDIUM)!=SIM_TRUE)
     {
         sim7672_errorHandle();
     }

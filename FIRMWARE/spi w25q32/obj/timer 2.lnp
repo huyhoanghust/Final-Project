@@ -1,0 +1,13 @@
+--cpu Cortex-M3
+".\obj\stm32f10x_it.o"
+".\obj\system_stm32f10x.o"
+".\obj\main.o"
+".\obj\startup_stm32f10x_md.o"
+".\obj\stm32f10x_rcc.o"
+".\obj\stm32f10x_gpio.o"
+".\obj\stm32f10x_tim.o"
+".\obj\stm32f10x_spi.o"
+--strict --scatter ".\obj\timer 2.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\lst\timer 2.map" -o ".\obj\timer 2.axf"

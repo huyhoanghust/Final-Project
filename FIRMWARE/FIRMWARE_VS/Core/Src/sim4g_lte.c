@@ -71,7 +71,7 @@ void sim7672_init(void)
     }
     HAL_Delay(100);
     
-    sim7672_checkSIMCard();
+    //sim7672_checkSIMCard();
 
 }
 
@@ -204,6 +204,30 @@ uint8_t sim7672_check_signalStrength(void)
 void sim7672_checkSIMCard()
 {
     if (sim7672_send_command("AT+CPIN?\r\n", "READY\r\n",TIME_VERY_SHORT) != SIM_TRUE)
+    {
+        sim7672_errorHandle();
+    }
+}
+
+void sim7672_sendSMS(char *simNumber, char *simMessage)
+{
+    char smsATCommand[50] = {0};
+    char endSMS[2] = {0};
+    endSMS[0] = 0x1A;
+    endSMS[1] = '\0';
+    sprintf(smsATCommand, "AT+CMGS=\"%s\"\r\n", simNumber);
+    //set text mode
+    if(sim7672_send_command("AT+CMGF=1\r\n","OK\r\n",TIME_VERY_SHORT)!=SIM_TRUE)
+    {
+        sim7672_errorHandle();
+    }
+    HAL_Delay(100);
+    if(sim7672_send_command(smsATCommand,">",TIME_VERY_SHORT)!=SIM_TRUE)
+    {
+        sim7672_errorHandle();
+    }
+    sim7672_sendcmd_notresp(simMessage);
+    if(sim7672_send_command(endSMS,"OK\r\n",TIME_VERY_SHORT)!=SIM_TRUE)
     {
         sim7672_errorHandle();
     }

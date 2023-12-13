@@ -11,6 +11,8 @@
         "ff.h": "c",
         "fatfs_sd.h": "c",
         "ff_gen_drv.h": "c",
-        "diskio.h": "c"
+        "diskio.h": "c",
+        "mqtt.h": "c",
+        "debug.h": "c"
     }
 }

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
   36              		.cfi_offset 4, -8
   37              		.cfi_offset 14, -4
   38 0002 82B0     		sub	sp, sp, #8
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 2
 
 
   39              	.LCFI1:
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
   80              	.LVL7:
   34:Core/Src/rc522.c **** }
   81              		.loc 1 34 1 is_stmt 0 view .LVU16
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 3
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 3
 
 
   82 0038 02B0     		add	sp, sp, #8
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  127              		.loc 1 45 5 is_stmt 1 view .LVU22
  128              		.loc 1 45 19 is_stmt 0 view .LVU23
  129 0012 C3B2     		uxtb	r3, r0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 4
 
 
  130 0014 5B00     		lsls	r3, r3, #1
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  178 0066 00BF     		.align	2
  179              	.L7:
  180 0068 00080140 		.word	1073809408
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 5
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 5
 
 
  181 006c 00000000 		.word	hspi1
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
   95:Core/Src/rc522.c **** 
   96:Core/Src/rc522.c **** /*
   97:Core/Src/rc522.c ****  * Function Name: rc522_reset
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 6
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 6
 
 
   98:Core/Src/rc522.c ****  * Description: Reset RC522
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  125:Core/Src/rc522.c ****  *    0x4400 = Mifare_UltraLight
  126:Core/Src/rc522.c ****  *    0x0400 = Mifare_One(S50)
  127:Core/Src/rc522.c ****  *    0x0200 = Mifare_One(S70)
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 7
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 7
 
 
  128:Core/Src/rc522.c ****  *    0x0800 = Mifare_Pro(X)
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  182:Core/Src/rc522.c **** 	rc522_writeRegister(MFRC522_REG_COMM_IE_N, irqEn | 0x80);
  183:Core/Src/rc522.c **** 	rc522_clearBitMask(MFRC522_REG_COMM_IRQ, 0x80);
  184:Core/Src/rc522.c **** 	rc522_setBitMask(MFRC522_REG_FIFO_LEVEL, 0x80);
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 8
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 8
 
 
  185:Core/Src/rc522.c **** 	rc522_writeRegister(MFRC522_REG_COMMAND, PCD_IDLE);
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  239:Core/Src/rc522.c ****                 }
  240:Core/Src/rc522.c ****             }
  241:Core/Src/rc522.c **** 		} 
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 9
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 9
 
 
  242:Core/Src/rc522.c ****         else 
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  259              		.thumb_func
  261              	rc522_clearBitMask:
  262              	.LVL19:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 10
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 10
 
 
  263              	.LFB77:
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
   79:Core/Src/rc522.c **** 	uint8_t temp = 0;
  307              		.loc 1 79 1 is_stmt 1 view -0
  308              		.cfi_startproc
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 11
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 11
 
 
  309              		@ args = 0, pretend = 0, frame = 0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
   88:Core/Src/rc522.c **** 		{
  350              		.loc 1 88 5 is_stmt 0 view .LVU67
  351 001a 10F0030F 		tst	r0, #3
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 12
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 12
 
 
  352 001e F3D1     		bne	.L15
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  400              	.LVL37:
   65:Core/Src/rc522.c ****     rc522_writeRegister(MFRC522_REG_RF_CFG, 0x70);
  401              		.loc 1 65 5 view .LVU76
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 13
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 13
 
 
  402 001e 0321     		movs	r1, #3
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  451              		.cfi_offset 7, -20
  452              		.cfi_offset 8, -16
  453              		.cfi_offset 9, -12
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 14
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 14
 
 
  454              		.cfi_offset 10, -8
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  494 002e 0A20     		movs	r0, #10
  495 0030 FFF7FEFF 		bl	rc522_setBitMask
  496              	.LVL50:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 15
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 15
 
 
  185:Core/Src/rc522.c **** 	// Writing data to the FIFO
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  537              		.loc 1 187 2 discriminator 1 view .LVU111
  538 005e A342     		cmp	r3, r4
  539 0060 F5D8     		bhi	.L26
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 16
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 16
 
 
  192:Core/Src/rc522.c **** 	if(command == PCD_TRANSCEIVE) 
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  579              		.loc 1 206 2 is_stmt 1 view .LVU126
  580 008a 8021     		movs	r1, #128
  581 008c 0D20     		movs	r0, #13
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 17
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 17
 
 
  582              	.LVL63:
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  214:Core/Src/rc522.c ****             }
  622              		.loc 1 214 24 view .LVU141
  623 00bc 0125     		movs	r5, #1
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 18
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 18
 
 
  624              	.L31:
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  661              		.loc 1 232 19 is_stmt 0 view .LVU158
  662 00e2 102E     		cmp	r6, #16
  663 00e4 06D9     		bls	.L34
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 19
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 19
 
 
  234:Core/Src/rc522.c ****                 }
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  703              	.LVL80:
  236:Core/Src/rc522.c ****                 {
  704              		.loc 1 236 36 discriminator 3 view .LVU174
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 20
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 20
 
 
  705 0108 A4B2     		uxth	r4, r4
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  752 000c FFF7FEFF 		bl	rc522_writeRegister
  753              	.LVL86:
  137:Core/Src/rc522.c ****     status = rc522_toCard(PCD_TRANSCEIVE, tagType, 1, tagType, &backbits);
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 21
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 21
 
 
  754              		.loc 1 137 5 is_stmt 1 view .LVU184
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  798              		.thumb_func
  800              	rc522_anticoll:
  801              	.LVL89:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 22
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 22
 
 
  802              	.LFB78:
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  838              		.loc 1 290 11 is_stmt 0 view .LVU209
  839 0016 0DF10E03 		add	r3, sp, #14
  840 001a 0093     		str	r3, [sp]
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 23
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 23
 
 
  841 001c 2346     		mov	r3, r4
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  875 0034 0132     		adds	r2, r2, #1
  876              	.LVL98:
  294:Core/Src/rc522.c ****         {
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 24
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 24
 
 
  877              		.loc 1 294 22 discriminator 3 view .LVU220
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  315:Core/Src/rc522.c **** 	uint8_t buff[4]; 
  316:Core/Src/rc522.c **** 
  317:Core/Src/rc522.c **** 	buff[0] = PICC_HALT;
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 25
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 25
 
 
  318:Core/Src/rc522.c **** 	buff[1] = 0;
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  950              		.loc 1 336 2 view .LVU238
  951 001a 05E0     		b	.L60
  952              	.LVL107:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 26
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 26
 
 
  953              	.L61:
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  348:Core/Src/rc522.c **** 	} while((i != 0) && !(n & 0x04));																						// CRCIrq = 1
  991              		.loc 1 348 9 is_stmt 1 discriminator 2 view .LVU253
  992              		.loc 1 348 2 is_stmt 0 discriminator 2 view .LVU254
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 27
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 27
 
 
  993 003e 13F0FF04 		ands	r4, r3, #255
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  315:Core/Src/rc522.c **** 
  1042              		.loc 1 315 2 view .LVU267
  317:Core/Src/rc522.c **** 	buff[1] = 0;
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 28
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 28
 
 
  1043              		.loc 1 317 2 view .LVU268
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  1091              	.LCFI23:
  1092              		.cfi_def_cfa_offset 16
  1093              		.cfi_offset 3, -16
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 29
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 29
 
 
  1094              		.cfi_offset 4, -12
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  1136              		.section	.text.rc522_selectTag,"ax",%progbits
  1137              		.align	1
  1138              		.global	rc522_selectTag
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 30
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 30
 
 
  1139              		.syntax unified
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  1176 0012 07E0     		b	.L72
  1177              	.LVL131:
  1178              	.L73:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 31
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 31
 
 
  372:Core/Src/rc522.c ****     {
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  1221              		.loc 1 378 26 discriminator 1 view .LVU319
  1222 004c 182B     		cmp	r3, #24
  1223 004e 03D1     		bne	.L74
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 32
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 32
 
 
  379:Core/Src/rc522.c ****     {   
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  1257              		.cfi_startproc
  1258              		@ args = 0, pretend = 0, frame = 16
  1259              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 33
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 33
 
 
  1260              		.loc 1 401 1 is_stmt 0 view .LVU327
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  1301              	.LVL145:
  1302              	.L78:
  409:Core/Src/rc522.c **** 	for(i = 0; i < 6; i++) 
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 34
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 34
 
 
  1303              		.loc 1 409 13 is_stmt 1 discriminator 1 view .LVU345
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  1345 004c FFF7FEFF 		bl	rc522_toCard
  1346              	.LVL152:
  418:Core/Src/rc522.c **** 	if ((status != RC522_OK) ||(!(rc522_readRegister(MFRC522_REG_STATUS2) & 0x08))) 
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 35
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 35
 
 
  1347              		.loc 1 418 2 is_stmt 1 view .LVU361
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  425:Core/Src/rc522.c **** /*
  426:Core/Src/rc522.c ****  * Function Name: rc522_read
  427:Core/Src/rc522.c ****  * Description: Read block data
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 36
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 36
 
 
  428:Core/Src/rc522.c ****  * Input parameters: blockAddr - block address; recvData - read block data
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  1435              	.LVL161:
  440:Core/Src/rc522.c **** 	if((status != RC522_OK) || (unLen != 0x90)) 
  1436              		.loc 1 440 2 is_stmt 1 view .LVU383
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 37
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 37
 
 
  1437              		.loc 1 440 4 is_stmt 0 view .LVU384
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  1479              		.cfi_def_cfa_offset 8
  1480              		.cfi_offset 4, -8
  1481              		.cfi_offset 14, -4
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 38
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 38
 
 
  1482 0002 88B0     		sub	sp, sp, #32
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  1525 0038 01D0     		beq	.L103
  466:Core/Src/rc522.c ****     {   
  467:Core/Src/rc522.c **** 		status = RC522_ERR;   
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 39
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 39
 
 
  1526              		.loc 1 467 10 view .LVU410
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  476:Core/Src/rc522.c **** 		}
  477:Core/Src/rc522.c **** 		rc522_calculateCRC(buff, 16, &buff[16]);
  1565              		.loc 1 477 3 is_stmt 1 view .LVU424
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 40
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 40
 
 
  1566 0062 07AA     		add	r2, sp, #28
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  1612              	.L93:
  483:Core/Src/rc522.c **** 		}
  484:Core/Src/rc522.c **** 	}
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 41
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 41
 
 
  485:Core/Src/rc522.c **** 	return status;
@@ -2435,47 +2435,47 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 1
  1641              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h"
  1642              		.file 9 "Core/Inc/rc522.h"
  1643              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s 			page 42
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s 			page 42
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 rc522.c
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:18     .text.rc522_writeRegister:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:24     .text.rc522_writeRegister:00000000 rc522_writeRegister
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:90     .text.rc522_writeRegister:0000003c $d
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:96     .text.rc522_readRegister:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:102    .text.rc522_readRegister:00000000 rc522_readRegister
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:180    .text.rc522_readRegister:00000068 $d
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:186    .text.rc522_reset:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:192    .text.rc522_reset:00000000 rc522_reset
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:214    .text.rc522_setBitMask:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:220    .text.rc522_setBitMask:00000000 rc522_setBitMask
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:255    .text.rc522_clearBitMask:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:261    .text.rc522_clearBitMask:00000000 rc522_clearBitMask
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:298    .text.rc522_controlAntenna:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:304    .text.rc522_controlAntenna:00000000 rc522_controlAntenna
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:366    .text.rc522_init:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:372    .text.rc522_init:00000000 rc522_init
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:431    .text.rc522_toCard:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:437    .text.rc522_toCard:00000000 rc522_toCard
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:718    .text.rc522_request:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:724    .text.rc522_request:00000000 rc522_request
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:794    .text.rc522_anticoll:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:800    .text.rc522_anticoll:00000000 rc522_anticoll
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:906    .text.rc522_calculateCRC:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:912    .text.rc522_calculateCRC:00000000 rc522_calculateCRC
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:1022   .text.rc522_halt:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:1028   .text.rc522_halt:00000000 rc522_halt
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:1076   .text.rc522_check:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:1082   .text.rc522_check:00000000 rc522_check
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:1137   .text.rc522_selectTag:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:1143   .text.rc522_selectTag:00000000 rc522_selectTag
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:1247   .text.rc522_auth:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:1253   .text.rc522_auth:00000000 rc522_auth
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:1384   .text.rc522_read:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:1390   .text.rc522_read:00000000 rc522_read
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:1463   .text.rc522_write:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccJjtaSt.s:1469   .text.rc522_write:00000000 rc522_write
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:18     .text.rc522_writeRegister:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:24     .text.rc522_writeRegister:00000000 rc522_writeRegister
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:90     .text.rc522_writeRegister:0000003c $d
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:96     .text.rc522_readRegister:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:102    .text.rc522_readRegister:00000000 rc522_readRegister
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:180    .text.rc522_readRegister:00000068 $d
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:186    .text.rc522_reset:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:192    .text.rc522_reset:00000000 rc522_reset
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:214    .text.rc522_setBitMask:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:220    .text.rc522_setBitMask:00000000 rc522_setBitMask
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:255    .text.rc522_clearBitMask:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:261    .text.rc522_clearBitMask:00000000 rc522_clearBitMask
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:298    .text.rc522_controlAntenna:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:304    .text.rc522_controlAntenna:00000000 rc522_controlAntenna
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:366    .text.rc522_init:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:372    .text.rc522_init:00000000 rc522_init
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:431    .text.rc522_toCard:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:437    .text.rc522_toCard:00000000 rc522_toCard
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:718    .text.rc522_request:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:724    .text.rc522_request:00000000 rc522_request
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:794    .text.rc522_anticoll:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:800    .text.rc522_anticoll:00000000 rc522_anticoll
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:906    .text.rc522_calculateCRC:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:912    .text.rc522_calculateCRC:00000000 rc522_calculateCRC
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:1022   .text.rc522_halt:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:1028   .text.rc522_halt:00000000 rc522_halt
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:1076   .text.rc522_check:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:1082   .text.rc522_check:00000000 rc522_check
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:1137   .text.rc522_selectTag:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:1143   .text.rc522_selectTag:00000000 rc522_selectTag
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:1247   .text.rc522_auth:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:1253   .text.rc522_auth:00000000 rc522_auth
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:1384   .text.rc522_read:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:1390   .text.rc522_read:00000000 rc522_read
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:1463   .text.rc522_write:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\cczCUIvm.s:1469   .text.rc522_write:00000000 rc522_write
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin

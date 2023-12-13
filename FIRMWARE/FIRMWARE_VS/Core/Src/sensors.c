@@ -124,6 +124,7 @@ float DS18B20_Result(void)
 		log_data("Init ds18b20 fail\nInit again\n");
 		Presence = DS18B20_Start();
 	}
+	// log_data("ds int successfull\n");
 	HAL_Delay(1);
 	DS18B20_Write(0xCC); // skip ROM
 	DS18B20_Write(0x44); // convert t
@@ -189,7 +190,7 @@ uint8_t DHT11_Read(void)
 	return i;
 }
 
-float DHT11_Result(float* Temperature, float* Humidity)
+float DHT11_Result(float Temperature, float Humidity)
 {
 	uint8_t Presence = 0;
 	uint8_t Rh_byte1, Rh_byte2, Temp_byte1, Temp_byte2;
@@ -212,8 +213,8 @@ float DHT11_Result(float* Temperature, float* Humidity)
 	TEMP = Temp_byte1;
 	RH = Rh_byte1;
 
-	*Temperature = (float)TEMP;
-	*Humidity = (float)RH;
+	Temperature = (float)TEMP;
+	Humidity = (float)RH;
 }
 
 /************for LEVEL***************/
