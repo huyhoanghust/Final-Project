@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
   29:Core/Src/gnss.c **** l70GPGGAType_t l70GPGGA = {0};
   30:Core/Src/gnss.c **** int k = 0;
   31:Core/Src/gnss.c **** char l70RxData[100] = {0};
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 2
 
 
   32:Core/Src/gnss.c **** char l70Data = 0;
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
   60              		.loc 1 52 9 is_stmt 1 view .LVU15
   61              		.loc 1 52 10 is_stmt 0 view .LVU16
   62 0014 0139     		subs	r1, r1, #1
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 3
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 3
 
 
   63              	.LVL5:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  105 0008 0B70     		strb	r3, [r1]
  106              		.loc 1 65 14 view .LVU26
  107 000a 0124     		movs	r4, #1
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 4
 
 
  108 000c 15E0     		b	.L6
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  145              		.loc 1 79 18 is_stmt 0 view .LVU39
  146 0034 3023     		movs	r3, #48
  147 0036 3355     		strb	r3, [r6, r4]
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 5
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 5
 
 
  148              		.loc 1 79 14 view .LVU40
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  194              		.loc 1 88 1 is_stmt 1 view -0
  195              		.cfi_startproc
  196              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 6
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 6
 
 
  197              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  243 0028 0FB9     		cbnz	r7, .L17
  244              	.LVL26:
  245              	.L14:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 7
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 7
 
 
   97:Core/Src/gnss.c ****     {
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  285 005c 691C     		adds	r1, r5, #1
  100:Core/Src/gnss.c ****     }
  286              		.loc 1 100 9 view .LVU73
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 8
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 8
 
 
  287 005e 0C44     		add	r4, r4, r1
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  111:Core/Src/gnss.c ****     HAL_GPIO_WritePin(GNSS_RESET_GPIO_Port, GNSS_CTRL_PWR_Pin, GPIO_PIN_RESET);
  329              		.loc 1 111 5 view .LVU78
  330 0002 124C     		ldr	r4, .L22
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 9
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 9
 
 
  331 0004 0022     		movs	r2, #0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  378              		.section	.text.l70_callback,"ax",%progbits
  379              		.align	1
  380              		.global	l70_callback
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 10
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 10
 
 
  381              		.syntax unified
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  140:Core/Src/gnss.c ****         HAL_UART_Receive_IT(&huart4, (uint8_t *)&l70Data, 1);
  141:Core/Src/gnss.c ****     }
  142:Core/Src/gnss.c ****     else
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 11
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 11
 
 
  143:Core/Src/gnss.c ****     {
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  456              		.loc 1 131 30 discriminator 1 view .LVU106
  457 004a 012A     		cmp	r2, #1
  458 004c DFD1     		bne	.L27
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 12
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 12
 
 
  133:Core/Src/gnss.c ****         l70RxState = L70_END_DATA;
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  505              		.syntax unified
  506              		.thumb
  507              		.thumb_func
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 13
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 13
 
 
  509              	l70_receiveGPS:
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  156:Core/Src/gnss.c ****     return l70RxData;
  551              		.loc 1 156 5 is_stmt 1 view .LVU128
  157:Core/Src/gnss.c **** }
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 14
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 14
 
 
  552              		.loc 1 157 1 is_stmt 0 view .LVU129
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  165:Core/Src/gnss.c ****     double data_degree;
  601              		.loc 1 165 5 view .LVU136
  166:Core/Src/gnss.c ****     // convert str to double
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 15
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 15
 
 
  167:Core/Src/gnss.c ****     data_float = atof(data);
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  651 004a 0B46     		mov	r3, r1
  652              		.loc 1 171 16 view .LVU150
  653 004c 3046     		mov	r0, r6
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 16
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 16
 
 
  654 004e 3946     		mov	r1, r7
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  695 005e 0000     		.align	2
  696              	.LC5:
  697 0060 270A00   		.ascii	"'\012\000"
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 17
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 17
 
 
  698              		.section	.text.l70_handleGPS,"ax",%progbits
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  741              		.loc 1 186 5 view .LVU164
  742              		.loc 1 186 19 is_stmt 0 view .LVU165
  743 0014 7549     		ldr	r1, .L46+12
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 18
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 18
 
 
  744 0016 2046     		mov	r0, r4
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  790              	.LVL76:
  791 007c 0622     		movs	r2, #6
  792 007e 4146     		mov	r1, r8
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 19
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 19
 
 
  793 0080 FFF7FEFF 		bl	ftoa
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  838 00ce 6421     		movs	r1, #100
  839 00d0 01FB1202 		mls	r2, r1, r2, r0
  840              		.loc 1 203 24 view .LVU185
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 20
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 20
 
 
  841 00d4 4C4E     		ldr	r6, .L46+40
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  888              	.LVL87:
  211:Core/Src/gnss.c **** 
  212:Core/Src/gnss.c ****     date = (long int)(atof(l70GPRMC.Date));
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 21
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 21
 
 
  889              		.loc 1 212 5 view .LVU202
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  938 017a 84F84A50 		strb	r5, [r4, #74]
  218:Core/Src/gnss.c ****     intToStr(l70Date.month, l70DataAfterHadler.Date + 3, 0);
  939              		.loc 1 218 5 is_stmt 1 view .LVU220
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 22
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 22
 
 
  940 017e 0022     		movs	r2, #0
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  983              		.loc 1 229 5 view .LVU231
  984 01c6 2846     		mov	r0, r5
  985 01c8 FFF7FEFF 		bl	log_data
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 23
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 23
 
 
  986              	.LVL101:
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  1035              	.LFB76:
  233:Core/Src/gnss.c **** 
  234:Core/Src/gnss.c **** void l70_checkSpeed()
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 24
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 24
 
 
  235:Core/Src/gnss.c **** {
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  1080              		.syntax unified
  1081              		.thumb
  1082              		.thumb_func
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 25
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 25
 
 
  1084              	l70_sleep:
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  1140              	l70DataAfterHadler:
  1141 0000 00000000 		.space	82
  1141      00000000 
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 26
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 26
 
 
  1141      00000000 
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  1190              		.align	3
  1191              		.set	.LANCHOR6,. + 0
  1194              	speed_knot:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 27
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 27
 
 
  1195 0000 00000000 		.space	8
@@ -1580,67 +1580,67 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 1
  1210              		.file 14 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
  1211              		.file 15 "<built-in>"
  1212              		.file 16 "d:\\10 2021.10\\arm-none-eabi\\include\\math.h"
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 28
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 28
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 gnss.c
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:18     .text.reverse:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:24     .text.reverse:00000000 reverse
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:74     .text.intToStr:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:80     .text.intToStr:00000000 intToStr
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:173    .text.intToStr:00000050 $d
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:185    .text.ftoa:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:191    .text.ftoa:00000000 ftoa
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:302    .text.ftoa:00000070 $d
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:307    .rodata.l70_init.str1.4:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:312    .text.l70_init:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:318    .text.l70_init:00000000 l70_init
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:372    .text.l70_init:0000004c $d
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:379    .text.l70_callback:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:385    .text.l70_callback:00000000 l70_callback
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:494    .text.l70_callback:0000007c $d
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:503    .text.l70_receiveGPS:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:509    .text.l70_receiveGPS:00000000 l70_receiveGPS
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:558    .text.l70_receiveGPS:0000002c $d
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:571    .text.minuteTodegree:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:577    .text.minuteTodegree:00000000 minuteTodegree
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:676    .text.minuteTodegree:00000068 $d
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:682    .rodata.l70_handleGPS.str1.4:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:699    .text.l70_handleGPS:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:705    .text.l70_handleGPS:00000000 l70_handleGPS
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1004   .text.l70_handleGPS:000001e0 $d
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1024   .rodata.l70_checkSpeed.str1.4:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1028   .text.l70_checkSpeed:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1034   .text.l70_checkSpeed:00000000 l70_checkSpeed
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1067   .text.l70_checkSpeed:0000001c $d
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1074   .rodata.l70_sleep.str1.4:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1078   .text.l70_sleep:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1084   .text.l70_sleep:00000000 l70_sleep
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1106   .text.l70_sleep:00000010 $d
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1187   .bss.speed_km:00000000 speed_km
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1194   .bss.speed_knot:00000000 speed_knot
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1147   .bss.l70Date:00000000 l70Date
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1180   .bss.l70Utctime:00000000 l70Utctime
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1140   .bss.l70DataAfterHadler:00000000 l70DataAfterHadler
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1160   .bss.l70GPRMC:00000000 l70GPRMC
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1173   .bss.l70RxState:00000000 l70RxState
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1133   .bss.l70Data:00000000 l70Data
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1167   .bss.l70RxData:00000000 l70RxData
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1127   .bss.k:00000000 k
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1153   .bss.l70GPGGA:00000000 l70GPGGA
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1123   .bss.k:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1134   .bss.l70Data:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1136   .bss.l70DataAfterHadler:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1143   .bss.l70Date:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1150   .bss.l70GPGGA:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1156   .bss.l70GPRMC:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1163   .bss.l70RxData:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1174   .bss.l70RxState:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1176   .bss.l70Utctime:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1183   .bss.speed_km:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccURO06h.s:1190   .bss.speed_knot:00000000 $d
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccURO06h.s 			page 29
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:18     .text.reverse:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:24     .text.reverse:00000000 reverse
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:74     .text.intToStr:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:80     .text.intToStr:00000000 intToStr
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:173    .text.intToStr:00000050 $d
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:185    .text.ftoa:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:191    .text.ftoa:00000000 ftoa
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:302    .text.ftoa:00000070 $d
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:307    .rodata.l70_init.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:312    .text.l70_init:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:318    .text.l70_init:00000000 l70_init
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:372    .text.l70_init:0000004c $d
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:379    .text.l70_callback:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:385    .text.l70_callback:00000000 l70_callback
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:494    .text.l70_callback:0000007c $d
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:503    .text.l70_receiveGPS:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:509    .text.l70_receiveGPS:00000000 l70_receiveGPS
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:558    .text.l70_receiveGPS:0000002c $d
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:571    .text.minuteTodegree:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:577    .text.minuteTodegree:00000000 minuteTodegree
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:676    .text.minuteTodegree:00000068 $d
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:682    .rodata.l70_handleGPS.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:699    .text.l70_handleGPS:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:705    .text.l70_handleGPS:00000000 l70_handleGPS
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1004   .text.l70_handleGPS:000001e0 $d
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1024   .rodata.l70_checkSpeed.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1028   .text.l70_checkSpeed:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1034   .text.l70_checkSpeed:00000000 l70_checkSpeed
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1067   .text.l70_checkSpeed:0000001c $d
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1074   .rodata.l70_sleep.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1078   .text.l70_sleep:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1084   .text.l70_sleep:00000000 l70_sleep
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1106   .text.l70_sleep:00000010 $d
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1187   .bss.speed_km:00000000 speed_km
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1194   .bss.speed_knot:00000000 speed_knot
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1147   .bss.l70Date:00000000 l70Date
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1180   .bss.l70Utctime:00000000 l70Utctime
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1140   .bss.l70DataAfterHadler:00000000 l70DataAfterHadler
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1160   .bss.l70GPRMC:00000000 l70GPRMC
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1173   .bss.l70RxState:00000000 l70RxState
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1133   .bss.l70Data:00000000 l70Data
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1167   .bss.l70RxData:00000000 l70RxData
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1127   .bss.k:00000000 k
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1153   .bss.l70GPGGA:00000000 l70GPGGA
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1123   .bss.k:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1134   .bss.l70Data:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1136   .bss.l70DataAfterHadler:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1143   .bss.l70Date:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1150   .bss.l70GPGGA:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1156   .bss.l70GPRMC:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1163   .bss.l70RxData:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1174   .bss.l70RxState:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1176   .bss.l70Utctime:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1183   .bss.speed_km:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s:1190   .bss.speed_knot:00000000 $d
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccBzclZI.s 			page 29
 
 
 

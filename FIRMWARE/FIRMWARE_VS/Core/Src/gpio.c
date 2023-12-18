@@ -57,7 +57,7 @@ void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOA, BUZZER_Pin|SIM_PWRKEY_Pin|SIM_RESET_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, RFID_SS_Pin|SIM_CTRL_PWR_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOA, RFID_SS_Pin|SIM_CTRL_PWR_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, SDCARD_SS_Pin|FLASH_SS_Pin, GPIO_PIN_RESET);

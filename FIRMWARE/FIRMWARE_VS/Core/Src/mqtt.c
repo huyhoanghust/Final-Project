@@ -35,19 +35,19 @@ void mqtt_disconnectServer()
 {
     memset(ATcommand,'\0',sizeof(ATcommand));
     sprintf(ATcommand,"AT+CMQTTDISC=%d,%d\r\n",mqttClient.clientIndex, mqttClient.keepAliveInterval);
-    if(sim7672_send_command(ATcommand,"+CMQTTDISC: 0,0\r\n",TIME_SHORT))
+    if(sim7672_send_command(ATcommand,"+CMQTTDISC: 0,0\r\n",TIME_VERY_SHORT))
     {
         sim7672_errorHandle();
     }
     HAL_Delay(100);
     memset(ATcommand,'\0',sizeof(ATcommand));
     sprintf(ATcommand,"AT+CMQTTREL=%d\r\n",mqttClient.clientIndex);
-    if(sim7672_send_command(ATcommand, "OK\r\n",TIME_MEDIUM))
+    if(sim7672_send_command(ATcommand, "+CMQTTDISC: 0,0\r\n",TIME_VERY_SHORT))
     {
         sim7672_errorHandle();
     }
     HAL_Delay(100);
-    if(sim7672_send_command("AT+CMQTTSTOP\r\n","+CMQTTSTOP: 0\r\n",TIME_SHORT))
+    if(sim7672_send_command("AT+CMQTTSTOP\r\n","+CMQTTSTOP: 0\r\n",TIME_VERY_SHORT))
     {
         sim7672_errorHandle();
     }
@@ -91,36 +91,36 @@ void mqtt_pub(char *topic, char *payload)
     sprintf(ATcommand,"AT+CMQTTTOPIC=%d,%d\r\n",mqttClient.clientIndex,len_topic);
     if(sim7672_send_command(ATcommand,">",TIME_VERY_SHORT)!=SIM_TRUE)
     {
-        sim7672_errorHandle();
+        //sim7672_errorHandle();
     }
-    HAL_Delay(100);
+    //HAL_Delay(100);
     //sim7672_sendcmd_notresp(topic);
     if(sim7672_send_command(topic,"OK\r\n",TIME_VERY_SHORT)!=SIM_TRUE)
     {
-        sim7672_errorHandle();
+        //sim7672_errorHandle();
     }
-    HAL_Delay(100);
+    //HAL_Delay(100);
 
     memset(ATcommand,'\0',sizeof(ATcommand));
     sprintf(ATcommand,"AT+CMQTTPAYLOAD=%d,%d\r\n",mqttClient.clientIndex,len_payload);
     if(sim7672_send_command(ATcommand,">",TIME_VERY_SHORT)!=SIM_TRUE)
     {
-        sim7672_errorHandle();
+        //sim7672_errorHandle();
     }
-    HAL_Delay(100);
-    if(sim7672_send_command(payload,"OK\r\n",TIME_MEDIUM)!=SIM_TRUE)
+    //HAL_Delay(100);
+    if(sim7672_send_command(payload,"OK\r\n",TIME_VERY_SHORT)!=SIM_TRUE)
     {
-        sim7672_errorHandle();
+        //sim7672_errorHandle();
     }
-    HAL_Delay(100);
+    //HAL_Delay(100);
 
     memset(ATcommand,'\0',sizeof(ATcommand));
     sprintf(ATcommand,"AT+CMQTTPUB=%d,%d,%d\r\n",mqttClient.clientIndex,mqttClient.QoS,mqttClient.keepAliveInterval);
     if(sim7672_send_command(ATcommand,"+CMQTTPUB: 0,0\r\n",TIME_VERY_SHORT)!=SIM_TRUE)
     {
-        sim7672_errorHandle();
+        //sim7672_errorHandle();
     }
-    HAL_Delay(100);
+    //HAL_Delay(100);
 }
 /*
 AT+CMQTTSUB=0

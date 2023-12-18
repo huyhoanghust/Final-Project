@@ -123,6 +123,7 @@ int time_minute;
 char totalMinute_OperateTime_buff[30] = {0};
 
 int numCheck_time = 0;
+char utctime_buff[10]={0};
 /*********************************** GPS************************/
 #define GPS 0
 char *GPSResponse;
@@ -306,10 +307,13 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
   {
     Type_Task = Task_LogoutOrRS232;
     rs232_buff[rs232_index] = rs232_data;
-    if (rs232_buff[rs232_index] == '\n')
+    if (strstr(rs232_buff, "Trichxuatdulieu") != NULL)
     {
+      rs232_logdata("OK");
       rs232_flag = true;
     }
+    rs232_index++;
+    HAL_UART_Receive_IT(&huart2, (uint8_t *)&rs232_data, 1);
   }
 }
 
@@ -351,35 +355,35 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     {
       Taskperform.TaskSensors = false;
       Type_Task = Task_GNSS;
-      set_timer(500);
+      set_timer(200);
       return;
     }
     if (Type_Task == Task_GNSS)
     {
       Taskperform.TaskGNSS = false;
       Type_Task = Task_SIM;
-      set_timer(1500);
+      set_timer(1200);
       return;
     }
     if (Type_Task == Task_SIM)
     {
       Taskperform.TaskSIM = false;
       Type_Task = Task_Store;
-      set_timer(500);
+      set_timer(200);
       return;
     }
     if (Type_Task == Task_Store)
     {
       Taskperform.TaskStore = false;
       Type_Task = Task_Display;
-      set_timer(500);
+      set_timer(200);
       return;
     }
     if (Type_Task == Task_Display)
     {
       Taskperform.TaskDisplay = false;
       Type_Task = Task_Sensors;
-      set_timer(1000);
+      set_timer(100);
       return;
     }
   }
@@ -443,10 +447,12 @@ int main(void)
 
   // sim7672_pwrOn();
   // HAL_Delay(4000);
-  //  sim7672_init();
-  //  sim7672_check_signalStrength();
-  //  mqtt_connectServer();
+   sim7672_init();
+   sim7672_check_signalStrength();
+  //  mqtt_disconnectServer();
   //  HAL_Delay(100);
+   mqtt_connectServer();
+   HAL_Delay(100);
 
   // w25q32_init();
   // log_data("FLASH init successfull\n");
@@ -497,33 +503,37 @@ int main(void)
     {
       sprintf(Card_Startbuff, "%02X%02X%02X%02X", CardID[0], CardID[1], CardID[2], CardID[3]);
       log_data(Card_Startbuff);
-      if (strcmp(infoUser1.ID, Card_Startbuff) != 0)
+      if (strcmp(infoUser1.ID, Card_Startbuff) == 0)
       {
+        waiting4LogOut = true;
         strcpy(infoUser.ID, infoUser1.ID);
         strcpy(infoUser.name, infoUser1.name);
         strcpy(infoUser.phoneNum, infoUser1.phoneNum);
         strcpy(infoUser.license, infoUser1.license);
         buzzer(200);
-        HAL_Delay(200);
-        buzzer(200);
-        log_data("ID1 TAG invalid\n");
+        // HAL_Delay(200);
+        // buzzer(200);
+        log_data("ID1 TAG valid\n");
       }
-      if (strcmp(infoUser2.ID, Card_Startbuff) != 0)
+      if (strcmp(infoUser2.ID, Card_Startbuff) == 0)
       {
+        waiting4LogOut = true;
         strcpy(infoUser.ID, infoUser2.ID);
         strcpy(infoUser.name, infoUser2.name);
         strcpy(infoUser.phoneNum, infoUser2.phoneNum);
         strcpy(infoUser.license, infoUser2.license);
         buzzer(200);
-        HAL_Delay(200);
-        buzzer(200);
-        log_data("ID2 TAG invalid\n");
+        // HAL_Delay(200);
+        // buzzer(200);
+        log_data("ID2 TAG valid\n");
       }
       else
       {
-        waiting4LogOut = true;
+        // waiting4LogOut = true;
         buzzer(200);
-        log_data("ID TAG valid\n");
+        HAL_Delay(200);
+        buzzer(200);
+        log_data("ID TAG invalid\n");
         break;
       }
     }
@@ -554,7 +564,7 @@ int main(void)
   log_data("\nGSHT Start\n");
   // Check ID tag in Flash
 
-  set_timer(1000);
+  set_timer(500);
   HAL_TIM_Base_Start_IT(&htim3); // Task
   HAL_TIM_Base_Start(&htim1);    // Sensors
   HAL_TIM_Base_Start_IT(&htim2); // RFID
@@ -607,10 +617,11 @@ int main(void)
         log_data("TAKS SIM\n");
         Taskperform.TaskSIM = true;
         memset(Json_Data,'\0',sizeof(Json_Data));
-        sprintf(Json_Data, "{\"online\":%s,\"offline\":%s,\"sleep\":%s,\"deviceID\":%s,\"license\":%s,\"name\":%s,\"phone\":%s,\"signal\":%s,\"latitude\":%s,\"longitude\":%s,\"ds18b20\":%s,\"dhttemp\":%s,\"dhthum\":%s,\"fuel\":%s}",
+        sprintf(totalMinute_OperateTime_buff, "%dh%d", time_hour, time_minute);
+        sprintf(Json_Data, "{\"online\":%s,\"offline\":%s,\"sleep\":%s,\"deviceID\":%s,\"license\":%s,\"name\":%s,\"phone\":%s,\"signal\":%s,\"latitude\":%s,\"longitude\":%s,\"ds18b20\":%s,\"dhttemp\":%s,\"dhthum\":%s,\"fuel\":%s,\"timetotal\":%s,\"speed\":%s}",
                 stateDevice.online, stateDevice.offline, stateDevice.sleep, infoUser.deviceID, infoUser.license, infoUser.name, infoUser.phoneNum,
                 stateDevice.signal, l70DataAfterHadler.latitude, l70DataAfterHadler.longitude, sensors.ds18_buff, sensors.dhtTemp_buff,
-                sensors.dhtHum_buff, sensors.fuel);
+                sensors.dhtHum_buff, sensors.fuel,totalMinute_OperateTime_buff,l70DataAfterHadler.Speed);
         mqtt_pub(TOPIC, Json_Data);
         numCheck_time++;
         if (numCheck_time == 10)
@@ -622,7 +633,9 @@ int main(void)
           time_hour = totalMinute_OperateTime / 60;
           time_minute = totalMinute_OperateTime - time_hour * 60;
           sprintf(totalMinute_OperateTime_buff, "%dh%d", time_hour, time_minute);
+          log_data("\nTotal time: ");
           log_data(totalMinute_OperateTime_buff);
+          log_data("\n");
         }
       }
       break;
@@ -661,21 +674,23 @@ int main(void)
       {
         log_data("TASK DISPLAY\n");
         Taskperform.TaskDisplay = true;
+        memset(utctime_buff,'\0',sizeof(utctime_buff));
+        strncpy(utctime_buff,l70DataAfterHadler.utcTime,5);
         SSD1306_GotoXY(75, 2);
-        SSD1306_Puts(l70DataAfterHadler.utcTime, &Font_7x10, 1);
+        SSD1306_Puts(utctime_buff, &Font_7x10, 1);
         SSD1306_GotoXY(30, 16);
         SSD1306_Puts(l70DataAfterHadler.Date, &Font_7x10, 1);
-        SSD1306_GotoXY(25, 28);
+        SSD1306_GotoXY(30, 28);
         SSD1306_Puts(l70DataAfterHadler.longitude, &Font_7x10, 1);
-        SSD1306_GotoXY(25, 40);
+        SSD1306_GotoXY(30, 40);
         SSD1306_Puts(l70DataAfterHadler.latitude, &Font_7x10, 1);
-        SSD1306_GotoXY(35, 52);
+        SSD1306_GotoXY(45, 52);
         SSD1306_Puts(l70DataAfterHadler.Speed, &Font_7x10, 1);
         SSD1306_UpdateScreen();
       }
       break;
     case Task_LogoutOrRS232:
-      // log_data("Task Logout or RS232\n");
+      // rs232_logdata("Task Logout or RS232\n");
       if (Logout)
       {
         Logout = false;
@@ -688,10 +703,14 @@ int main(void)
         {
           log_data("Tag valid, End of schedual\n");
           // write flash totaltime
+          mqtt_pub(TOPIC, "{\"signal\":LOGOUT}");
           HAL_RTC_GetTime(&hrtc, &last_sTime, RTC_FORMAT_BIN);
           HAL_RTC_GetDate(&hrtc, &last_sDate, RTC_FORMAT_BIN);
           totalMinute_OperateTime = (60 * last_sTime.Hours + last_sTime.Minutes) - (60 * current_sTime.Hours + current_sTime.Minutes);
           set_alarm(10);
+          buzzer(200);
+          HAL_Delay(200);
+          buzzer(200);
         }
         // sleep
         HAL_Delay(1000);
@@ -700,7 +719,8 @@ int main(void)
       if (rs232_flag)
       {
         rs232_flag = false;
-        if (strstr(rs232_buff, "Trich xuat du lieu\n") != NULL)
+        rs232_logdata("READ\n");
+        if (strstr(rs232_buff, "Trichxuatdulieu") != NULL)
         {
           fresult = f_open(&fil, "GSHT1.txt", FA_READ);
           if (fresult != FR_OK)
