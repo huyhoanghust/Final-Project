@@ -147,9 +147,9 @@ void DHT11_Start(void)
 {
 	Set_Pin_Output(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin);		// set the pin as output
 	HAL_GPIO_WritePin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin, 0); // pull the pin low
-	delay(18000);													// wait for 18ms		1.2ms for DHT22 10ms
+	delay(20000);													// wait for 18ms		1.2ms for DHT22 10ms
 	HAL_GPIO_WritePin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin, 1); // pull the pin high
-	delay(20);														// wait for 20us
+	delay(30);														// wait for 20us
 	Set_Pin_Input(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin);		// set as input
 }
 

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
   39              	.L2:
   18:Core/Src/sensors.c **** 		;
   40              		.loc 1 18 3 discriminator 1 view .LVU3
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 2
 
 
   17:Core/Src/sensors.c **** 	while ((__HAL_TIM_GET_COUNTER(&htim1)) < time)
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
   25:Core/Src/sensors.c **** 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   88              		.loc 1 25 2 is_stmt 1 view .LVU14
   89              		.loc 1 25 23 is_stmt 0 view .LVU15
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 3
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 3
 
 
   90 0010 0123     		movs	r3, #1
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
  139 000c 0393     		str	r3, [sp, #12]
   33:Core/Src/sensors.c **** 	GPIO_InitStruct.Pin = GPIO_Pin;
  140              		.loc 1 33 2 is_stmt 1 view .LVU25
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 4
 
 
  141              		.loc 1 33 22 is_stmt 0 view .LVU26
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
  187 0008 FFF7FEFF 		bl	Set_Pin_Output
  188              	.LVL8:
   44:Core/Src/sensors.c **** 	HAL_GPIO_WritePin(DS18B20_SENSOR_GPIO_Port, DS18B20_SENSOR_Pin, 0); // pull the pin low
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 5
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 5
 
 
  189              		.loc 1 44 2 view .LVU36
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
  230              		.align	1
  231              		.global	DS18B20_Write
  232              		.syntax unified
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 6
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 6
 
 
  233              		.thumb
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
   79:Core/Src/sensors.c **** 		else // if the bit is low
   80:Core/Src/sensors.c **** 		{
   81:Core/Src/sensors.c **** 			// write 0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 7
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 7
 
 
   82:Core/Src/sensors.c **** 
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
  308 0046 2846     		mov	r0, r5
  309 0048 FFF7FEFF 		bl	Set_Pin_Output
  310              	.LVL24:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 8
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 8
 
 
   72:Core/Src/sensors.c **** 			delay(1);															// wait for 1 us
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
  357 0000 70B5     		push	{r4, r5, r6, lr}
  358              	.LCFI8:
  359              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 9
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 9
 
 
  360              		.cfi_offset 4, -16
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
  393              		.loc 1 98 18 is_stmt 1 discriminator 1 view .LVU82
   98:Core/Src/sensors.c **** 	{
  394              		.loc 1 98 2 is_stmt 0 discriminator 1 view .LVU83
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 10
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 10
 
 
  395 0018 072D     		cmp	r5, #7
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
  437              		.loc 1 108 10 view .LVU95
  438 0052 DDE7     		b	.L24
  439              	.L27:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 11
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 11
 
 
  108:Core/Src/sensors.c **** 		}
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
  482              		.loc 1 119 2 view .LVU103
  120:Core/Src/sensors.c **** 	float Temperature;
  483              		.loc 1 120 2 view .LVU104
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 12
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 12
 
 
  121:Core/Src/sensors.c **** 	Presence = DS18B20_Start();
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
  524              	.LVL52:
  134:Core/Src/sensors.c **** 	HAL_Delay(1);
  525              		.loc 1 134 2 is_stmt 1 view .LVU120
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 13
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 13
 
 
  526 0032 0120     		movs	r0, #1
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
  571              	.LFE74:
  573              		.section	.text.DHT11_Start,"ax",%progbits
  574              		.align	1
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 14
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 14
 
 
  575              		.global	DHT11_Start
@@ -814,9 +814,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
  600 0010 2046     		mov	r0, r4
  601 0012 FFF7FEFF 		bl	HAL_GPIO_WritePin
  602              	.LVL64:
- 150:Core/Src/sensors.c **** 	delay(18000);													// wait for 18ms		1.2ms for DHT22 10ms
+ 150:Core/Src/sensors.c **** 	delay(20000);													// wait for 18ms		1.2ms for DHT22 10ms
  603              		.loc 1 150 2 view .LVU139
- 604 0016 44F25060 		movw	r0, #18000
+ 604 0016 44F62060 		movw	r0, #20000
  605 001a FFF7FEFF 		bl	delay
  606              	.LVL65:
  151:Core/Src/sensors.c **** 	HAL_GPIO_WritePin(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin, 1); // pull the pin high
@@ -826,9 +826,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
  610 0022 2046     		mov	r0, r4
  611 0024 FFF7FEFF 		bl	HAL_GPIO_WritePin
  612              	.LVL66:
- 152:Core/Src/sensors.c **** 	delay(20);														// wait for 20us
+ 152:Core/Src/sensors.c **** 	delay(30);														// wait for 20us
  613              		.loc 1 152 2 view .LVU141
- 614 0028 1420     		movs	r0, #20
+ 614 0028 1E20     		movs	r0, #30
  615 002a FFF7FEFF 		bl	delay
  616              	.LVL67:
  153:Core/Src/sensors.c **** 	Set_Pin_Input(DHT11_SENSOR_GPIO_Port, DHT11_SENSOR_Pin);		// set as input
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
  620 0032 FFF7FEFF 		bl	Set_Pin_Input
  621              	.LVL68:
  154:Core/Src/sensors.c **** }
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 15
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 15
 
 
  622              		.loc 1 154 1 is_stmt 0 view .LVU143
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
  169:Core/Src/sensors.c **** 		; // wait for the pin to go low
  664              		.loc 1 169 3 is_stmt 1 discriminator 1 view .LVU150
  168:Core/Src/sensors.c **** 		; // wait for the pin to go low
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 16
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 16
 
 
  665              		.loc 1 168 8 discriminator 1 view .LVU151
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
  710 0000 38B5     		push	{r3, r4, r5, lr}
  711              	.LCFI12:
  712              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 17
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 17
 
 
  713              		.cfi_offset 3, -16
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
  749              		.loc 1 177 22 is_stmt 0 discriminator 2 view .LVU173
  750 0020 0134     		adds	r4, r4, #1
  751              	.LVL79:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 18
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 18
 
 
  177:Core/Src/sensors.c **** 	{
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
  791 004e 25EA0305 		bic	r5, r5, r3
  792              	.LVL84:
  183:Core/Src/sensors.c **** 		}
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 19
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 19
 
 
  793              		.loc 1 183 6 view .LVU189
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
  836              		.loc 1 197 2 view .LVU197
  198:Core/Src/sensors.c **** 	// float Temperature = 0;
  199:Core/Src/sensors.c **** 	// float Humidity = 0;
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 20
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 20
 
 
  200:Core/Src/sensors.c **** 	DHT11_Start();
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
  878              		.loc 1 211 2 is_stmt 1 view .LVU216
  879              		.loc 1 211 8 is_stmt 0 view .LVU217
  880 002a FFF7FEFF 		bl	DHT11_Read
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 21
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 21
 
 
  881              	.LVL97:
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
  921              		.loc 1 227 2 is_stmt 1 view .LVU228
  922              		.loc 1 227 25 is_stmt 0 view .LVU229
  923 0008 80B2     		uxth	r0, r0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 22
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 22
 
 
  924              		.loc 1 227 25 view .LVU230
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
  970              		.loc 1 237 2 view .LVU238
  971              		.loc 1 237 17 is_stmt 0 view .LVU239
  972 0002 0B48     		ldr	r0, .L69+8
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 23
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 23
 
 
  973 0004 FFF7FEFF 		bl	HAL_ADC_GetValue
@@ -1375,52 +1375,52 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 1
  1023              		.file 12 "Core/Inc/adc.h"
  1024              		.file 13 "Core/Inc/debug.h"
  1025              		.file 14 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 24
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 24
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 sensors.c
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:18     .text.delay:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:24     .text.delay:00000000 delay
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:52     .text.delay:00000010 $d
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:57     .text.Set_Pin_Output:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:63     .text.Set_Pin_Output:00000000 Set_Pin_Output
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:112    .text.Set_Pin_Input:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:118    .text.Set_Pin_Input:00000000 Set_Pin_Input
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:164    .text.DS18B20_Start:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:170    .text.DS18B20_Start:00000000 DS18B20_Start
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:225    .text.DS18B20_Start:00000040 $d
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:230    .text.DS18B20_Write:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:236    .text.DS18B20_Write:00000000 DS18B20_Write
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:340    .text.DS18B20_Write:00000070 $d
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:345    .text.DS18B20_Read:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:351    .text.DS18B20_Read:00000000 DS18B20_Read
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:451    .text.DS18B20_Read:00000058 $d
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:456    .rodata.DS18B20_Result.str1.4:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:462    .text.DS18B20_Result:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:468    .text.DS18B20_Result:00000000 DS18B20_Result
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:569    .text.DS18B20_Result:00000064 $d
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:574    .text.DHT11_Start:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:580    .text.DHT11_Start:00000000 DHT11_Start
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:627    .text.DHT11_Start:00000038 $d
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:632    .text.DHT11_Check_Response:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:638    .text.DHT11_Check_Response:00000000 DHT11_Check_Response
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:693    .text.DHT11_Check_Response:00000034 $d
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:698    .text.DHT11_Read:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:704    .text.DHT11_Read:00000000 DHT11_Read
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:805    .text.DHT11_Read:00000058 $d
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:810    .rodata.DHT11_Result.str1.4:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:814    .text.DHT11_Result:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:820    .text.DHT11_Result:00000000 DHT11_Result
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:891    .text.DHT11_Result:00000030 $d
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:897    .text.Level_Result:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:903    .text.Level_Result:00000000 Level_Result
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:942    .text.Level_Result:00000020 $d
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:951    .text.Accqui_Result:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:957    .text.Accqui_Result:00000000 Accqui_Result
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:998    .text.Accqui_Result:00000028 $d
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:1009   .bss.detect:00000000 detect
-C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s:1006   .bss.detect:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:18     .text.delay:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:24     .text.delay:00000000 delay
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:52     .text.delay:00000010 $d
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:57     .text.Set_Pin_Output:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:63     .text.Set_Pin_Output:00000000 Set_Pin_Output
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:112    .text.Set_Pin_Input:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:118    .text.Set_Pin_Input:00000000 Set_Pin_Input
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:164    .text.DS18B20_Start:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:170    .text.DS18B20_Start:00000000 DS18B20_Start
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:225    .text.DS18B20_Start:00000040 $d
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:230    .text.DS18B20_Write:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:236    .text.DS18B20_Write:00000000 DS18B20_Write
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:340    .text.DS18B20_Write:00000070 $d
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:345    .text.DS18B20_Read:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:351    .text.DS18B20_Read:00000000 DS18B20_Read
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:451    .text.DS18B20_Read:00000058 $d
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:456    .rodata.DS18B20_Result.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:462    .text.DS18B20_Result:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:468    .text.DS18B20_Result:00000000 DS18B20_Result
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:569    .text.DS18B20_Result:00000064 $d
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:574    .text.DHT11_Start:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:580    .text.DHT11_Start:00000000 DHT11_Start
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:627    .text.DHT11_Start:00000038 $d
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:632    .text.DHT11_Check_Response:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:638    .text.DHT11_Check_Response:00000000 DHT11_Check_Response
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:693    .text.DHT11_Check_Response:00000034 $d
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:698    .text.DHT11_Read:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:704    .text.DHT11_Read:00000000 DHT11_Read
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:805    .text.DHT11_Read:00000058 $d
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:810    .rodata.DHT11_Result.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:814    .text.DHT11_Result:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:820    .text.DHT11_Result:00000000 DHT11_Result
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:891    .text.DHT11_Result:00000030 $d
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:897    .text.Level_Result:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:903    .text.Level_Result:00000000 Level_Result
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:942    .text.Level_Result:00000020 $d
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:951    .text.Accqui_Result:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:957    .text.Accqui_Result:00000000 Accqui_Result
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:998    .text.Accqui_Result:00000028 $d
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:1009   .bss.detect:00000000 detect
+C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s:1006   .bss.detect:00000000 $d
 
 UNDEFINED SYMBOLS
 htim1
@@ -1435,7 +1435,7 @@ __aeabi_fsub
 HAL_ADC_GetValue
 hadc2
 __aeabi_f2d
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc5iuej6.s 			page 25
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccME3kgW.s 			page 25
 
 
 __aeabi_dmul

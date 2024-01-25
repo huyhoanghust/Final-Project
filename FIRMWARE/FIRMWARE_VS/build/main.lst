@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
   29:Core/Src/main.c ****   */
   30:Core/Src/main.c **** /* USER CODE END Header */
   31:Core/Src/main.c **** /* Includes ------------------------------------------------------------------*/
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 2
 
 
   32:Core/Src/main.c **** #include "main.h"
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
   86:Core/Src/main.c ****   NOT_CHANGE
   87:Core/Src/main.c **** };
   88:Core/Src/main.c **** 
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 3
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 3
 
 
   89:Core/Src/main.c **** volatile int npn_flag_check = NOT_CHANGE;
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  143:Core/Src/main.c **** char SD_buffer_w[1024] = {0};  // write data
  144:Core/Src/main.c **** char SD_buffer_r[10224] = {0}; // read data
  145:Core/Src/main.c **** char SD_file_name[50] = {0};
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 4
 
 
  146:Core/Src/main.c **** UINT br, bw; // file read.write count
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  200:Core/Src/main.c **** volatile int Type_Task = Task_Display;
  201:Core/Src/main.c **** typedef struct
  202:Core/Src/main.c **** {
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 5
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 5
 
 
  203:Core/Src/main.c ****   volatile bool TaskSensors;
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  257:Core/Src/main.c **** {
   28              		.loc 1 257 1 view -0
   29              		.cfi_startproc
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 6
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 6
 
 
   30              		@ args = 0, pretend = 0, frame = 0
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
   81              		.cfi_offset 5, -8
   82              		.cfi_offset 14, -4
   83 0002 0446     		mov	r4, r0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 7
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 7
 
 
  263:Core/Src/main.c ****   HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_SET);
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  279:Core/Src/main.c **** }
  280:Core/Src/main.c **** 
  281:Core/Src/main.c **** void set_timer(long time)
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 8
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 8
 
 
  282:Core/Src/main.c **** {
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  288:Core/Src/main.c ****   // warning and SMS
  289:Core/Src/main.c ****   buzzer(5000);
  170              		.loc 1 289 3 is_stmt 1 view .LVU22
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 9
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 9
 
 
  171 0002 41F28830 		movw	r0, #5000
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  295:Core/Src/main.c ****   // for SIM
  296:Core/Src/main.c ****   if (huart == &huart1)
  219              		.loc 1 296 3 is_stmt 1 view .LVU28
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 10
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 10
 
 
  220              		.loc 1 296 6 is_stmt 0 view .LVU29
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  249 001e FFF7FEFF 		bl	l70_callback
  250              	.LVL19:
  251 0022 F5E7     		b	.L18
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 11
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 11
 
 
  252              	.L24:
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  292 0054 0849     		ldr	r1, .L25+24
  293 0056 0448     		ldr	r0, .L25+8
  294 0058 FFF7FEFF 		bl	HAL_UART_Receive_IT
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 12
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 12
 
 
  295              	.LVL22:
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  345 0008 0024     		movs	r4, #0
  346 000a 4FF08043 		mov	r3, #1073741824
  347 000e 5C62     		str	r4, [r3, #36]
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 13
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 13
 
 
  325:Core/Src/main.c **** 
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  333:Core/Src/main.c ****     Vehical_veloc = (1.0 * 3000) / (time_cycle);
  386              		.loc 1 333 11 is_stmt 0 view .LVU73
  387 003a 0A4B     		ldr	r3, .L31+20
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 14
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 14
 
 
  388 003c 1968     		ldr	r1, [r3]	@ float
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  437              		.cfi_offset 4, -8
  438              		.cfi_offset 14, -4
  439 0002 0446     		mov	r4, r0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 15
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 15
 
 
  343:Core/Src/main.c ****   if (htim == &htim2)
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  384:Core/Src/main.c ****       Taskperform.TaskDisplay = false;
  385:Core/Src/main.c ****       Type_Task = Task_Sensors;
  386:Core/Src/main.c ****       set_timer(100);
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 16
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 16
 
 
  387:Core/Src/main.c ****       return;
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  490              		.loc 1 354 5 is_stmt 1 view .LVU97
  354:Core/Src/main.c ****     {
  491              		.loc 1 354 19 is_stmt 0 view .LVU98
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 17
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 17
 
 
  492 0038 264B     		ldr	r3, .L47+16
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  385:Core/Src/main.c ****       set_timer(100);
  530              		.loc 1 385 17 is_stmt 0 view .LVU115
  531 0064 1B4A     		ldr	r2, .L47+16
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 18
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 18
 
 
  532 0066 1360     		str	r3, [r2]
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  572 0098 BAE7     		b	.L33
  573              	.L45:
  370:Core/Src/main.c ****       Type_Task = Task_Store;
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 19
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 19
 
 
  574              		.loc 1 370 7 view .LVU130
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  617              		.cfi_endproc
  618              	.LFE75:
  620              		.section	.text.Error_Handler,"ax",%progbits
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 20
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 20
 
 
  621              		.align	1
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  438:Core/Src/main.c ****   log_data("\nGSHT START\n");
  439:Core/Src/main.c ****   // init all
  440:Core/Src/main.c ****   rc522_init();
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 21
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 21
 
 
  441:Core/Src/main.c ****   log_data("RFID init successfull\n");
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  495:Core/Src/main.c ****   strcpy(infoUser2.license, "30N-3611");
  496:Core/Src/main.c **** 
  497:Core/Src/main.c ****   strcpy(infoUser.deviceID, "GSHT_ID01");
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 22
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 22
 
 
  498:Core/Src/main.c ****   // READ TAG RFID
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  552:Core/Src/main.c ****   HAL_RTC_GetDate(&hrtc, &last_sDate, RTC_FORMAT_BIN);
  553:Core/Src/main.c ****   totalMinute_OperateTime = (60 * last_sTime.Hours + last_sTime.Minutes) - (60 * current_sTime.Hour
  554:Core/Src/main.c ****   time_hour = totalMinute_OperateTime / 60;
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 23
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 23
 
 
  555:Core/Src/main.c ****   time_minute = totalMinute_OperateTime - time_hour * 60;
@@ -1359,398 +1359,405 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  590:Core/Src/main.c ****         ds18_temp = (int)DS18B20_Result();
  591:Core/Src/main.c ****         // DHT11_Result(dht_temp, dht_hum);
  592:Core/Src/main.c ****         sprintf(sensors.ds18_buff, "%d", ds18_temp);
- 593:Core/Src/main.c ****         // ftoa(ds18_temp, ds18_buff, 1);
- 594:Core/Src/main.c ****         //  w25q32_pageWrite(0x00000000,ds18_buff);
- 595:Core/Src/main.c ****         //  ftoa(dht_temp, dhtTemp_buff, 1);
- 596:Core/Src/main.c ****         //  ftoa(dht_hum, dhtHum_buff, 1);
- 597:Core/Src/main.c ****         strcpy(sensors.dhtTemp_buff, "20");
- 598:Core/Src/main.c ****         strcpy(sensors.dhtHum_buff, "80");
- 599:Core/Src/main.c ****         strcpy(sensors.fuel, "80");
- 600:Core/Src/main.c ****         log_data("Nhiet do thiet bi: ");
- 601:Core/Src/main.c ****         log_data(sensors.ds18_buff);
- 602:Core/Src/main.c ****         log_data("\n");
- 603:Core/Src/main.c ****       }
- 604:Core/Src/main.c ****       break;
- 605:Core/Src/main.c ****     case Task_GNSS:
- 606:Core/Src/main.c ****       if (!Taskperform.TaskGNSS)
- 607:Core/Src/main.c ****       {
- 608:Core/Src/main.c ****         log_data("TAKS GNSS\n");
- 609:Core/Src/main.c ****         Taskperform.TaskGNSS = true;
- 610:Core/Src/main.c ****         GPSResponse = l70_receiveGPS();
- 611:Core/Src/main.c ****         l70_handleGPS(GPSResponse);
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 24
+ 593:Core/Src/main.c ****         // sprintf(sensors.dhtTemp_buff,"%d",(int)dht_temp);
+ 594:Core/Src/main.c ****         // sprintf(sensors.dhtHum_buff,"%d",(int)dht_hum);
+ 595:Core/Src/main.c ****         // ftoa(ds18_temp, ds18_buff, 1);
+ 596:Core/Src/main.c ****         //  w25q32_pageWrite(0x00000000,ds18_buff);
+ 597:Core/Src/main.c ****         //  ftoa(dht_temp, dhtTemp_buff, 1);
+ 598:Core/Src/main.c ****         //  ftoa(dht_hum, dhtHum_buff, 1);
+ 599:Core/Src/main.c ****         strcpy(sensors.dhtTemp_buff, "20");
+ 600:Core/Src/main.c ****         strcpy(sensors.dhtHum_buff, "80");
+ 601:Core/Src/main.c ****         // log_data("Nhiet do va do am moi truong: ");
+ 602:Core/Src/main.c ****         // log_data(sensors.dhtTemp_buff);
+ 603:Core/Src/main.c ****         // log_data("\n");
+ 604:Core/Src/main.c ****         // log_data(sensors.dhtHum_buff);
+ 605:Core/Src/main.c ****         // log_data("\n");
+ 606:Core/Src/main.c ****         strcpy(sensors.fuel, "80");
+ 607:Core/Src/main.c ****         log_data("Nhiet do thiet bi: ");
+ 608:Core/Src/main.c ****         log_data(sensors.ds18_buff);
+ 609:Core/Src/main.c ****         log_data("\n");
+ 610:Core/Src/main.c ****       }
+ 611:Core/Src/main.c ****       break;
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 24
 
 
- 612:Core/Src/main.c ****       }
- 613:Core/Src/main.c ****       break;
- 614:Core/Src/main.c ****     case Task_SIM:
- 615:Core/Src/main.c ****       if (!Taskperform.TaskSIM)
- 616:Core/Src/main.c ****       {
- 617:Core/Src/main.c ****         log_data("TAKS SIM\n");
- 618:Core/Src/main.c ****         Taskperform.TaskSIM = true;
- 619:Core/Src/main.c ****         memset(Json_Data,'\0',sizeof(Json_Data));
- 620:Core/Src/main.c ****         sprintf(totalMinute_OperateTime_buff, "%dh%d", time_hour, time_minute);
- 621:Core/Src/main.c ****         sprintf(Json_Data, "{\"online\":%s,\"offline\":%s,\"sleep\":%s,\"deviceID\":%s,\"license\":
- 622:Core/Src/main.c ****                 stateDevice.online, stateDevice.offline, stateDevice.sleep, infoUser.deviceID, info
- 623:Core/Src/main.c ****                 stateDevice.signal, l70DataAfterHadler.latitude, l70DataAfterHadler.longitude, sens
- 624:Core/Src/main.c ****                 sensors.dhtHum_buff, sensors.fuel,totalMinute_OperateTime_buff,l70DataAfterHadler.S
- 625:Core/Src/main.c ****         mqtt_pub(TOPIC, Json_Data);
- 626:Core/Src/main.c ****         numCheck_time++;
- 627:Core/Src/main.c ****         if (numCheck_time == 10)
- 628:Core/Src/main.c ****         {
- 629:Core/Src/main.c ****           numCheck_time = 0;
- 630:Core/Src/main.c ****           HAL_RTC_GetTime(&hrtc, &last_sTime, RTC_FORMAT_BIN);
- 631:Core/Src/main.c ****           HAL_RTC_GetDate(&hrtc, &last_sDate, RTC_FORMAT_BIN);
- 632:Core/Src/main.c ****           totalMinute_OperateTime = (60 * last_sTime.Hours + last_sTime.Minutes) - (60 * current_sT
- 633:Core/Src/main.c ****           time_hour = totalMinute_OperateTime / 60;
- 634:Core/Src/main.c ****           time_minute = totalMinute_OperateTime - time_hour * 60;
- 635:Core/Src/main.c ****           sprintf(totalMinute_OperateTime_buff, "%dh%d", time_hour, time_minute);
- 636:Core/Src/main.c ****           log_data("\nTotal time: ");
- 637:Core/Src/main.c ****           log_data(totalMinute_OperateTime_buff);
- 638:Core/Src/main.c ****           log_data("\n");
- 639:Core/Src/main.c ****         }
- 640:Core/Src/main.c ****       }
- 641:Core/Src/main.c ****       break;
- 642:Core/Src/main.c ****     case Task_Store:
- 643:Core/Src/main.c ****       if (!Taskperform.TaskStore)
- 644:Core/Src/main.c ****       {
- 645:Core/Src/main.c ****         log_data("TASK STORE\n");
- 646:Core/Src/main.c ****         Taskperform.TaskStore = true;
- 647:Core/Src/main.c **** 
- 648:Core/Src/main.c ****         fresult = f_open(&fil, "GSHT1.txt", FA_WRITE);
- 649:Core/Src/main.c ****         if (fresult != FR_OK)
- 650:Core/Src/main.c ****           log_data("open error...\n\n");
- 651:Core/Src/main.c ****         else
- 652:Core/Src/main.c ****           log_data("open successfully...\n\n");
- 653:Core/Src/main.c **** 
- 654:Core/Src/main.c ****         f_lseek(&fil, f_size(&fil));
- 655:Core/Src/main.c **** 
- 656:Core/Src/main.c ****         f_puts(l70DataAfterHadler.utcTime, &fil);
- 657:Core/Src/main.c ****         f_puts("\t", &fil);
- 658:Core/Src/main.c ****         f_puts(Card_Startbuff, &fil);
- 659:Core/Src/main.c ****         f_puts("\t", &fil);
- 660:Core/Src/main.c ****         f_puts(l70DataAfterHadler.latitude, &fil);
- 661:Core/Src/main.c ****         f_puts("\t", &fil);
- 662:Core/Src/main.c ****         f_puts(l70DataAfterHadler.longitude, &fil);
- 663:Core/Src/main.c ****         f_puts("\t", &fil);
- 664:Core/Src/main.c ****         f_puts(l70DataAfterHadler.Speed, &fil);
- 665:Core/Src/main.c ****         f_puts("\t", &fil);
- 666:Core/Src/main.c ****         f_puts(sensors.ds18_buff, &fil);
- 667:Core/Src/main.c ****         f_puts("\n", &fil);
- 668:Core/Src/main.c **** 
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 25
+ 612:Core/Src/main.c ****     case Task_GNSS:
+ 613:Core/Src/main.c ****       if (!Taskperform.TaskGNSS)
+ 614:Core/Src/main.c ****       {
+ 615:Core/Src/main.c ****         log_data("TAKS GNSS\n");
+ 616:Core/Src/main.c ****         Taskperform.TaskGNSS = true;
+ 617:Core/Src/main.c ****         GPSResponse = l70_receiveGPS();
+ 618:Core/Src/main.c ****         l70_handleGPS(GPSResponse);
+ 619:Core/Src/main.c ****       }
+ 620:Core/Src/main.c ****       break;
+ 621:Core/Src/main.c ****     case Task_SIM:
+ 622:Core/Src/main.c ****       if (!Taskperform.TaskSIM)
+ 623:Core/Src/main.c ****       {
+ 624:Core/Src/main.c ****         log_data("TAKS SIM\n");
+ 625:Core/Src/main.c ****         Taskperform.TaskSIM = true;
+ 626:Core/Src/main.c ****         memset(Json_Data,'\0',sizeof(Json_Data));
+ 627:Core/Src/main.c ****         sprintf(totalMinute_OperateTime_buff, "%dh%d", time_hour, time_minute);
+ 628:Core/Src/main.c ****         sprintf(Json_Data, "{\"online\":%s,\"offline\":%s,\"sleep\":%s,\"deviceID\":%s,\"license\":
+ 629:Core/Src/main.c ****                 stateDevice.online, stateDevice.offline, stateDevice.sleep, infoUser.deviceID, info
+ 630:Core/Src/main.c ****                 stateDevice.signal, l70DataAfterHadler.latitude, l70DataAfterHadler.longitude, sens
+ 631:Core/Src/main.c ****                 sensors.dhtHum_buff, sensors.fuel,totalMinute_OperateTime_buff,l70DataAfterHadler.S
+ 632:Core/Src/main.c ****         mqtt_pub(TOPIC, Json_Data);
+ 633:Core/Src/main.c ****         numCheck_time++;
+ 634:Core/Src/main.c ****         if (numCheck_time == 10)
+ 635:Core/Src/main.c ****         {
+ 636:Core/Src/main.c ****           numCheck_time = 0;
+ 637:Core/Src/main.c ****           HAL_RTC_GetTime(&hrtc, &last_sTime, RTC_FORMAT_BIN);
+ 638:Core/Src/main.c ****           HAL_RTC_GetDate(&hrtc, &last_sDate, RTC_FORMAT_BIN);
+ 639:Core/Src/main.c ****           totalMinute_OperateTime = (60 * last_sTime.Hours + last_sTime.Minutes) - (60 * current_sT
+ 640:Core/Src/main.c ****           time_hour = totalMinute_OperateTime / 60;
+ 641:Core/Src/main.c ****           time_minute = totalMinute_OperateTime - time_hour * 60;
+ 642:Core/Src/main.c ****           sprintf(totalMinute_OperateTime_buff, "%dh%d", time_hour, time_minute);
+ 643:Core/Src/main.c ****           log_data("\nTotal time: ");
+ 644:Core/Src/main.c ****           log_data(totalMinute_OperateTime_buff);
+ 645:Core/Src/main.c ****           log_data("\n");
+ 646:Core/Src/main.c ****         }
+ 647:Core/Src/main.c ****       }
+ 648:Core/Src/main.c ****       break;
+ 649:Core/Src/main.c ****     case Task_Store:
+ 650:Core/Src/main.c ****       if (!Taskperform.TaskStore)
+ 651:Core/Src/main.c ****       {
+ 652:Core/Src/main.c ****         log_data("TASK STORE\n");
+ 653:Core/Src/main.c ****         Taskperform.TaskStore = true;
+ 654:Core/Src/main.c **** 
+ 655:Core/Src/main.c ****         fresult = f_open(&fil, "GSHT1.txt", FA_WRITE);
+ 656:Core/Src/main.c ****         if (fresult != FR_OK)
+ 657:Core/Src/main.c ****           log_data("open error...\n\n");
+ 658:Core/Src/main.c ****         else
+ 659:Core/Src/main.c ****           log_data("open successfully...\n\n");
+ 660:Core/Src/main.c **** 
+ 661:Core/Src/main.c ****         f_lseek(&fil, f_size(&fil));
+ 662:Core/Src/main.c **** 
+ 663:Core/Src/main.c ****         f_puts(l70DataAfterHadler.utcTime, &fil);
+ 664:Core/Src/main.c ****         f_puts("\t", &fil);
+ 665:Core/Src/main.c ****         f_puts(Card_Startbuff, &fil);
+ 666:Core/Src/main.c ****         f_puts("\t", &fil);
+ 667:Core/Src/main.c ****         f_puts(l70DataAfterHadler.latitude, &fil);
+ 668:Core/Src/main.c ****         f_puts("\t", &fil);
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 25
 
 
- 669:Core/Src/main.c ****         fresult = f_close(&fil);
- 670:Core/Src/main.c ****       }
- 671:Core/Src/main.c ****       break;
- 672:Core/Src/main.c ****     case Task_Display:
- 673:Core/Src/main.c ****       if (!Taskperform.TaskDisplay)
- 674:Core/Src/main.c ****       {
- 675:Core/Src/main.c ****         log_data("TASK DISPLAY\n");
- 676:Core/Src/main.c ****         Taskperform.TaskDisplay = true;
- 677:Core/Src/main.c ****         memset(utctime_buff,'\0',sizeof(utctime_buff));
- 678:Core/Src/main.c ****         strncpy(utctime_buff,l70DataAfterHadler.utcTime,5);
- 679:Core/Src/main.c ****         SSD1306_GotoXY(75, 2);
- 680:Core/Src/main.c ****         SSD1306_Puts(utctime_buff, &Font_7x10, 1);
- 681:Core/Src/main.c ****         SSD1306_GotoXY(30, 16);
- 682:Core/Src/main.c ****         SSD1306_Puts(l70DataAfterHadler.Date, &Font_7x10, 1);
- 683:Core/Src/main.c ****         SSD1306_GotoXY(30, 28);
- 684:Core/Src/main.c ****         SSD1306_Puts(l70DataAfterHadler.longitude, &Font_7x10, 1);
- 685:Core/Src/main.c ****         SSD1306_GotoXY(30, 40);
- 686:Core/Src/main.c ****         SSD1306_Puts(l70DataAfterHadler.latitude, &Font_7x10, 1);
- 687:Core/Src/main.c ****         SSD1306_GotoXY(45, 52);
- 688:Core/Src/main.c ****         SSD1306_Puts(l70DataAfterHadler.Speed, &Font_7x10, 1);
- 689:Core/Src/main.c ****         SSD1306_UpdateScreen();
- 690:Core/Src/main.c ****       }
- 691:Core/Src/main.c ****       break;
- 692:Core/Src/main.c ****     case Task_LogoutOrRS232:
- 693:Core/Src/main.c ****       // rs232_logdata("Task Logout or RS232\n");
- 694:Core/Src/main.c ****       if (Logout)
- 695:Core/Src/main.c ****       {
- 696:Core/Src/main.c ****         Logout = false;
- 697:Core/Src/main.c ****         sprintf(Card_Endbuff, "%02X%02X%02X%02X", CardID[0], CardID[1], CardID[2], CardID[3]);
- 698:Core/Src/main.c ****         if (strcmp(Card_Startbuff, Card_Endbuff) != 0)
- 699:Core/Src/main.c ****         {
- 700:Core/Src/main.c ****           log_data("Tag invalid\n");
- 701:Core/Src/main.c ****         }
- 702:Core/Src/main.c ****         else
- 703:Core/Src/main.c ****         {
- 704:Core/Src/main.c ****           log_data("Tag valid, End of schedual\n");
- 705:Core/Src/main.c ****           // write flash totaltime
- 706:Core/Src/main.c ****           mqtt_pub(TOPIC, "{\"signal\":LOGOUT}");
- 707:Core/Src/main.c ****           HAL_RTC_GetTime(&hrtc, &last_sTime, RTC_FORMAT_BIN);
- 708:Core/Src/main.c ****           HAL_RTC_GetDate(&hrtc, &last_sDate, RTC_FORMAT_BIN);
- 709:Core/Src/main.c ****           totalMinute_OperateTime = (60 * last_sTime.Hours + last_sTime.Minutes) - (60 * current_sT
- 710:Core/Src/main.c ****           set_alarm(10);
- 711:Core/Src/main.c ****           buzzer(200);
- 712:Core/Src/main.c ****           HAL_Delay(200);
- 713:Core/Src/main.c ****           buzzer(200);
- 714:Core/Src/main.c ****         }
- 715:Core/Src/main.c ****         // sleep
- 716:Core/Src/main.c ****         HAL_Delay(1000);
- 717:Core/Src/main.c ****         log_data("Device start sleep\n");
- 718:Core/Src/main.c ****       }
- 719:Core/Src/main.c ****       if (rs232_flag)
- 720:Core/Src/main.c ****       {
- 721:Core/Src/main.c ****         rs232_flag = false;
- 722:Core/Src/main.c ****         rs232_logdata("READ\n");
- 723:Core/Src/main.c ****         if (strstr(rs232_buff, "Trichxuatdulieu") != NULL)
- 724:Core/Src/main.c ****         {
- 725:Core/Src/main.c ****           fresult = f_open(&fil, "GSHT1.txt", FA_READ);
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 26
+ 669:Core/Src/main.c ****         f_puts(l70DataAfterHadler.longitude, &fil);
+ 670:Core/Src/main.c ****         f_puts("\t", &fil);
+ 671:Core/Src/main.c ****         f_puts(l70DataAfterHadler.Speed, &fil);
+ 672:Core/Src/main.c ****         f_puts("\t", &fil);
+ 673:Core/Src/main.c ****         f_puts(sensors.ds18_buff, &fil);
+ 674:Core/Src/main.c ****         f_puts("\n", &fil);
+ 675:Core/Src/main.c **** 
+ 676:Core/Src/main.c ****         fresult = f_close(&fil);
+ 677:Core/Src/main.c ****       }
+ 678:Core/Src/main.c ****       break;
+ 679:Core/Src/main.c ****     case Task_Display:
+ 680:Core/Src/main.c ****       if (!Taskperform.TaskDisplay)
+ 681:Core/Src/main.c ****       {
+ 682:Core/Src/main.c ****         log_data("TASK DISPLAY\n");
+ 683:Core/Src/main.c ****         Taskperform.TaskDisplay = true;
+ 684:Core/Src/main.c ****         memset(utctime_buff,'\0',sizeof(utctime_buff));
+ 685:Core/Src/main.c ****         strncpy(utctime_buff,l70DataAfterHadler.utcTime,5);
+ 686:Core/Src/main.c ****         SSD1306_GotoXY(75, 2);
+ 687:Core/Src/main.c ****         SSD1306_Puts(utctime_buff, &Font_7x10, 1);
+ 688:Core/Src/main.c ****         SSD1306_GotoXY(30, 16);
+ 689:Core/Src/main.c ****         SSD1306_Puts(l70DataAfterHadler.Date, &Font_7x10, 1);
+ 690:Core/Src/main.c ****         SSD1306_GotoXY(30, 28);
+ 691:Core/Src/main.c ****         SSD1306_Puts(l70DataAfterHadler.longitude, &Font_7x10, 1);
+ 692:Core/Src/main.c ****         SSD1306_GotoXY(30, 40);
+ 693:Core/Src/main.c ****         SSD1306_Puts(l70DataAfterHadler.latitude, &Font_7x10, 1);
+ 694:Core/Src/main.c ****         SSD1306_GotoXY(45, 52);
+ 695:Core/Src/main.c ****         SSD1306_Puts(l70DataAfterHadler.Speed, &Font_7x10, 1);
+ 696:Core/Src/main.c ****         SSD1306_UpdateScreen();
+ 697:Core/Src/main.c ****       }
+ 698:Core/Src/main.c ****       break;
+ 699:Core/Src/main.c ****     case Task_LogoutOrRS232:
+ 700:Core/Src/main.c ****       // rs232_logdata("Task Logout or RS232\n");
+ 701:Core/Src/main.c ****       if (Logout)
+ 702:Core/Src/main.c ****       {
+ 703:Core/Src/main.c ****         Logout = false;
+ 704:Core/Src/main.c ****         sprintf(Card_Endbuff, "%02X%02X%02X%02X", CardID[0], CardID[1], CardID[2], CardID[3]);
+ 705:Core/Src/main.c ****         if (strcmp(Card_Startbuff, Card_Endbuff) != 0)
+ 706:Core/Src/main.c ****         {
+ 707:Core/Src/main.c ****           log_data("Tag invalid\n");
+ 708:Core/Src/main.c ****         }
+ 709:Core/Src/main.c ****         else
+ 710:Core/Src/main.c ****         {
+ 711:Core/Src/main.c ****           log_data("Tag valid, End of schedual\n");
+ 712:Core/Src/main.c ****           // write flash totaltime
+ 713:Core/Src/main.c ****           mqtt_pub(TOPIC, "{\"signal\":LOGOUT}");
+ 714:Core/Src/main.c ****           HAL_RTC_GetTime(&hrtc, &last_sTime, RTC_FORMAT_BIN);
+ 715:Core/Src/main.c ****           HAL_RTC_GetDate(&hrtc, &last_sDate, RTC_FORMAT_BIN);
+ 716:Core/Src/main.c ****           totalMinute_OperateTime = (60 * last_sTime.Hours + last_sTime.Minutes) - (60 * current_sT
+ 717:Core/Src/main.c ****           set_alarm(10);
+ 718:Core/Src/main.c ****           buzzer(200);
+ 719:Core/Src/main.c ****           HAL_Delay(200);
+ 720:Core/Src/main.c ****           buzzer(200);
+ 721:Core/Src/main.c ****         }
+ 722:Core/Src/main.c ****         // sleep
+ 723:Core/Src/main.c ****         HAL_Delay(1000);
+ 724:Core/Src/main.c ****         log_data("Device start sleep\n");
+ 725:Core/Src/main.c ****       }
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 26
 
 
- 726:Core/Src/main.c ****           if (fresult != FR_OK)
- 727:Core/Src/main.c ****             log_data("open error...\n\n");
- 728:Core/Src/main.c ****           else
- 729:Core/Src/main.c ****             log_data("open successfully...\n\n");
- 730:Core/Src/main.c ****           while (f_gets(SD_read, sizeof(SD_read), &fil) != NULL)
- 731:Core/Src/main.c ****           {
- 732:Core/Src/main.c ****             rs232_logdata(SD_read);
- 733:Core/Src/main.c ****           }
- 734:Core/Src/main.c ****         }
- 735:Core/Src/main.c ****       }
- 736:Core/Src/main.c ****       break;
- 737:Core/Src/main.c ****     }
- 738:Core/Src/main.c ****     HAL_Delay(100);
- 739:Core/Src/main.c **** #endif
- 740:Core/Src/main.c ****     // HAL_Delay(100);
- 741:Core/Src/main.c ****   }
- 742:Core/Src/main.c ****   /* USER CODE END 3 */
- 743:Core/Src/main.c **** }
- 744:Core/Src/main.c **** 
- 745:Core/Src/main.c **** /**
- 746:Core/Src/main.c ****  * @brief System Clock Configuration
- 747:Core/Src/main.c ****  * @retval None
- 748:Core/Src/main.c ****  */
- 749:Core/Src/main.c **** void SystemClock_Config(void)
- 750:Core/Src/main.c **** {
- 751:Core/Src/main.c ****   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
- 752:Core/Src/main.c ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
- 753:Core/Src/main.c ****   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
- 754:Core/Src/main.c **** 
- 755:Core/Src/main.c ****   /** Initializes the RCC Oscillators according to the specified parameters
- 756:Core/Src/main.c ****    * in the RCC_OscInitTypeDef structure.
- 757:Core/Src/main.c ****    */
- 758:Core/Src/main.c ****   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE | RCC_OSCILLATORTYPE_LSE;
- 759:Core/Src/main.c ****   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
- 760:Core/Src/main.c ****   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
- 761:Core/Src/main.c ****   RCC_OscInitStruct.LSEState = RCC_LSE_ON;
- 762:Core/Src/main.c ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
- 763:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
- 764:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
- 765:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
- 766:Core/Src/main.c ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
- 767:Core/Src/main.c ****   {
- 768:Core/Src/main.c ****     Error_Handler();
- 769:Core/Src/main.c ****   }
- 770:Core/Src/main.c **** 
- 771:Core/Src/main.c ****   /** Initializes the CPU, AHB and APB buses clocks
- 772:Core/Src/main.c ****    */
- 773:Core/Src/main.c ****   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | R
- 774:Core/Src/main.c ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
- 775:Core/Src/main.c ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
- 776:Core/Src/main.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
- 777:Core/Src/main.c ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
- 778:Core/Src/main.c **** 
- 779:Core/Src/main.c ****   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
- 780:Core/Src/main.c ****   {
- 781:Core/Src/main.c ****     Error_Handler();
- 782:Core/Src/main.c ****   }
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 27
+ 726:Core/Src/main.c ****       if (rs232_flag)
+ 727:Core/Src/main.c ****       {
+ 728:Core/Src/main.c ****         rs232_flag = false;
+ 729:Core/Src/main.c ****         rs232_logdata("READ\n");
+ 730:Core/Src/main.c ****         if (strstr(rs232_buff, "Trichxuatdulieu") != NULL)
+ 731:Core/Src/main.c ****         {
+ 732:Core/Src/main.c ****           fresult = f_open(&fil, "GSHT1.txt", FA_READ);
+ 733:Core/Src/main.c ****           if (fresult != FR_OK)
+ 734:Core/Src/main.c ****             log_data("open error...\n\n");
+ 735:Core/Src/main.c ****           else
+ 736:Core/Src/main.c ****             log_data("open successfully...\n\n");
+ 737:Core/Src/main.c ****           while (f_gets(SD_read, sizeof(SD_read), &fil) != NULL)
+ 738:Core/Src/main.c ****           {
+ 739:Core/Src/main.c ****             rs232_logdata(SD_read);
+ 740:Core/Src/main.c ****           }
+ 741:Core/Src/main.c ****         }
+ 742:Core/Src/main.c ****       }
+ 743:Core/Src/main.c ****       break;
+ 744:Core/Src/main.c ****     }
+ 745:Core/Src/main.c ****     HAL_Delay(100);
+ 746:Core/Src/main.c **** #endif
+ 747:Core/Src/main.c ****     // HAL_Delay(100);
+ 748:Core/Src/main.c ****   }
+ 749:Core/Src/main.c ****   /* USER CODE END 3 */
+ 750:Core/Src/main.c **** }
+ 751:Core/Src/main.c **** 
+ 752:Core/Src/main.c **** /**
+ 753:Core/Src/main.c ****  * @brief System Clock Configuration
+ 754:Core/Src/main.c ****  * @retval None
+ 755:Core/Src/main.c ****  */
+ 756:Core/Src/main.c **** void SystemClock_Config(void)
+ 757:Core/Src/main.c **** {
+ 758:Core/Src/main.c ****   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+ 759:Core/Src/main.c ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+ 760:Core/Src/main.c ****   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
+ 761:Core/Src/main.c **** 
+ 762:Core/Src/main.c ****   /** Initializes the RCC Oscillators according to the specified parameters
+ 763:Core/Src/main.c ****    * in the RCC_OscInitTypeDef structure.
+ 764:Core/Src/main.c ****    */
+ 765:Core/Src/main.c ****   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE | RCC_OSCILLATORTYPE_LSE;
+ 766:Core/Src/main.c ****   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+ 767:Core/Src/main.c ****   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
+ 768:Core/Src/main.c ****   RCC_OscInitStruct.LSEState = RCC_LSE_ON;
+ 769:Core/Src/main.c ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+ 770:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+ 771:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+ 772:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
+ 773:Core/Src/main.c ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+ 774:Core/Src/main.c ****   {
+ 775:Core/Src/main.c ****     Error_Handler();
+ 776:Core/Src/main.c ****   }
+ 777:Core/Src/main.c **** 
+ 778:Core/Src/main.c ****   /** Initializes the CPU, AHB and APB buses clocks
+ 779:Core/Src/main.c ****    */
+ 780:Core/Src/main.c ****   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | R
+ 781:Core/Src/main.c ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+ 782:Core/Src/main.c ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 27
 
 
- 783:Core/Src/main.c ****   PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_RTC | RCC_PERIPHCLK_ADC;
- 784:Core/Src/main.c ****   PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
- 785:Core/Src/main.c ****   PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV6;
- 786:Core/Src/main.c ****   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+ 783:Core/Src/main.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+ 784:Core/Src/main.c ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+ 785:Core/Src/main.c **** 
+ 786:Core/Src/main.c ****   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
  787:Core/Src/main.c ****   {
  788:Core/Src/main.c ****     Error_Handler();
  789:Core/Src/main.c ****   }
- 790:Core/Src/main.c **** }
- 791:Core/Src/main.c **** 
- 792:Core/Src/main.c **** /* USER CODE BEGIN 4 */
- 793:Core/Src/main.c **** #if IF_SIUTATION
- 794:Core/Src/main.c **** if (Type_Task == Task_Sensors && !Taskperform.TaskSensors)
- 795:Core/Src/main.c **** {
- 796:Core/Src/main.c ****   log_data("TAKS SENSORS\n");
- 797:Core/Src/main.c ****   Taskperform.TaskSensors = true;
- 798:Core/Src/main.c ****   log_data("TAKS SENSORS\n");
- 799:Core/Src/main.c ****   Taskperform.TaskSensors = true;
- 800:Core/Src/main.c ****   ds18_temp = (int)DS18B20_Result();
- 801:Core/Src/main.c ****   // DHT11_Result(dht_temp, dht_hum);
- 802:Core/Src/main.c ****   sprintf(ds18_buff, "%d", ds18_temp);
- 803:Core/Src/main.c ****   // ftoa(ds18_temp, ds18_buff, 1);
- 804:Core/Src/main.c ****   //  w25q32_pageWrite(0x00000000,ds18_buff);
- 805:Core/Src/main.c ****   //  ftoa(dht_temp, dhtTemp_buff, 1);
- 806:Core/Src/main.c ****   //  ftoa(dht_hum, dhtHum_buff, 1);
- 807:Core/Src/main.c ****   log_data("Nhiet do thiet bi: ");
- 808:Core/Src/main.c ****   log_data(ds18_buff);
- 809:Core/Src/main.c ****   log_data("\n");
- 810:Core/Src/main.c **** }
- 811:Core/Src/main.c **** if (Type_Task == Task_GNSS && !Taskperform.TaskGNSS)
- 812:Core/Src/main.c **** {
- 813:Core/Src/main.c ****   log_data("TAKS GNSS\n");
- 814:Core/Src/main.c ****   Taskperform.TaskGNSS = true;
- 815:Core/Src/main.c ****   GPSResponse = l70_receiveGPS();
- 816:Core/Src/main.c ****   l70_handleGPS(GPSResponse);
+ 790:Core/Src/main.c ****   PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_RTC | RCC_PERIPHCLK_ADC;
+ 791:Core/Src/main.c ****   PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
+ 792:Core/Src/main.c ****   PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV6;
+ 793:Core/Src/main.c ****   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+ 794:Core/Src/main.c ****   {
+ 795:Core/Src/main.c ****     Error_Handler();
+ 796:Core/Src/main.c ****   }
+ 797:Core/Src/main.c **** }
+ 798:Core/Src/main.c **** 
+ 799:Core/Src/main.c **** /* USER CODE BEGIN 4 */
+ 800:Core/Src/main.c **** #if IF_SIUTATION
+ 801:Core/Src/main.c **** if (Type_Task == Task_Sensors && !Taskperform.TaskSensors)
+ 802:Core/Src/main.c **** {
+ 803:Core/Src/main.c ****   log_data("TAKS SENSORS\n");
+ 804:Core/Src/main.c ****   Taskperform.TaskSensors = true;
+ 805:Core/Src/main.c ****   log_data("TAKS SENSORS\n");
+ 806:Core/Src/main.c ****   Taskperform.TaskSensors = true;
+ 807:Core/Src/main.c ****   ds18_temp = (int)DS18B20_Result();
+ 808:Core/Src/main.c ****   // DHT11_Result(dht_temp, dht_hum);
+ 809:Core/Src/main.c ****   sprintf(ds18_buff, "%d", ds18_temp);
+ 810:Core/Src/main.c ****   // ftoa(ds18_temp, ds18_buff, 1);
+ 811:Core/Src/main.c ****   //  w25q32_pageWrite(0x00000000,ds18_buff);
+ 812:Core/Src/main.c ****   //  ftoa(dht_temp, dhtTemp_buff, 1);
+ 813:Core/Src/main.c ****   //  ftoa(dht_hum, dhtHum_buff, 1);
+ 814:Core/Src/main.c ****   log_data("Nhiet do thiet bi: ");
+ 815:Core/Src/main.c ****   log_data(ds18_buff);
+ 816:Core/Src/main.c ****   log_data("\n");
  817:Core/Src/main.c **** }
- 818:Core/Src/main.c **** if (Type_Task == Task_SIM && !Taskperform.TaskSIM)
+ 818:Core/Src/main.c **** if (Type_Task == Task_GNSS && !Taskperform.TaskGNSS)
  819:Core/Src/main.c **** {
- 820:Core/Src/main.c **** 
- 821:Core/Src/main.c ****   log_data("TAKS SIM\n");
- 822:Core/Src/main.c ****   Taskperform.TaskSIM = true;
- 823:Core/Src/main.c ****   // mqtt_pub(TOPIC_TEST, Card_Startbuff);
- 824:Core/Src/main.c ****   // mqtt_pub(TOPIC_TEST, ds18_buff);
- 825:Core/Src/main.c ****   // // mqtt_pub(TOPIC_TEST, dhtHum_buff);
- 826:Core/Src/main.c ****   // // mqtt_pub(TOPIC_TEST, dhtTemp_buff);
- 827:Core/Src/main.c ****   // mqtt_pub(TOPIC_TEST, l70DataAfterHadler.longitude);
- 828:Core/Src/main.c ****   // mqtt_pub(TOPIC_TEST, l70DataAfterHadler.latitude);
- 829:Core/Src/main.c ****   // numCheck_time++;
- 830:Core/Src/main.c ****   // if (numCheck_time == 10)
- 831:Core/Src/main.c ****   // {
- 832:Core/Src/main.c ****   //   numCheck_time = 0;
- 833:Core/Src/main.c ****   //   HAL_RTC_GetTime(&hrtc, &last_sTime, RTC_FORMAT_BIN);
- 834:Core/Src/main.c ****   //   HAL_RTC_GetDate(&hrtc, &last_sDate, RTC_FORMAT_BIN);
- 835:Core/Src/main.c ****   //   totalMinute_OperateTime = (60 * last_sTime.Hours + last_sTime.Minutes) - (60 * current_sTime
- 836:Core/Src/main.c ****   //   sprintf(totalMinute_OperateTime_buff, "totalTime: %d", totalMinute_OperateTime);
- 837:Core/Src/main.c ****   //   mqtt_pub(TOPIC_TEST, totalMinute_OperateTime_buff);
- 838:Core/Src/main.c ****   // }
- 839:Core/Src/main.c **** }
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 28
+ 820:Core/Src/main.c ****   log_data("TAKS GNSS\n");
+ 821:Core/Src/main.c ****   Taskperform.TaskGNSS = true;
+ 822:Core/Src/main.c ****   GPSResponse = l70_receiveGPS();
+ 823:Core/Src/main.c ****   l70_handleGPS(GPSResponse);
+ 824:Core/Src/main.c **** }
+ 825:Core/Src/main.c **** if (Type_Task == Task_SIM && !Taskperform.TaskSIM)
+ 826:Core/Src/main.c **** {
+ 827:Core/Src/main.c **** 
+ 828:Core/Src/main.c ****   log_data("TAKS SIM\n");
+ 829:Core/Src/main.c ****   Taskperform.TaskSIM = true;
+ 830:Core/Src/main.c ****   // mqtt_pub(TOPIC_TEST, Card_Startbuff);
+ 831:Core/Src/main.c ****   // mqtt_pub(TOPIC_TEST, ds18_buff);
+ 832:Core/Src/main.c ****   // // mqtt_pub(TOPIC_TEST, dhtHum_buff);
+ 833:Core/Src/main.c ****   // // mqtt_pub(TOPIC_TEST, dhtTemp_buff);
+ 834:Core/Src/main.c ****   // mqtt_pub(TOPIC_TEST, l70DataAfterHadler.longitude);
+ 835:Core/Src/main.c ****   // mqtt_pub(TOPIC_TEST, l70DataAfterHadler.latitude);
+ 836:Core/Src/main.c ****   // numCheck_time++;
+ 837:Core/Src/main.c ****   // if (numCheck_time == 10)
+ 838:Core/Src/main.c ****   // {
+ 839:Core/Src/main.c ****   //   numCheck_time = 0;
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 28
 
 
- 840:Core/Src/main.c **** if (Type_Task == Task_Store && !Taskperform.TaskStore)
- 841:Core/Src/main.c **** {
- 842:Core/Src/main.c ****   log_data("TASK STORE\n");
- 843:Core/Src/main.c ****   Taskperform.TaskStore = true;
- 844:Core/Src/main.c **** 
- 845:Core/Src/main.c ****   fresult = f_open(&fil, "GSHT1.txt", FA_WRITE);
- 846:Core/Src/main.c ****   if (fresult != FR_OK)
- 847:Core/Src/main.c ****     log_data("open error...\n\n");
- 848:Core/Src/main.c ****   else
- 849:Core/Src/main.c ****     log_data("open successfully...\n\n");
- 850:Core/Src/main.c **** 
- 851:Core/Src/main.c ****   f_lseek(&fil, f_size(&fil));
- 852:Core/Src/main.c **** 
- 853:Core/Src/main.c ****   f_puts(l70DataAfterHadler.utcTime, &fil);
- 854:Core/Src/main.c ****   f_puts("\t", &fil);
- 855:Core/Src/main.c ****   f_puts(Card_Startbuff, &fil);
- 856:Core/Src/main.c ****   f_puts("\t", &fil);
- 857:Core/Src/main.c ****   f_puts(l70DataAfterHadler.latitude, &fil);
- 858:Core/Src/main.c ****   f_puts("\t", &fil);
- 859:Core/Src/main.c ****   f_puts(l70DataAfterHadler.longitude, &fil);
- 860:Core/Src/main.c ****   f_puts("\t", &fil);
- 861:Core/Src/main.c ****   f_puts(l70DataAfterHadler.Speed, &fil);
- 862:Core/Src/main.c ****   f_puts("\t", &fil);
- 863:Core/Src/main.c ****   f_puts(ds18_buff, &fil);
- 864:Core/Src/main.c ****   f_puts("\n", &fil);
- 865:Core/Src/main.c **** 
- 866:Core/Src/main.c ****   fresult = f_close(&fil);
- 867:Core/Src/main.c **** }
- 868:Core/Src/main.c **** if (Type_Task == Task_Display && !Taskperform.TaskDisplay)
- 869:Core/Src/main.c **** {
- 870:Core/Src/main.c ****   log_data("TASK DISPLAY\n");
- 871:Core/Src/main.c ****   Taskperform.TaskDisplay = true;
- 872:Core/Src/main.c **** }
- 873:Core/Src/main.c **** HAL_Delay(100);
- 874:Core/Src/main.c **** #endif
- 875:Core/Src/main.c **** // #if SIM
- 876:Core/Src/main.c **** //   // sim7672_pwrOn();
- 877:Core/Src/main.c **** //   // HAL_Delay(5000);
- 878:Core/Src/main.c **** //   sim7672_init();
- 879:Core/Src/main.c **** //   sim7672_check_signalStrength();
- 880:Core/Src/main.c **** //   HAL_Delay(500);
- 881:Core/Src/main.c **** //   // mqtt_disconnectServer();
- 882:Core/Src/main.c **** //   HAL_Delay(1000);
- 883:Core/Src/main.c **** //   mqtt_connectServer();
- 884:Core/Src/main.c **** //   mqtt_pub("test1z", "123456789");
- 885:Core/Src/main.c **** //   HAL_Delay(500);
- 886:Core/Src/main.c **** //   mqtt_sub("test1z");
- 887:Core/Src/main.c **** // #endif
- 888:Core/Src/main.c **** 
- 889:Core/Src/main.c **** // #if GPS
- 890:Core/Src/main.c **** //   sim7672_pwrOff();
- 891:Core/Src/main.c **** //   l70_init();
- 892:Core/Src/main.c **** //   HAL_Delay(1000);
- 893:Core/Src/main.c **** // #endif
- 894:Core/Src/main.c **** 
- 895:Core/Src/main.c **** // #if SDCard
- 896:Core/Src/main.c **** 
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 29
+ 840:Core/Src/main.c ****   //   HAL_RTC_GetTime(&hrtc, &last_sTime, RTC_FORMAT_BIN);
+ 841:Core/Src/main.c ****   //   HAL_RTC_GetDate(&hrtc, &last_sDate, RTC_FORMAT_BIN);
+ 842:Core/Src/main.c ****   //   totalMinute_OperateTime = (60 * last_sTime.Hours + last_sTime.Minutes) - (60 * current_sTime
+ 843:Core/Src/main.c ****   //   sprintf(totalMinute_OperateTime_buff, "totalTime: %d", totalMinute_OperateTime);
+ 844:Core/Src/main.c ****   //   mqtt_pub(TOPIC_TEST, totalMinute_OperateTime_buff);
+ 845:Core/Src/main.c ****   // }
+ 846:Core/Src/main.c **** }
+ 847:Core/Src/main.c **** if (Type_Task == Task_Store && !Taskperform.TaskStore)
+ 848:Core/Src/main.c **** {
+ 849:Core/Src/main.c ****   log_data("TASK STORE\n");
+ 850:Core/Src/main.c ****   Taskperform.TaskStore = true;
+ 851:Core/Src/main.c **** 
+ 852:Core/Src/main.c ****   fresult = f_open(&fil, "GSHT1.txt", FA_WRITE);
+ 853:Core/Src/main.c ****   if (fresult != FR_OK)
+ 854:Core/Src/main.c ****     log_data("open error...\n\n");
+ 855:Core/Src/main.c ****   else
+ 856:Core/Src/main.c ****     log_data("open successfully...\n\n");
+ 857:Core/Src/main.c **** 
+ 858:Core/Src/main.c ****   f_lseek(&fil, f_size(&fil));
+ 859:Core/Src/main.c **** 
+ 860:Core/Src/main.c ****   f_puts(l70DataAfterHadler.utcTime, &fil);
+ 861:Core/Src/main.c ****   f_puts("\t", &fil);
+ 862:Core/Src/main.c ****   f_puts(Card_Startbuff, &fil);
+ 863:Core/Src/main.c ****   f_puts("\t", &fil);
+ 864:Core/Src/main.c ****   f_puts(l70DataAfterHadler.latitude, &fil);
+ 865:Core/Src/main.c ****   f_puts("\t", &fil);
+ 866:Core/Src/main.c ****   f_puts(l70DataAfterHadler.longitude, &fil);
+ 867:Core/Src/main.c ****   f_puts("\t", &fil);
+ 868:Core/Src/main.c ****   f_puts(l70DataAfterHadler.Speed, &fil);
+ 869:Core/Src/main.c ****   f_puts("\t", &fil);
+ 870:Core/Src/main.c ****   f_puts(ds18_buff, &fil);
+ 871:Core/Src/main.c ****   f_puts("\n", &fil);
+ 872:Core/Src/main.c **** 
+ 873:Core/Src/main.c ****   fresult = f_close(&fil);
+ 874:Core/Src/main.c **** }
+ 875:Core/Src/main.c **** if (Type_Task == Task_Display && !Taskperform.TaskDisplay)
+ 876:Core/Src/main.c **** {
+ 877:Core/Src/main.c ****   log_data("TASK DISPLAY\n");
+ 878:Core/Src/main.c ****   Taskperform.TaskDisplay = true;
+ 879:Core/Src/main.c **** }
+ 880:Core/Src/main.c **** HAL_Delay(100);
+ 881:Core/Src/main.c **** #endif
+ 882:Core/Src/main.c **** // #if SIM
+ 883:Core/Src/main.c **** //   // sim7672_pwrOn();
+ 884:Core/Src/main.c **** //   // HAL_Delay(5000);
+ 885:Core/Src/main.c **** //   sim7672_init();
+ 886:Core/Src/main.c **** //   sim7672_check_signalStrength();
+ 887:Core/Src/main.c **** //   HAL_Delay(500);
+ 888:Core/Src/main.c **** //   // mqtt_disconnectServer();
+ 889:Core/Src/main.c **** //   HAL_Delay(1000);
+ 890:Core/Src/main.c **** //   mqtt_connectServer();
+ 891:Core/Src/main.c **** //   mqtt_pub("test1z", "123456789");
+ 892:Core/Src/main.c **** //   HAL_Delay(500);
+ 893:Core/Src/main.c **** //   mqtt_sub("test1z");
+ 894:Core/Src/main.c **** // #endif
+ 895:Core/Src/main.c **** 
+ 896:Core/Src/main.c **** // #if GPS
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 29
 
 
- 897:Core/Src/main.c **** //   fresult = f_mount(&fs, "/", 1);
- 898:Core/Src/main.c **** //   if (fresult != FR_OK)
- 899:Core/Src/main.c **** //     log_data("ERROR!!! in mounting SD CARD...\n\n");
- 900:Core/Src/main.c **** //   else
- 901:Core/Src/main.c **** //     log_data("*******************\nSD CARD mounted successfully...\n\n");
- 902:Core/Src/main.c **** 
- 903:Core/Src/main.c **** //   /* ********************************Create second file with read write access and open it */
- 904:Core/Src/main.c **** //   fresult = f_open(&fil, "file2.txt", FA_WRITE);
+ 897:Core/Src/main.c **** //   sim7672_pwrOff();
+ 898:Core/Src/main.c **** //   l70_init();
+ 899:Core/Src/main.c **** //   HAL_Delay(1000);
+ 900:Core/Src/main.c **** // #endif
+ 901:Core/Src/main.c **** 
+ 902:Core/Src/main.c **** // #if SDCard
+ 903:Core/Src/main.c **** 
+ 904:Core/Src/main.c **** //   fresult = f_mount(&fs, "/", 1);
  905:Core/Src/main.c **** //   if (fresult != FR_OK)
- 906:Core/Src/main.c **** //     log_data("open error...\n\n");
+ 906:Core/Src/main.c **** //     log_data("ERROR!!! in mounting SD CARD...\n\n");
  907:Core/Src/main.c **** //   else
- 908:Core/Src/main.c **** //     log_data("open successfully...\n\n");
- 909:Core/Src/main.c **** //   // f_lseek(&fil, f_size(&fil));
- 910:Core/Src/main.c **** //   f_puts("This data is from the FILE1.txt. And it was written using ...f_puts... \nthis full fun
- 911:Core/Src/main.c **** //   // f_puts("\nThis is updated data and it should be in the end",&fil);
- 912:Core/Src/main.c **** //   fresult = f_close(&fil);
- 913:Core/Src/main.c **** //   if (fresult != FR_OK)
- 914:Core/Src/main.c **** //     log_data("write error...\n\n");
- 915:Core/Src/main.c **** //   else
- 916:Core/Src/main.c **** //     log_data("write successfully...\n\n");
- 917:Core/Src/main.c **** //   log_data("File2.txt created and data is written\n");
- 918:Core/Src/main.c **** //   // clearing buffer to show that result obtained is from the file
- 919:Core/Src/main.c **** 
- 920:Core/Src/main.c **** //   /* ***********************************Open second file to read */
- 921:Core/Src/main.c **** //   fresult = f_open(&fil, "file2.txt", FA_READ);
- 922:Core/Src/main.c **** //   if (fresult != FR_OK)
- 923:Core/Src/main.c **** //     log_data("open error...\n\n");
- 924:Core/Src/main.c **** //   else
- 925:Core/Src/main.c **** //     log_data("open successfully...\n\n");
+ 908:Core/Src/main.c **** //     log_data("*******************\nSD CARD mounted successfully...\n\n");
+ 909:Core/Src/main.c **** 
+ 910:Core/Src/main.c **** //   /* ********************************Create second file with read write access and open it */
+ 911:Core/Src/main.c **** //   fresult = f_open(&fil, "file2.txt", FA_WRITE);
+ 912:Core/Src/main.c **** //   if (fresult != FR_OK)
+ 913:Core/Src/main.c **** //     log_data("open error...\n\n");
+ 914:Core/Src/main.c **** //   else
+ 915:Core/Src/main.c **** //     log_data("open successfully...\n\n");
+ 916:Core/Src/main.c **** //   // f_lseek(&fil, f_size(&fil));
+ 917:Core/Src/main.c **** //   f_puts("This data is from the FILE1.txt. And it was written using ...f_puts... \nthis full fun
+ 918:Core/Src/main.c **** //   // f_puts("\nThis is updated data and it should be in the end",&fil);
+ 919:Core/Src/main.c **** //   fresult = f_close(&fil);
+ 920:Core/Src/main.c **** //   if (fresult != FR_OK)
+ 921:Core/Src/main.c **** //     log_data("write error...\n\n");
+ 922:Core/Src/main.c **** //   else
+ 923:Core/Src/main.c **** //     log_data("write successfully...\n\n");
+ 924:Core/Src/main.c **** //   log_data("File2.txt created and data is written\n");
+ 925:Core/Src/main.c **** //   // clearing buffer to show that result obtained is from the file
  926:Core/Src/main.c **** 
- 927:Core/Src/main.c **** //   /* Read data from the file
- 928:Core/Src/main.c **** //    * Please see the function details for the arguments */
- 929:Core/Src/main.c **** //   // f_gets(buffer, f_size(&fil), &fil);
- 930:Core/Src/main.c **** //   while (f_gets(buffer, sizeof(buffer), &fil) != NULL)
- 931:Core/Src/main.c **** //   {
- 932:Core/Src/main.c **** //     // Xử lý dữ liệu theo nhu cầu của bạn, ví dụ: gửi qua UART
- 933:Core/Src/main.c **** //     log_data(buffer);
- 934:Core/Src/main.c **** //   }
- 935:Core/Src/main.c **** //   // f_read (&fil, buffer, f_size(&fil), &br);
- 936:Core/Src/main.c **** //   log_data("data: ");
- 937:Core/Src/main.c **** //   log_data(buffer);
- 938:Core/Src/main.c **** //   log_data("\n\n");
- 939:Core/Src/main.c **** 
- 940:Core/Src/main.c **** //   /* Close file */
- 941:Core/Src/main.c **** //   f_close(&fil);
- 942:Core/Src/main.c **** // // HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_SET);
- 943:Core/Src/main.c **** // // HAL_Delay(1000);
- 944:Core/Src/main.c **** // // HAL_GPIO_WritePin(BUZZER_GPIO_Port,BUZZER_Pin,GPIO_PIN_RESET);
- 945:Core/Src/main.c **** // #endif
- 946:Core/Src/main.c **** /* USER CODE END 4 */
- 947:Core/Src/main.c **** 
- 948:Core/Src/main.c **** /**
- 949:Core/Src/main.c ****  * @brief  This function is executed in case of error occurrence.
- 950:Core/Src/main.c ****  * @retval None
- 951:Core/Src/main.c ****  */
- 952:Core/Src/main.c **** void Error_Handler(void)
- 953:Core/Src/main.c **** {
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 30
+ 927:Core/Src/main.c **** //   /* ***********************************Open second file to read */
+ 928:Core/Src/main.c **** //   fresult = f_open(&fil, "file2.txt", FA_READ);
+ 929:Core/Src/main.c **** //   if (fresult != FR_OK)
+ 930:Core/Src/main.c **** //     log_data("open error...\n\n");
+ 931:Core/Src/main.c **** //   else
+ 932:Core/Src/main.c **** //     log_data("open successfully...\n\n");
+ 933:Core/Src/main.c **** 
+ 934:Core/Src/main.c **** //   /* Read data from the file
+ 935:Core/Src/main.c **** //    * Please see the function details for the arguments */
+ 936:Core/Src/main.c **** //   // f_gets(buffer, f_size(&fil), &fil);
+ 937:Core/Src/main.c **** //   while (f_gets(buffer, sizeof(buffer), &fil) != NULL)
+ 938:Core/Src/main.c **** //   {
+ 939:Core/Src/main.c **** //     // Xử lý dữ liệu theo nhu cầu của bạn, ví dụ: gửi qua UART
+ 940:Core/Src/main.c **** //     log_data(buffer);
+ 941:Core/Src/main.c **** //   }
+ 942:Core/Src/main.c **** //   // f_read (&fil, buffer, f_size(&fil), &br);
+ 943:Core/Src/main.c **** //   log_data("data: ");
+ 944:Core/Src/main.c **** //   log_data(buffer);
+ 945:Core/Src/main.c **** //   log_data("\n\n");
+ 946:Core/Src/main.c **** 
+ 947:Core/Src/main.c **** //   /* Close file */
+ 948:Core/Src/main.c **** //   f_close(&fil);
+ 949:Core/Src/main.c **** // // HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_SET);
+ 950:Core/Src/main.c **** // // HAL_Delay(1000);
+ 951:Core/Src/main.c **** // // HAL_GPIO_WritePin(BUZZER_GPIO_Port,BUZZER_Pin,GPIO_PIN_RESET);
+ 952:Core/Src/main.c **** // #endif
+ 953:Core/Src/main.c **** /* USER CODE END 4 */
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 30
 
 
- 629              		.loc 1 953 1 view -0
+ 954:Core/Src/main.c **** 
+ 955:Core/Src/main.c **** /**
+ 956:Core/Src/main.c ****  * @brief  This function is executed in case of error occurrence.
+ 957:Core/Src/main.c ****  * @retval None
+ 958:Core/Src/main.c ****  */
+ 959:Core/Src/main.c **** void Error_Handler(void)
+ 960:Core/Src/main.c **** {
+ 629              		.loc 1 960 1 view -0
  630              		.cfi_startproc
  631              		@ Volatile: function does not return.
  632              		@ args = 0, pretend = 0, frame = 0
  633              		@ frame_needed = 0, uses_anonymous_args = 0
  634              		@ link register save eliminated.
- 954:Core/Src/main.c ****   /* USER CODE BEGIN Error_Handler_Debug */
- 955:Core/Src/main.c ****   /* User can add his own implementation to report the HAL error return state */
- 956:Core/Src/main.c ****   __disable_irq();
- 635              		.loc 1 956 3 view .LVU143
+ 961:Core/Src/main.c ****   /* USER CODE BEGIN Error_Handler_Debug */
+ 962:Core/Src/main.c ****   /* User can add his own implementation to report the HAL error return state */
+ 963:Core/Src/main.c ****   __disable_irq();
+ 635              		.loc 1 963 3 view .LVU143
  636              	.LBB5:
  637              	.LBI5:
  638              		.file 2 "Drivers/CMSIS/Include/cmsis_gcc.h"
@@ -1791,6 +1798,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
   35:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef __has_builtin
   36:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __has_builtin(x) (0)
   37:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 31
+
+
   38:Drivers/CMSIS/Include/cmsis_gcc.h **** 
   39:Drivers/CMSIS/Include/cmsis_gcc.h **** /* CMSIS compiler specific defines */
   40:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __ASM
@@ -1798,9 +1808,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
   42:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
   43:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __INLINE
   44:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __INLINE                               inline
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 31
-
-
   45:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
   46:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __STATIC_INLINE
   47:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __STATIC_INLINE                        static inline
@@ -1851,6 +1858,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
   92:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT16_READ(addr)          (((const struct T_UINT16_READ *)(const void *)(add
   93:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
   94:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32_WRITE
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 32
+
+
   95:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
   96:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
   97:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
@@ -1858,9 +1868,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
   99:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
  100:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32_WRITE(addr, val)    (void)((((struct T_UINT32_WRITE *)(void *)(addr))-
  101:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 32
-
-
  102:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32_READ
  103:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
  104:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
@@ -1911,19 +1918,19 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  645              	@ 0 "" 2
  646              		.thumb
  647              		.syntax unified
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 33
+
+
  648              	.L50:
  649              	.LBE6:
  650              	.LBE5:
- 957:Core/Src/main.c ****   while (1)
- 651              		.loc 1 957 3 discriminator 1 view .LVU146
- 958:Core/Src/main.c ****   {
- 959:Core/Src/main.c ****   }
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 33
-
-
- 652              		.loc 1 959 3 discriminator 1 view .LVU147
- 957:Core/Src/main.c ****   while (1)
- 653              		.loc 1 957 9 discriminator 1 view .LVU148
+ 964:Core/Src/main.c ****   while (1)
+ 651              		.loc 1 964 3 discriminator 1 view .LVU146
+ 965:Core/Src/main.c ****   {
+ 966:Core/Src/main.c ****   }
+ 652              		.loc 1 966 3 discriminator 1 view .LVU147
+ 964:Core/Src/main.c ****   while (1)
+ 653              		.loc 1 964 9 discriminator 1 view .LVU148
  654 0002 FEE7     		b	.L50
  655              		.cfi_endproc
  656              	.LFE78:
@@ -1971,6 +1978,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  692 0010 8DF80010 		strb	r1, [sp]
  272:Core/Src/main.c ****   sAlarm.AlarmTime.Seconds = current_sTime.Seconds;
  693              		.loc 1 272 3 is_stmt 1 view .LVU157
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 34
+
+
  272:Core/Src/main.c ****   sAlarm.AlarmTime.Seconds = current_sTime.Seconds;
  694              		.loc 1 272 43 is_stmt 0 view .LVU158
  695 0014 5978     		ldrb	r1, [r3, #1]	@ zero_extendqisi2
@@ -1978,9 +1988,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  696              		.loc 1 272 28 view .LVU159
  697 0016 8DF80110 		strb	r1, [sp, #1]
  273:Core/Src/main.c ****   sAlarm.Alarm = RTC_ALARM_A;
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 34
-
-
  698              		.loc 1 273 3 is_stmt 1 view .LVU160
  273:Core/Src/main.c ****   sAlarm.Alarm = RTC_ALARM_A;
  699              		.loc 1 273 43 is_stmt 0 view .LVU161
@@ -2031,16 +2038,16 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  737              		.global	SystemClock_Config
  738              		.syntax unified
  739              		.thumb
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 35
+
+
  740              		.thumb_func
  742              	SystemClock_Config:
  743              	.LFB77:
- 750:Core/Src/main.c ****   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
- 744              		.loc 1 750 1 view -0
+ 757:Core/Src/main.c ****   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+ 744              		.loc 1 757 1 view -0
  745              		.cfi_startproc
  746              		@ args = 0, pretend = 0, frame = 88
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 35
-
-
  747              		@ frame_needed = 0, uses_anonymous_args = 0
  748 0000 00B5     		push	{lr}
  749              	.LCFI10:
@@ -2049,186 +2056,186 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  752 0002 97B0     		sub	sp, sp, #92
  753              	.LCFI11:
  754              		.cfi_def_cfa_offset 96
- 751:Core/Src/main.c ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
- 755              		.loc 1 751 3 view .LVU171
- 751:Core/Src/main.c ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
- 756              		.loc 1 751 22 is_stmt 0 view .LVU172
+ 758:Core/Src/main.c ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+ 755              		.loc 1 758 3 view .LVU171
+ 758:Core/Src/main.c ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+ 756              		.loc 1 758 22 is_stmt 0 view .LVU172
  757 0004 2822     		movs	r2, #40
  758 0006 0021     		movs	r1, #0
  759 0008 0CA8     		add	r0, sp, #48
  760 000a FFF7FEFF 		bl	memset
  761              	.LVL47:
- 752:Core/Src/main.c ****   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
- 762              		.loc 1 752 3 is_stmt 1 view .LVU173
- 752:Core/Src/main.c ****   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
- 763              		.loc 1 752 22 is_stmt 0 view .LVU174
+ 759:Core/Src/main.c ****   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
+ 762              		.loc 1 759 3 is_stmt 1 view .LVU173
+ 759:Core/Src/main.c ****   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
+ 763              		.loc 1 759 22 is_stmt 0 view .LVU174
  764 000e 0023     		movs	r3, #0
  765 0010 0793     		str	r3, [sp, #28]
  766 0012 0893     		str	r3, [sp, #32]
  767 0014 0993     		str	r3, [sp, #36]
  768 0016 0A93     		str	r3, [sp, #40]
  769 0018 0B93     		str	r3, [sp, #44]
- 753:Core/Src/main.c **** 
- 770              		.loc 1 753 3 is_stmt 1 view .LVU175
- 753:Core/Src/main.c **** 
- 771              		.loc 1 753 28 is_stmt 0 view .LVU176
+ 760:Core/Src/main.c **** 
+ 770              		.loc 1 760 3 is_stmt 1 view .LVU175
+ 760:Core/Src/main.c **** 
+ 771              		.loc 1 760 28 is_stmt 0 view .LVU176
  772 001a 0193     		str	r3, [sp, #4]
  773 001c 0293     		str	r3, [sp, #8]
  774 001e 0393     		str	r3, [sp, #12]
  775 0020 0493     		str	r3, [sp, #16]
  776 0022 0593     		str	r3, [sp, #20]
  777 0024 0693     		str	r3, [sp, #24]
- 758:Core/Src/main.c ****   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
- 778              		.loc 1 758 3 is_stmt 1 view .LVU177
- 758:Core/Src/main.c ****   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
- 779              		.loc 1 758 36 is_stmt 0 view .LVU178
+ 765:Core/Src/main.c ****   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+ 778              		.loc 1 765 3 is_stmt 1 view .LVU177
+ 765:Core/Src/main.c ****   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+ 779              		.loc 1 765 36 is_stmt 0 view .LVU178
  780 0026 0523     		movs	r3, #5
  781 0028 0C93     		str	r3, [sp, #48]
- 759:Core/Src/main.c ****   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
- 782              		.loc 1 759 3 is_stmt 1 view .LVU179
- 759:Core/Src/main.c ****   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
- 783              		.loc 1 759 30 is_stmt 0 view .LVU180
+ 766:Core/Src/main.c ****   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
+ 782              		.loc 1 766 3 is_stmt 1 view .LVU179
+ 766:Core/Src/main.c ****   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
+ 783              		.loc 1 766 30 is_stmt 0 view .LVU180
  784 002a 4FF48033 		mov	r3, #65536
  785 002e 0D93     		str	r3, [sp, #52]
- 760:Core/Src/main.c ****   RCC_OscInitStruct.LSEState = RCC_LSE_ON;
- 786              		.loc 1 760 3 is_stmt 1 view .LVU181
- 761:Core/Src/main.c ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
- 787              		.loc 1 761 3 view .LVU182
- 761:Core/Src/main.c ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
- 788              		.loc 1 761 30 is_stmt 0 view .LVU183
+ 767:Core/Src/main.c ****   RCC_OscInitStruct.LSEState = RCC_LSE_ON;
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 36
+
+
+ 786              		.loc 1 767 3 is_stmt 1 view .LVU181
+ 768:Core/Src/main.c ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+ 787              		.loc 1 768 3 view .LVU182
+ 768:Core/Src/main.c ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+ 788              		.loc 1 768 30 is_stmt 0 view .LVU183
  789 0030 0122     		movs	r2, #1
  790 0032 0F92     		str	r2, [sp, #60]
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 36
-
-
- 762:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
- 791              		.loc 1 762 3 is_stmt 1 view .LVU184
- 762:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
- 792              		.loc 1 762 30 is_stmt 0 view .LVU185
+ 769:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+ 791              		.loc 1 769 3 is_stmt 1 view .LVU184
+ 769:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+ 792              		.loc 1 769 30 is_stmt 0 view .LVU185
  793 0034 1092     		str	r2, [sp, #64]
- 763:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
- 794              		.loc 1 763 3 is_stmt 1 view .LVU186
- 763:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
- 795              		.loc 1 763 34 is_stmt 0 view .LVU187
+ 770:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+ 794              		.loc 1 770 3 is_stmt 1 view .LVU186
+ 770:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+ 795              		.loc 1 770 34 is_stmt 0 view .LVU187
  796 0036 0222     		movs	r2, #2
  797 0038 1392     		str	r2, [sp, #76]
- 764:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
- 798              		.loc 1 764 3 is_stmt 1 view .LVU188
- 764:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
- 799              		.loc 1 764 35 is_stmt 0 view .LVU189
+ 771:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
+ 798              		.loc 1 771 3 is_stmt 1 view .LVU188
+ 771:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
+ 799              		.loc 1 771 35 is_stmt 0 view .LVU189
  800 003a 1493     		str	r3, [sp, #80]
- 765:Core/Src/main.c ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
- 801              		.loc 1 765 3 is_stmt 1 view .LVU190
- 765:Core/Src/main.c ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
- 802              		.loc 1 765 32 is_stmt 0 view .LVU191
+ 772:Core/Src/main.c ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+ 801              		.loc 1 772 3 is_stmt 1 view .LVU190
+ 772:Core/Src/main.c ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+ 802              		.loc 1 772 32 is_stmt 0 view .LVU191
  803 003c 4FF4E013 		mov	r3, #1835008
  804 0040 1593     		str	r3, [sp, #84]
- 766:Core/Src/main.c ****   {
- 805              		.loc 1 766 3 is_stmt 1 view .LVU192
- 766:Core/Src/main.c ****   {
- 806              		.loc 1 766 7 is_stmt 0 view .LVU193
+ 773:Core/Src/main.c ****   {
+ 805              		.loc 1 773 3 is_stmt 1 view .LVU192
+ 773:Core/Src/main.c ****   {
+ 806              		.loc 1 773 7 is_stmt 0 view .LVU193
  807 0042 0CA8     		add	r0, sp, #48
  808 0044 FFF7FEFF 		bl	HAL_RCC_OscConfig
  809              	.LVL48:
- 766:Core/Src/main.c ****   {
- 810              		.loc 1 766 6 view .LVU194
+ 773:Core/Src/main.c ****   {
+ 810              		.loc 1 773 6 view .LVU194
  811 0048 E0B9     		cbnz	r0, .L62
- 773:Core/Src/main.c ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
- 812              		.loc 1 773 3 is_stmt 1 view .LVU195
- 773:Core/Src/main.c ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
- 813              		.loc 1 773 31 is_stmt 0 view .LVU196
+ 780:Core/Src/main.c ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+ 812              		.loc 1 780 3 is_stmt 1 view .LVU195
+ 780:Core/Src/main.c ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+ 813              		.loc 1 780 31 is_stmt 0 view .LVU196
  814 004a 0F23     		movs	r3, #15
  815 004c 0793     		str	r3, [sp, #28]
- 774:Core/Src/main.c ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
- 816              		.loc 1 774 3 is_stmt 1 view .LVU197
- 774:Core/Src/main.c ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
- 817              		.loc 1 774 34 is_stmt 0 view .LVU198
+ 781:Core/Src/main.c ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+ 816              		.loc 1 781 3 is_stmt 1 view .LVU197
+ 781:Core/Src/main.c ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+ 817              		.loc 1 781 34 is_stmt 0 view .LVU198
  818 004e 0221     		movs	r1, #2
  819 0050 0891     		str	r1, [sp, #32]
- 775:Core/Src/main.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
- 820              		.loc 1 775 3 is_stmt 1 view .LVU199
- 775:Core/Src/main.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
- 821              		.loc 1 775 35 is_stmt 0 view .LVU200
+ 782:Core/Src/main.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+ 820              		.loc 1 782 3 is_stmt 1 view .LVU199
+ 782:Core/Src/main.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+ 821              		.loc 1 782 35 is_stmt 0 view .LVU200
  822 0052 0023     		movs	r3, #0
  823 0054 0993     		str	r3, [sp, #36]
- 776:Core/Src/main.c ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
- 824              		.loc 1 776 3 is_stmt 1 view .LVU201
- 776:Core/Src/main.c ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
- 825              		.loc 1 776 36 is_stmt 0 view .LVU202
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 37
+
+
+ 783:Core/Src/main.c ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+ 824              		.loc 1 783 3 is_stmt 1 view .LVU201
+ 783:Core/Src/main.c ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+ 825              		.loc 1 783 36 is_stmt 0 view .LVU202
  826 0056 4FF48062 		mov	r2, #1024
  827 005a 0A92     		str	r2, [sp, #40]
- 777:Core/Src/main.c **** 
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 37
-
-
- 828              		.loc 1 777 3 is_stmt 1 view .LVU203
- 777:Core/Src/main.c **** 
- 829              		.loc 1 777 36 is_stmt 0 view .LVU204
+ 784:Core/Src/main.c **** 
+ 828              		.loc 1 784 3 is_stmt 1 view .LVU203
+ 784:Core/Src/main.c **** 
+ 829              		.loc 1 784 36 is_stmt 0 view .LVU204
  830 005c 0B93     		str	r3, [sp, #44]
- 779:Core/Src/main.c ****   {
- 831              		.loc 1 779 3 is_stmt 1 view .LVU205
- 779:Core/Src/main.c ****   {
- 832              		.loc 1 779 7 is_stmt 0 view .LVU206
+ 786:Core/Src/main.c ****   {
+ 831              		.loc 1 786 3 is_stmt 1 view .LVU205
+ 786:Core/Src/main.c ****   {
+ 832              		.loc 1 786 7 is_stmt 0 view .LVU206
  833 005e 07A8     		add	r0, sp, #28
  834 0060 FFF7FEFF 		bl	HAL_RCC_ClockConfig
  835              	.LVL49:
- 779:Core/Src/main.c ****   {
- 836              		.loc 1 779 6 view .LVU207
+ 786:Core/Src/main.c ****   {
+ 836              		.loc 1 786 6 view .LVU207
  837 0064 80B9     		cbnz	r0, .L63
- 783:Core/Src/main.c ****   PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
- 838              		.loc 1 783 3 is_stmt 1 view .LVU208
- 783:Core/Src/main.c ****   PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
- 839              		.loc 1 783 38 is_stmt 0 view .LVU209
+ 790:Core/Src/main.c ****   PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
+ 838              		.loc 1 790 3 is_stmt 1 view .LVU208
+ 790:Core/Src/main.c ****   PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
+ 839              		.loc 1 790 38 is_stmt 0 view .LVU209
  840 0066 0323     		movs	r3, #3
  841 0068 0193     		str	r3, [sp, #4]
- 784:Core/Src/main.c ****   PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV6;
- 842              		.loc 1 784 3 is_stmt 1 view .LVU210
- 784:Core/Src/main.c ****   PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV6;
- 843              		.loc 1 784 35 is_stmt 0 view .LVU211
+ 791:Core/Src/main.c ****   PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV6;
+ 842              		.loc 1 791 3 is_stmt 1 view .LVU210
+ 791:Core/Src/main.c ****   PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV6;
+ 843              		.loc 1 791 35 is_stmt 0 view .LVU211
  844 006a 4FF48073 		mov	r3, #256
  845 006e 0293     		str	r3, [sp, #8]
- 785:Core/Src/main.c ****   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
- 846              		.loc 1 785 3 is_stmt 1 view .LVU212
- 785:Core/Src/main.c ****   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
- 847              		.loc 1 785 35 is_stmt 0 view .LVU213
+ 792:Core/Src/main.c ****   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+ 846              		.loc 1 792 3 is_stmt 1 view .LVU212
+ 792:Core/Src/main.c ****   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+ 847              		.loc 1 792 35 is_stmt 0 view .LVU213
  848 0070 4FF40043 		mov	r3, #32768
  849 0074 0393     		str	r3, [sp, #12]
- 786:Core/Src/main.c ****   {
- 850              		.loc 1 786 3 is_stmt 1 view .LVU214
- 786:Core/Src/main.c ****   {
- 851              		.loc 1 786 7 is_stmt 0 view .LVU215
+ 793:Core/Src/main.c ****   {
+ 850              		.loc 1 793 3 is_stmt 1 view .LVU214
+ 793:Core/Src/main.c ****   {
+ 851              		.loc 1 793 7 is_stmt 0 view .LVU215
  852 0076 01A8     		add	r0, sp, #4
  853 0078 FFF7FEFF 		bl	HAL_RCCEx_PeriphCLKConfig
  854              	.LVL50:
- 786:Core/Src/main.c ****   {
- 855              		.loc 1 786 6 view .LVU216
+ 793:Core/Src/main.c ****   {
+ 855              		.loc 1 793 6 view .LVU216
  856 007c 30B9     		cbnz	r0, .L64
- 790:Core/Src/main.c **** 
- 857              		.loc 1 790 1 view .LVU217
+ 797:Core/Src/main.c **** 
+ 857              		.loc 1 797 1 view .LVU217
  858 007e 17B0     		add	sp, sp, #92
  859              	.LCFI12:
  860              		.cfi_remember_state
  861              		.cfi_def_cfa_offset 4
  862              		@ sp needed
  863 0080 5DF804FB 		ldr	pc, [sp], #4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 38
+
+
  864              	.L62:
  865              	.LCFI13:
  866              		.cfi_restore_state
- 768:Core/Src/main.c ****   }
- 867              		.loc 1 768 5 is_stmt 1 view .LVU218
+ 775:Core/Src/main.c ****   }
+ 867              		.loc 1 775 5 is_stmt 1 view .LVU218
  868 0084 FFF7FEFF 		bl	Error_Handler
  869              	.LVL51:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 38
-
-
  870              	.L63:
- 781:Core/Src/main.c ****   }
- 871              		.loc 1 781 5 view .LVU219
+ 788:Core/Src/main.c ****   }
+ 871              		.loc 1 788 5 view .LVU219
  872 0088 FFF7FEFF 		bl	Error_Handler
  873              	.LVL52:
  874              	.L64:
- 788:Core/Src/main.c ****   }
- 875              		.loc 1 788 5 view .LVU220
+ 795:Core/Src/main.c ****   }
+ 875              		.loc 1 795 5 view .LVU220
  876 008c FFF7FEFF 		bl	Error_Handler
  877              	.LVL53:
  878              		.cfi_endproc
@@ -2271,6 +2278,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  899      20202020 
  899      4500
  900 0066 0000     		.align	2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 39
+
+
  901              	.LC9:
  902 0068 4C61743A 		.ascii	"Lat:           N\000"
  902      20202020 
@@ -2278,9 +2288,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  902      2020204E 
  902      00
  903 0079 000000   		.align	2
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 39
-
-
  904              	.LC10:
  905 007c 53706565 		.ascii	"Speed:      m/s\000"
  905      643A2020 
@@ -2331,6 +2338,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  929 0114 31323433 		.ascii	"1243\000"
  929      00
  930 0119 000000   		.align	2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 40
+
+
  931              	.LC19:
  932 011c 4E677579 		.ascii	"Nguyen_Van_A\000"
  932      656E5F56 
@@ -2338,9 +2348,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  932      00
  933 0129 000000   		.align	2
  934              	.LC20:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 40
-
-
  935 012c 5649455F 		.ascii	"VIE_0123562571\000"
  935      30313233 
  935      35363235 
@@ -2391,6 +2398,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  960 01a6 0000     		.align	2
  961              	.LC29:
  962 01a8 25642F25 		.ascii	"%d/%d/%d\000"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 41
+
+
  962      642F2564 
  962      00
  963 01b1 000000   		.align	2
@@ -2398,9 +2408,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  965 01b4 25646825 		.ascii	"%dh%d\000"
  965      6400
  966 01ba 0000     		.align	2
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 41
-
-
  967              	.LC31:
  968 01bc 2E303030 		.ascii	".000000\000"
  968      30303000 
@@ -2451,6 +2458,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  996      2C226F66 
  996      666C696E 
  997 0248 4944223A 		.ascii	"ID\":%s,\"license\":%s,\"name\":%s,\"phone\":%s,\"s"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 42
+
+
  997      25732C22 
  997      6C696365 
  997      6E736522 
@@ -2458,9 +2468,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  998 0273 69676E61 		.ascii	"ignal\":%s,\"latitude\":%s,\"longitude\":%s,\"ds18b"
  998      6C223A25 
  998      732C226C 
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 42
-
-
  998      61746974 
  998      75646522 
  999 02a0 3230223A 		.ascii	"20\":%s,\"dhttemp\":%s,\"dhthum\":%s,\"fuel\":%s,\""
@@ -2511,6 +2518,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1018      792E2E2E 
  1019 034f 00       		.align	2
  1020              	.LC47:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 43
+
+
  1021 0350 0900     		.ascii	"\011\000"
  1022 0352 0000     		.align	2
  1023              	.LC48:
@@ -2518,9 +2528,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1024      20444953 
  1024      504C4159 
  1024      0A00
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 43
-
-
  1025 0362 0000     		.align	2
  1026              	.LC49:
  1027 0364 54616720 		.ascii	"Tag invalid\012\000"
@@ -2571,6 +2578,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1056              		.cfi_def_cfa_offset 8
  1057              		.cfi_offset 7, -8
  1058              		.cfi_offset 14, -4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 44
+
+
  1059 0002 8EB0     		sub	sp, sp, #56
  1060              	.LCFI15:
  1061              		.cfi_def_cfa_offset 64
@@ -2578,9 +2588,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1062              		.loc 1 407 3 view .LVU222
  1063 0004 FFF7FEFF 		bl	HAL_Init
  1064              	.LVL54:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 44
-
-
  414:Core/Src/main.c **** 
  1065              		.loc 1 414 3 view .LVU223
  1066 0008 FFF7FEFF 		bl	SystemClock_Config
@@ -2631,6 +2638,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1100              	.LVL66:
  432:Core/Src/main.c ****   MX_TIM2_Init();
  1101              		.loc 1 432 3 view .LVU235
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 45
+
+
  1102 0038 FFF7FEFF 		bl	MX_USART2_UART_Init
  1103              	.LVL67:
  433:Core/Src/main.c ****   MX_TIM3_Init();
@@ -2638,9 +2648,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1105 003c FFF7FEFF 		bl	MX_TIM2_Init
  1106              	.LVL68:
  434:Core/Src/main.c ****   MX_RTC_Init();
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 45
-
-
  1107              		.loc 1 434 3 view .LVU237
  1108 0040 FFF7FEFF 		bl	MX_TIM3_Init
  1109              	.LVL69:
@@ -2691,6 +2698,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1144              	.LVL79:
  451:Core/Src/main.c ****   //  mqtt_disconnectServer();
  1145              		.loc 1 451 4 view .LVU248
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 46
+
+
  1146 0078 FFF7FEFF 		bl	sim7672_check_signalStrength
  1147              	.LVL80:
  454:Core/Src/main.c ****    HAL_Delay(100);
@@ -2698,9 +2708,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1149 007c FFF7FEFF 		bl	mqtt_connectServer
  1150              	.LVL81:
  455:Core/Src/main.c **** 
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 46
-
-
  1151              		.loc 1 455 4 view .LVU250
  1152 0080 6420     		movs	r0, #100
  1153 0082 FFF7FEFF 		bl	HAL_Delay
@@ -2751,6 +2758,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1191 00c0 2946     		mov	r1, r5
  1192 00c2 9548     		ldr	r0, .L99+24
  1193 00c4 FFF7FEFF 		bl	SSD1306_Puts
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 47
+
+
  1194              	.LVL89:
  468:Core/Src/main.c ****   SSD1306_Puts("Lon:            E", &Font_7x10, 1);
  1195              		.loc 1 468 3 view .LVU258
@@ -2758,9 +2768,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1197 00ca 2046     		mov	r0, r4
  1198 00cc FFF7FEFF 		bl	SSD1306_GotoXY
  1199              	.LVL90:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 47
-
-
  469:Core/Src/main.c ****   SSD1306_GotoXY(1, 40);
  1200              		.loc 1 469 3 view .LVU259
  1201 00d0 2246     		mov	r2, r4
@@ -2811,6 +2818,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1238              		.loc 1 476 11 view .LVU267
  1239 010c 884B     		ldr	r3, .L99+48
  1240 010e 1870     		strb	r0, [r3]
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 48
+
+
  477:Core/Src/main.c ****     log_data("ERROR!!! in mounting SD CARD...\n\n");
  1241              		.loc 1 477 3 is_stmt 1 view .LVU268
  477:Core/Src/main.c ****     log_data("ERROR!!! in mounting SD CARD...\n\n");
@@ -2818,9 +2828,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1243 0110 0028     		cmp	r0, #0
  1244 0112 57D0     		beq	.L66
  478:Core/Src/main.c ****   else
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 48
-
-
  1245              		.loc 1 478 5 is_stmt 1 view .LVU270
  1246 0114 8748     		ldr	r0, .L99+52
  1247 0116 FFF7FEFF 		bl	log_data
@@ -2871,6 +2878,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1285 015a 1A88     		ldrh	r2, [r3]	@ unaligned
  1286 015c 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
  1287 015e E287     		strh	r2, [r4, #62]	@ unaligned
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 49
+
+
  1288 0160 84F84030 		strb	r3, [r4, #64]
  490:Core/Src/main.c **** 
  1289              		.loc 1 490 3 view .LVU278
@@ -2878,9 +2888,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1291 0166 2834     		adds	r4, r4, #40
  1292 0168 93E80700 		ldm	r3, {r0, r1, r2}
  1293 016c 03C4     		stmia	r4!, {r0, r1}
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 49
-
-
  1294 016e 2270     		strb	r2, [r4]
  492:Core/Src/main.c ****   strcpy(infoUser2.name, "Nguyen_Van_A");
  1295              		.loc 1 492 3 view .LVU279
@@ -2931,6 +2938,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1334              	.L66:
  480:Core/Src/main.c ****   // Read data FLASH
  1335              		.loc 1 480 5 is_stmt 1 view .LVU286
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 50
+
+
  1336 01c4 6A48     		ldr	r0, .L99+112
  1337 01c6 FFF7FEFF 		bl	log_data
  1338              	.LVL99:
@@ -2938,9 +2948,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1340              	.L73:
  502:Core/Src/main.c ****     {
  1341              		.loc 1 502 5 view .LVU287
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 50
-
-
  502:Core/Src/main.c ****     {
  1342              		.loc 1 502 9 is_stmt 0 view .LVU288
  1343 01cc 6948     		ldr	r0, .L99+116
@@ -2991,6 +2998,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1380 0204 2846     		mov	r0, r5
  1381 0206 FFF7FEFF 		bl	HAL_RTC_GetDate
  1382              	.LVL104:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 51
+
+
  544:Core/Src/main.c ****   sprintf(time_buff, "%d:%d:%d", current_sTime.Hours, current_sTime.Minutes, current_sTime.Seconds)
  1383              		.loc 1 544 3 view .LVU297
  1384 020a 0420     		movs	r0, #4
@@ -2998,9 +3008,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1386              	.LVL105:
  545:Core/Src/main.c ****   log_data(time_buff);
  1387              		.loc 1 545 3 view .LVU298
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 51
-
-
  545:Core/Src/main.c ****   log_data(time_buff);
  1388              		.loc 1 545 91 is_stmt 0 view .LVU299
  1389 0210 A378     		ldrb	r3, [r4, #2]	@ zero_extendqisi2
@@ -3051,6 +3058,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1426 024c FFF7FEFF 		bl	log_data
  1427              	.LVL111:
  551:Core/Src/main.c ****   HAL_RTC_GetDate(&hrtc, &last_sDate, RTC_FORMAT_BIN);
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 52
+
+
  1428              		.loc 1 551 3 view .LVU308
  1429 0250 524E     		ldr	r6, .L99+156
  1430 0252 0022     		movs	r2, #0
@@ -3058,9 +3068,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1432 0256 2846     		mov	r0, r5
  1433 0258 FFF7FEFF 		bl	HAL_RTC_GetTime
  1434              	.LVL112:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 52
-
-
  552:Core/Src/main.c ****   totalMinute_OperateTime = (60 * last_sTime.Hours + last_sTime.Minutes) - (60 * current_sTime.Hour
  1435              		.loc 1 552 3 view .LVU309
  1436 025c 0022     		movs	r2, #0
@@ -3111,6 +3118,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1469              		.loc 1 554 13 view .LVU321
  1470 0292 4649     		ldr	r1, .L99+172
  1471 0294 0A60     		str	r2, [r1]
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 53
+
+
  555:Core/Src/main.c ****   sprintf(totalMinute_OperateTime_buff, "%dh%d", time_hour, time_minute);
  1472              		.loc 1 555 3 is_stmt 1 view .LVU322
  555:Core/Src/main.c ****   sprintf(totalMinute_OperateTime_buff, "%dh%d", time_hour, time_minute);
@@ -3118,9 +3128,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1474 0296 A2EB0211 		sub	r1, r2, r2, lsl #4
  555:Core/Src/main.c ****   sprintf(totalMinute_OperateTime_buff, "%dh%d", time_hour, time_minute);
  1475              		.loc 1 555 41 view .LVU324
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 53
-
-
  1476 029a 03EB8103 		add	r3, r3, r1, lsl #2
  555:Core/Src/main.c ****   sprintf(totalMinute_OperateTime_buff, "%dh%d", time_hour, time_minute);
  1477              		.loc 1 555 15 view .LVU325
@@ -3171,6 +3178,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1511 02ca 3F48     		ldr	r0, .L99+200
  1512 02cc FFF7FEFF 		bl	strstr
  1513              	.LVL119:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 54
+
+
  563:Core/Src/main.c ****   log_data("\nGSHT Start\n");
  1514              		.loc 1 563 67 discriminator 1 view .LVU337
  1515 02d0 0028     		cmp	r0, #0
@@ -3178,9 +3188,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1517              	.L74:
  564:Core/Src/main.c ****   // Check ID tag in Flash
  1518              		.loc 1 564 3 is_stmt 1 view .LVU338
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 54
-
-
  1519 02d4 3D48     		ldr	r0, .L99+204
  1520 02d6 FFF7FEFF 		bl	log_data
  1521              	.LVL120:
@@ -3231,6 +3238,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1561 0334 90000000 		.word	.LC12
  1562 0338 00000000 		.word	.LANCHOR19
  1563 033c 10000000 		.word	.LC2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 55
+
+
  1564 0340 00000000 		.word	.LANCHOR20
  1565 0344 D8000000 		.word	.LC14
  1566 0348 E4000000 		.word	.LC15
@@ -3238,9 +3248,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1568 0350 08010000 		.word	.LC17
  1569 0354 00000000 		.word	.LANCHOR21
  1570 0358 14010000 		.word	.LC18
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 55
-
-
  1571 035c 1C010000 		.word	.LC19
  1572 0360 2C010000 		.word	.LC20
  1573 0364 3C010000 		.word	.LC21
@@ -3291,6 +3298,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1613              		.loc 1 504 7 view .LVU348
  1614 03ea A54C     		ldr	r4, .L101+4
  1615 03ec 0191     		str	r1, [sp, #4]
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 56
+
+
  1616 03ee 0093     		str	r3, [sp]
  1617 03f0 5378     		ldrb	r3, [r2, #1]	@ zero_extendqisi2
  1618 03f2 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
@@ -3298,9 +3308,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1620 03f6 2046     		mov	r0, r4
  1621 03f8 FFF7FEFF 		bl	sprintf
  1622              	.LVL126:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 56
-
-
  505:Core/Src/main.c ****       if (strcmp(infoUser1.ID, Card_Startbuff) == 0)
  1623              		.loc 1 505 7 is_stmt 1 view .LVU349
  1624 03fc 2046     		mov	r0, r4
@@ -3351,6 +3358,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1659 042e 04F11400 		add	r0, r4, #20
  1660 0432 FFF7FEFF 		bl	strcpy
  1661              	.LVL131:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 57
+
+
  523:Core/Src/main.c ****         strcpy(infoUser.license, infoUser2.license);
  1662              		.loc 1 523 9 view .LVU360
  1663 0436 05F13201 		add	r1, r5, #50
@@ -3358,9 +3368,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1665 043e FFF7FEFF 		bl	strcpy
  1666              	.LVL132:
  524:Core/Src/main.c ****         buzzer(200);
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 57
-
-
  1667              		.loc 1 524 9 view .LVU361
  1668 0442 05F12801 		add	r1, r5, #40
  1669 0446 04F12800 		add	r0, r4, #40
@@ -3411,6 +3418,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1706 048a 04F12800 		add	r0, r4, #40
  1707 048e FFF7FEFF 		bl	strcpy
  1708              	.LVL139:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 58
+
+
  513:Core/Src/main.c ****         // HAL_Delay(200);
  1709              		.loc 1 513 9 view .LVU370
  1710 0492 C820     		movs	r0, #200
@@ -3418,9 +3428,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1712              	.LVL140:
  516:Core/Src/main.c ****       }
  1713              		.loc 1 516 9 view .LVU371
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 58
-
-
  1714 0498 8048     		ldr	r0, .L101+32
  1715 049a FFF7FEFF 		bl	log_data
  1716              	.LVL141:
@@ -3460,8 +3467,8 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1742              		.loc 1 586 10 view .LVU379
  1743 04be ABB1     		cbz	r3, .L97
  1744              	.L76:
- 738:Core/Src/main.c **** #endif
- 1745              		.loc 1 738 5 is_stmt 1 view .LVU380
+ 745:Core/Src/main.c **** #endif
+ 1745              		.loc 1 745 5 is_stmt 1 view .LVU380
  1746 04c0 6420     		movs	r0, #100
  1747 04c2 FFF7FEFF 		bl	HAL_Delay
  1748              	.LVL146:
@@ -3471,6 +3478,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  577:Core/Src/main.c ****   {
  1751              		.loc 1 577 3 view .LVU382
  583:Core/Src/main.c ****     {
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 59
+
+
  1752              		.loc 1 583 5 view .LVU383
  1753 04c6 784B     		ldr	r3, .L101+44
  1754 04c8 1B68     		ldr	r3, [r3]
@@ -3478,9 +3488,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1756 04cc F8D8     		bhi	.L76
  1757 04ce 01A2     		adr	r2, .L78
  1758 04d0 52F823F0 		ldr	pc, [r2, r3, lsl #2]
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 59
-
-
  1759              		.p2align 2
  1760              	.L78:
  1761 04d4 BB040000 		.word	.L83+1
@@ -3518,124 +3525,124 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1786              		.loc 1 590 19 view .LVU390
  1787 0502 6B4B     		ldr	r3, .L101+52
  1788 0504 1860     		str	r0, [r3]
- 592:Core/Src/main.c ****         // ftoa(ds18_temp, ds18_buff, 1);
+ 592:Core/Src/main.c ****         // sprintf(sensors.dhtTemp_buff,"%d",(int)dht_temp);
  1789              		.loc 1 592 9 is_stmt 1 view .LVU391
  1790 0506 6B4C     		ldr	r4, .L101+56
  1791 0508 6B49     		ldr	r1, .L101+60
  1792 050a 2046     		mov	r0, r4
  1793 050c FFF7FEFF 		bl	sprintf
  1794              	.LVL150:
- 597:Core/Src/main.c ****         strcpy(sensors.dhtHum_buff, "80");
- 1795              		.loc 1 597 9 view .LVU392
+ 599:Core/Src/main.c ****         strcpy(sensors.dhtHum_buff, "80");
+ 1795              		.loc 1 599 9 view .LVU392
  1796 0510 6A4B     		ldr	r3, .L101+64
  1797 0512 1A88     		ldrh	r2, [r3]	@ unaligned
  1798 0514 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
  1799 0516 A4F80520 		strh	r2, [r4, #5]	@ unaligned
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 60
+
+
  1800 051a E371     		strb	r3, [r4, #7]
- 598:Core/Src/main.c ****         strcpy(sensors.fuel, "80");
- 1801              		.loc 1 598 9 view .LVU393
+ 600:Core/Src/main.c ****         // log_data("Nhiet do va do am moi truong: ");
+ 1801              		.loc 1 600 9 view .LVU393
  1802 051c 684B     		ldr	r3, .L101+68
  1803 051e 1A88     		ldrh	r2, [r3]	@ unaligned
  1804 0520 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
  1805 0522 A4F83720 		strh	r2, [r4, #55]	@ unaligned
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 60
-
-
  1806 0526 84F83930 		strb	r3, [r4, #57]
- 599:Core/Src/main.c ****         log_data("Nhiet do thiet bi: ");
- 1807              		.loc 1 599 9 view .LVU394
+ 606:Core/Src/main.c ****         log_data("Nhiet do thiet bi: ");
+ 1807              		.loc 1 606 9 view .LVU394
  1808 052a A4F86920 		strh	r2, [r4, #105]	@ unaligned
  1809 052e 84F86B30 		strb	r3, [r4, #107]
- 600:Core/Src/main.c ****         log_data(sensors.ds18_buff);
- 1810              		.loc 1 600 9 view .LVU395
+ 607:Core/Src/main.c ****         log_data(sensors.ds18_buff);
+ 1810              		.loc 1 607 9 view .LVU395
  1811 0532 6448     		ldr	r0, .L101+72
  1812 0534 FFF7FEFF 		bl	log_data
  1813              	.LVL151:
- 601:Core/Src/main.c ****         log_data("\n");
- 1814              		.loc 1 601 9 view .LVU396
+ 608:Core/Src/main.c ****         log_data("\n");
+ 1814              		.loc 1 608 9 view .LVU396
  1815 0538 2046     		mov	r0, r4
  1816 053a FFF7FEFF 		bl	log_data
  1817              	.LVL152:
- 602:Core/Src/main.c ****       }
- 1818              		.loc 1 602 9 view .LVU397
+ 609:Core/Src/main.c ****       }
+ 1818              		.loc 1 609 9 view .LVU397
  1819 053e 6248     		ldr	r0, .L101+76
  1820 0540 FFF7FEFF 		bl	log_data
  1821              	.LVL153:
  1822 0544 BCE7     		b	.L76
  1823              	.L82:
- 606:Core/Src/main.c ****       {
- 1824              		.loc 1 606 7 view .LVU398
- 606:Core/Src/main.c ****       {
- 1825              		.loc 1 606 23 is_stmt 0 view .LVU399
+ 613:Core/Src/main.c ****       {
+ 1824              		.loc 1 613 7 view .LVU398
+ 613:Core/Src/main.c ****       {
+ 1825              		.loc 1 613 23 is_stmt 0 view .LVU399
  1826 0546 574B     		ldr	r3, .L101+40
  1827 0548 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 606:Core/Src/main.c ****       {
- 1828              		.loc 1 606 10 view .LVU400
+ 613:Core/Src/main.c ****       {
+ 1828              		.loc 1 613 10 view .LVU400
  1829 054a 002B     		cmp	r3, #0
  1830 054c B8D1     		bne	.L76
- 608:Core/Src/main.c ****         Taskperform.TaskGNSS = true;
- 1831              		.loc 1 608 9 is_stmt 1 view .LVU401
+ 615:Core/Src/main.c ****         Taskperform.TaskGNSS = true;
+ 1831              		.loc 1 615 9 is_stmt 1 view .LVU401
  1832 054e 5F48     		ldr	r0, .L101+80
  1833 0550 FFF7FEFF 		bl	log_data
  1834              	.LVL154:
- 609:Core/Src/main.c ****         GPSResponse = l70_receiveGPS();
- 1835              		.loc 1 609 9 view .LVU402
- 609:Core/Src/main.c ****         GPSResponse = l70_receiveGPS();
- 1836              		.loc 1 609 30 is_stmt 0 view .LVU403
+ 616:Core/Src/main.c ****         GPSResponse = l70_receiveGPS();
+ 1835              		.loc 1 616 9 view .LVU402
+ 616:Core/Src/main.c ****         GPSResponse = l70_receiveGPS();
+ 1836              		.loc 1 616 30 is_stmt 0 view .LVU403
  1837 0554 534B     		ldr	r3, .L101+40
  1838 0556 0122     		movs	r2, #1
  1839 0558 5A70     		strb	r2, [r3, #1]
- 610:Core/Src/main.c ****         l70_handleGPS(GPSResponse);
- 1840              		.loc 1 610 9 is_stmt 1 view .LVU404
- 610:Core/Src/main.c ****         l70_handleGPS(GPSResponse);
- 1841              		.loc 1 610 23 is_stmt 0 view .LVU405
+ 617:Core/Src/main.c ****         l70_handleGPS(GPSResponse);
+ 1840              		.loc 1 617 9 is_stmt 1 view .LVU404
+ 617:Core/Src/main.c ****         l70_handleGPS(GPSResponse);
+ 1841              		.loc 1 617 23 is_stmt 0 view .LVU405
  1842 055a FFF7FEFF 		bl	l70_receiveGPS
  1843              	.LVL155:
- 610:Core/Src/main.c ****         l70_handleGPS(GPSResponse);
- 1844              		.loc 1 610 21 view .LVU406
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 61
+
+
+ 617:Core/Src/main.c ****         l70_handleGPS(GPSResponse);
+ 1844              		.loc 1 617 21 view .LVU406
  1845 055e 5C4B     		ldr	r3, .L101+84
  1846 0560 1860     		str	r0, [r3]
- 611:Core/Src/main.c ****       }
- 1847              		.loc 1 611 9 is_stmt 1 view .LVU407
+ 618:Core/Src/main.c ****       }
+ 1847              		.loc 1 618 9 is_stmt 1 view .LVU407
  1848 0562 FFF7FEFF 		bl	l70_handleGPS
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 61
-
-
  1849              	.LVL156:
  1850 0566 ABE7     		b	.L76
  1851              	.L81:
- 615:Core/Src/main.c ****       {
- 1852              		.loc 1 615 7 view .LVU408
- 615:Core/Src/main.c ****       {
- 1853              		.loc 1 615 23 is_stmt 0 view .LVU409
+ 622:Core/Src/main.c ****       {
+ 1852              		.loc 1 622 7 view .LVU408
+ 622:Core/Src/main.c ****       {
+ 1853              		.loc 1 622 23 is_stmt 0 view .LVU409
  1854 0568 4E4B     		ldr	r3, .L101+40
  1855 056a 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
- 615:Core/Src/main.c ****       {
- 1856              		.loc 1 615 10 view .LVU410
+ 622:Core/Src/main.c ****       {
+ 1856              		.loc 1 622 10 view .LVU410
  1857 056c 002B     		cmp	r3, #0
  1858 056e A7D1     		bne	.L76
- 617:Core/Src/main.c ****         Taskperform.TaskSIM = true;
- 1859              		.loc 1 617 9 is_stmt 1 view .LVU411
+ 624:Core/Src/main.c ****         Taskperform.TaskSIM = true;
+ 1859              		.loc 1 624 9 is_stmt 1 view .LVU411
  1860 0570 5848     		ldr	r0, .L101+88
  1861 0572 FFF7FEFF 		bl	log_data
  1862              	.LVL157:
- 618:Core/Src/main.c ****         memset(Json_Data,'\0',sizeof(Json_Data));
- 1863              		.loc 1 618 9 view .LVU412
- 618:Core/Src/main.c ****         memset(Json_Data,'\0',sizeof(Json_Data));
- 1864              		.loc 1 618 29 is_stmt 0 view .LVU413
+ 625:Core/Src/main.c ****         memset(Json_Data,'\0',sizeof(Json_Data));
+ 1863              		.loc 1 625 9 view .LVU412
+ 625:Core/Src/main.c ****         memset(Json_Data,'\0',sizeof(Json_Data));
+ 1864              		.loc 1 625 29 is_stmt 0 view .LVU413
  1865 0576 4B4B     		ldr	r3, .L101+40
  1866 0578 0122     		movs	r2, #1
  1867 057a 9A70     		strb	r2, [r3, #2]
- 619:Core/Src/main.c ****         sprintf(totalMinute_OperateTime_buff, "%dh%d", time_hour, time_minute);
- 1868              		.loc 1 619 9 is_stmt 1 view .LVU414
+ 626:Core/Src/main.c ****         sprintf(totalMinute_OperateTime_buff, "%dh%d", time_hour, time_minute);
+ 1868              		.loc 1 626 9 is_stmt 1 view .LVU414
  1869 057c 564C     		ldr	r4, .L101+92
  1870 057e 4FF4FA72 		mov	r2, #500
  1871 0582 0021     		movs	r1, #0
  1872 0584 2046     		mov	r0, r4
  1873 0586 FFF7FEFF 		bl	memset
  1874              	.LVL158:
- 620:Core/Src/main.c ****         sprintf(Json_Data, "{\"online\":%s,\"offline\":%s,\"sleep\":%s,\"deviceID\":%s,\"license\":
- 1875              		.loc 1 620 9 view .LVU415
+ 627:Core/Src/main.c ****         sprintf(Json_Data, "{\"online\":%s,\"offline\":%s,\"sleep\":%s,\"deviceID\":%s,\"license\":
+ 1875              		.loc 1 627 9 view .LVU415
  1876 058a 544D     		ldr	r5, .L101+96
  1877 058c 544B     		ldr	r3, .L101+100
  1878 058e 1B68     		ldr	r3, [r3]
@@ -3645,12 +3652,15 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1882 0596 2846     		mov	r0, r5
  1883 0598 FFF7FEFF 		bl	sprintf
  1884              	.LVL159:
- 621:Core/Src/main.c ****                 stateDevice.online, stateDevice.offline, stateDevice.sleep, infoUser.deviceID, info
- 1885              		.loc 1 621 9 view .LVU416
+ 628:Core/Src/main.c ****                 stateDevice.online, stateDevice.offline, stateDevice.sleep, infoUser.deviceID, info
+ 1885              		.loc 1 628 9 view .LVU416
  1886 059c 534A     		ldr	r2, .L101+112
  1887 059e 544B     		ldr	r3, .L101+116
  1888 05a0 0D93     		str	r3, [sp, #52]
  1889 05a2 0C95     		str	r5, [sp, #48]
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 62
+
+
  1890 05a4 4349     		ldr	r1, .L101+56
  1891 05a6 01F16900 		add	r0, r1, #105
  1892 05aa 0B90     		str	r0, [sp, #44]
@@ -3658,9 +3668,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1894 05b0 0A90     		str	r0, [sp, #40]
  1895 05b2 481D     		adds	r0, r1, #5
  1896 05b4 0990     		str	r0, [sp, #36]
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 62
-
-
  1897 05b6 0891     		str	r1, [sp, #32]
  1898 05b8 A3F11401 		sub	r1, r3, #20
  1899 05bc 0791     		str	r1, [sp, #28]
@@ -3684,129 +3691,129 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  1917 05e6 2046     		mov	r0, r4
  1918 05e8 FFF7FEFF 		bl	sprintf
  1919              	.LVL160:
- 625:Core/Src/main.c ****         numCheck_time++;
- 1920              		.loc 1 625 9 view .LVU417
+ 632:Core/Src/main.c ****         numCheck_time++;
+ 1920              		.loc 1 632 9 view .LVU417
  1921 05ec 2146     		mov	r1, r4
  1922 05ee 4248     		ldr	r0, .L101+124
  1923 05f0 FFF7FEFF 		bl	mqtt_pub
  1924              	.LVL161:
- 626:Core/Src/main.c ****         if (numCheck_time == 10)
- 1925              		.loc 1 626 9 view .LVU418
- 626:Core/Src/main.c ****         if (numCheck_time == 10)
- 1926              		.loc 1 626 22 is_stmt 0 view .LVU419
+ 633:Core/Src/main.c ****         if (numCheck_time == 10)
+ 1925              		.loc 1 633 9 view .LVU418
+ 633:Core/Src/main.c ****         if (numCheck_time == 10)
+ 1926              		.loc 1 633 22 is_stmt 0 view .LVU419
  1927 05f4 414A     		ldr	r2, .L101+128
  1928 05f6 1368     		ldr	r3, [r2]
  1929 05f8 0133     		adds	r3, r3, #1
  1930 05fa 1360     		str	r3, [r2]
- 627:Core/Src/main.c ****         {
- 1931              		.loc 1 627 9 is_stmt 1 view .LVU420
- 627:Core/Src/main.c ****         {
- 1932              		.loc 1 627 12 is_stmt 0 view .LVU421
+ 634:Core/Src/main.c ****         {
+ 1931              		.loc 1 634 9 is_stmt 1 view .LVU420
+ 634:Core/Src/main.c ****         {
+ 1932              		.loc 1 634 12 is_stmt 0 view .LVU421
  1933 05fc 0A2B     		cmp	r3, #10
  1934 05fe 7FF45FAF 		bne	.L76
- 629:Core/Src/main.c ****           HAL_RTC_GetTime(&hrtc, &last_sTime, RTC_FORMAT_BIN);
- 1935              		.loc 1 629 11 is_stmt 1 view .LVU422
- 629:Core/Src/main.c ****           HAL_RTC_GetTime(&hrtc, &last_sTime, RTC_FORMAT_BIN);
- 1936              		.loc 1 629 25 is_stmt 0 view .LVU423
+ 636:Core/Src/main.c ****           HAL_RTC_GetTime(&hrtc, &last_sTime, RTC_FORMAT_BIN);
+ 1935              		.loc 1 636 11 is_stmt 1 view .LVU422
+ 636:Core/Src/main.c ****           HAL_RTC_GetTime(&hrtc, &last_sTime, RTC_FORMAT_BIN);
+ 1936              		.loc 1 636 25 is_stmt 0 view .LVU423
  1937 0602 0025     		movs	r5, #0
  1938 0604 1560     		str	r5, [r2]
- 630:Core/Src/main.c ****           HAL_RTC_GetDate(&hrtc, &last_sDate, RTC_FORMAT_BIN);
- 1939              		.loc 1 630 11 is_stmt 1 view .LVU424
+ 637:Core/Src/main.c ****           HAL_RTC_GetDate(&hrtc, &last_sDate, RTC_FORMAT_BIN);
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 63
+
+
+ 1939              		.loc 1 637 11 is_stmt 1 view .LVU424
  1940 0606 3E4C     		ldr	r4, .L101+132
  1941 0608 3E4E     		ldr	r6, .L101+136
  1942 060a 2A46     		mov	r2, r5
  1943 060c 2146     		mov	r1, r4
  1944 060e 3046     		mov	r0, r6
  1945 0610 FFF7FEFF 		bl	HAL_RTC_GetTime
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 63
-
-
  1946              	.LVL162:
- 631:Core/Src/main.c ****           totalMinute_OperateTime = (60 * last_sTime.Hours + last_sTime.Minutes) - (60 * current_sT
- 1947              		.loc 1 631 11 view .LVU425
+ 638:Core/Src/main.c ****           totalMinute_OperateTime = (60 * last_sTime.Hours + last_sTime.Minutes) - (60 * current_sT
+ 1947              		.loc 1 638 11 view .LVU425
  1948 0614 2A46     		mov	r2, r5
  1949 0616 3C49     		ldr	r1, .L101+140
  1950 0618 3046     		mov	r0, r6
  1951 061a FFF7FEFF 		bl	HAL_RTC_GetDate
  1952              	.LVL163:
- 632:Core/Src/main.c ****           time_hour = totalMinute_OperateTime / 60;
- 1953              		.loc 1 632 11 view .LVU426
- 632:Core/Src/main.c ****           time_hour = totalMinute_OperateTime / 60;
- 1954              		.loc 1 632 53 is_stmt 0 view .LVU427
+ 639:Core/Src/main.c ****           time_hour = totalMinute_OperateTime / 60;
+ 1953              		.loc 1 639 11 view .LVU426
+ 639:Core/Src/main.c ****           time_hour = totalMinute_OperateTime / 60;
+ 1954              		.loc 1 639 53 is_stmt 0 view .LVU427
  1955 061e 2278     		ldrb	r2, [r4]	@ zero_extendqisi2
- 632:Core/Src/main.c ****           time_hour = totalMinute_OperateTime / 60;
- 1956              		.loc 1 632 72 view .LVU428
+ 639:Core/Src/main.c ****           time_hour = totalMinute_OperateTime / 60;
+ 1956              		.loc 1 639 72 view .LVU428
  1957 0620 6378     		ldrb	r3, [r4, #1]	@ zero_extendqisi2
- 632:Core/Src/main.c ****           time_hour = totalMinute_OperateTime / 60;
- 1958              		.loc 1 632 60 view .LVU429
+ 639:Core/Src/main.c ****           time_hour = totalMinute_OperateTime / 60;
+ 1958              		.loc 1 639 60 view .LVU429
  1959 0622 C2EB0212 		rsb	r2, r2, r2, lsl #4
  1960 0626 03EB8203 		add	r3, r3, r2, lsl #2
  1961 062a 9BB2     		uxth	r3, r3
- 632:Core/Src/main.c ****           time_hour = totalMinute_OperateTime / 60;
- 1962              		.loc 1 632 103 view .LVU430
+ 639:Core/Src/main.c ****           time_hour = totalMinute_OperateTime / 60;
+ 1962              		.loc 1 639 103 view .LVU430
  1963 062c 374A     		ldr	r2, .L101+144
  1964 062e 1178     		ldrb	r1, [r2]	@ zero_extendqisi2
- 632:Core/Src/main.c ****           time_hour = totalMinute_OperateTime / 60;
- 1965              		.loc 1 632 125 view .LVU431
+ 639:Core/Src/main.c ****           time_hour = totalMinute_OperateTime / 60;
+ 1965              		.loc 1 639 125 view .LVU431
  1966 0630 5278     		ldrb	r2, [r2, #1]	@ zero_extendqisi2
- 632:Core/Src/main.c ****           time_hour = totalMinute_OperateTime / 60;
- 1967              		.loc 1 632 110 view .LVU432
+ 639:Core/Src/main.c ****           time_hour = totalMinute_OperateTime / 60;
+ 1967              		.loc 1 639 110 view .LVU432
  1968 0632 C1EB0111 		rsb	r1, r1, r1, lsl #4
  1969 0636 02EB8102 		add	r2, r2, r1, lsl #2
  1970 063a 92B2     		uxth	r2, r2
- 632:Core/Src/main.c ****           time_hour = totalMinute_OperateTime / 60;
- 1971              		.loc 1 632 82 view .LVU433
+ 639:Core/Src/main.c ****           time_hour = totalMinute_OperateTime / 60;
+ 1971              		.loc 1 639 82 view .LVU433
  1972 063c 9B1A     		subs	r3, r3, r2
  1973 063e 9BB2     		uxth	r3, r3
- 632:Core/Src/main.c ****           time_hour = totalMinute_OperateTime / 60;
- 1974              		.loc 1 632 35 view .LVU434
+ 639:Core/Src/main.c ****           time_hour = totalMinute_OperateTime / 60;
+ 1974              		.loc 1 639 35 view .LVU434
  1975 0640 334A     		ldr	r2, .L101+148
  1976 0642 1380     		strh	r3, [r2]	@ movhi
- 633:Core/Src/main.c ****           time_minute = totalMinute_OperateTime - time_hour * 60;
- 1977              		.loc 1 633 11 is_stmt 1 view .LVU435
- 633:Core/Src/main.c ****           time_minute = totalMinute_OperateTime - time_hour * 60;
- 1978              		.loc 1 633 47 is_stmt 0 view .LVU436
+ 640:Core/Src/main.c ****           time_minute = totalMinute_OperateTime - time_hour * 60;
+ 1977              		.loc 1 640 11 is_stmt 1 view .LVU435
+ 640:Core/Src/main.c ****           time_minute = totalMinute_OperateTime - time_hour * 60;
+ 1978              		.loc 1 640 47 is_stmt 0 view .LVU436
  1979 0644 334A     		ldr	r2, .L101+152
  1980 0646 A2FB0312 		umull	r1, r2, r2, r3
  1981 064a 5209     		lsrs	r2, r2, #5
- 633:Core/Src/main.c ****           time_minute = totalMinute_OperateTime - time_hour * 60;
- 1982              		.loc 1 633 21 view .LVU437
+ 640:Core/Src/main.c ****           time_minute = totalMinute_OperateTime - time_hour * 60;
+ 1982              		.loc 1 640 21 view .LVU437
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 64
+
+
  1983 064c 2549     		ldr	r1, .L101+104
  1984 064e 0A60     		str	r2, [r1]
- 634:Core/Src/main.c ****           sprintf(totalMinute_OperateTime_buff, "%dh%d", time_hour, time_minute);
- 1985              		.loc 1 634 11 is_stmt 1 view .LVU438
- 634:Core/Src/main.c ****           sprintf(totalMinute_OperateTime_buff, "%dh%d", time_hour, time_minute);
- 1986              		.loc 1 634 61 is_stmt 0 view .LVU439
+ 641:Core/Src/main.c ****           sprintf(totalMinute_OperateTime_buff, "%dh%d", time_hour, time_minute);
+ 1985              		.loc 1 641 11 is_stmt 1 view .LVU438
+ 641:Core/Src/main.c ****           sprintf(totalMinute_OperateTime_buff, "%dh%d", time_hour, time_minute);
+ 1986              		.loc 1 641 61 is_stmt 0 view .LVU439
  1987 0650 A2EB0211 		sub	r1, r2, r2, lsl #4
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 64
-
-
- 634:Core/Src/main.c ****           sprintf(totalMinute_OperateTime_buff, "%dh%d", time_hour, time_minute);
- 1988              		.loc 1 634 49 view .LVU440
+ 641:Core/Src/main.c ****           sprintf(totalMinute_OperateTime_buff, "%dh%d", time_hour, time_minute);
+ 1988              		.loc 1 641 49 view .LVU440
  1989 0654 03EB8103 		add	r3, r3, r1, lsl #2
- 634:Core/Src/main.c ****           sprintf(totalMinute_OperateTime_buff, "%dh%d", time_hour, time_minute);
- 1990              		.loc 1 634 23 view .LVU441
+ 641:Core/Src/main.c ****           sprintf(totalMinute_OperateTime_buff, "%dh%d", time_hour, time_minute);
+ 1990              		.loc 1 641 23 view .LVU441
  1991 0658 2149     		ldr	r1, .L101+100
  1992 065a 0B60     		str	r3, [r1]
- 635:Core/Src/main.c ****           log_data("\nTotal time: ");
- 1993              		.loc 1 635 11 is_stmt 1 view .LVU442
+ 642:Core/Src/main.c ****           log_data("\nTotal time: ");
+ 1993              		.loc 1 642 11 is_stmt 1 view .LVU442
  1994 065c 1F4C     		ldr	r4, .L101+96
  1995 065e 2249     		ldr	r1, .L101+108
  1996 0660 2046     		mov	r0, r4
  1997 0662 FFF7FEFF 		bl	sprintf
  1998              	.LVL164:
- 636:Core/Src/main.c ****           log_data(totalMinute_OperateTime_buff);
- 1999              		.loc 1 636 11 view .LVU443
+ 643:Core/Src/main.c ****           log_data(totalMinute_OperateTime_buff);
+ 1999              		.loc 1 643 11 view .LVU443
  2000 0666 2C48     		ldr	r0, .L101+156
  2001 0668 FFF7FEFF 		bl	log_data
  2002              	.LVL165:
- 637:Core/Src/main.c ****           log_data("\n");
- 2003              		.loc 1 637 11 view .LVU444
+ 644:Core/Src/main.c ****           log_data("\n");
+ 2003              		.loc 1 644 11 view .LVU444
  2004 066c 2046     		mov	r0, r4
  2005 066e FFF7FEFF 		bl	log_data
  2006              	.LVL166:
- 638:Core/Src/main.c ****         }
- 2007              		.loc 1 638 11 view .LVU445
+ 645:Core/Src/main.c ****         }
+ 2007              		.loc 1 645 11 view .LVU445
  2008 0672 1548     		ldr	r0, .L101+76
  2009 0674 FFF7FEFF 		bl	log_data
  2010              	.LVL167:
@@ -3831,6 +3838,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  2029 06b4 00000000 		.word	.LANCHOR34
  2030 06b8 E4010000 		.word	.LC34
  2031 06bc E8010000 		.word	.LC35
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 65
+
+
  2032 06c0 EC010000 		.word	.LC36
  2033 06c4 F0010000 		.word	.LC37
  2034 06c8 A4010000 		.word	.LC28
@@ -3838,9 +3848,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  2036 06d0 00000000 		.word	.LANCHOR32
  2037 06d4 10020000 		.word	.LC39
  2038 06d8 00000000 		.word	.LANCHOR35
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 65
-
-
  2039 06dc 00000000 		.word	.LANCHOR31
  2040 06e0 00000000 		.word	.LANCHOR30
  2041 06e4 00000000 		.word	.LANCHOR29
@@ -3858,372 +3865,372 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  2053 0714 89888888 		.word	-2004318071
  2054 0718 00030000 		.word	.LC42
  2055              	.L80:
- 643:Core/Src/main.c ****       {
- 2056              		.loc 1 643 7 view .LVU446
- 643:Core/Src/main.c ****       {
- 2057              		.loc 1 643 23 is_stmt 0 view .LVU447
+ 650:Core/Src/main.c ****       {
+ 2056              		.loc 1 650 7 view .LVU446
+ 650:Core/Src/main.c ****       {
+ 2057              		.loc 1 650 23 is_stmt 0 view .LVU447
  2058 071c 954B     		ldr	r3, .L103
  2059 071e DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
- 643:Core/Src/main.c ****       {
- 2060              		.loc 1 643 10 view .LVU448
+ 650:Core/Src/main.c ****       {
+ 2060              		.loc 1 650 10 view .LVU448
  2061 0720 002B     		cmp	r3, #0
  2062 0722 7FF4CDAE 		bne	.L76
- 645:Core/Src/main.c ****         Taskperform.TaskStore = true;
- 2063              		.loc 1 645 9 is_stmt 1 view .LVU449
+ 652:Core/Src/main.c ****         Taskperform.TaskStore = true;
+ 2063              		.loc 1 652 9 is_stmt 1 view .LVU449
  2064 0726 9448     		ldr	r0, .L103+4
  2065 0728 FFF7FEFF 		bl	log_data
  2066              	.LVL168:
- 646:Core/Src/main.c **** 
- 2067              		.loc 1 646 9 view .LVU450
- 646:Core/Src/main.c **** 
- 2068              		.loc 1 646 31 is_stmt 0 view .LVU451
+ 653:Core/Src/main.c **** 
+ 2067              		.loc 1 653 9 view .LVU450
+ 653:Core/Src/main.c **** 
+ 2068              		.loc 1 653 31 is_stmt 0 view .LVU451
  2069 072c 914B     		ldr	r3, .L103
  2070 072e 0122     		movs	r2, #1
  2071 0730 DA70     		strb	r2, [r3, #3]
- 648:Core/Src/main.c ****         if (fresult != FR_OK)
- 2072              		.loc 1 648 9 is_stmt 1 view .LVU452
- 648:Core/Src/main.c ****         if (fresult != FR_OK)
- 2073              		.loc 1 648 19 is_stmt 0 view .LVU453
+ 655:Core/Src/main.c ****         if (fresult != FR_OK)
+ 2072              		.loc 1 655 9 is_stmt 1 view .LVU452
+ 655:Core/Src/main.c ****         if (fresult != FR_OK)
+ 2073              		.loc 1 655 19 is_stmt 0 view .LVU453
  2074 0732 0222     		movs	r2, #2
  2075 0734 9149     		ldr	r1, .L103+8
  2076 0736 9248     		ldr	r0, .L103+12
  2077 0738 FFF7FEFF 		bl	f_open
  2078              	.LVL169:
- 648:Core/Src/main.c ****         if (fresult != FR_OK)
- 2079              		.loc 1 648 17 view .LVU454
+ 655:Core/Src/main.c ****         if (fresult != FR_OK)
+ 2079              		.loc 1 655 17 view .LVU454
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 66
+
+
  2080 073c 914B     		ldr	r3, .L103+16
  2081 073e 1870     		strb	r0, [r3]
- 649:Core/Src/main.c ****           log_data("open error...\n\n");
- 2082              		.loc 1 649 9 is_stmt 1 view .LVU455
- 649:Core/Src/main.c ****           log_data("open error...\n\n");
- 2083              		.loc 1 649 12 is_stmt 0 view .LVU456
+ 656:Core/Src/main.c ****           log_data("open error...\n\n");
+ 2082              		.loc 1 656 9 is_stmt 1 view .LVU455
+ 656:Core/Src/main.c ****           log_data("open error...\n\n");
+ 2083              		.loc 1 656 12 is_stmt 0 view .LVU456
  2084 0740 0028     		cmp	r0, #0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 66
-
-
  2085 0742 44D0     		beq	.L84
- 650:Core/Src/main.c ****         else
- 2086              		.loc 1 650 11 is_stmt 1 view .LVU457
+ 657:Core/Src/main.c ****         else
+ 2086              		.loc 1 657 11 is_stmt 1 view .LVU457
  2087 0744 9048     		ldr	r0, .L103+20
  2088 0746 FFF7FEFF 		bl	log_data
  2089              	.LVL170:
  2090              	.L85:
- 654:Core/Src/main.c **** 
- 2091              		.loc 1 654 9 view .LVU458
+ 661:Core/Src/main.c **** 
+ 2091              		.loc 1 661 9 view .LVU458
  2092 074a 8D4C     		ldr	r4, .L103+12
  2093 074c 04F58053 		add	r3, r4, #4096
  2094 0750 D968     		ldr	r1, [r3, #12]
  2095 0752 2046     		mov	r0, r4
  2096 0754 FFF7FEFF 		bl	f_lseek
  2097              	.LVL171:
- 656:Core/Src/main.c ****         f_puts("\t", &fil);
- 2098              		.loc 1 656 9 view .LVU459
+ 663:Core/Src/main.c ****         f_puts("\t", &fil);
+ 2098              		.loc 1 663 9 view .LVU459
  2099 0758 8C4E     		ldr	r6, .L103+24
  2100 075a 2146     		mov	r1, r4
  2101 075c 3046     		mov	r0, r6
  2102 075e FFF7FEFF 		bl	f_puts
  2103              	.LVL172:
- 657:Core/Src/main.c ****         f_puts(Card_Startbuff, &fil);
- 2104              		.loc 1 657 9 view .LVU460
+ 664:Core/Src/main.c ****         f_puts(Card_Startbuff, &fil);
+ 2104              		.loc 1 664 9 view .LVU460
  2105 0762 8B4D     		ldr	r5, .L103+28
  2106 0764 2146     		mov	r1, r4
  2107 0766 2846     		mov	r0, r5
  2108 0768 FFF7FEFF 		bl	f_puts
  2109              	.LVL173:
- 658:Core/Src/main.c ****         f_puts("\t", &fil);
- 2110              		.loc 1 658 9 view .LVU461
+ 665:Core/Src/main.c ****         f_puts("\t", &fil);
+ 2110              		.loc 1 665 9 view .LVU461
  2111 076c 2146     		mov	r1, r4
  2112 076e 8948     		ldr	r0, .L103+32
  2113 0770 FFF7FEFF 		bl	f_puts
  2114              	.LVL174:
- 659:Core/Src/main.c ****         f_puts(l70DataAfterHadler.latitude, &fil);
- 2115              		.loc 1 659 9 view .LVU462
+ 666:Core/Src/main.c ****         f_puts(l70DataAfterHadler.latitude, &fil);
+ 2115              		.loc 1 666 9 view .LVU462
  2116 0774 2146     		mov	r1, r4
  2117 0776 2846     		mov	r0, r5
  2118 0778 FFF7FEFF 		bl	f_puts
  2119              	.LVL175:
- 660:Core/Src/main.c ****         f_puts("\t", &fil);
- 2120              		.loc 1 660 9 view .LVU463
+ 667:Core/Src/main.c ****         f_puts("\t", &fil);
+ 2120              		.loc 1 667 9 view .LVU463
  2121 077c 2146     		mov	r1, r4
  2122 077e 06F10C00 		add	r0, r6, #12
  2123 0782 FFF7FEFF 		bl	f_puts
  2124              	.LVL176:
- 661:Core/Src/main.c ****         f_puts(l70DataAfterHadler.longitude, &fil);
- 2125              		.loc 1 661 9 view .LVU464
+ 668:Core/Src/main.c ****         f_puts(l70DataAfterHadler.longitude, &fil);
+ 2125              		.loc 1 668 9 view .LVU464
  2126 0786 2146     		mov	r1, r4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 67
+
+
  2127 0788 2846     		mov	r0, r5
  2128 078a FFF7FEFF 		bl	f_puts
  2129              	.LVL177:
- 662:Core/Src/main.c ****         f_puts("\t", &fil);
- 2130              		.loc 1 662 9 view .LVU465
+ 669:Core/Src/main.c ****         f_puts("\t", &fil);
+ 2130              		.loc 1 669 9 view .LVU465
  2131 078e 2146     		mov	r1, r4
  2132 0790 06F12000 		add	r0, r6, #32
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 67
-
-
  2133 0794 FFF7FEFF 		bl	f_puts
  2134              	.LVL178:
- 663:Core/Src/main.c ****         f_puts(l70DataAfterHadler.Speed, &fil);
- 2135              		.loc 1 663 9 view .LVU466
+ 670:Core/Src/main.c ****         f_puts(l70DataAfterHadler.Speed, &fil);
+ 2135              		.loc 1 670 9 view .LVU466
  2136 0798 2146     		mov	r1, r4
  2137 079a 2846     		mov	r0, r5
  2138 079c FFF7FEFF 		bl	f_puts
  2139              	.LVL179:
- 664:Core/Src/main.c ****         f_puts("\t", &fil);
- 2140              		.loc 1 664 9 view .LVU467
+ 671:Core/Src/main.c ****         f_puts("\t", &fil);
+ 2140              		.loc 1 671 9 view .LVU467
  2141 07a0 2146     		mov	r1, r4
  2142 07a2 06F13400 		add	r0, r6, #52
  2143 07a6 FFF7FEFF 		bl	f_puts
  2144              	.LVL180:
- 665:Core/Src/main.c ****         f_puts(sensors.ds18_buff, &fil);
- 2145              		.loc 1 665 9 view .LVU468
+ 672:Core/Src/main.c ****         f_puts(sensors.ds18_buff, &fil);
+ 2145              		.loc 1 672 9 view .LVU468
  2146 07aa 2146     		mov	r1, r4
  2147 07ac 2846     		mov	r0, r5
  2148 07ae FFF7FEFF 		bl	f_puts
  2149              	.LVL181:
- 666:Core/Src/main.c ****         f_puts("\n", &fil);
- 2150              		.loc 1 666 9 view .LVU469
+ 673:Core/Src/main.c ****         f_puts("\n", &fil);
+ 2150              		.loc 1 673 9 view .LVU469
  2151 07b2 2146     		mov	r1, r4
  2152 07b4 7848     		ldr	r0, .L103+36
  2153 07b6 FFF7FEFF 		bl	f_puts
  2154              	.LVL182:
- 667:Core/Src/main.c **** 
- 2155              		.loc 1 667 9 view .LVU470
+ 674:Core/Src/main.c **** 
+ 2155              		.loc 1 674 9 view .LVU470
  2156 07ba 2146     		mov	r1, r4
  2157 07bc 7748     		ldr	r0, .L103+40
  2158 07be FFF7FEFF 		bl	f_puts
  2159              	.LVL183:
- 669:Core/Src/main.c ****       }
- 2160              		.loc 1 669 9 view .LVU471
- 669:Core/Src/main.c ****       }
- 2161              		.loc 1 669 19 is_stmt 0 view .LVU472
+ 676:Core/Src/main.c ****       }
+ 2160              		.loc 1 676 9 view .LVU471
+ 676:Core/Src/main.c ****       }
+ 2161              		.loc 1 676 19 is_stmt 0 view .LVU472
  2162 07c2 2046     		mov	r0, r4
  2163 07c4 FFF7FEFF 		bl	f_close
  2164              	.LVL184:
- 669:Core/Src/main.c ****       }
- 2165              		.loc 1 669 17 view .LVU473
+ 676:Core/Src/main.c ****       }
+ 2165              		.loc 1 676 17 view .LVU473
  2166 07c8 6E4B     		ldr	r3, .L103+16
  2167 07ca 1870     		strb	r0, [r3]
  2168 07cc 78E6     		b	.L76
  2169              	.L84:
- 652:Core/Src/main.c **** 
- 2170              		.loc 1 652 11 is_stmt 1 view .LVU474
+ 659:Core/Src/main.c **** 
+ 2170              		.loc 1 659 11 is_stmt 1 view .LVU474
  2171 07ce 7448     		ldr	r0, .L103+44
  2172 07d0 FFF7FEFF 		bl	log_data
  2173              	.LVL185:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 68
+
+
  2174 07d4 B9E7     		b	.L85
  2175              	.L79:
- 673:Core/Src/main.c ****       {
- 2176              		.loc 1 673 7 view .LVU475
- 673:Core/Src/main.c ****       {
- 2177              		.loc 1 673 23 is_stmt 0 view .LVU476
+ 680:Core/Src/main.c ****       {
+ 2176              		.loc 1 680 7 view .LVU475
+ 680:Core/Src/main.c ****       {
+ 2177              		.loc 1 680 23 is_stmt 0 view .LVU476
  2178 07d6 674B     		ldr	r3, .L103
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 68
-
-
  2179 07d8 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
- 673:Core/Src/main.c ****       {
- 2180              		.loc 1 673 10 view .LVU477
+ 680:Core/Src/main.c ****       {
+ 2180              		.loc 1 680 10 view .LVU477
  2181 07da 002B     		cmp	r3, #0
  2182 07dc 7FF470AE 		bne	.L76
- 675:Core/Src/main.c ****         Taskperform.TaskDisplay = true;
- 2183              		.loc 1 675 9 is_stmt 1 view .LVU478
+ 682:Core/Src/main.c ****         Taskperform.TaskDisplay = true;
+ 2183              		.loc 1 682 9 is_stmt 1 view .LVU478
  2184 07e0 7048     		ldr	r0, .L103+48
  2185 07e2 FFF7FEFF 		bl	log_data
  2186              	.LVL186:
- 676:Core/Src/main.c ****         memset(utctime_buff,'\0',sizeof(utctime_buff));
- 2187              		.loc 1 676 9 view .LVU479
- 676:Core/Src/main.c ****         memset(utctime_buff,'\0',sizeof(utctime_buff));
- 2188              		.loc 1 676 33 is_stmt 0 view .LVU480
+ 683:Core/Src/main.c ****         memset(utctime_buff,'\0',sizeof(utctime_buff));
+ 2187              		.loc 1 683 9 view .LVU479
+ 683:Core/Src/main.c ****         memset(utctime_buff,'\0',sizeof(utctime_buff));
+ 2188              		.loc 1 683 33 is_stmt 0 view .LVU480
  2189 07e6 0124     		movs	r4, #1
  2190 07e8 624B     		ldr	r3, .L103
  2191 07ea 1C71     		strb	r4, [r3, #4]
- 677:Core/Src/main.c ****         strncpy(utctime_buff,l70DataAfterHadler.utcTime,5);
- 2192              		.loc 1 677 9 is_stmt 1 view .LVU481
+ 684:Core/Src/main.c ****         strncpy(utctime_buff,l70DataAfterHadler.utcTime,5);
+ 2192              		.loc 1 684 9 is_stmt 1 view .LVU481
  2193 07ec 6E4F     		ldr	r7, .L103+52
  2194 07ee 0023     		movs	r3, #0
  2195 07f0 3B60     		str	r3, [r7]
  2196 07f2 7B60     		str	r3, [r7, #4]
  2197 07f4 3B81     		strh	r3, [r7, #8]	@ movhi
- 678:Core/Src/main.c ****         SSD1306_GotoXY(75, 2);
- 2198              		.loc 1 678 9 view .LVU482
+ 685:Core/Src/main.c ****         SSD1306_GotoXY(75, 2);
+ 2198              		.loc 1 685 9 view .LVU482
  2199 07f6 654D     		ldr	r5, .L103+24
  2200 07f8 0522     		movs	r2, #5
  2201 07fa 2946     		mov	r1, r5
  2202 07fc 3846     		mov	r0, r7
  2203 07fe FFF7FEFF 		bl	strncpy
  2204              	.LVL187:
- 679:Core/Src/main.c ****         SSD1306_Puts(utctime_buff, &Font_7x10, 1);
- 2205              		.loc 1 679 9 view .LVU483
+ 686:Core/Src/main.c ****         SSD1306_Puts(utctime_buff, &Font_7x10, 1);
+ 2205              		.loc 1 686 9 view .LVU483
  2206 0802 0221     		movs	r1, #2
  2207 0804 4B20     		movs	r0, #75
  2208 0806 FFF7FEFF 		bl	SSD1306_GotoXY
  2209              	.LVL188:
- 680:Core/Src/main.c ****         SSD1306_GotoXY(30, 16);
- 2210              		.loc 1 680 9 view .LVU484
+ 687:Core/Src/main.c ****         SSD1306_GotoXY(30, 16);
+ 2210              		.loc 1 687 9 view .LVU484
  2211 080a 684E     		ldr	r6, .L103+56
  2212 080c 2246     		mov	r2, r4
  2213 080e 3146     		mov	r1, r6
  2214 0810 3846     		mov	r0, r7
  2215 0812 FFF7FEFF 		bl	SSD1306_Puts
  2216              	.LVL189:
- 681:Core/Src/main.c ****         SSD1306_Puts(l70DataAfterHadler.Date, &Font_7x10, 1);
- 2217              		.loc 1 681 9 view .LVU485
+ 688:Core/Src/main.c ****         SSD1306_Puts(l70DataAfterHadler.Date, &Font_7x10, 1);
+ 2217              		.loc 1 688 9 view .LVU485
  2218 0816 1021     		movs	r1, #16
  2219 0818 1E20     		movs	r0, #30
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 69
+
+
  2220 081a FFF7FEFF 		bl	SSD1306_GotoXY
  2221              	.LVL190:
- 682:Core/Src/main.c ****         SSD1306_GotoXY(30, 28);
- 2222              		.loc 1 682 9 view .LVU486
+ 689:Core/Src/main.c ****         SSD1306_GotoXY(30, 28);
+ 2222              		.loc 1 689 9 view .LVU486
  2223 081e 2246     		mov	r2, r4
  2224 0820 3146     		mov	r1, r6
  2225 0822 05F14800 		add	r0, r5, #72
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 69
-
-
  2226 0826 FFF7FEFF 		bl	SSD1306_Puts
  2227              	.LVL191:
- 683:Core/Src/main.c ****         SSD1306_Puts(l70DataAfterHadler.longitude, &Font_7x10, 1);
- 2228              		.loc 1 683 9 view .LVU487
+ 690:Core/Src/main.c ****         SSD1306_Puts(l70DataAfterHadler.longitude, &Font_7x10, 1);
+ 2228              		.loc 1 690 9 view .LVU487
  2229 082a 1C21     		movs	r1, #28
  2230 082c 1E20     		movs	r0, #30
  2231 082e FFF7FEFF 		bl	SSD1306_GotoXY
  2232              	.LVL192:
- 684:Core/Src/main.c ****         SSD1306_GotoXY(30, 40);
- 2233              		.loc 1 684 9 view .LVU488
+ 691:Core/Src/main.c ****         SSD1306_GotoXY(30, 40);
+ 2233              		.loc 1 691 9 view .LVU488
  2234 0832 2246     		mov	r2, r4
  2235 0834 3146     		mov	r1, r6
  2236 0836 05F12000 		add	r0, r5, #32
  2237 083a FFF7FEFF 		bl	SSD1306_Puts
  2238              	.LVL193:
- 685:Core/Src/main.c ****         SSD1306_Puts(l70DataAfterHadler.latitude, &Font_7x10, 1);
- 2239              		.loc 1 685 9 view .LVU489
+ 692:Core/Src/main.c ****         SSD1306_Puts(l70DataAfterHadler.latitude, &Font_7x10, 1);
+ 2239              		.loc 1 692 9 view .LVU489
  2240 083e 2821     		movs	r1, #40
  2241 0840 1E20     		movs	r0, #30
  2242 0842 FFF7FEFF 		bl	SSD1306_GotoXY
  2243              	.LVL194:
- 686:Core/Src/main.c ****         SSD1306_GotoXY(45, 52);
- 2244              		.loc 1 686 9 view .LVU490
+ 693:Core/Src/main.c ****         SSD1306_GotoXY(45, 52);
+ 2244              		.loc 1 693 9 view .LVU490
  2245 0846 2246     		mov	r2, r4
  2246 0848 3146     		mov	r1, r6
  2247 084a 05F10C00 		add	r0, r5, #12
  2248 084e FFF7FEFF 		bl	SSD1306_Puts
  2249              	.LVL195:
- 687:Core/Src/main.c ****         SSD1306_Puts(l70DataAfterHadler.Speed, &Font_7x10, 1);
- 2250              		.loc 1 687 9 view .LVU491
+ 694:Core/Src/main.c ****         SSD1306_Puts(l70DataAfterHadler.Speed, &Font_7x10, 1);
+ 2250              		.loc 1 694 9 view .LVU491
  2251 0852 3421     		movs	r1, #52
  2252 0854 2D20     		movs	r0, #45
  2253 0856 FFF7FEFF 		bl	SSD1306_GotoXY
  2254              	.LVL196:
- 688:Core/Src/main.c ****         SSD1306_UpdateScreen();
- 2255              		.loc 1 688 9 view .LVU492
+ 695:Core/Src/main.c ****         SSD1306_UpdateScreen();
+ 2255              		.loc 1 695 9 view .LVU492
  2256 085a 2246     		mov	r2, r4
  2257 085c 3146     		mov	r1, r6
  2258 085e 05F13400 		add	r0, r5, #52
  2259 0862 FFF7FEFF 		bl	SSD1306_Puts
  2260              	.LVL197:
- 689:Core/Src/main.c ****       }
- 2261              		.loc 1 689 9 view .LVU493
+ 696:Core/Src/main.c ****       }
+ 2261              		.loc 1 696 9 view .LVU493
  2262 0866 FFF7FEFF 		bl	SSD1306_UpdateScreen
  2263              	.LVL198:
  2264 086a 29E6     		b	.L76
  2265              	.L77:
- 694:Core/Src/main.c ****       {
- 2266              		.loc 1 694 7 view .LVU494
- 694:Core/Src/main.c ****       {
- 2267              		.loc 1 694 11 is_stmt 0 view .LVU495
+ 701:Core/Src/main.c ****       {
+ 2266              		.loc 1 701 7 view .LVU494
+ 701:Core/Src/main.c ****       {
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 70
+
+
+ 2267              		.loc 1 701 11 is_stmt 0 view .LVU495
  2268 086c 504B     		ldr	r3, .L103+60
  2269 086e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 694:Core/Src/main.c ****       {
- 2270              		.loc 1 694 10 view .LVU496
+ 701:Core/Src/main.c ****       {
+ 2270              		.loc 1 701 10 view .LVU496
  2271 0870 F3B9     		cbnz	r3, .L98
  2272              	.L86:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 70
-
-
- 719:Core/Src/main.c ****       {
- 2273              		.loc 1 719 7 is_stmt 1 view .LVU497
- 719:Core/Src/main.c ****       {
- 2274              		.loc 1 719 11 is_stmt 0 view .LVU498
+ 726:Core/Src/main.c ****       {
+ 2273              		.loc 1 726 7 is_stmt 1 view .LVU497
+ 726:Core/Src/main.c ****       {
+ 2274              		.loc 1 726 11 is_stmt 0 view .LVU498
  2275 0872 504B     		ldr	r3, .L103+64
  2276 0874 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 719:Core/Src/main.c ****       {
- 2277              		.loc 1 719 10 view .LVU499
+ 726:Core/Src/main.c ****       {
+ 2277              		.loc 1 726 10 view .LVU499
  2278 0876 002B     		cmp	r3, #0
  2279 0878 3FF422AE 		beq	.L76
- 721:Core/Src/main.c ****         rs232_logdata("READ\n");
- 2280              		.loc 1 721 9 is_stmt 1 view .LVU500
- 721:Core/Src/main.c ****         rs232_logdata("READ\n");
- 2281              		.loc 1 721 20 is_stmt 0 view .LVU501
+ 728:Core/Src/main.c ****         rs232_logdata("READ\n");
+ 2280              		.loc 1 728 9 is_stmt 1 view .LVU500
+ 728:Core/Src/main.c ****         rs232_logdata("READ\n");
+ 2281              		.loc 1 728 20 is_stmt 0 view .LVU501
  2282 087c 4D4B     		ldr	r3, .L103+64
  2283 087e 0022     		movs	r2, #0
  2284 0880 1A70     		strb	r2, [r3]
- 722:Core/Src/main.c ****         if (strstr(rs232_buff, "Trichxuatdulieu") != NULL)
- 2285              		.loc 1 722 9 is_stmt 1 view .LVU502
+ 729:Core/Src/main.c ****         if (strstr(rs232_buff, "Trichxuatdulieu") != NULL)
+ 2285              		.loc 1 729 9 is_stmt 1 view .LVU502
  2286 0882 4D48     		ldr	r0, .L103+68
  2287 0884 FFF7FEFF 		bl	rs232_logdata
  2288              	.LVL199:
- 723:Core/Src/main.c ****         {
- 2289              		.loc 1 723 9 view .LVU503
- 723:Core/Src/main.c ****         {
- 2290              		.loc 1 723 13 is_stmt 0 view .LVU504
+ 730:Core/Src/main.c ****         {
+ 2289              		.loc 1 730 9 view .LVU503
+ 730:Core/Src/main.c ****         {
+ 2290              		.loc 1 730 13 is_stmt 0 view .LVU504
  2291 0888 4C49     		ldr	r1, .L103+72
  2292 088a 4D48     		ldr	r0, .L103+76
  2293 088c FFF7FEFF 		bl	strstr
  2294              	.LVL200:
- 723:Core/Src/main.c ****         {
- 2295              		.loc 1 723 12 view .LVU505
+ 730:Core/Src/main.c ****         {
+ 2295              		.loc 1 730 12 view .LVU505
  2296 0890 0028     		cmp	r0, #0
  2297 0892 3FF415AE 		beq	.L76
- 725:Core/Src/main.c ****           if (fresult != FR_OK)
- 2298              		.loc 1 725 11 is_stmt 1 view .LVU506
- 725:Core/Src/main.c ****           if (fresult != FR_OK)
- 2299              		.loc 1 725 21 is_stmt 0 view .LVU507
+ 732:Core/Src/main.c ****           if (fresult != FR_OK)
+ 2298              		.loc 1 732 11 is_stmt 1 view .LVU506
+ 732:Core/Src/main.c ****           if (fresult != FR_OK)
+ 2299              		.loc 1 732 21 is_stmt 0 view .LVU507
  2300 0896 0122     		movs	r2, #1
  2301 0898 3849     		ldr	r1, .L103+8
  2302 089a 3948     		ldr	r0, .L103+12
  2303 089c FFF7FEFF 		bl	f_open
  2304              	.LVL201:
- 725:Core/Src/main.c ****           if (fresult != FR_OK)
- 2305              		.loc 1 725 19 view .LVU508
+ 732:Core/Src/main.c ****           if (fresult != FR_OK)
+ 2305              		.loc 1 732 19 view .LVU508
  2306 08a0 384B     		ldr	r3, .L103+16
  2307 08a2 1870     		strb	r0, [r3]
- 726:Core/Src/main.c ****             log_data("open error...\n\n");
- 2308              		.loc 1 726 11 is_stmt 1 view .LVU509
- 726:Core/Src/main.c ****             log_data("open error...\n\n");
- 2309              		.loc 1 726 14 is_stmt 0 view .LVU510
+ 733:Core/Src/main.c ****             log_data("open error...\n\n");
+ 2308              		.loc 1 733 11 is_stmt 1 view .LVU509
+ 733:Core/Src/main.c ****             log_data("open error...\n\n");
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 71
+
+
+ 2309              		.loc 1 733 14 is_stmt 0 view .LVU510
  2310 08a4 0028     		cmp	r0, #0
  2311 08a6 54D0     		beq	.L89
- 727:Core/Src/main.c ****           else
- 2312              		.loc 1 727 13 is_stmt 1 view .LVU511
+ 734:Core/Src/main.c ****           else
+ 2312              		.loc 1 734 13 is_stmt 1 view .LVU511
  2313 08a8 3748     		ldr	r0, .L103+20
  2314 08aa FFF7FEFF 		bl	log_data
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 71
-
-
  2315              	.LVL202:
  2316 08ae 57E0     		b	.L91
  2317              	.L98:
- 696:Core/Src/main.c ****         sprintf(Card_Endbuff, "%02X%02X%02X%02X", CardID[0], CardID[1], CardID[2], CardID[3]);
- 2318              		.loc 1 696 9 view .LVU512
- 696:Core/Src/main.c ****         sprintf(Card_Endbuff, "%02X%02X%02X%02X", CardID[0], CardID[1], CardID[2], CardID[3]);
- 2319              		.loc 1 696 16 is_stmt 0 view .LVU513
+ 703:Core/Src/main.c ****         sprintf(Card_Endbuff, "%02X%02X%02X%02X", CardID[0], CardID[1], CardID[2], CardID[3]);
+ 2318              		.loc 1 703 9 view .LVU512
+ 703:Core/Src/main.c ****         sprintf(Card_Endbuff, "%02X%02X%02X%02X", CardID[0], CardID[1], CardID[2], CardID[3]);
+ 2319              		.loc 1 703 16 is_stmt 0 view .LVU513
  2320 08b0 3F4B     		ldr	r3, .L103+60
  2321 08b2 0022     		movs	r2, #0
  2322 08b4 1A70     		strb	r2, [r3]
- 697:Core/Src/main.c ****         if (strcmp(Card_Startbuff, Card_Endbuff) != 0)
- 2323              		.loc 1 697 9 is_stmt 1 view .LVU514
- 697:Core/Src/main.c ****         if (strcmp(Card_Startbuff, Card_Endbuff) != 0)
- 2324              		.loc 1 697 57 is_stmt 0 view .LVU515
+ 704:Core/Src/main.c ****         if (strcmp(Card_Startbuff, Card_Endbuff) != 0)
+ 2323              		.loc 1 704 9 is_stmt 1 view .LVU514
+ 704:Core/Src/main.c ****         if (strcmp(Card_Startbuff, Card_Endbuff) != 0)
+ 2324              		.loc 1 704 57 is_stmt 0 view .LVU515
  2325 08b6 434A     		ldr	r2, .L103+80
- 697:Core/Src/main.c ****         if (strcmp(Card_Startbuff, Card_Endbuff) != 0)
- 2326              		.loc 1 697 79 view .LVU516
+ 704:Core/Src/main.c ****         if (strcmp(Card_Startbuff, Card_Endbuff) != 0)
+ 2326              		.loc 1 704 79 view .LVU516
  2327 08b8 9378     		ldrb	r3, [r2, #2]	@ zero_extendqisi2
- 697:Core/Src/main.c ****         if (strcmp(Card_Startbuff, Card_Endbuff) != 0)
- 2328              		.loc 1 697 90 view .LVU517
+ 704:Core/Src/main.c ****         if (strcmp(Card_Startbuff, Card_Endbuff) != 0)
+ 2328              		.loc 1 704 90 view .LVU517
  2329 08ba D178     		ldrb	r1, [r2, #3]	@ zero_extendqisi2
- 697:Core/Src/main.c ****         if (strcmp(Card_Startbuff, Card_Endbuff) != 0)
- 2330              		.loc 1 697 9 view .LVU518
+ 704:Core/Src/main.c ****         if (strcmp(Card_Startbuff, Card_Endbuff) != 0)
+ 2330              		.loc 1 704 9 view .LVU518
  2331 08bc 424C     		ldr	r4, .L103+84
  2332 08be 0191     		str	r1, [sp, #4]
  2333 08c0 0093     		str	r3, [sp]
@@ -4233,51 +4240,51 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  2337 08c8 2046     		mov	r0, r4
  2338 08ca FFF7FEFF 		bl	sprintf
  2339              	.LVL203:
- 698:Core/Src/main.c ****         {
- 2340              		.loc 1 698 9 is_stmt 1 view .LVU519
- 698:Core/Src/main.c ****         {
- 2341              		.loc 1 698 13 is_stmt 0 view .LVU520
+ 705:Core/Src/main.c ****         {
+ 2340              		.loc 1 705 9 is_stmt 1 view .LVU519
+ 705:Core/Src/main.c ****         {
+ 2341              		.loc 1 705 13 is_stmt 0 view .LVU520
  2342 08ce 2146     		mov	r1, r4
  2343 08d0 3048     		ldr	r0, .L103+32
  2344 08d2 FFF7FEFF 		bl	strcmp
  2345              	.LVL204:
- 698:Core/Src/main.c ****         {
- 2346              		.loc 1 698 12 view .LVU521
+ 705:Core/Src/main.c ****         {
+ 2346              		.loc 1 705 12 view .LVU521
  2347 08d6 50B1     		cbz	r0, .L87
- 700:Core/Src/main.c ****         }
- 2348              		.loc 1 700 11 is_stmt 1 view .LVU522
+ 707:Core/Src/main.c ****         }
+ 2348              		.loc 1 707 11 is_stmt 1 view .LVU522
  2349 08d8 3D48     		ldr	r0, .L103+92
  2350 08da FFF7FEFF 		bl	log_data
  2351              	.LVL205:
  2352              	.L88:
- 716:Core/Src/main.c ****         log_data("Device start sleep\n");
- 2353              		.loc 1 716 9 view .LVU523
+ 723:Core/Src/main.c ****         log_data("Device start sleep\n");
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 72
+
+
+ 2353              		.loc 1 723 9 view .LVU523
  2354 08de 4FF47A70 		mov	r0, #1000
  2355 08e2 FFF7FEFF 		bl	HAL_Delay
  2356              	.LVL206:
- 717:Core/Src/main.c ****       }
- 2357              		.loc 1 717 9 view .LVU524
+ 724:Core/Src/main.c ****       }
+ 2357              		.loc 1 724 9 view .LVU524
  2358 08e6 3B48     		ldr	r0, .L103+96
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 72
-
-
  2359 08e8 FFF7FEFF 		bl	log_data
  2360              	.LVL207:
  2361 08ec C1E7     		b	.L86
  2362              	.L87:
- 704:Core/Src/main.c ****           // write flash totaltime
- 2363              		.loc 1 704 11 view .LVU525
+ 711:Core/Src/main.c ****           // write flash totaltime
+ 2363              		.loc 1 711 11 view .LVU525
  2364 08ee 3A48     		ldr	r0, .L103+100
  2365 08f0 FFF7FEFF 		bl	log_data
  2366              	.LVL208:
- 706:Core/Src/main.c ****           HAL_RTC_GetTime(&hrtc, &last_sTime, RTC_FORMAT_BIN);
- 2367              		.loc 1 706 11 view .LVU526
+ 713:Core/Src/main.c ****           HAL_RTC_GetTime(&hrtc, &last_sTime, RTC_FORMAT_BIN);
+ 2367              		.loc 1 713 11 view .LVU526
  2368 08f4 3949     		ldr	r1, .L103+104
  2369 08f6 3A48     		ldr	r0, .L103+108
  2370 08f8 FFF7FEFF 		bl	mqtt_pub
  2371              	.LVL209:
- 707:Core/Src/main.c ****           HAL_RTC_GetDate(&hrtc, &last_sDate, RTC_FORMAT_BIN);
- 2372              		.loc 1 707 11 view .LVU527
+ 714:Core/Src/main.c ****           HAL_RTC_GetDate(&hrtc, &last_sDate, RTC_FORMAT_BIN);
+ 2372              		.loc 1 714 11 view .LVU527
  2373 08fc 394C     		ldr	r4, .L103+112
  2374 08fe 3A4D     		ldr	r5, .L103+116
  2375 0900 0022     		movs	r2, #0
@@ -4285,102 +4292,102 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  2377 0904 2846     		mov	r0, r5
  2378 0906 FFF7FEFF 		bl	HAL_RTC_GetTime
  2379              	.LVL210:
- 708:Core/Src/main.c ****           totalMinute_OperateTime = (60 * last_sTime.Hours + last_sTime.Minutes) - (60 * current_sT
- 2380              		.loc 1 708 11 view .LVU528
+ 715:Core/Src/main.c ****           totalMinute_OperateTime = (60 * last_sTime.Hours + last_sTime.Minutes) - (60 * current_sT
+ 2380              		.loc 1 715 11 view .LVU528
  2381 090a 0022     		movs	r2, #0
  2382 090c 3749     		ldr	r1, .L103+120
  2383 090e 2846     		mov	r0, r5
  2384 0910 FFF7FEFF 		bl	HAL_RTC_GetDate
  2385              	.LVL211:
- 709:Core/Src/main.c ****           set_alarm(10);
- 2386              		.loc 1 709 11 view .LVU529
- 709:Core/Src/main.c ****           set_alarm(10);
- 2387              		.loc 1 709 53 is_stmt 0 view .LVU530
+ 716:Core/Src/main.c ****           set_alarm(10);
+ 2386              		.loc 1 716 11 view .LVU529
+ 716:Core/Src/main.c ****           set_alarm(10);
+ 2387              		.loc 1 716 53 is_stmt 0 view .LVU530
  2388 0914 2278     		ldrb	r2, [r4]	@ zero_extendqisi2
- 709:Core/Src/main.c ****           set_alarm(10);
- 2389              		.loc 1 709 72 view .LVU531
+ 716:Core/Src/main.c ****           set_alarm(10);
+ 2389              		.loc 1 716 72 view .LVU531
  2390 0916 6378     		ldrb	r3, [r4, #1]	@ zero_extendqisi2
- 709:Core/Src/main.c ****           set_alarm(10);
- 2391              		.loc 1 709 60 view .LVU532
+ 716:Core/Src/main.c ****           set_alarm(10);
+ 2391              		.loc 1 716 60 view .LVU532
  2392 0918 C2EB0212 		rsb	r2, r2, r2, lsl #4
  2393 091c 03EB8203 		add	r3, r3, r2, lsl #2
  2394 0920 9BB2     		uxth	r3, r3
- 709:Core/Src/main.c ****           set_alarm(10);
- 2395              		.loc 1 709 103 view .LVU533
+ 716:Core/Src/main.c ****           set_alarm(10);
+ 2395              		.loc 1 716 103 view .LVU533
  2396 0922 334A     		ldr	r2, .L103+124
  2397 0924 1178     		ldrb	r1, [r2]	@ zero_extendqisi2
- 709:Core/Src/main.c ****           set_alarm(10);
- 2398              		.loc 1 709 125 view .LVU534
+ 716:Core/Src/main.c ****           set_alarm(10);
+ 2398              		.loc 1 716 125 view .LVU534
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 73
+
+
  2399 0926 5278     		ldrb	r2, [r2, #1]	@ zero_extendqisi2
- 709:Core/Src/main.c ****           set_alarm(10);
- 2400              		.loc 1 709 110 view .LVU535
+ 716:Core/Src/main.c ****           set_alarm(10);
+ 2400              		.loc 1 716 110 view .LVU535
  2401 0928 C1EB0111 		rsb	r1, r1, r1, lsl #4
  2402 092c 02EB8102 		add	r2, r2, r1, lsl #2
  2403 0930 92B2     		uxth	r2, r2
- 709:Core/Src/main.c ****           set_alarm(10);
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 73
-
-
- 2404              		.loc 1 709 82 view .LVU536
+ 716:Core/Src/main.c ****           set_alarm(10);
+ 2404              		.loc 1 716 82 view .LVU536
  2405 0932 9B1A     		subs	r3, r3, r2
- 709:Core/Src/main.c ****           set_alarm(10);
- 2406              		.loc 1 709 35 view .LVU537
+ 716:Core/Src/main.c ****           set_alarm(10);
+ 2406              		.loc 1 716 35 view .LVU537
  2407 0934 2F4A     		ldr	r2, .L103+128
  2408 0936 1380     		strh	r3, [r2]	@ movhi
- 710:Core/Src/main.c ****           buzzer(200);
- 2409              		.loc 1 710 11 is_stmt 1 view .LVU538
+ 717:Core/Src/main.c ****           buzzer(200);
+ 2409              		.loc 1 717 11 is_stmt 1 view .LVU538
  2410 0938 0A20     		movs	r0, #10
  2411 093a FFF7FEFF 		bl	set_alarm
  2412              	.LVL212:
- 711:Core/Src/main.c ****           HAL_Delay(200);
- 2413              		.loc 1 711 11 view .LVU539
+ 718:Core/Src/main.c ****           HAL_Delay(200);
+ 2413              		.loc 1 718 11 view .LVU539
  2414 093e C820     		movs	r0, #200
  2415 0940 FFF7FEFF 		bl	buzzer
  2416              	.LVL213:
- 712:Core/Src/main.c ****           buzzer(200);
- 2417              		.loc 1 712 11 view .LVU540
+ 719:Core/Src/main.c ****           buzzer(200);
+ 2417              		.loc 1 719 11 view .LVU540
  2418 0944 C820     		movs	r0, #200
  2419 0946 FFF7FEFF 		bl	HAL_Delay
  2420              	.LVL214:
- 713:Core/Src/main.c ****         }
- 2421              		.loc 1 713 11 view .LVU541
+ 720:Core/Src/main.c ****         }
+ 2421              		.loc 1 720 11 view .LVU541
  2422 094a C820     		movs	r0, #200
  2423 094c FFF7FEFF 		bl	buzzer
  2424              	.LVL215:
  2425 0950 C5E7     		b	.L88
  2426              	.L89:
- 729:Core/Src/main.c ****           while (f_gets(SD_read, sizeof(SD_read), &fil) != NULL)
- 2427              		.loc 1 729 13 view .LVU542
+ 736:Core/Src/main.c ****           while (f_gets(SD_read, sizeof(SD_read), &fil) != NULL)
+ 2427              		.loc 1 736 13 view .LVU542
  2428 0952 1348     		ldr	r0, .L103+44
  2429 0954 FFF7FEFF 		bl	log_data
  2430              	.LVL216:
  2431 0958 02E0     		b	.L91
  2432              	.L92:
- 732:Core/Src/main.c ****           }
- 2433              		.loc 1 732 13 view .LVU543
+ 739:Core/Src/main.c ****           }
+ 2433              		.loc 1 739 13 view .LVU543
  2434 095a 2748     		ldr	r0, .L103+132
  2435 095c FFF7FEFF 		bl	rs232_logdata
  2436              	.LVL217:
  2437              	.L91:
- 730:Core/Src/main.c ****           {
- 2438              		.loc 1 730 17 view .LVU544
- 730:Core/Src/main.c ****           {
- 2439              		.loc 1 730 18 is_stmt 0 view .LVU545
+ 737:Core/Src/main.c ****           {
+ 2438              		.loc 1 737 17 view .LVU544
+ 737:Core/Src/main.c ****           {
+ 2439              		.loc 1 737 18 is_stmt 0 view .LVU545
  2440 0960 074A     		ldr	r2, .L103+12
  2441 0962 4FF48071 		mov	r1, #256
  2442 0966 2448     		ldr	r0, .L103+132
  2443 0968 FFF7FEFF 		bl	f_gets
  2444              	.LVL218:
- 730:Core/Src/main.c ****           {
- 2445              		.loc 1 730 17 view .LVU546
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 74
+
+
+ 737:Core/Src/main.c ****           {
+ 2445              		.loc 1 737 17 view .LVU546
  2446 096c 0028     		cmp	r0, #0
  2447 096e F4D1     		bne	.L92
  2448 0970 A6E5     		b	.L76
  2449              	.L104:
  2450 0972 00BF     		.align	2
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 74
-
-
  2451              	.L103:
  2452 0974 00000000 		.word	.LANCHOR15
  2453 0978 10030000 		.word	.LC43
@@ -4431,6 +4438,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  2499              		.global	Taskperform
  2500              		.global	Type_Task
  2501              		.global	infoUser2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 75
+
+
  2502              		.global	infoUser1
  2503              		.global	infoUser
  2504              		.global	id_ref
@@ -4438,9 +4448,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  2506              		.align	2
  2507              	.LC54:
  2508 0000 00       		.ascii	"\000"
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 75
-
-
  2509              		.global	Card_Endbuff
  2510              		.global	Card_Startbuff
  2511              		.global	Json_Data
@@ -4491,6 +4498,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  2556              		.global	Vehical_State
  2557              		.global	npn_count
  2558              		.global	npn_flag_check
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 76
+
+
  2559              		.global	Logout
  2560              		.global	waiting4LogOut
  2561              		.global	szBuff
@@ -4498,9 +4508,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  2563              		.global	bitmap
  2564              		.section	.bss.CardID,"aw",%nobits
  2565              		.align	2
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 76
-
-
  2566              		.set	.LANCHOR12,. + 0
  2569              	CardID:
  2570 0000 00000000 		.space	5
@@ -4551,6 +4558,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  2610      00000000 
  2611              		.section	.bss.SD_buffer_w,"aw",%nobits
  2612              		.align	2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 77
+
+
  2615              	SD_buffer_w:
  2616 0000 00000000 		.space	1024
  2616      00000000 
@@ -4558,9 +4568,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  2616      00000000 
  2616      00000000 
  2617              		.section	.bss.SD_file_name,"aw",%nobits
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 77
-
-
  2618              		.align	2
  2621              	SD_file_name:
  2622 0000 00000000 		.space	50
@@ -4611,6 +4618,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  2674 0000 00000000 		.space	4
  2675              		.section	.bss.current_sDate,"aw",%nobits
  2676              		.align	2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 78
+
+
  2677              		.set	.LANCHOR23,. + 0
  2680              	current_sDate:
  2681 0000 00000000 		.space	4
@@ -4618,9 +4628,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  2683              		.align	2
  2684              		.set	.LANCHOR16,. + 0
  2687              	current_sTime:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 78
-
-
  2688 0000 000000   		.space	3
  2689              		.section	.bss.current_time,"aw",%nobits
  2690              		.align	2
@@ -4671,6 +4678,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  2743      00000000 
  2743      00000000 
  2743      00000000 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 79
+
+
  2744              		.section	.bss.fre_clust,"aw",%nobits
  2745              		.align	2
  2748              	fre_clust:
@@ -4678,9 +4688,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  2750              		.section	.bss.free_space,"aw",%nobits
  2751              		.align	2
  2754              	free_space:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 79
-
-
  2755 0000 00000000 		.space	4
  2756              		.section	.bss.fresult,"aw",%nobits
  2757              		.set	.LANCHOR18,. + 0
@@ -4731,6 +4738,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  2799      00000000 
  2799      00000000 
  2799      00000000 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 80
+
+
  2799      00000000 
  2800              		.section	.bss.l70Data1,"aw",%nobits
  2803              	l70Data1:
@@ -4738,9 +4748,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  2805              		.section	.bss.last_sDate,"aw",%nobits
  2806              		.align	2
  2807              		.set	.LANCHOR27,. + 0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 80
-
-
  2810              	last_sDate:
  2811 0000 00000000 		.space	4
  2812              		.section	.bss.last_sTime,"aw",%nobits
@@ -4791,6 +4798,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  2869              		.align	2
  2870              		.set	.LANCHOR3,. + 0
  2873              	rs232_buff:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 81
+
+
  2874 0000 00000000 		.space	50
  2874      00000000 
  2874      00000000 
@@ -4798,9 +4808,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  2874      00000000 
  2875              		.section	.bss.rs232_data,"aw",%nobits
  2876              		.set	.LANCHOR4,. + 0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 81
-
-
  2879              	rs232_data:
  2880 0000 00       		.space	1
  2881              		.section	.bss.rs232_flag,"aw",%nobits
@@ -4851,6 +4858,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  2930      00000000 
  2930      00000000 
  2930      00000000 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 82
+
+
  2930      00000000 
  2931              		.section	.bss.time_buff,"aw",%nobits
  2932              		.align	2
@@ -4858,9 +4868,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  2936              	time_buff:
  2937 0000 00000000 		.space	20
  2937      00000000 
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 82
-
-
  2937      00000000 
  2937      00000000 
  2937      00000000 
@@ -4911,6 +4918,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  2992              		.set	.LANCHOR1,. + 0
  2995              	Type_Task:
  2996 0000 04000000 		.word	4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 83
+
+
  2997              		.section	.data.id_ref,"aw"
  2998              		.align	2
  3001              	id_ref:
@@ -4918,9 +4928,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3003              		.section	.data.npn_flag_check,"aw"
  3004              		.align	2
  3005              		.set	.LANCHOR7,. + 0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 83
-
-
  3008              	npn_flag_check:
  3009 0000 01000000 		.word	1
  3010              		.section	.rodata.bitmap,"a"
@@ -4971,6 +4978,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3057 0029 00       		.byte	0
  3058 002a 00       		.byte	0
  3059 002b 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 84
+
+
  3060 002c 00       		.byte	0
  3061 002d 00       		.byte	0
  3062 002e 00       		.byte	0
@@ -4978,9 +4988,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3064 0030 11       		.byte	17
  3065 0031 00       		.byte	0
  3066 0032 18       		.byte	24
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 84
-
-
  3067 0033 04       		.byte	4
  3068 0034 90       		.byte	-112
  3069 0035 21       		.byte	33
@@ -5031,6 +5038,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3114 0062 D8       		.byte	-40
  3115 0063 20       		.byte	32
  3116 0064 90       		.byte	-112
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 85
+
+
  3117 0065 00       		.byte	0
  3118 0066 42       		.byte	66
  3119 0067 18       		.byte	24
@@ -5038,9 +5048,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3121 0069 00       		.byte	0
  3122 006a 00       		.byte	0
  3123 006b 00       		.byte	0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 85
-
-
  3124 006c 00       		.byte	0
  3125 006d 1F       		.byte	31
  3126 006e FF       		.byte	-1
@@ -5091,6 +5098,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3171 009b 00       		.byte	0
  3172 009c 00       		.byte	0
  3173 009d 03       		.byte	3
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 86
+
+
  3174 009e FF       		.byte	-1
  3175 009f FE       		.byte	-2
  3176 00a0 05       		.byte	5
@@ -5098,9 +5108,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3178 00a2 D8       		.byte	-40
  3179 00a3 00       		.byte	0
  3180 00a4 90       		.byte	-112
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 86
-
-
  3181 00a5 20       		.byte	32
  3182 00a6 47       		.byte	71
  3183 00a7 01       		.byte	1
@@ -5151,6 +5158,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3228 00d4 00       		.byte	0
  3229 00d5 00       		.byte	0
  3230 00d6 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 87
+
+
  3231 00d7 00       		.byte	0
  3232 00d8 00       		.byte	0
  3233 00d9 00       		.byte	0
@@ -5158,9 +5168,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3235 00db 00       		.byte	0
  3236 00dc 00       		.byte	0
  3237 00dd 00       		.byte	0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 87
-
-
  3238 00de 00       		.byte	0
  3239 00df 00       		.byte	0
  3240 00e0 00       		.byte	0
@@ -5211,6 +5218,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3285 010d 00       		.byte	0
  3286 010e 00       		.byte	0
  3287 010f 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 88
+
+
  3288 0110 00       		.byte	0
  3289 0111 00       		.byte	0
  3290 0112 00       		.byte	0
@@ -5218,9 +5228,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3292 0114 00       		.byte	0
  3293 0115 00       		.byte	0
  3294 0116 00       		.byte	0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 88
-
-
  3295 0117 00       		.byte	0
  3296 0118 00       		.byte	0
  3297 0119 00       		.byte	0
@@ -5271,6 +5278,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3342 0146 00       		.byte	0
  3343 0147 00       		.byte	0
  3344 0148 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 89
+
+
  3345 0149 00       		.byte	0
  3346 014a 00       		.byte	0
  3347 014b 00       		.byte	0
@@ -5278,9 +5288,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3349 014d 00       		.byte	0
  3350 014e 00       		.byte	0
  3351 014f 00       		.byte	0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 89
-
-
  3352 0150 00       		.byte	0
  3353 0151 00       		.byte	0
  3354 0152 00       		.byte	0
@@ -5331,6 +5338,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3399 017f 00       		.byte	0
  3400 0180 00       		.byte	0
  3401 0181 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 90
+
+
  3402 0182 00       		.byte	0
  3403 0183 00       		.byte	0
  3404 0184 00       		.byte	0
@@ -5338,9 +5348,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3406 0186 00       		.byte	0
  3407 0187 00       		.byte	0
  3408 0188 00       		.byte	0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 90
-
-
  3409 0189 00       		.byte	0
  3410 018a 00       		.byte	0
  3411 018b 00       		.byte	0
@@ -5391,6 +5398,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3456 01b8 00       		.byte	0
  3457 01b9 00       		.byte	0
  3458 01ba 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 91
+
+
  3459 01bb 00       		.byte	0
  3460 01bc 00       		.byte	0
  3461 01bd 00       		.byte	0
@@ -5398,9 +5408,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3463 01bf 00       		.byte	0
  3464 01c0 00       		.byte	0
  3465 01c1 00       		.byte	0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 91
-
-
  3466 01c2 00       		.byte	0
  3467 01c3 00       		.byte	0
  3468 01c4 00       		.byte	0
@@ -5451,6 +5458,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3513 01f1 00       		.byte	0
  3514 01f2 00       		.byte	0
  3515 01f3 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 92
+
+
  3516 01f4 00       		.byte	0
  3517 01f5 00       		.byte	0
  3518 01f6 00       		.byte	0
@@ -5458,9 +5468,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3520 01f8 00       		.byte	0
  3521 01f9 00       		.byte	0
  3522 01fa 00       		.byte	0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 92
-
-
  3523 01fb 00       		.byte	0
  3524 01fc 00       		.byte	0
  3525 01fd 00       		.byte	0
@@ -5511,6 +5518,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3570 022a 00       		.byte	0
  3571 022b 00       		.byte	0
  3572 022c 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 93
+
+
  3573 022d 00       		.byte	0
  3574 022e 00       		.byte	0
  3575 022f 00       		.byte	0
@@ -5518,9 +5528,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3577 0231 00       		.byte	0
  3578 0232 00       		.byte	0
  3579 0233 00       		.byte	0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 93
-
-
  3580 0234 00       		.byte	0
  3581 0235 00       		.byte	0
  3582 0236 00       		.byte	0
@@ -5571,6 +5578,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3627 0263 00       		.byte	0
  3628 0264 00       		.byte	0
  3629 0265 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 94
+
+
  3630 0266 00       		.byte	0
  3631 0267 00       		.byte	0
  3632 0268 00       		.byte	0
@@ -5578,9 +5588,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3634 026a 00       		.byte	0
  3635 026b 00       		.byte	0
  3636 026c 00       		.byte	0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 94
-
-
  3637 026d 00       		.byte	0
  3638 026e 00       		.byte	0
  3639 026f 00       		.byte	0
@@ -5631,6 +5638,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3684 029c 00       		.byte	0
  3685 029d 00       		.byte	0
  3686 029e 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 95
+
+
  3687 029f 00       		.byte	0
  3688 02a0 00       		.byte	0
  3689 02a1 00       		.byte	0
@@ -5638,9 +5648,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3691 02a3 00       		.byte	0
  3692 02a4 00       		.byte	0
  3693 02a5 00       		.byte	0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 95
-
-
  3694 02a6 00       		.byte	0
  3695 02a7 00       		.byte	0
  3696 02a8 00       		.byte	0
@@ -5691,6 +5698,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3741 02d5 00       		.byte	0
  3742 02d6 00       		.byte	0
  3743 02d7 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 96
+
+
  3744 02d8 00       		.byte	0
  3745 02d9 00       		.byte	0
  3746 02da 00       		.byte	0
@@ -5698,9 +5708,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3748 02dc 00       		.byte	0
  3749 02dd 00       		.byte	0
  3750 02de 00       		.byte	0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 96
-
-
  3751 02df 00       		.byte	0
  3752 02e0 00       		.byte	0
  3753 02e1 00       		.byte	0
@@ -5751,6 +5758,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3798 030e 00       		.byte	0
  3799 030f 00       		.byte	0
  3800 0310 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 97
+
+
  3801 0311 00       		.byte	0
  3802 0312 00       		.byte	0
  3803 0313 00       		.byte	0
@@ -5758,9 +5768,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3805 0315 00       		.byte	0
  3806 0316 00       		.byte	0
  3807 0317 00       		.byte	0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 97
-
-
  3808 0318 00       		.byte	0
  3809 0319 00       		.byte	0
  3810 031a 00       		.byte	0
@@ -5811,6 +5818,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3855 0347 00       		.byte	0
  3856 0348 00       		.byte	0
  3857 0349 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 98
+
+
  3858 034a 00       		.byte	0
  3859 034b 00       		.byte	0
  3860 034c 00       		.byte	0
@@ -5818,9 +5828,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3862 034e 00       		.byte	0
  3863 034f 00       		.byte	0
  3864 0350 00       		.byte	0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 98
-
-
  3865 0351 00       		.byte	0
  3866 0352 00       		.byte	0
  3867 0353 00       		.byte	0
@@ -5871,6 +5878,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3912 0380 00       		.byte	0
  3913 0381 00       		.byte	0
  3914 0382 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 99
+
+
  3915 0383 00       		.byte	0
  3916 0384 00       		.byte	0
  3917 0385 00       		.byte	0
@@ -5878,9 +5888,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3919 0387 00       		.byte	0
  3920 0388 00       		.byte	0
  3921 0389 00       		.byte	0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 99
-
-
  3922 038a 00       		.byte	0
  3923 038b 00       		.byte	0
  3924 038c 00       		.byte	0
@@ -5931,6 +5938,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3969 03b9 00       		.byte	0
  3970 03ba 00       		.byte	0
  3971 03bb 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 100
+
+
  3972 03bc 00       		.byte	0
  3973 03bd 00       		.byte	0
  3974 03be 00       		.byte	0
@@ -5938,9 +5948,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  3976 03c0 00       		.byte	0
  3977 03c1 00       		.byte	0
  3978 03c2 00       		.byte	0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 100
-
-
  3979 03c3 00       		.byte	0
  3980 03c4 00       		.byte	0
  3981 03c5 00       		.byte	0
@@ -5991,6 +5998,9 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  4026 03f2 00       		.byte	0
  4027 03f3 00       		.byte	0
  4028 03f4 00       		.byte	0
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 101
+
+
  4029 03f5 00       		.byte	0
  4030 03f6 00       		.byte	0
  4031 03f7 00       		.byte	0
@@ -5998,9 +6008,6 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  4033 03f9 00       		.byte	0
  4034 03fa 00       		.byte	0
  4035 03fb 00       		.byte	0
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 101
-
-
  4036 03fc 00       		.byte	0
  4037 03fd 00       		.byte	0
  4038 03fe 00       		.byte	0
@@ -6041,203 +6048,203 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 1
  4073              		.file 34 "d:\\10 2021.10\\arm-none-eabi\\include\\stdio.h"
  4074              		.file 35 "Core/Inc/sensors.h"
  4075              		.file 36 "<built-in>"
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 102
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 102
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:18     .text.rs232_logdata:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:24     .text.rs232_logdata:00000000 rs232_logdata
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:57     .text.rs232_logdata:00000018 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:62     .text.buzzer:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:68     .text.buzzer:00000000 buzzer
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:110    .text.buzzer:00000024 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:115    .text.set_timer:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:121    .text.set_timer:00000000 set_timer
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:142    .text.set_timer:00000014 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:147    .rodata.HAL_RTC_AlarmAEventCallback.str1.4:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:151    .text.HAL_RTC_AlarmAEventCallback:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:157    .text.HAL_RTC_AlarmAEventCallback:00000000 HAL_RTC_AlarmAEventCallback
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:186    .text.HAL_RTC_AlarmAEventCallback:00000014 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:192    .rodata.HAL_UART_RxCpltCallback.str1.4:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:199    .text.HAL_UART_RxCpltCallback:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:205    .text.HAL_UART_RxCpltCallback:00000000 HAL_UART_RxCpltCallback
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:301    .text.HAL_UART_RxCpltCallback:00000060 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:318    .text.HAL_GPIO_EXTI_Callback:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:324    .text.HAL_GPIO_EXTI_Callback:00000000 HAL_GPIO_EXTI_Callback
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:407    .text.HAL_GPIO_EXTI_Callback:00000050 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:420    .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:426    .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:610    .text.HAL_TIM_PeriodElapsedCallback:000000c4 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:621    .text.Error_Handler:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:627    .text.Error_Handler:00000000 Error_Handler
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:659    .text.set_alarm:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:665    .text.set_alarm:00000000 set_alarm
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:730    .text.set_alarm:00000034 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:736    .text.SystemClock_Config:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:742    .text.SystemClock_Config:00000000 SystemClock_Config
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:882    .rodata.main.str1.4:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:1041   .text.main:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:1047   .text.main:00000000 main
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:1548   .text.main:00000300 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2766   .bss.fs:00000000 fs
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:1608   .text.main:000003e4 $t
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:1761   .text.main:000004d4 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:1767   .text.main:000004ec $t
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2015   .text.main:0000067c $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2058   .text.main:0000071c $t
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2452   .text.main:00000974 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2736   .bss.fil:00000000 fil
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2885   .bss.rs232_flag:00000000 rs232_flag
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2892   .bss.rs232_index:00000000 rs232_index
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2873   .bss.rs232_buff:00000000 rs232_buff
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2879   .bss.rs232_data:00000000 rs232_data
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2742   .bss.flash_Readbuff:00000000 flash_Readbuff
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2910   .bss.sensors:00000000 sensors
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2717   .bss.dht_hum:00000000 dht_hum
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2723   .bss.dht_temp:00000000 dht_temp
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2730   .bss.ds18_temp:00000000 ds18_temp
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2634   .bss.Task_Mode:00000000 Task_Mode
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2641   .bss.Taskperform:00000000 Taskperform
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2995   .data.Type_Task:00000000 Type_Task
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2798   .bss.infoUser2:00000000 infoUser2
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 103
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:18     .text.rs232_logdata:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:24     .text.rs232_logdata:00000000 rs232_logdata
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:57     .text.rs232_logdata:00000018 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:62     .text.buzzer:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:68     .text.buzzer:00000000 buzzer
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:110    .text.buzzer:00000024 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:115    .text.set_timer:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:121    .text.set_timer:00000000 set_timer
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:142    .text.set_timer:00000014 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:147    .rodata.HAL_RTC_AlarmAEventCallback.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:151    .text.HAL_RTC_AlarmAEventCallback:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:157    .text.HAL_RTC_AlarmAEventCallback:00000000 HAL_RTC_AlarmAEventCallback
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:186    .text.HAL_RTC_AlarmAEventCallback:00000014 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:192    .rodata.HAL_UART_RxCpltCallback.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:199    .text.HAL_UART_RxCpltCallback:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:205    .text.HAL_UART_RxCpltCallback:00000000 HAL_UART_RxCpltCallback
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:301    .text.HAL_UART_RxCpltCallback:00000060 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:318    .text.HAL_GPIO_EXTI_Callback:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:324    .text.HAL_GPIO_EXTI_Callback:00000000 HAL_GPIO_EXTI_Callback
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:407    .text.HAL_GPIO_EXTI_Callback:00000050 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:420    .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:426    .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:610    .text.HAL_TIM_PeriodElapsedCallback:000000c4 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:621    .text.Error_Handler:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:627    .text.Error_Handler:00000000 Error_Handler
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:659    .text.set_alarm:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:665    .text.set_alarm:00000000 set_alarm
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:730    .text.set_alarm:00000034 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:736    .text.SystemClock_Config:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:742    .text.SystemClock_Config:00000000 SystemClock_Config
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:882    .rodata.main.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:1041   .text.main:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:1047   .text.main:00000000 main
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:1548   .text.main:00000300 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2766   .bss.fs:00000000 fs
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:1608   .text.main:000003e4 $t
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:1761   .text.main:000004d4 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:1767   .text.main:000004ec $t
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2015   .text.main:0000067c $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2058   .text.main:0000071c $t
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2452   .text.main:00000974 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2736   .bss.fil:00000000 fil
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2885   .bss.rs232_flag:00000000 rs232_flag
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2892   .bss.rs232_index:00000000 rs232_index
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2873   .bss.rs232_buff:00000000 rs232_buff
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2879   .bss.rs232_data:00000000 rs232_data
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2742   .bss.flash_Readbuff:00000000 flash_Readbuff
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2910   .bss.sensors:00000000 sensors
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2717   .bss.dht_hum:00000000 dht_hum
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2723   .bss.dht_temp:00000000 dht_temp
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2730   .bss.ds18_temp:00000000 ds18_temp
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2634   .bss.Task_Mode:00000000 Task_Mode
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2641   .bss.Taskperform:00000000 Taskperform
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2995   .data.Type_Task:00000000 Type_Task
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2798   .bss.infoUser2:00000000 infoUser2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 103
 
 
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2791   .bss.infoUser1:00000000 infoUser1
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2784   .bss.infoUser:00000000 infoUser
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:3001   .data.id_ref:00000000 id_ref
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2506   .rodata.str1.4:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2576   .bss.Card_Endbuff:00000000 Card_Endbuff
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2583   .bss.Card_Startbuff:00000000 Card_Startbuff
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2597   .bss.Json_Data:00000000 Json_Data
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2923   .bss.stateDevice:00000000 stateDevice
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2628   .bss.SD_read:00000000 SD_read
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2754   .bss.free_space:00000000 free_space
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2956   .bss.total:00000000 total
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2748   .bss.fre_clust:00000000 fre_clust
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2866   .bss.pfs:00000000 pfs
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2667   .bss.bw:00000000 bw
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2661   .bss.br:00000000 br
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2621   .bss.SD_file_name:00000000 SD_file_name
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2609   .bss.SD_buffer_r:00000000 SD_buffer_r
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2615   .bss.SD_buffer_w:00000000 SD_buffer_w
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2760   .bss.fresult:00000000 fresult
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2772   .bss.gnss_str:00000000 gnss_str
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2803   .bss.l70Data1:00000000 l70Data1
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2916   .bss.simMessage:00000000 simMessage
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2836   .bss.longData:00000000 longData
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2830   .bss.latData:00000000 latData
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2590   .bss.GPSResponse:00000000 GPSResponse
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2977   .bss.utctime_buff:00000000 utctime_buff
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2860   .bss.numCheck_time:00000000 numCheck_time
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2970   .bss.totalMinute_OperateTime_buff:00000000 totalMinute_OperateTime_buff
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2950   .bss.time_minute:00000000 time_minute
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2943   .bss.time_hour:00000000 time_hour
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2963   .bss.totalMinute_OperateTime:00000000 totalMinute_OperateTime
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2673   .bss.check:00000000 check
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2706   .bss.date_buff:00000000 date_buff
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2936   .bss.time_buff:00000000 time_buff
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2988   .bss.year:00000000 year
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2846   .bss.month:00000000 month
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2711   .bss.day:00000000 day
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2699   .bss.date:00000000 date
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2777   .bss.hour:00000000 hour
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2841   .bss.minute:00000000 minute
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2903   .bss.sencond:00000000 sencond
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2898   .bss.sAlarm:00000000 sAlarm
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2810   .bss.last_sDate:00000000 last_sDate
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2817   .bss.last_sTime:00000000 last_sTime
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2680   .bss.current_sDate:00000000 current_sDate
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2687   .bss.current_sTime:00000000 current_sTime
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2655   .bss.Vehical_veloc:00000000 Vehical_veloc
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2824   .bss.last_time:00000000 last_time
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2694   .bss.current_time:00000000 current_time
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2648   .bss.Vehical_State:00000000 Vehical_State
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2853   .bss.npn_count:00000000 npn_count
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:3008   .data.npn_flag_check:00000000 npn_flag_check
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2603   .bss.Logout:00000000 Logout
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2983   .bss.waiting4LogOut:00000000 waiting4LogOut
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2929   .bss.szBuff:00000000 szBuff
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2569   .bss.CardID:00000000 CardID
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:3015   .rodata.bitmap:00000000 bitmap
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 104
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2791   .bss.infoUser1:00000000 infoUser1
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2784   .bss.infoUser:00000000 infoUser
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:3001   .data.id_ref:00000000 id_ref
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2506   .rodata.str1.4:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2576   .bss.Card_Endbuff:00000000 Card_Endbuff
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2583   .bss.Card_Startbuff:00000000 Card_Startbuff
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2597   .bss.Json_Data:00000000 Json_Data
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2923   .bss.stateDevice:00000000 stateDevice
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2628   .bss.SD_read:00000000 SD_read
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2754   .bss.free_space:00000000 free_space
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2956   .bss.total:00000000 total
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2748   .bss.fre_clust:00000000 fre_clust
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2866   .bss.pfs:00000000 pfs
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2667   .bss.bw:00000000 bw
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2661   .bss.br:00000000 br
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2621   .bss.SD_file_name:00000000 SD_file_name
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2609   .bss.SD_buffer_r:00000000 SD_buffer_r
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2615   .bss.SD_buffer_w:00000000 SD_buffer_w
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2760   .bss.fresult:00000000 fresult
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2772   .bss.gnss_str:00000000 gnss_str
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2803   .bss.l70Data1:00000000 l70Data1
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2916   .bss.simMessage:00000000 simMessage
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2836   .bss.longData:00000000 longData
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2830   .bss.latData:00000000 latData
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2590   .bss.GPSResponse:00000000 GPSResponse
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2977   .bss.utctime_buff:00000000 utctime_buff
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2860   .bss.numCheck_time:00000000 numCheck_time
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2970   .bss.totalMinute_OperateTime_buff:00000000 totalMinute_OperateTime_buff
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2950   .bss.time_minute:00000000 time_minute
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2943   .bss.time_hour:00000000 time_hour
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2963   .bss.totalMinute_OperateTime:00000000 totalMinute_OperateTime
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2673   .bss.check:00000000 check
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2706   .bss.date_buff:00000000 date_buff
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2936   .bss.time_buff:00000000 time_buff
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2988   .bss.year:00000000 year
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2846   .bss.month:00000000 month
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2711   .bss.day:00000000 day
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2699   .bss.date:00000000 date
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2777   .bss.hour:00000000 hour
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2841   .bss.minute:00000000 minute
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2903   .bss.sencond:00000000 sencond
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2898   .bss.sAlarm:00000000 sAlarm
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2810   .bss.last_sDate:00000000 last_sDate
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2817   .bss.last_sTime:00000000 last_sTime
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2680   .bss.current_sDate:00000000 current_sDate
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2687   .bss.current_sTime:00000000 current_sTime
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2655   .bss.Vehical_veloc:00000000 Vehical_veloc
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2824   .bss.last_time:00000000 last_time
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2694   .bss.current_time:00000000 current_time
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2648   .bss.Vehical_State:00000000 Vehical_State
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2853   .bss.npn_count:00000000 npn_count
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:3008   .data.npn_flag_check:00000000 npn_flag_check
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2603   .bss.Logout:00000000 Logout
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2983   .bss.waiting4LogOut:00000000 waiting4LogOut
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2929   .bss.szBuff:00000000 szBuff
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2569   .bss.CardID:00000000 CardID
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:3015   .rodata.bitmap:00000000 bitmap
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 104
 
 
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2565   .bss.CardID:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2572   .bss.Card_Endbuff:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2579   .bss.Card_Startbuff:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2586   .bss.GPSResponse:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2593   .bss.Json_Data:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2604   .bss.Logout:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2606   .bss.SD_buffer_r:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2612   .bss.SD_buffer_w:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2618   .bss.SD_file_name:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2624   .bss.SD_read:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2631   .bss.Task_Mode:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2637   .bss.Taskperform:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2644   .bss.Vehical_State:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2651   .bss.Vehical_veloc:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2658   .bss.br:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2664   .bss.bw:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2670   .bss.check:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2676   .bss.current_sDate:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2683   .bss.current_sTime:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2690   .bss.current_time:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2700   .bss.date:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2702   .bss.date_buff:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2712   .bss.day:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2714   .bss.dht_hum:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2720   .bss.dht_temp:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2726   .bss.ds18_temp:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2733   .bss.fil:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2739   .bss.flash_Readbuff:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2745   .bss.fre_clust:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2751   .bss.free_space:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2761   .bss.fresult:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2763   .bss.fs:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2769   .bss.gnss_str:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2778   .bss.hour:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2780   .bss.infoUser:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2787   .bss.infoUser1:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2794   .bss.infoUser2:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2804   .bss.l70Data1:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2806   .bss.last_sDate:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2813   .bss.last_sTime:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2820   .bss.last_time:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2827   .bss.latData:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2833   .bss.longData:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2842   .bss.minute:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2847   .bss.month:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2849   .bss.npn_count:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2856   .bss.numCheck_time:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2863   .bss.pfs:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2869   .bss.rs232_buff:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2880   .bss.rs232_data:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2886   .bss.rs232_flag:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2888   .bss.rs232_index:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2895   .bss.sAlarm:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2904   .bss.sencond:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2906   .bss.sensors:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2913   .bss.simMessage:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2919   .bss.stateDevice:00000000 $d
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 105
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2565   .bss.CardID:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2572   .bss.Card_Endbuff:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2579   .bss.Card_Startbuff:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2586   .bss.GPSResponse:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2593   .bss.Json_Data:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2604   .bss.Logout:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2606   .bss.SD_buffer_r:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2612   .bss.SD_buffer_w:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2618   .bss.SD_file_name:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2624   .bss.SD_read:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2631   .bss.Task_Mode:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2637   .bss.Taskperform:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2644   .bss.Vehical_State:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2651   .bss.Vehical_veloc:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2658   .bss.br:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2664   .bss.bw:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2670   .bss.check:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2676   .bss.current_sDate:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2683   .bss.current_sTime:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2690   .bss.current_time:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2700   .bss.date:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2702   .bss.date_buff:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2712   .bss.day:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2714   .bss.dht_hum:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2720   .bss.dht_temp:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2726   .bss.ds18_temp:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2733   .bss.fil:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2739   .bss.flash_Readbuff:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2745   .bss.fre_clust:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2751   .bss.free_space:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2761   .bss.fresult:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2763   .bss.fs:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2769   .bss.gnss_str:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2778   .bss.hour:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2780   .bss.infoUser:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2787   .bss.infoUser1:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2794   .bss.infoUser2:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2804   .bss.l70Data1:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2806   .bss.last_sDate:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2813   .bss.last_sTime:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2820   .bss.last_time:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2827   .bss.latData:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2833   .bss.longData:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2842   .bss.minute:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2847   .bss.month:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2849   .bss.npn_count:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2856   .bss.numCheck_time:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2863   .bss.pfs:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2869   .bss.rs232_buff:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2880   .bss.rs232_data:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2886   .bss.rs232_flag:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2888   .bss.rs232_index:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2895   .bss.sAlarm:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2904   .bss.sencond:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2906   .bss.sensors:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2913   .bss.simMessage:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2919   .bss.stateDevice:00000000 $d
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 105
 
 
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2926   .bss.szBuff:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2932   .bss.time_buff:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2939   .bss.time_hour:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2946   .bss.time_minute:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2953   .bss.total:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2959   .bss.totalMinute_OperateTime:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2966   .bss.totalMinute_OperateTime_buff:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2973   .bss.utctime_buff:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2984   .bss.waiting4LogOut:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2989   .bss.year:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2991   .data.Type_Task:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:2998   .data.id_ref:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:3004   .data.npn_flag_check:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s:3011   .rodata.bitmap:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2926   .bss.szBuff:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2932   .bss.time_buff:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2939   .bss.time_hour:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2946   .bss.time_minute:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2953   .bss.total:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2959   .bss.totalMinute_OperateTime:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2966   .bss.totalMinute_OperateTime_buff:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2973   .bss.utctime_buff:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2984   .bss.waiting4LogOut:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2989   .bss.year:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2991   .data.Type_Task:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:2998   .data.id_ref:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:3004   .data.npn_flag_check:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s:3011   .rodata.bitmap:00000000 $d
 
 UNDEFINED SYMBOLS
 strlen
@@ -6281,7 +6288,7 @@ MX_SPI3_Init
 MX_UART4_Init
 MX_USART1_UART_Init
 MX_USART2_UART_Init
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc20EDNx.s 			page 106
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccE7ElAa.s 			page 106
 
 
 MX_TIM2_Init
