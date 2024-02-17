@@ -46,6 +46,7 @@ A2. Hướng dẫn sử dụng thiết bị
 
   ![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/d8d9d3e5-0b68-47c7-939b-f954a203058e)
   ![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/6c23b6c8-5d35-4775-a99c-d9a40fa2392c)
+  
 Hình A- 6 Lắp đặt các thành phần vào thiết bị
 
  ![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/878ae12d-6449-4d7b-a6ea-850c1c8dc371)
