@@ -23,12 +23,18 @@ Do Vscode là môi trường mở và đa nền tảng nên việc trích tới 
 Hình A- 4 Thiết kế file Json cho trích xuất đường dẫn
  ![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/996a47c2-0fff-4ea4-98a0-36edac88ad6f)
 Hình A- 5 Thiết kế Makefile để chạy chương trình
+
 A2. Hướng dẫn sử dụng thiết bị
 •	Bước 1: Lắp đặt các thành phần phụ kiện như Anten GPS, Anten 4G, các cảm biến, Pin RTC, màn hình Oled, quạt tản nhiệt vào thiết bị như Hình A- 6.
+
 •	Bước 2: Cấp nguồn cho thiết bị bằng cách cắm nguồn Accqui từ xe vào thiết bị như Hình A- 7. 
+
 •	Bước 3: Sau khi cấp nguồn, đợi khoảng 30 giây để thiết bị khởi động, kết nối mạng 4G, kết nối GPS. Nếu khởi động và kết nối thành công, đèn Led hiển thị trạng thái thiết bị bao gồm trạng thái làm việc vị trí số 1 (sáng liên tục), trạng thái sóng 4G vị trí số 2, GPS vị trí số 3 sẽ nhấp nháy với chu kì lần lượt là 0.5 giây và 1 giây như Hình A- 8.
+
 •	Bước 4: Sau khi thấy Led hiển thị theo chu kì đó, nghĩa là thiết bị đã sẵn sàng để hoạt động trong suốt quá trình xe hoạt động. Thiết bị sẽ thu thập thông tin rồi xử lí sau đó gửi lên DashBoard để hiển thị và giám sát dữ liệu và thông tin như Hình A- 8. Nếu xe dừng hẳn sau 1 thời gian, thiết bị sẽ vào trạng thái ngủ đông để tiết kiệm năng lượng.
-  ![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/d8d9d3e5-0b68-47c7-939b-f954a203058e)![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/6c23b6c8-5d35-4775-a99c-d9a40fa2392c)
+
+  ![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/d8d9d3e5-0b68-47c7-939b-f954a203058e)
+  ![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/6c23b6c8-5d35-4775-a99c-d9a40fa2392c)
 Hình A- 6 Lắp đặt các thành phần vào thiết bị
  ![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/878ae12d-6449-4d7b-a6ea-850c1c8dc371)
 Hình A- 7 Phần cấp nguồn từ Accqui vào thiết bị
