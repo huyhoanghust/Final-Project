@@ -7,10 +7,10 @@ Truy cập vào đường link sau: https://code.visualstudio.com/download, đ�
 A1.2. Cài đặt Extensions cho dự án
 Khi hoàn thành việc cài đặt IDE, tiếp theo là cài đặt Extensions để hỗ trợ lập trình cho chip STM32 với ngôn ngữ C/C++, các bước lần lượt như sau:
 Bước 1: Cài đặt ngôn ngữ C/C++ cho môi trường
- 
+ ![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/c5723ca9-b5d8-49d0-95a0-e8a20d4d52d6)
 Hình A- 1 Tiện ích cho ngôn ngữ C/C++
 Bước 2: Cài đặt gói cho chip STM32
- 
+ ![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/815e266c-3108-4ea5-8891-b92105ee2d6e)
 Hình A- 2 Tiện ích cho chip STM32
 Bước 3: Cài đặt MakeFile để build chương trình
  
