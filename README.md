@@ -31,12 +31,9 @@ A2. Hướng dẫn sử dụng thiết bị
   ![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/d8d9d3e5-0b68-47c7-939b-f954a203058e)![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/6c23b6c8-5d35-4775-a99c-d9a40fa2392c)
 Hình A- 6 Lắp đặt các thành phần vào thiết bị
  ![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/878ae12d-6449-4d7b-a6ea-850c1c8dc371)
-
 Hình A- 7 Phần cấp nguồn từ Accqui vào thiết bị
  ![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/ba3e85c6-6fa2-41ae-b40d-e9ae7586e70e)
-
 Hình A- 9 Đèn Led hiển thị trạng thái
  ![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/11c1e8b1-b9d4-4b04-b74c-680d8b6957d2)
-
 Hình A- 8 Giao diện theo dõi thiết bị
 
