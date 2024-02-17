@@ -29,8 +29,10 @@ Sau khi thiết kế xong firmware, việc tiếp theo là nạp chương trình
 A1.4. Viết file Json và Makefile cho dự án
 Do Vscode là môi trường mở và đa nền tảng nên việc trích tới đường dẫn file build và chạy chương trình là cần thiết và do người dùng tự viết. Với dự án này em thiết kế như sau:
  ![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/d7a35f4a-14a7-47c9-ad6c-99cba1571213)
+ 
 Hình A- 4 Thiết kế file Json cho trích xuất đường dẫn
  ![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/996a47c2-0fff-4ea4-98a0-36edac88ad6f)
+ 
 Hình A- 5 Thiết kế Makefile để chạy chương trình
 
 A2. Hướng dẫn sử dụng thiết bị
@@ -46,9 +48,12 @@ A2. Hướng dẫn sử dụng thiết bị
   ![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/6c23b6c8-5d35-4775-a99c-d9a40fa2392c)
 Hình A- 6 Lắp đặt các thành phần vào thiết bị
  ![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/878ae12d-6449-4d7b-a6ea-850c1c8dc371)
+ 
 Hình A- 7 Phần cấp nguồn từ Accqui vào thiết bị
  ![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/ba3e85c6-6fa2-41ae-b40d-e9ae7586e70e)
+ 
 Hình A- 9 Đèn Led hiển thị trạng thái
  ![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/11c1e8b1-b9d4-4b04-b74c-680d8b6957d2)
+ 
 Hình A- 8 Giao diện theo dõi thiết bị
 
