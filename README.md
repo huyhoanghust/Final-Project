@@ -1,20 +1,29 @@
 # Final-Project
 Hướng dẫn cài đặt chương trình
 A1. Cài đặt môi trường làm việc
+
 A1.1 Cài đặt IDE Visual Studio Code
 Visual Studio Code (VS Code) là một trình soạn thảo mã nguồn mở và miễn phí, được phát triển bởi Microsoft. Được thiết kế để hỗ trợ nhiều ngôn ngữ lập trình và nền tảng, VS Code đã trở thành một trong những trình soạn thảo mã nguồn phổ biến nhất trong cộng đồng phần mềm. 
 Truy cập vào đường link sau: https://code.visualstudio.com/download, để tải môi trường lập trình IDE cho dự án. 
+
 A1.2. Cài đặt Extensions cho dự án
 Khi hoàn thành việc cài đặt IDE, tiếp theo là cài đặt Extensions để hỗ trợ lập trình cho chip STM32 với ngôn ngữ C/C++, các bước lần lượt như sau:
+
 Bước 1: Cài đặt ngôn ngữ C/C++ cho môi trường
  ![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/c5723ca9-b5d8-49d0-95a0-e8a20d4d52d6)
+ 
 Hình A- 1 Tiện ích cho ngôn ngữ C/C++
+
 Bước 2: Cài đặt gói cho chip STM32
  ![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/815e266c-3108-4ea5-8891-b92105ee2d6e)
+ 
 Hình A- 2 Tiện ích cho chip STM32
+
 Bước 3: Cài đặt MakeFile để build chương trình
  ![image](https://github.com/huyhoanghust/Final-Project/assets/83686238/ee57ca89-b4ee-4c80-89d3-e414a22be766)
+ 
 Hình A- 3 Tiện ích cho Makefile
+
 A1.3. Cài đặt Driver ST - Link hỗ trợ nạp chương trình
 Sau khi thiết kế xong firmware, việc tiếp theo là nạp chương trình và debug thông qua Driver có sẵn do hãng ST của chip hỗ trợ. Đường dẫn để cài đặt Driver sau: https://www.st.com/en/development-tools/stsw-link009.html. 
 A1.4. Viết file Json và Makefile cho dự án
