@@ -1,0 +1,19 @@
+https://demo.thingsboard.io/api/noauth/activate?activateToken=aiSYJKd_YbDCoSqaR91g0uFWPA_nQEc_ZemRQJKN	123345678
+https://demo.thingsboard.io/api/noauth/activate?activateToken=cdT1aRv27DvPpaHvKE93aQH6zHt3SKKGboGcCjBR	Hoanghust
+device-status:
+{"online":1,"offline": 0,"sleep":0}
+device-gps:
+{"license":30N-1234,"name":Nguyen_Huy_Hoang,"phone":VN123456789,"signal":OK,"latitude":21.005159,"longitude":105.841827} 
+device-rfid:
+{"deviceID":GSHT_ID02,"license":30N-1234,"name": Nguyen_Huy_Hoang,"phone":VN123456789,"signal":OK,"ds18b20":35}
+device-sensor:
+{"ds18b20":35,"dhttemp":25,"dhthum":80}
+******************************************************************************************
+DATN_Device
+{"online":2,"offline": 1,"sleep":0, "deviceID":GSHT_ID01, "license":30N-1234, "name":Nguyen_Huy_Hoang, "phone":VN123456789, "signal":OK, "latitude":21.005159, "longitude":105.841827,"ds18b20":25,"dhttemp":35,"dhthum":80, "fuel": 80,"timetotal":0h1, "speed":1}
+******************************************************************************************
+dht
+AT+CMQTTCONNECT=0,"tcp://demo.thingsboard.io:1883",90,1,"HDDsbgj5mlE0lvt4UhX9","64731920-9460-11ee-ad71-4d1e7bacfffa"
+ds
+AT+CMQTTCONNECT=0,"tcp://demo.thingsboard.io:1883",90,1,"57OrAgUzdWLWjWE760Ir","5437ac10-9460-11ee-ad71-4d1e7bacfffa"
+https://demo.thingsboard.io/dashboard/c39a29b0-9457-11ee-ad71-4d1e7bacfffa?publicId=91ac83e0-b6a7-11ee-85b1-6b89e062558e
